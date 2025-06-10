@@ -5,7 +5,7 @@ import PackageList from "./components/PackageList";
 import Cart from "./components/Cart";
 import Footer from "./components/Footer";
 import "./App.css";
-
+import Paver from "./components/paver.jsx";
 
 function App() {
   const [packages, setPackages] = useState([
@@ -38,11 +38,9 @@ function App() {
       <PackageList packages={packages} onAddToCart={handleAddToCart} />
       <Cart cartItems={cart} />
       <Cart cartItems={cart} />
-      <Cart cartItems={cart} />
-      <Cart cartItems={cart} />
-      <Cart cartItems={cart} />
-      <Cart cartItems={cart} />
+       <Cart cartItems={cart} />
 
+      <Paver />
       <Footer />
     </div>
   );
