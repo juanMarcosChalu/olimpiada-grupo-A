@@ -41,7 +41,6 @@ function App() {
     <div id="app">
       <Header/>
       <SectionHome />
-      <Paver />
       <Carousel/>
       <Footer />
     </div>

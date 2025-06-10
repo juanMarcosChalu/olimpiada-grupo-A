@@ -1,19 +1,48 @@
-.carousel {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+.carousel-wrapper {
+    position: relative;
+    background-color: #d9d4cc;
+    width: 100%;
+    height: 100vh;
+
+    .carousel {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 2%;
+        margin-left: 15%;
+
+        .carousel-container {
+            display: flex;
+            gap: 10px;
+            overflow: hidden;
+
+            .carousel-slide {
+                position: relative;
+                width: 200px;
+                height: 200px;
+                object-fit: cover;
+                border-radius: 2px 2px 4px 4px;
+                border: 10px solid #A3987B;
+                box-sizing: border-box;
+                padding: 0;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+        }
+    }
+
 }
 
-.carousel-container {
-  display: flex;
-  gap: 10px;
-  overflow: hidden;
-  width: 960px; /* 3 imágenes de 300px de ancho + espacio */
-}
-
-.carousel-slide img {
-  width: 300px;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 8px;
+.carousel-title {
+    position: relative;
+    justify-content: center;
+    text-align: center;
+    padding-top: 4rem;
+    margin-bottom: 4rem;
+    font-family: "Libre Baskerville", serif;
+    color: #776b64;
 }
