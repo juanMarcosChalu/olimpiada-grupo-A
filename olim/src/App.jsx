@@ -6,8 +6,14 @@ import Cart from "./components/Cart";
 import Footer from "./components/Footer";
 import "./App.css";
 import Paver from "./components/paver.jsx";
+import Header from "./components/header.jsx";
+import SectionHome from "./components/SectionHome.jsx";
+import Carousel from "./components/carusel.jsx";
+
 
 function App() {
+
+
   const [packages, setPackages] = useState([
     {
       id: 1,
@@ -33,14 +39,10 @@ function App() {
 
   return (
     <div id="app">
-      <Navbar />
-      <SearchBar />
-      <PackageList packages={packages} onAddToCart={handleAddToCart} />
-      <Cart cartItems={cart} />
-      <Cart cartItems={cart} />
-       <Cart cartItems={cart} />
-
+      <Header/>
+      <SectionHome />
       <Paver />
+      <Carousel/>
       <Footer />
     </div>
   );

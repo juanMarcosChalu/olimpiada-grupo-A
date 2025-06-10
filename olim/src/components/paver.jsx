@@ -5,33 +5,7 @@ import img from "../assets/300x200.webp"; // Import the logo image
 const paver = () => {
     return (
         <div className="">
-            <section className="img-container">
-                <img
-                    src={img}
-                    alt="Paver Logo"
-                    className="paver-logo"
-                />
-            </section>
-            <section className="paver-content">
-                <h2>Bienvenido a Paver</h2>
-                <p>
-                    Paver es una plataforma de comercio electrónico que conecta a
-                    los usuarios con productos y servicios de alta calidad. Aquí
-                    encontrarás una amplia variedad de artículos, desde tecnología
-                    hasta moda, todo al alcance de un clic.
-                </p>
-                <p>
-                    Explora nuestras categorías, descubre ofertas exclusivas y
-                    disfruta de una experiencia de compra única. ¡Gracias por elegir
-                    Paver!
-                </p>
-            </section>
-            <section className="paver-footer">
-
-                <p>
-                    <strong>Precio:</strong> $100.00
-                </p>
-            </section>
+           
 
             <ol id='gridTienda'>
 

@@ -5,11 +5,16 @@
   width: 100vw;
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #b80000;
+  background-color: #ffffff;
   height: 100vh;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  *{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
 }
 
