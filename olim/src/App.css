@@ -15,60 +15,6 @@ body {
   background-color: #ffffff;
 }
 
-/* .navbar {
-  background-color: #007bff;
-  color: white;
- 
-}
-
-.search-bar {
-  margin: 1rem;
-  text-align: center;
-}
-
-.search-bar input {
-  padding: 0.5rem;
-  width: 200px;
-}
-
-.search-bar button {
-  padding: 0.5rem;
-}
-
-.package-list {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin: 1rem;
-}
-
-.package-card {
-  background-color: white;
-  border: 1px solid #ddd;
-  padding: 1rem;
-  width: 250px;
-  text-align: center;
-}
-
-.package-card img {
-  width: 100%;
-  height: auto;
-}
-
-.cart {
-  background-color: #000000;
-  padding: 1rem;
-  margin: 1rem;
-} */
-
-.footer {
-  background-color: #007bff;
-  color: white;
-  text-align: center;
-  height: 10vh;
-}
-
 .icono{
   color: black;
   font-size: 5rem;

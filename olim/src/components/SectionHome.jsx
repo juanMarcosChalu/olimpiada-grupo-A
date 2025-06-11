@@ -8,6 +8,7 @@ function SectionHome() {
         <h1>
             Brújula
         </h1>
+             <h2 className="">Viajes que inspiran, experiencias que perduran</h2>
       </div>
     </section>
   );

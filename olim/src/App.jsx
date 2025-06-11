@@ -1,14 +1,10 @@
 import React, { useState } from "react";
-import Navbar from "./components/Navbar.jsx";
-import SearchBar from "./components/SearchBar";
-import PackageList from "./components/PackageList";
-import Cart from "./components/Cart";
 import Footer from "./components/Footer";
 import "./App.css";
-import Paver from "./components/paver.jsx";
 import Header from "./components/header.jsx";
 import SectionHome from "./components/SectionHome.jsx";
 import Carousel from "./components/carusel.jsx";
+import Busqueda from "./components/busqueda.jsx";
 
 
 function App() {
@@ -42,7 +38,9 @@ function App() {
       <Header/>
       <SectionHome />
       <Carousel/>
+      <Busqueda/>
       <Footer />
+      
     </div>
   );
 }
