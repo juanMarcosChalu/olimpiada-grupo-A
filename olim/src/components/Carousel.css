@@ -3,13 +3,40 @@
     background-color: #d9d4cc;
     width: 100%;
     height: 100vh;
-
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    flex-direction: column;
+   
     .carousel {
         display: flex;
         align-items: center;
         gap: 10px;
-        margin-bottom: 2%;
-        margin-left: 15%;
+        justify-content: center;
+        position: relative;
+        
+        button {
+            background-color:#d9d4cc;
+            border: none;
+            .material-symbols-outlined {
+                background-color: none;
+                color: #b0a695;
+                font-size: 3.5rem;
+                cursor:pointer;
+                transform: rotate(90deg);
+                font-variation-settings:
+                    'FILL' 1,
+                    'wght' 900,
+                    'GRAD' 0,
+                    'opsz' 40;
+                    &:hover{
+                         color: #867f72;
+                    }
+            }
+            .left{
+                transform: rotate(270deg);
+            }
+        }
 
         .carousel-container {
             display: flex;
@@ -25,11 +52,29 @@
                 border: 10px solid #A3987B;
                 box-sizing: border-box;
                 padding: 0;
-
+                span{
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    display: none;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 2rem;
+                    width: 100%;
+                    height: 100%;
+                    background-color: rgba(0, 0, 0, 0.301);
+                    cursor: pointer;
+                   
+                }
                 img {
                     width: 100%;
                     height: 100%;
                     object-fit: cover;
+                }
+                &:hover{
+                    span{
+                        display: flex;
+                    }
                 }
             }
         }
@@ -41,8 +86,8 @@
     position: relative;
     justify-content: center;
     text-align: center;
-    padding-top: 4rem;
-    margin-bottom: 4rem;
+    position: relative;
+    top: -20%;
     font-family: "Libre Baskerville", serif;
     color: #776b64;
 }
