@@ -53,7 +53,7 @@ const Carousel = () => {
 
     return (
         <div className="carousel-wrapper">
-       
+            
             <div className="carousel">
                 <button onClick={prevSlide}>
                     <span className="material-symbols-outlined left">

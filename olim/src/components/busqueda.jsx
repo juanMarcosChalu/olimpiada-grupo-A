@@ -23,26 +23,32 @@ function Busqueda() {
                 </nav>
             </header>
             <main className="main-busqueda" style={{ backgroundImage: `url(${img})` }}>
-
+                <div className="overlay"></div>
                 <article className="article-busqueda">
                     <form>
-                        <span>Origen</span>
-                        <input type="text" />
+                        <label>
+                            Origen
+                            <input type="text" name="origen" placeholder="Correo electrónico"/>
+                        </label>
 
-                        <span>Destino</span>
-                        <input type="text" />
+                        <label>
+                            Destino
+                            <input type="text" name="destino" placeholder="Correo electrónico"/>
+                        </label>
 
-                        <span>fechas</span>
-                        <input type="text" />
+                        <label>
+                            Fechas
+                            <input type="text" name="fechas" placeholder="Correo electrónico"/>
+                        </label>
 
-                        <span>Pasajeros</span>
-                        <input type="text" />
+                        <label>
+                            Pasajeros
+                            <input type="text" name="pasajeros" placeholder="Correo electrónico"/>
+                        </label>
 
-                        <button className="boton">
-                            Buscar
-                        </button>
-
+                        <button class="boton">Buscar</button>
                     </form>
+
                 </article>
 
                 <article className="article-fotos-populares">
