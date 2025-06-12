@@ -1,17 +1,16 @@
 import React from "react";
 import "../styles/busqueda.css"; // Import the CSS file for styling
-import img from "../assets/fondo-z.jpg";
-import logo from "../assets/logo.png";
+import paris from "../assets/paris.jpg";
+import madrid from "../assets/madrid.jpg";
+import newyork from "../assets/newyork.jpg";
+import turquia from "../assets/turquia.jpg";
+import fondo from "../assets/fondo-z.JPG"
 function Busqueda() {
     return (
         <section className="section-home" >
             <header className="headerBusqueda">
-                <div className="logo-container">
-                    <img
-                        src={logo}
-                        alt="Logo de la empresa"
-                        className="logo"
-                    />
+                <div className="titulo-container">
+                    <h1>Destinos</h1>
                 </div>
                 <nav className="navigation">
                     <ul>
@@ -22,36 +21,78 @@ function Busqueda() {
                     </ul>
                 </nav>
             </header>
-            <main className="main-busqueda" style={{ backgroundImage: `url(${img})` }}>
-                <div className="overlay"></div>
+            <div className="background" style={{ backgroundImage: `url(${fondo})` }}>
+                <div className="overlay">
+
+                </div>
+            </div>
+            <main className="main-busqueda" >
+
                 <article className="article-busqueda">
                     <form>
                         <label>
                             Origen
-                            <input type="text" name="origen" placeholder="Correo electrónico"/>
+                            <input type="text" name="origen" placeholder="Correo electrónico" />
                         </label>
 
                         <label>
                             Destino
-                            <input type="text" name="destino" placeholder="Correo electrónico"/>
+                            <input type="text" name="destino" placeholder="Correo electrónico" />
                         </label>
 
                         <label>
                             Fechas
-                            <input type="text" name="fechas" placeholder="Correo electrónico"/>
+                            <input type="date" name="fechas" />
                         </label>
 
                         <label>
                             Pasajeros
-                            <input type="text" name="pasajeros" placeholder="Correo electrónico"/>
+                            <input type="text" name="pasajeros" placeholder="Correo electrónico" />
                         </label>
 
-                        <button class="boton">Buscar</button>
+                        <button className="boton">Buscar</button>
                     </form>
 
                 </article>
 
                 <article className="article-fotos-populares">
+
+                    <h1 className="text-fotos">Destinos Estrellas</h1>
+                    <div className="images-container">
+                        <div className="Busqueda-ImageContainer">
+                            <img src={paris} alt="paris, francia" className="imagenesPopulares" />
+                            <div className="overlay">
+                                <span>
+                                    Paris
+                                </span>
+                            </div>
+                        </div>
+                        <div className="Busqueda-ImageContainer">
+                            <img src={madrid} alt="madrid, españa" className="imagenesPopulares" />
+                            <div className="overlay">
+                                <span>
+                                    Madrid
+                                </span>
+                            </div>
+                        </div>
+                        <div className="Busqueda-ImageContainer">
+                            <img src={newyork} alt="newyork, eeuu" className="imagenesPopulares" />
+                            <div className="overlay">
+                                <span>
+                                    Newyork
+                                </span>
+                            </div>
+                        </div>
+                        <div className="Busqueda-ImageContainer">
+                            <img src={turquia} alt="turqui" className="imagenesPopulares" />
+                            <div className="overlay">
+                                <span>
+                                    Turquia
+                                </span>
+                            </div>
+                        </div>
+
+                    </div>
                 </article>
 
             </main>

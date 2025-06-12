@@ -5,6 +5,7 @@ import Header from "./components/header.jsx";
 import SectionHome from "./components/SectionHome.jsx";
 import Carousel from "./components/carusel.jsx";
 import Busqueda from "./components/busqueda.jsx";
+import Paquetes from "./components/Paquetes.jsx";
 
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
       <SectionHome />
       <Carousel/>
       <Busqueda/>
+      <Paquetes/>
       <Footer />
       
     </div>

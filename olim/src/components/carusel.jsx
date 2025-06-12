@@ -42,6 +42,7 @@ const Carousel = () => {
     };
 
     const prevSlide = () => {
+        
         setStartIndex((prevIndex) => (prevIndex - 1 + imagenes.length) % imagenes.length);
     };
 
