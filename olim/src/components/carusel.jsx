@@ -10,39 +10,39 @@ import "../styles/Carousel.css";
 
 const Carousel = () => {
     const { data, loading, eror } = useFetch("https://pokeapi.co/api/v2/pokemon?limit=10&offset=0");
-    const imagene1 ={
-    img: img1,  // ¡La variable que exportaste!
-    texto: "Disney"
+    const imagene1 = {
+        img: img1,  // ¡La variable que exportaste!
+        texto: "Disney"
     }
-    const imagene2 ={
-    img: img2,  // ¡La variable que exportaste!
-    texto: "Costa Rica"
+    const imagene2 = {
+        img: img2,  // ¡La variable que exportaste!
+        texto: "Costa Rica"
     }
-    const imagene3 ={
-    img: img3,  // ¡La variable que exportaste!
-    texto: "Madrid"
+    const imagene3 = {
+        img: img3,  // ¡La variable que exportaste!
+        texto: "Madrid"
     }
-    const imagene4 ={
-    img: img4,  // ¡La variable que exportaste!
-    texto: "New York"
+    const imagene4 = {
+        img: img4,  // ¡La variable que exportaste!
+        texto: "New York"
     }
-    const imagene5 ={
-    img: img5,  // ¡La variable que exportaste!
-    texto: "Paris"
+    const imagene5 = {
+        img: img5,  // ¡La variable que exportaste!
+        texto: "Paris"
     }
 
-    const imagenes=[imagene1,imagene2,imagene3,imagene4,imagene5];
-    
+    const imagenes = [imagene1, imagene2, imagene3, imagene4, imagene5];
+
     const [startIndex, setStartIndex] = useState(0);
 
-    
+
     const nextSlide = () => {
-       
+
         setStartIndex((prevIndex) => (prevIndex + 1) % imagenes.length);
     };
 
     const prevSlide = () => {
-        
+
         setStartIndex((prevIndex) => (prevIndex - 1 + imagenes.length) % imagenes.length);
     };
 
@@ -54,7 +54,10 @@ const Carousel = () => {
 
     return (
         <div className="carousel-wrapper">
-            
+            <div className="title-carousel">
+                <h1>Elegí tu próximo destino</h1>
+                <h2>Deslizá y descubrí lugares únicos para tu próxima aventura</h2>
+            </div>
             <div className="carousel">
                 <button onClick={prevSlide}>
                     <span className="material-symbols-outlined left">
@@ -64,7 +67,7 @@ const Carousel = () => {
 
                 <div className="carousel-container">
                     {visibleImages.map((imagen, index) => (
-                        
+
                         <div className="carousel-slide" key={index}>
                             <img src={imagen.img} alt={`Slide ${index}`} />
                             <span>{imagen.texto}</span>

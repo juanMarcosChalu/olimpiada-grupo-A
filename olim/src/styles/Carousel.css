@@ -5,35 +5,47 @@
     height: 101vh;
     display: flex;
     align-items: center;
-    justify-content:center;
+    justify-content: center;
     flex-direction: column;
-   
+
+    .title-carousel {
+        font-family: "Libre Baskerville", serif;
+        position: relative;
+        text-align: center;
+        color: #776b5d;
+        width: 100%;
+        padding-bottom: 20vh;
+    }
+
     .carousel {
         display: flex;
         align-items: center;
         gap: 10px;
         justify-content: center;
         position: relative;
-        
+
         button {
-            background-color:#d9d4cc;
+            background-color: #d9d4cc;
             border: none;
+
             .material-symbols-outlined {
                 background-color: none;
                 color: #b0a695;
                 font-size: 3.5rem;
-                cursor:pointer;
+                cursor: pointer;
                 transform: rotate(90deg);
                 font-variation-settings:
                     'FILL' 1,
                     'wght' 900,
                     'GRAD' 0,
                     'opsz' 40;
-                    &:hover{
-                         color: #867f72;
-                    }
+
+                &:hover {
+                    color: #867f72;
+                }
             }
-            .left{
+
+            .left {
                 transform: rotate(270deg);
             }
         }
@@ -52,28 +64,40 @@
                 border: 10px solid #A3987B;
                 box-sizing: border-box;
                 padding: 0;
-                span{
+
+                span {
                     position: absolute;
                     top: 0;
                     left: 0;
-                    display: none;
                     align-items: center;
                     justify-content: center;
                     font-size: 2rem;
                     width: 100%;
                     height: 100%;
-                    background-color: rgba(0, 0, 0, 0.301);
+                    background-color: rgba(0, 0, 0, 0.3);
                     cursor: pointer;
-                   
+                    opacity: 0;
+                    pointer-events: none;
+                    /* evita clics cuando no se ve */
+                    transition: opacity 0.5s ease, transform 0.5s ease;
+                    display: flex;
+                    /* ahora siempre visible, pero transparente/inactivo */
+                    transform: scale(1.05);
+                    /* efecto suave al entrar */
+
                 }
+
                 img {
                     width: 100%;
                     height: 100%;
                     object-fit: cover;
                 }
-                &:hover{
-                    span{
-                        display: flex;
+
+                &:hover {
+                    span {
+                        opacity: 1;
+                        
+                        transform: scale(1);
                     }
                 }
             }

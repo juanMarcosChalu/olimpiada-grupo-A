@@ -81,7 +81,7 @@
 
 .section-paquetes {
     width: 100%;
-    height: 100vh;
+    height: 105vh;
     background-size: cover;
     color: #776b5d;
     background-color: #f3eeea;
@@ -99,25 +99,24 @@
         grid-template-columns: 1fr 1fr 1fr;
         grid-template-rows: 1fr 1fr;
         place-items: center;
+        position: relative;
         gap: 4%;
+        width: 70vw;
+        left: 50%;
+        transform: translateX(-50%);
 
         .cards-paquetes {
             position: relative;
             border-radius: 12px;
             background-color: white;
-            width: 20vw;
-            height: 40vh;
+            width: 22vw;
+            height: 42vh;
 
             .marco-cards {
+                position: relative;
                 padding: 8px;
                 width: 100%;
-                height: 25vh;
-                position: relative;
-
-                span{
-                    text-align: center;
-                }
-                
+                height: 60%;
 
                 img {
                     width: 100%;
@@ -125,8 +124,62 @@
                     border-radius: 4px;
                 }
             }
+
+            .marco-text {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                position: relative;
+                text-align: center;
+                height: 20%;
+                font-family: "Open Sans";
+                font-size: 16px;
+            }
+
+            .button-container {
+                position: relative;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                height: 15%;
+                display: flex;
+
+                a {
+                    font-family: "Open Sans";
+                    position: relative;
+                    color: black;
+                    text-align: center;
+                    border-radius: 50px;
+                    width: 30%;
+                }
+
+            }
         }
 
 
     }
+}
+
+#link1 {
+    background-color: #c88c8c;
+}
+
+#link2 {
+    background-color: #d9a273;
+}
+
+#link3 {
+    background-color: #b55b52;
+}
+
+#link4 {
+    background-color: #889d5c;
+}
+
+#link5 {
+    background-color: #7d9aa0;
+}
+
+#link6 {
+    background-color: #8c5c51;
 }

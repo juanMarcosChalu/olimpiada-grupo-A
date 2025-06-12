@@ -6,6 +6,7 @@ import SectionHome from "./components/SectionHome.jsx";
 import Carousel from "./components/carusel.jsx";
 import Busqueda from "./components/busqueda.jsx";
 import Paquetes from "./components/Paquetes.jsx";
+import CardPaquetes from "./components/CardPaquetes.jsx";
 
 
 function App() {
@@ -36,13 +37,14 @@ function App() {
 
   return (
     <div id="app">
-      <Header/>
+      <Header />
       <SectionHome />
-      <Carousel/>
-      <Busqueda/>
-      <Paquetes/>
+      <Carousel />
+      <Busqueda />
+      <Paquetes />
+      <CardPaquetes />
       <Footer />
-      
+
     </div>
   );
 }
