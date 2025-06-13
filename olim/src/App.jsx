@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-import Footer from "./components/Footer";
 import "./App.css";
 import Header from "./components/header.jsx";
 import SectionHome from "./components/SectionHome.jsx";
@@ -12,6 +11,8 @@ import CardPaquetes from "./components/CardPaquetes.jsx";
 import Testimonios from "./components/Testimonios.jsx";
 import img from './assets/madrid.jpg';
 import GridPaquetes from "./components/gridPaquetes.jsx"
+import Footer from "./components/Footer.jsx";
+
 function App() {
 
 
@@ -40,14 +41,21 @@ function App() {
 
   return (
     <BrowserRouter>
-    
+
       <Routes>
         <Route path='/' element={
           <>
             <Header />
             <SectionHome />
-            
-          <GridPaquetes/>
+            <CardPaquetes
+              titulo="París, Francia – 5 días / 4 noches"
+              lista={["Incluye desayuno", "Hotel", "Paseo Por Sena"]}
+              precio="Desde $1,050 USD"
+              imagenSrc={img}
+              fondo="#c88c8c"
+            />
+            <GridPaquetes />
+            <Footer />
           </>
         } />
       </Routes>
