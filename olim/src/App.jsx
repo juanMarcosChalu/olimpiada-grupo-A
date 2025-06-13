@@ -46,13 +46,7 @@ function App() {
           <>
             <Header />
             <SectionHome />
-            <CardPaquetes
-        titulo="París, Francia – 5 días / 4 noches"
-        lista={["Incluye desayuno", "Hotel", "Paseo Por Sena"]}
-        precio="Desde $1,050 USD"
-        imagenSrc={img}
-        fondo="#c88c8c"
-      />
+            
           <GridPaquetes/>
           </>
         } />
