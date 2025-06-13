@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import CardPaquetes from './CardPaquetes'; // Asegurate de que esté bien importado
 import '../styles/GridPaquetes.css'; // Puedes crear este archivo
 import img2 from '../assets/madrid.jpg';
+import HeaderPaquetes from "./HeaderPaquetes";
 function GridPaquetes() {
   const [paquetes, setPaquetes] = useState([]);
 
@@ -57,12 +58,15 @@ function GridPaquetes() {
   }, []);
 
   return (
+    <section>
+      <HeaderPaquetes></HeaderPaquetes>
     <div className="grid-paquetes">
       {console.log(paquetes)}
       {paquetes.map((paquete, index) => (
         <CardPaquetes key={index} {...paquete} />
       ))}
     </div>
+    </section>
   );
 }
 
