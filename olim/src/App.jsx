@@ -42,12 +42,13 @@ function App() {
 
   return (
     <BrowserRouter>
-
+    
       <Routes>
         <Route path='/' element={
           <>
             <Header />
             <SectionHome />
+            <Carousel />
             <Footer />
           </>
         } />
