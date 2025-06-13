@@ -1,23 +1,37 @@
-.texto-container {
-    font-family: "Libre Baskerville", serif;
-    font-size: 1.2rem;
-}
-
 .testimonios-cards-container {
     height: auto;
     display: grid;
+    width: 100%;
+    place-items: center;
+    height: 85%;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr;
     position: relative;
     border-radius: 5px;
-    background-color: #e5ddd0;
+
 
     .testimonios-cards {
         color: #545651;
         border: 1px black solid;
-
-        .text-container{
+        .text-container {
             border: 1px black solid;
         }
+    }
+}
+
+.testimonios-background {
+    width: 100vw;
+    height: 100vh;
+
+    .descripcion-container {
+        font-family: "Libre Baskerville", serif;
+        font-size: 3rem;
+        font-weight: 700;
+        width: 100vw;
+        height: 15%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #776b5d;
     }
 }

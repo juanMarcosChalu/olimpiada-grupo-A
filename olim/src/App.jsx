@@ -12,7 +12,7 @@ import Testimonios from "./components/Testimonios.jsx";
 import img from './assets/madrid.jpg';
 import GridPaquetes from "./components/gridPaquetes.jsx"
 import Footer from "./components/Footer.jsx";
-
+import TestimonialCard from "./components/TestimonioCard.jsx";
 
 function App() {
 
@@ -49,6 +49,8 @@ function App() {
             <Header />
             <SectionHome />
             <Carousel />
+            <Testimonios />
+            
             <Footer />
           </>
         } />
