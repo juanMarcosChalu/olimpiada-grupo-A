@@ -2,7 +2,6 @@ import React from "react";
 import "../styles/Footer.css"
 import { Link } from "react-router-dom";
 
-
 const Footer = () => {
   return (
 
@@ -39,25 +38,57 @@ const Footer = () => {
 
       <section id="social-media">
 
-        <div className="titulos-footer">Redes Sociales</div>
-        <div className="text-footer">Seguinos en redes</div>
+        <h1 className="titulos-footer">Redes Sociales</h1>
+        <p className="text-footer">Seguinos en redes</p>
+
+
         <div className="lista-footer">
           <ol>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              className="facebook-icon"
-            >
-              <path d="M12,2c-5.523,0 -10,4.477 -10,10c0,5.013 3.693,9.153 8.505,9.876v-7.226h-2.474v-2.629h2.474v-1.749c0,-2.896 1.411,-4.167 3.818,-4.167c1.153,0 1.762,0.085 2.051,0.124v2.294h-1.642c-1.022,0 -1.379,0.969 -1.379,2.061v1.437h2.995l-0.406,2.629h-2.588v7.247c4.881,-0.661 8.646,-4.835 8.646,-9.897c0,-5.523 -4.477,-10 -10,-10z" />
-            </svg>
-            <li><Link to="#">Instagram</Link></li>
-            <li><Link to="#">Facebook</Link></li>
+            <li className="facebook-container">
+              <svg //imagen faceboook
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="30"
+                height="30"
+                fill="#000000"
+              >
+                <path d="M12 2.03998C6.5 2.03998 2 6.52998 2 12.06C2 17.06 5.66 21.21 10.44 21.96V14.96H7.9V12.06H10.44V9.84998C10.44 7.33998 11.93 5.95998 14.22 5.95998C15.31 5.95998 16.45 6.14998 16.45 6.14998V8.61998H15.19C13.95 8.61998 13.56 9.38998 13.56 10.18V12.06H16.34L15.89 14.96H13.56V21.96C15.9164 21.5878 18.0622 20.3855 19.6099 18.57C21.1576 16.7546 22.0054 14.4456 22 12.06C22 6.52998 17.5 2.03998 12 2.03998Z" />
+              </svg>
+              <Link to="#">Facebook</Link>
+            </li>
+
+
+            <li className="instagram-container">
+              <svg //imagen instagram
+                fill="#000000"
+                version="1.1"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlnsXlink="http://www.w3.org/1999/xlink"
+                width="24px"
+                height="24px"
+                viewBox="0 0 512 512"
+                xmlSpace="preserve"
+              >
+                <g id="5151e0c8492e5103c096af88a50059a5">
+                  <path
+                    fillRule="evenodd"
+                    clipRule="evenodd"
+                    d="M66.084,0.5h379.819c36.079,0,65.597,29.505,65.597,65.584
+            v379.819c0,36.079-29.518,65.597-65.597,65.597H66.084C30.005,511.5,0.5,481.982,0.5,445.903V66.084
+            C0.5,30.005,30.005,0.5,66.084,0.5L66.084,0.5z M372.734,57.264c-12.65,0-23.005,10.355-23.005,23.005v55.067
+            c0,12.65,10.354,23.005,23.005,23.005h57.762c12.65,0,23.005-10.354,23.005-23.005V80.269c0-12.65-10.354-23.005-23.005-23.005
+            H372.734L372.734,57.264z M453.738,216.59h-44.975c4.254,13.897,6.55,28.606,6.55,43.852c0,84.996-71.111,153.898-158.839,153.898
+            c-87.716,0-158.827-68.902-158.827-153.898c0-15.245,2.295-29.954,6.55-43.852H57.276v215.853c0,11.178,9.132,20.322,20.311,20.322
+            h355.841c11.166,0,20.311-9.145,20.311-20.322V216.59L453.738,216.59z M256.475,155.447c-56.677,0-102.625,44.525-102.625,99.443
+            s45.948,99.443,102.625,99.443c56.688,0,102.636-44.525,102.636-99.443S313.163,155.447,256.475,155.447z"
+                  /></g></svg>
+              <Link to="#">Instagram</Link>
+            </li>
           </ol>
         </div>
 
-      </section>
-    </footer>
+      </section >
+    </footer >
 
   );
 };

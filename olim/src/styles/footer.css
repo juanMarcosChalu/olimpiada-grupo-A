@@ -1,18 +1,18 @@
 .footer {
     width: 100%;
-    height: 30vh;
+    height: min-content;
     background-color: #e5ddd0;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
 
     #legal {
-        
+
         display: flex;
         flex-direction: column;
-      
+
         text-align: center;
         position: relative;
-        
+
         list-style: none;
 
         .titulos-footer {
@@ -40,7 +40,8 @@
                 font-size: 1.2rem;
                 list-style-type: none;
                 text-decoration: none;
-                &:hover{
+
+                &:hover {
                     color: black;
                 }
             }
@@ -49,12 +50,13 @@
     }
 
     #explore {
-        
+
         text-align: center;
         position: relative;
-       
+
         list-style: none;
         height: 100%;
+
         .titulo-footer {
             font-family: "Open Sans";
             font-size: 2rem;
@@ -66,60 +68,88 @@
         }
 
         .lista-footer-explore {
-            
-            li{
-              
+
+            li {
+
                 text-decoration: none;
                 list-style-type: none;
-                a{
+
+                a {
                     font-size: 1.2rem;
-                    color:#776b5d;
+                    color: #776b5d;
                     text-decoration: none;
-                    &:hover{
+
+                    &:hover {
                         color: black;
                     }
                 }
-                
+
             }
-        
+
         }
     }
 
     #social-media {
-        
         text-align: center;
         position: relative;
-        list-style: none;
 
-
-        .titulos-footer{
+        .titulos-footer {
             font-family: "Open Sans";
             font-size: 2rem;
             font-weight: 700;
             color: #776B5D;
             position: relative;
             top: 0;
-            margin-bottom: 1rem;
         }
 
         .text-footer {
-            color: #000000;
+            color: #776b5d;
+            margin-bottom: 4%;
+            font-size: 1.2rem;
         }
 
         .lista-footer {
-            text-decoration: none;
-
-            li{
-                color: white;
+            .facebook-container {
                 list-style-type: none;
+
+                a {
+                    font-size: 1.2rem;
+                    color: #776b5d;
+                    text-decoration: none;
+                    align-items: center;
+                    margin-left: 1rem;
+
+                    &:hover {
+                        color: black;
+                    }
+
+                }
+
             }
 
+            .instagram-container {
+                list-style-type: none;
+
+
+                a {
+                    font-size: 1.2rem;
+                    color: #776b5d;
+                    text-decoration: none;
+                    align-items: center;
+                    margin-left: 1rem;
+
+                    &:hover {
+                        color: black;
+                    }
+
+                    .instagram {
+                        position: relative;
+                        margin-right: 10px;
+
+                    }
+
+                }
+            }
         }
     }
 }
-.facebook-icon{
-    width: 50px;
-    background-color: #776b5d;
-}
-
-
