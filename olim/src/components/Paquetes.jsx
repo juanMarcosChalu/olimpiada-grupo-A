@@ -1,6 +1,7 @@
 import React from "react";
 import "../styles/Paquetes.css";
 import img from "../assets/disney.jpg"
+import { Link } from 'react-router-dom';
 
 function Paquetes() {
     return (
@@ -8,13 +9,13 @@ function Paquetes() {
             <header className="headerPaquetes">
                 <div className="title-container">
                     <h1>Paquetes</h1>
-                </div>
+                </div>  
                 <nav className="navigation">
                     <ul>
-                        <li><a href="#home">Inicio</a></li>
-                        <li><a href="#home">Destinos</a></li>
-                        <li><a href="#about">Nosotros</a></li>
-                        <li><a href="#contact">Contacto</a></li>
+                        <li><Link to="">Inicio</Link></li>
+                        <li><Link to="">Destinos</Link></li>
+                        <li><Link to="">Nosotros</Link></li>
+                        <li><Link to="">Contacto</Link></li>
                     </ul>
                 </nav>
             </header>
@@ -31,7 +32,7 @@ function Paquetes() {
                                 Momentos únicos para disfrutar en pareja.</span>
                         </div>
                         <div className="button-container">
-                            <a id="link1" href="#">Ver Más</a>
+                            <Link id="link1" to="">Ver Más</Link>
                         </div>
 
 
@@ -47,7 +48,7 @@ function Paquetes() {
                                 Diversión y descanso para toda la familia.</span>
                         </div>
                         <div className="button-container">
-                            <a id="link2" href="#">Ver Más</a>
+                            <Link id="link2" to="">Ver Más</Link>
                         </div>
 
                     </div>
@@ -61,7 +62,7 @@ function Paquetes() {
                                 Acción y emoción en cada destino.</span>
                         </div>
                         <div className="button-container">
-                            <a id="link3" href="#">Ver Más</a>
+                            <Link id="link3" to="">Ver Más</Link>
                         </div>
 
                     </div>
@@ -75,7 +76,7 @@ function Paquetes() {
                                 Conexión plena con entornos naturales.</span>
                         </div>
                         <div className="button-container">
-                            <a id="link4" href="#">Ver Más</a>
+                            <Link id="link4" to="">Ver Más</Link>
                         </div>
 
                     </div>
@@ -88,7 +89,7 @@ function Paquetes() {
                             <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </span>
                         </div>
                         <div className="button-container">
-                            <a id="link5" href="#">Ver Más</a>
+                            <Link id="link5" to="">Ver Más</Link>
                         </div>
 
                     </div>
@@ -101,7 +102,7 @@ function Paquetes() {
                             <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </span>
                         </div>
                         <div className="button-container">
-                            <a id="link6" href="#">Ver Más</a>
+                            <Link id="link6" to="">Ver Más</Link>
                         </div>
 
                     </div>

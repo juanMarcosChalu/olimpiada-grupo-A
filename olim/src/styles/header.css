@@ -44,14 +44,16 @@
             display: flex;
             justify-content: end;
             gap: 5%;
+           
             .fondoActivo{
                 background-color:   #bdb8afcc;
                 color: #776b5d;
                 border-radius: 5px 5px 0px 0px;
+                 transition: background 400ms;
             }
             list-style: none;
             li {
-              
+               transition: background 400ms;
                 position: relative;
 
             
@@ -79,8 +81,16 @@
                     color: #776b5d;
                     text-decoration: none;
                 }
-
+                .opacityoff{
+                    opacity: 0;
+                    transition: opacity 400ms;
+                }
+                .opacityon{
+                    opacity: 1;
+                    transition: opacity 400ms;
+                }
                 .submenu {
+
                     position: absolute;
                     top: 100%;
                     width: 220%;

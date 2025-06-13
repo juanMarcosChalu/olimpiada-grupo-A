@@ -62,7 +62,7 @@
             li {
                 list-style: none;
 
-                a {
+                Link {
                     color: #776b5d;
                     text-decoration: none;
                     font-size: 1.5rem;
@@ -144,7 +144,7 @@
                 height: 15%;
                 display: flex;
 
-                a {
+                Link {
                     font-family: "Open Sans";
                     position: relative;
                     color: black;

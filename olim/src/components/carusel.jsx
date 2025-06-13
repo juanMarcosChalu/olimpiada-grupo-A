@@ -8,6 +8,7 @@ import img4 from "../assets/newyork.jpg";
 import img5 from "../assets/paris.jpg";
 import "../styles/Carousel.css";
 
+
 const Carousel = () => {
     const { data, loading, eror } = useFetch("https://pokeapi.co/api/v2/pokemon?limit=10&offset=0");
     const imagene1 = {

@@ -1,33 +1,36 @@
-import React from "react";
+// CardPaquetes.js
+import React from 'react';
 import "../styles/CardPaquetes.css"
-import img from "../assets/disney.jpg";
+function CardPaquetes({ 
+  titulo, 
+  lista, 
+  precio, 
+  imagenSrc, 
+  fondo 
+}) {
+  return (
+    <article className="paquetes-card" style={{ backgroundColor: fondo }}>
+      <figure className="foto-card">
+        <img src={imagenSrc} alt="Imagen del paquete" />
+      </figure>
 
-function CardPaquetes() {
-    return (
-        <section className="paquetes-card">
+      <section className="descripcion-card">
+        <header className="titulo-cards">
+          <h1>{titulo}</h1>
+        </header>
 
-            <div className="foto-card">
-                <img src={img} alt="imagen" />
-            </div>
+        <ul className="lista-card">
+          {lista.map((item, index) => (
+            <li key={index}>{item}</li>
+          ))}
+        </ul>
 
-            <section className="descripcion-card">
-                <div className="titulo-cards">
-                    <h1>Carta epica Para juan</h1>
-                </div>
-                <div className="lista-card">
-                    <li>
-                        <ul>hola</ul>
-                        <ul>hola</ul>
-                        <ul>hola</ul>
-                    </li>
-                </div>
-                <div className="precio-card">
-                    <p>Desde $890 USD</p>
-                </div>
-            </section>
-
-        </section>
-    )
+        <footer className="precio-card">
+          <p>{precio}</p>
+        </footer>
+      </section>
+    </article>
+  );
 }
 
 export default CardPaquetes;

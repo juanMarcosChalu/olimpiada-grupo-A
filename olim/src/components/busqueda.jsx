@@ -5,6 +5,7 @@ import madrid from "../assets/madrid.jpg";
 import newyork from "../assets/newyork.jpg";
 import turquia from "../assets/turquia.jpg";
 import fondo from "../assets/fondo-z.JPG"
+import { Link } from "react-router-dom";
 function Busqueda() {
     return (
         <section className="section-home" >
@@ -14,10 +15,10 @@ function Busqueda() {
                 </div>
                 <nav className="navigation">
                     <ul>
-                        <li><a href="#home">Destinos</a></li>
-                        <li><a href="#packages">Paquetes</a></li>
-                        <li><a href="#about">Nosotros</a></li>
-                        <li><a href="#contact">Contacto</a></li>
+                        <li><Link to="">Destinos</Link></li>
+                        <li><Link to="">Paquetes</Link></li>
+                        <li><Link to="">Nosotros</Link></li>
+                        <li><Link to="">Contacto</Link></li>
                     </ul>
                 </nav>
             </header>

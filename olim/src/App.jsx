@@ -9,8 +9,9 @@ import Carousel from "./components/carusel.jsx";
 import Busqueda from "./components/busqueda.jsx";
 import Paquetes from "./components/Paquetes.jsx";
 import CardPaquetes from "./components/CardPaquetes.jsx";
-
-
+import Testimonios from "./components/Testimonios.jsx";
+import img from './assets/madrid.jpg';
+import GridPaquetes from "./components/gridPaquetes.jsx"
 function App() {
 
 
@@ -45,6 +46,14 @@ function App() {
           <>
             <Header />
             <SectionHome />
+            <CardPaquetes
+        titulo="París, Francia – 5 días / 4 noches"
+        lista={["Incluye desayuno", "Hotel", "Paseo Por Sena"]}
+        precio="Desde $1,050 USD"
+        imagenSrc={img}
+        fondo="#c88c8c"
+      />
+          <GridPaquetes/>
           </>
         } />
       </Routes>

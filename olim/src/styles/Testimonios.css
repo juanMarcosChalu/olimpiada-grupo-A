@@ -1,0 +1,23 @@
+.texto-container {
+    font-family: "Libre Baskerville", serif;
+    font-size: 1.2rem;
+}
+
+.testimonios-cards-container {
+    height: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    position: relative;
+    border-radius: 5px;
+    background-color: #e5ddd0;
+
+    .testimonios-cards {
+        color: #545651;
+        border: 1px black solid;
+
+        .text-container{
+            border: 1px black solid;
+        }
+    }
+}
