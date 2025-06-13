@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
 import Footer from "./components/Footer";
 import "./App.css";
 import Header from "./components/header.jsx";
@@ -36,16 +38,18 @@ function App() {
   };
 
   return (
-    <div id="app">
-      <Header />
-      <SectionHome />
-      <Carousel />
-      <Busqueda />
-      <Paquetes />
-      <CardPaquetes />
-      <Footer />
+    <BrowserRouter>
+    
+      <Routes>
+        <Route path='/' element={
+          <>
+            <Header />
+            <SectionHome />
+          </>
+        } />
+      </Routes>
+    </BrowserRouter>
 
-    </div>
   );
 }
 

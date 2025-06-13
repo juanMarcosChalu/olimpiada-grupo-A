@@ -1,6 +1,6 @@
 /*header css*/
 .header {
-   
+
     top: 0;
     left: 0;
     width: 80%;
@@ -10,9 +10,10 @@
     color: white;
     display: flex;
     align-items: center;
-    justify-content:space-between;
+    justify-content: space-between;
     padding: 0 20px;
     border-bottom: 4px solid #776b5d;
+
     .logo-container {
         height: 100%;
         display: flex;
@@ -20,11 +21,13 @@
         justify-content: center;
         position: relative;
         left: -6%;
+
         img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             border-radius: 50%;
+
             &:hover {
                 transform: scale(1.05);
                 transition: transform 0.3s ease;
@@ -35,25 +38,85 @@
 
     .navigation {
         width: 50%;
-        
+
         ul {
             width: 100%;
             display: flex;
-            justify-content: space-between;
+            justify-content: end;
+            gap: 5%;
+            .fondoActivo{
+                background-color:   #bdb8afcc;
+                color: #776b5d;
+                border-radius: 5px 5px 0px 0px;
+            }
+            list-style: none;
             li {
-                list-style: none;
-                a {
+              
+                position: relative;
+
+            
+                .nav-buttons{
                     color: #776b5d;
                     text-decoration: none;
                     font-size: 1.5rem;
-                     font-family: "Libre Baskerville", serif;
+                    font-family: "Libre Baskerville", serif;
                     font-weight: 400;
+                    padding: 5px;
+                    height: 100%;
                     &:hover {
                         color: #000000;
                         text-decoration: underline;
+                    }
+                }
+                button {
+                    font-size: 1.5rem;
+                    font-family: "Libre Baskerville", serif;
+                    background: none;
+                    border: none;
+              
+                    cursor: pointer;
+                    padding: 0;
+                    color: #776b5d;
+                    text-decoration: none;
+                }
+
+                .submenu {
+                    position: absolute;
+                    top: 100%;
+                    width: 220%;
+                    left: 0;
+                    background-color: #bdb8afcc;
+                    border-radius: 0px 5px 5px 5px;
+                   
+                    list-style:circle;
+                    list-style-position: inside;
+                    padding: 0.5rem;
+                    margin: 0;
+        
+                  
+                    z-index: 100;
+                    display: flex;
+                    flex-direction: column;
+                    
+                    a{
+                        font-size: 1rem;
+                         color: #5a5147;
+                        text-decoration: none;
+                        &:hover{
+                            text-decoration: underline;
+                        }
                     }
                 }
             }
         }
     }
 }
+
+
+
+
+
+
+
+
+

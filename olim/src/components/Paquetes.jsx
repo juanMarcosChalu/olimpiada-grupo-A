@@ -24,7 +24,7 @@ function Paquetes() {
 
                     <div className="cards-paquetes">
                         <div className="marco-cards">
-                            <img src={img} alt="" srcset="" />
+                            <img src={img} alt="" />
                         </div>
                         <div className="marco-text">
                             <span>Paquete Romántico
@@ -40,7 +40,7 @@ function Paquetes() {
 
                     <div className="cards-paquetes">
                         <div className="marco-cards">
-                            <img src={img} alt="" srcset="" />
+                            <img src={img} alt=""  />
                         </div>
                         <div className="marco-text">
                             <span>Paquete Familiar
@@ -54,7 +54,7 @@ function Paquetes() {
 
                     <div className="cards-paquetes">
                         <div className="marco-cards">
-                            <img src={img} alt="" srcset="" />
+                            <img src={img} alt=""  />
                         </div>
                         <div className="marco-text">
                             <span>Paquete Aventurero
@@ -68,7 +68,7 @@ function Paquetes() {
 
                     <div className="cards-paquetes">
                         <div className="marco-cards">
-                            <img src={img} alt="" srcset="" />
+                            <img src={img} alt=""/>
                         </div>
                         <div className="marco-text">
                             <span>Paquete Naturaleza
@@ -82,10 +82,10 @@ function Paquetes() {
 
                     <div className="cards-paquetes">
                         <div className="marco-cards">
-                            <img src={img} alt="" srcset="" />
+                            <img src={img} alt="" />
                         </div>
                         <div className="marco-text">
-                            <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut fuga odit ad accusantium voluptatibus animi id labore sae.</span>
+                            <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </span>
                         </div>
                         <div className="button-container">
                             <a id="link5" href="#">Ver Más</a>
@@ -95,10 +95,10 @@ function Paquetes() {
 
                     <div className="cards-paquetes">
                         <div className="marco-cards">
-                            <img src={img} alt="" srcset="" />
+                            <img src={img} alt="" />
                         </div>
                         <div className="marco-text">
-                            <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut fuga odit ad accusantium voluptatibus animi id labore sae.</span>
+                            <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </span>
                         </div>
                         <div className="button-container">
                             <a id="link6" href="#">Ver Más</a>
