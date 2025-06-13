@@ -1,74 +1,105 @@
 .footer {
     width: 100%;
     height: 30vh;
-    background-color: #B0A695;
+    background-color: #e5ddd0;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
 
     #legal {
+        
         display: flex;
         flex-direction: column;
+      
         text-align: center;
         position: relative;
-        justify-content: center;
+        
         list-style: none;
 
         .titulos-footer {
+            position: relative;
+            top: 0;
             font-family: "Open Sans";
-            font-size: 1.2rem;
+            font-size: 2rem;
             font-weight: 700;
             color: #776B5D;
-
+            margin-bottom: 5%;
         }
 
         .text-footer {
-            color: black;
+            color: #776b5d;
+            margin-bottom: 5%;
+            font-size: 1.2rem;
         }
 
         .lista-footer {
 
             a {
-                color: white;
+                font-weight: 700;
+                color: #776b5d;
                 list-style: none;
+                font-size: 1.2rem;
                 list-style-type: none;
+                text-decoration: none;
+                &:hover{
+                    color: black;
+                }
             }
 
         }
     }
 
     #explore {
-        display: flex;
-        flex-direction: column;
+        
         text-align: center;
         position: relative;
-        justify-content: center;
+       
         list-style: none;
-
+        height: 100%;
         .titulo-footer {
+            font-family: "Open Sans";
+            font-size: 2rem;
+            font-weight: 700;
             color: #776B5D;
+            position: relative;
+            top: 0;
+            margin-bottom: 1rem;
         }
 
-        .lista-footer {
-
+        .lista-footer-explore {
+            
             li{
-                color: white;
+              
                 text-decoration: none;
                 list-style-type: none;
+                a{
+                    font-size: 1.2rem;
+                    color:#776b5d;
+                    text-decoration: none;
+                    &:hover{
+                        color: black;
+                    }
+                }
+                
             }
+        
         }
     }
 
     #social-media {
-        display: flex;
-        flex-direction: column;
+        
         text-align: center;
         position: relative;
-        justify-content: center;
         list-style: none;
 
 
-        .titulos-footer {
+        .titulos-footer{
+            font-family: "Open Sans";
+            font-size: 2rem;
+            font-weight: 700;
             color: #776B5D;
+            position: relative;
+            top: 0;
+            margin-bottom: 1rem;
         }
 
         .text-footer {
@@ -86,3 +117,9 @@
         }
     }
 }
+.facebook-icon{
+    width: 50px;
+    background-color: #776b5d;
+}
+
+

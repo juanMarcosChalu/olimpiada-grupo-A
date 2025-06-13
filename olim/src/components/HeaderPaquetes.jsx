@@ -2,16 +2,16 @@ import React, { useState } from "react";
 import logo from "../assets/Logo.png"; // Import the logo image
 import { Link } from 'react-router-dom';
 import "../styles/headerPaquetes.css"
-function Header() {
+function Header({title}) {
     const [showSubmenu, setShowSubmenu] = useState(false);
 
     const toggleSubmenu = () => {
         setShowSubmenu(!showSubmenu);
     };
     return (
-        <header className="header">
+        <header className="header2">
             <div className="titulo-Container">
-               <h1>Paquetes</h1>
+               <h1>{title}</h1>
             </div>
             <nav className="navigation">
                 <ul>

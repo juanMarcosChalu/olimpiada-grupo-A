@@ -59,7 +59,7 @@ function GridPaquetes() {
 
   return (
     <section>
-      <HeaderPaquetes></HeaderPaquetes>
+      <HeaderPaquetes title="Paquetes culturales"/>
     <div className="grid-paquetes">
       {console.log(paquetes)}
       {paquetes.map((paquete, index) => (
