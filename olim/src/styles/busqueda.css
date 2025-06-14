@@ -1,9 +1,7 @@
 .headerBusqueda {
-    z-index: 24;
-    top: 0;
-    left: 0;
+    box-sizing: content-box;
     width: 100%;
-    height: 20vh;
+    height: 10vh;
     background-color: #ffffff;
     color: white;
     display: flex;
@@ -79,29 +77,12 @@
     }
 }
 
-/* .background {
-    width: 100vw;
-    height: 100vh;
-    position: fixed;
-    z-index: -1;
-    top: 0vh;
-    left: 0;
 
-    .overlay {
-        width: 100%;
-        height: 100%;
-        background-color: #c9c9c9e0;
-        position: absolute;
-        top: 0;
-        left: 0;
-
-    }
-} */
 .background {
     width: 100vw;
-    height: 85vh;
+    height: 100%;
     position: absolute;
-    top: 20vh;
+    top:0;
     left: 0;
 
     .overlay {
@@ -115,10 +96,17 @@
 
     }
 }
-
+.section-busqueda{
+    height: 100vh;
+    width: 100%;
+ 
+}
 .main-busqueda {
+   
+
+   
     position: relative;
-    height: 80vh;
+    height: 90vh;
     width: 100vw;
     padding-left: 10vw;
     padding-right: 10vw;
@@ -126,8 +114,7 @@
     align-items: center;
     justify-content: space-between;
     background-size: cover;
-    background-position: center;
-
+    background-position: center center;
 
 
 

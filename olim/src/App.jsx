@@ -46,6 +46,7 @@ function App() {
       <Routes>
         <Route path='/' element={
           <>
+          {/* {index} */}
             <Header />
             <SectionHome />
             <Carousel />
@@ -58,6 +59,12 @@ function App() {
           <>
             <Header />
             <SectionHome />
+            <Footer />
+          </>
+        } />
+        <Route path='/Vuelos' element={
+          <>
+            <Busqueda></Busqueda>
             <Footer />
           </>
         } />

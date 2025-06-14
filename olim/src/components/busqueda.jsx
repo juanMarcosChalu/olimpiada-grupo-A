@@ -8,7 +8,7 @@ import fondo from "../assets/fondo-z.JPG"
 import { Link } from "react-router-dom";
 function Busqueda() {
     return (
-        <section className="section-home" >
+        <section className="section-busqueda" >
             <header className="headerBusqueda">
                 <div className="titulo-container">
                     <h1>Destinos</h1>
@@ -22,13 +22,13 @@ function Busqueda() {
                     </ul>
                 </nav>
             </header>
-            <div className="background" style={{ backgroundImage: `url(${fondo})` }}>
+            
+            <main className="main-busqueda" >
+                <div className="background" style={{ backgroundImage: `url(${fondo})` }}>
                 <div className="overlay">
 
                 </div>
             </div>
-            <main className="main-busqueda" >
-
                 <article className="article-busqueda">
                     <form>
                         <label>

@@ -26,7 +26,7 @@ function Header() {
             </button>
 
             <ul className={showSubmenu ? 'submenu opacityon' : 'submenu opacityoff'}>
-              <li><Link to="">Vuelos</Link></li>
+              <li><Link to="/vuelos">Vuelos</Link></li>
               <li><Link to="">Alquileres de auto</Link></li>
               <li><Link to="">Alojamiento</Link></li>
               <li><Link to="">Paquetes</Link></li>
