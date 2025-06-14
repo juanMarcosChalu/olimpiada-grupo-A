@@ -1,6 +1,6 @@
 // CardPaquetes.js
 import React from 'react';
-import "../styles/CardPaquetes.css"
+import "../../styles/CardPaquetes.css"
 
 function CardPaquetes({ 
   titulo, 

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import CardPaquetes from './CardPaquetes'; // Asegurate de que esté bien importado
-import '../styles/GridPaquetes.css'; // Puedes crear este archivo
-import img2 from '../assets/madrid.jpg';
-import HeaderPaquetes from "./HeaderPaquetes";
+import CardPaquetes from '../../UI/CardPaquetes'; // Asegurate de que esté bien importado
+import '../../../styles/GridPaquetes.css'; // Puedes crear este archivo
+import img2 from '../../../assets/madrid.jpg';
+import HeaderPaquetes from "../../Layouts/HeaderPaquetes";
 function GridPaquetes() {
   const [paquetes, setPaquetes] = useState([]);
 

@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/TestimonioCard.css";
+import "../../../styles/TestimonioCard.css";
 
 const TestimonialCard = ({
   avatar,

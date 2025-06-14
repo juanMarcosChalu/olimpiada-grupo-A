@@ -1,6 +1,6 @@
 import React from "react";
-import "../styles/sectionHome.css"; // Import the CSS file for styling
-import principal from "../assets/Principal2.png"; // Import the logo image
+import "../../../styles/sectionHome.css"; // Import the CSS file for styling
+import principal from "../../../assets/Principal2.png"; // Import the logo image
 function SectionHome() {
   return (
     <section className="section-home" style={{ backgroundImage: `url(${principal})` }}>

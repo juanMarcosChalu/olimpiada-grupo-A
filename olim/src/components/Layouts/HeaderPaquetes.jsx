@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import logo from "../assets/Logo.png"; // Import the logo image
+
 import { Link } from 'react-router-dom';
-import "../styles/headerPaquetes.css"
+import "../../styles/headerPaquetes.css"
 function Header({title}) {
     const [showSubmenu, setShowSubmenu] = useState(false);
 

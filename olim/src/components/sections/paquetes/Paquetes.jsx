@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/Paquetes.css";
+import "../../../styles/Paquetes.css";
 import img from "../assets/disney.jpg"
 import { Link } from 'react-router-dom';
 

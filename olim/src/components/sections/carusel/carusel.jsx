@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { useFetch } from '../useFetch';
+import { useFetch } from '../../../useFetch';
 
-import img1 from "../assets/disney.jpg";
-import img2 from "../assets/costarica.jpg";
-import img3 from "../assets/madrid.jpg";
-import img4 from "../assets/newyork.jpg";
-import img5 from "../assets/paris.jpg";
-import "../styles/Carousel.css";
+import img1 from "../../../assets/disney.jpg";
+import img2 from "../../../assets/costarica.jpg";
+import img3 from "../../../assets/madrid.jpg";
+import img4 from "../../../assets/newyork.jpg";
+import img5 from "../../../assets/paris.jpg";
+import "../../../styles/Carousel.css";
 
 
 const Carousel = () => {

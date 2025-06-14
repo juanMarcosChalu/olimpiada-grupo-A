@@ -1,10 +1,10 @@
 import React from "react";
-import "../styles/busqueda.css"; // Import the CSS file for styling
-import paris from "../assets/paris.jpg";
-import madrid from "../assets/madrid.jpg";
-import newyork from "../assets/newyork.jpg";
-import turquia from "../assets/turquia.jpg";
-import fondo from "../assets/fondo-z.JPG"
+import "../../../styles/busqueda.css"; // Import the CSS file for styling
+import paris from "../../../assets/paris.jpg";
+import madrid from "../../../assets/madrid.jpg";
+import newyork from "../../../assets/newyork.jpg";
+import turquia from "../../../assets/turquia.jpg";
+import fondo from "../../../assets/fondo-z.JPG"
 import { Link } from "react-router-dom";
 function Busqueda() {
     return (
@@ -26,6 +26,7 @@ function Busqueda() {
             <main className="main-busqueda" >
                 <div className="background" style={{ backgroundImage: `url(${fondo})` }}>
                 <div className="overlay">
+                    
 
                 </div>
             </div>

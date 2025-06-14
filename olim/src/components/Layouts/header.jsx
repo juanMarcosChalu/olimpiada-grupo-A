@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import "../styles/header.css"; // Import the CSS file for styling
-import logo from "../assets/Logo.png"; // Import the logo image
+import "../../styles/header.css"; // Import the CSS file for styling
+import logo from "../../assets/Logo.png"; // Import the logo image
 import { Link } from 'react-router-dom';
 function Header() {
   const [showSubmenu, setShowSubmenu] = useState(false);

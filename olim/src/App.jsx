@@ -2,17 +2,17 @@ import React, { useState } from "react";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import "./App.css";
-import Header from "./components/header.jsx";
+import Header from "./components/Layouts/header.jsx";
 import SectionHome from "./components/SectionHome.jsx";
 import Carousel from "./components/carusel.jsx";
 import Busqueda from "./components/busqueda.jsx";
 import Paquetes from "./components/Paquetes.jsx";
 import CardPaquetes from "./components/CardPaquetes.jsx";
-import Testimonios from "./components/Testimonios.jsx";
+import Testimonios from "./components/sections/testimonio/Testimonios.jsx";
 import img from './assets/madrid.jpg';
 import GridPaquetes from "./components/gridPaquetes.jsx"
 import Footer from "./components/Footer.jsx";
-import TestimonialCard from "./components/TestimonioCard.jsx";
+import TestimonialCard from "./components/sections/testimonio/TestimonioCard.jsx";
 
 function App() {
 
