@@ -16,6 +16,7 @@ import Footer from "./components/Layouts/Footer.jsx";
 import TestimonialCard from "./components/sections/testimonio/TestimonioCard.jsx";
 import Header from "./components/Layouts/header.jsx";
 import ServiciosMenu from "./components/UI/serviciosli.jsx";
+import Perfil from "./components/sections/perfilc/Perfil.jsx";
 function App() {
 
 
@@ -76,20 +77,6 @@ function App() {
             <SectionHome />
             <Carousel />
             <Testimonios />
-            <Header
-              title={<h1>Paquetes</h1>}
-              menuItems={[
-                <Link>Inicio</Link>,
-                <ServiciosMenu key="servicios" />,
-              ]}
-            />
-            <Paquetes />
-            <GridPaquetes />
-
-            <Testimonios />
-           
-
-
             <Footer />
           </>
         } />
@@ -102,8 +89,23 @@ function App() {
         } />
         <Route path='/Vuelos' element={
           <>
+              <Header 
+              title={<h1>Vuelos</h1>}
+              menuItems={[
+                <Link to="/" key="inicio">Inicio</Link>,
+                <ServiciosMenu key="servicios" />,
+                <Link to="/contacto" key="contacto">Contacto</Link>,
+              ]}
+            />
             <Busqueda></Busqueda>
             <Footer />
+          </>
+        } />
+        <Route path='/perfil' element={
+          <>
+              <Header title={<h1>Perfil</h1>} />
+              <Perfil></Perfil>
+              <Footer />
           </>
         } />
       </Routes>

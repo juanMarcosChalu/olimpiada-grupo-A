@@ -1,0 +1,101 @@
+.userItem {
+  position: relative;
+  list-style: none;
+}
+
+.userButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  color: #5e4b41;
+}
+
+.userBox {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #f3e9dc;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  width: 20vw;
+  z-index: 10;
+}
+.usercontain{
+    display: flex;
+    text-align: center;
+    align-items: center;
+    h1{
+        width: 100%;
+    }
+}
+.greeting {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0.5rem 0;
+  color: #5e4b41;
+  text-align: center;
+}
+
+.divider {
+  border: none;
+  height: 1px;
+  background-color: #ccc;
+  margin: 0.5rem 0;
+}
+
+.options {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0;
+}
+
+.options a {
+    height: 100%;
+ cursor: pointer;
+  &:hover{
+    background-color:#bbb3a8; ;
+  }
+}
+.options li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  color: #5e4b41;
+  cursor: pointer;
+  &:hover{
+    background-color:#bbb3a8; ;
+  }
+}
+.icon {
+  font-size: 2rem;
+  
+}
+
+.logout {
+  background-color: #5e4b41;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 0.4rem 1rem;
+  font-weight: bold;
+  margin-top: 0.5rem;
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  &:hover{
+    background-color: #493b34;
+  }
+}
+.userBox::before {
+  content: "";
+  position: absolute;
+  top: -14px; /* arriba del menú */
+  right: 6.5%; /* alineado al botón */
+  
+  border-left: 18px solid transparent;
+  border-right: 18px solid transparent;
+  border-bottom: 20px solid #f3e9dc; /* color del menú */
+}

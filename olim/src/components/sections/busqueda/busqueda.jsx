@@ -9,19 +9,6 @@ import { Link } from "react-router-dom";
 function Busqueda() {
     return (
         <section className="section-busqueda" >
-            <header className="headerBusqueda">
-                <div className="titulo-container">
-                    <h1>Destinos</h1>
-                </div>
-                <nav className="navigation">
-                    <ul>
-                        <li><Link to="">Destinos</Link></li>
-                        <li><Link to="">Paquetes</Link></li>
-                        <li><Link to="">Nosotros</Link></li>
-                        <li><Link to="">Contacto</Link></li>
-                    </ul>
-                </nav>
-            </header>
             
             <main className="main-busqueda" >
                 <div className="background" style={{ backgroundImage: `url(${fondo})` }}>

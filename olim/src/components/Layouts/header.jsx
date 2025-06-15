@@ -1,8 +1,13 @@
+import { useState } from 'react';
 import React from "react";
 import styles from "../../styles/header2.module.css"; // estilos
 import { Link } from "react-router-dom";
 import ServiciosMenu from "../UI/serviciosli.jsx";
+import UsuarioMenu from '../UI/UserMenu.jsx';
 function Header({ title, menuItems = [] }) {
+
+  const [userOpen, setUserOpen] = useState(false);
+ 
   return (
     <header className={styles.header}>
       <div className={styles.logocontainer}>{title}</div>
@@ -21,11 +26,7 @@ function Header({ title, menuItems = [] }) {
   )}
 
           {/* Icono usuario fijo al final */}
-          <li>
-            <Link to="">
-              <span className="material-symbols-outlined">account_circle</span>
-            </Link>
-          </li>
+          <UsuarioMenu></UsuarioMenu>
         </ul>
       </nav>
     </header>
