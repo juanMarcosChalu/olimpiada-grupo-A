@@ -1,47 +1,35 @@
-import React, { useState } from "react";
-import "../../styles/header.css"; // Import the CSS file for styling
-import logo from "../../assets/Logo.png"; // Import the logo image
-import { Link } from 'react-router-dom';
-function Header() {
-  const [showSubmenu, setShowSubmenu] = useState(false);
-
-  const toggleSubmenu = () => {
-    setShowSubmenu(!showSubmenu);
-  };
+import React from "react";
+import styles from "../../styles/header2.module.css"; // estilos
+import { Link } from "react-router-dom";
+import ServiciosMenu from "../UI/serviciosli.jsx";
+function Header({ title, menuItems = [] }) {
   return (
-    <header className="header">
-      <div className="logo-container">
-        <img
-          src={logo}
-          alt="Logo de la empresa"
-          className="logo"
-        />
-      </div>
-      <nav className="navigation">
-        <ul>
+    <header className={styles.header}>
+      <div className={styles.logocontainer}>{title}</div>
+      <nav className={styles.navigation}>
+        <ul className={styles.navigationList}>
+         {menuItems.map((item, index) =>
+         
+    item.key === "servicios" ? (
+     
+      // Este ya devuelve <li>, no lo envuelvas en otro
+      <ServiciosMenu key={index} />
+    ) : (
+      // Este sí necesita <li> si es un <Link> o similar
+      <li key={index} className={styles.navbuttons}>{item}</li>
+    )
+  )}
 
-          <li className={showSubmenu ? 'fondoActivo' : ''}>
-            <button className={`nav-buttons`} onClick={toggleSubmenu}>
-              Servicios
-            </button>
-
-            <ul className={showSubmenu ? 'submenu opacityon' : 'submenu opacityoff'}>
-              <li><Link to="/vuelos">Vuelos</Link></li>
-              <li><Link to="">Alquileres de auto</Link></li>
-              <li><Link to="">Alojamiento</Link></li>
-              <li><Link to="">Paquetes</Link></li>
-              <li><Link to="">Asistencia al Viajero</Link></li>
-            </ul>
-
-          </li>
+          {/* Icono usuario fijo al final */}
           <li>
-            <Link to="" className="nav-buttons">Contacto</Link>
+            <Link to="">
+              <span className="material-symbols-outlined">account_circle</span>
+            </Link>
           </li>
         </ul>
       </nav>
     </header>
   );
 }
-
 
 export default Header;

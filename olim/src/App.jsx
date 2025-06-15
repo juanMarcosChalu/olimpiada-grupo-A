@@ -1,19 +1,21 @@
 import React, { useState } from "react";
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 
 import "./App.css";
-import Header from "./components/Layouts/header.jsx";
-import SectionHome from "./components/SectionHome.jsx";
-import Carousel from "./components/carusel.jsx";
-import Busqueda from "./components/busqueda.jsx";
-import Paquetes from "./components/Paquetes.jsx";
-import CardPaquetes from "./components/CardPaquetes.jsx";
+
+import SectionHome from "./components/sections/home/SectionHome.jsx";
+import Carousel from "./components/sections/carusel/carusel.jsx";
+import Busqueda from "./components/sections/busqueda/busqueda.jsx";
+import Paquetes from "./components/sections/paquetes/Paquetes.jsx";
+import logo from "./assets/Logo.png";
+
 import Testimonios from "./components/sections/testimonio/Testimonios.jsx";
 import img from './assets/madrid.jpg';
-import GridPaquetes from "./components/gridPaquetes.jsx"
-import Footer from "./components/Footer.jsx";
+import GridPaquetes from "./components/sections/paquetes/gridPaquetes.jsx"
+import Footer from "./components/Layouts/Footer.jsx";
 import TestimonialCard from "./components/sections/testimonio/TestimonioCard.jsx";
-
+import Header from "./components/Layouts/header.jsx";
+import ServiciosMenu from "./components/UI/serviciosli.jsx";
 function App() {
 
 
@@ -33,6 +35,20 @@ function App() {
       image: "https://via.placeholder.com/300x200",
     },
   ]);
+  const navigation = [
+    {
+      label: 'Inicio',
+      to: '/'
+    },
+    {
+      label: 'Servicios',
+      submenu: [
+        { label: 'Vuelos', to: '/vuelos' },
+        { label: 'Alquileres de auto', to: '/alquileres' },
+        { label: 'Alojamiento', to: '/alojamiento' }
+      ]
+    }
+  ];
 
   const [cart, setCart] = useState([]);
 
@@ -42,22 +58,44 @@ function App() {
 
   return (
     <BrowserRouter>
-    
+
       <Routes>
         <Route path='/' element={
           <>
-          {/* {index} */}
-            <Header />
+            {/* {index} */}
+
+            <Header
+              title={<img src={logo} alt="Logo" />}
+              menuItems={[
+                <ServiciosMenu key="servicios" />,
+                <Link to="/contacto" key="contacto">Contacto</Link>,
+                <Link to="/blog" key="blog">Blog</Link>,
+              ]}
+            />
+
             <SectionHome />
             <Carousel />
             <Testimonios />
-            
+            <Header
+              title={<h1>Paquetes</h1>}
+              menuItems={[
+                <Link>Inicio</Link>,
+                <ServiciosMenu key="servicios" />,
+              ]}
+            />
+            <Paquetes />
+            <GridPaquetes />
+
+            <Testimonios />
+           
+
+
             <Footer />
           </>
         } />
         <Route path='/Paquetes' element={
           <>
-            <Header />
+            
             <SectionHome />
             <Footer />
           </>

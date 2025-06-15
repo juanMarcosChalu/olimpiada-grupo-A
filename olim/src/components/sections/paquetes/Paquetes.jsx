@@ -1,24 +1,12 @@
 import React from "react";
 import "../../../styles/Paquetes.css";
-import img from "../assets/disney.jpg"
+import img from "../../../assets/disney.jpg"
 import { Link } from 'react-router-dom';
 
 function Paquetes() {
     return (
         <section>
-            <header className="headerPaquetes">
-                <div className="title-container">
-                    <h1>Paquetes</h1>
-                </div>  
-                <nav className="navigation">
-                    <ul>
-                        <li><Link to="">Inicio</Link></li>
-                        <li><Link to="">Destinos</Link></li>
-                        <li><Link to="">Nosotros</Link></li>
-                        <li><Link to="">Contacto</Link></li>
-                    </ul>
-                </nav>
-            </header>
+           
             <section className="section-paquetes">
                 <h1>Descubre nuestras experiencias armadas para que solo te preocupes por disfrutar. <br />Incluyen vuelos, hospedaje, actividades y más.</h1>
                 <main className="main-paquetes">

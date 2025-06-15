@@ -1,6 +1,6 @@
 import React from "react";
 import "../../../styles/Testimonios.css"
-import footer from "../../Footer.jsx"
+
 import TestimonialCard from "./TestimonioCard.jsx";
 
 function Testimonios() {
