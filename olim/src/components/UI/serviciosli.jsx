@@ -5,7 +5,11 @@ import styles from "../../styles/header2.module.css";
 
 function ServiciosMenu() {
   const [open, setOpen] = useState(false);
-
+  document.addEventListener("click", (e) => {
+    if (!e.target.closest(`.${styles.navbuttons}`)) {
+      setOpen(false);
+    }
+  });
   return (
     <li className={open ? styles.fondoActivo : styles.fondodesactivo} key="Servicios">
       <button className={styles.navbuttons} onClick={() => setOpen(!open)}>

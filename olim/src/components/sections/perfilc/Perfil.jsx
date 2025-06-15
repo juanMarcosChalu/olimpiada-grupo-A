@@ -56,6 +56,7 @@ function Perfil() {
       {/* Formulario de edición de datos */}
       <section className={styles.formulario} aria-labelledby="formulario-datos">
         <h3 id="formulario-datos">Datos personales</h3>
+
         <form>
           <div className={styles.row}>
             <div>
@@ -79,7 +80,7 @@ function Perfil() {
             <fieldset className={styles.genero}>
               <legend>Género</legend>
               <label><input type="radio" name="genero" value="femenino" /> Femenino</label>
-              <label><input type="radio" name="genero" value="masculino" /> Masculino</label>
+              <label className={styles.rightLabel}><input type="radio" name="genero" value="masculino" /> Masculino</label>
             </fieldset>
           </div>
         </form>

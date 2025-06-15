@@ -4,7 +4,11 @@ import styles from '../../styles/UserMenu.module.css';
 
 function UsuarioMenu() {
     const [userOpen, setUserOpen] = useState(false);
-
+    document.addEventListener("click", (e) => {
+        if (!e.target.closest(`.${styles.userButton}`)) {
+          setUserOpen(false);
+        }
+      });
     return (
         <li className={styles.userItem}>
             <button onClick={() => setUserOpen(!userOpen)} className={styles.userButton}>
