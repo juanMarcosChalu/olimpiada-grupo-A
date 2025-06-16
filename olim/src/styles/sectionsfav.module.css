@@ -1,0 +1,25 @@
+.section {
+    min-height: 86vh;
+    background-color: #f3eeea;
+    width: 100%;
+    padding-top: 5vh;
+}
+
+.sectionTitle {
+    color: #776b5d;
+    width: 100%;
+    text-align: center;
+    font-size: 2.2rem;
+    font-weight: 200;
+    font-family: "Libre baskerville sans";
+}
+
+.sectionGrid{
+    margin-top: 5vh;
+    display: grid;
+    width: 100%;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+
+}

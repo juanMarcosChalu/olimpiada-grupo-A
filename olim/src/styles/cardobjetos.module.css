@@ -1,0 +1,83 @@
+.card {
+  width: 300px;
+
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+}
+
+.imagen {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.info {
+  padding: 1rem;
+}
+
+.titulo {
+  text-align: center;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: #444;
+}
+
+.lista {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 0.5rem 0;
+  color: #666;
+}
+
+.lista li {
+  margin-bottom: 0.3rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.precio {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #333;
+  margin: 0.5rem 0;
+  text-align: center;
+}
+
+.botones {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+
+  span{
+     min-width: 5vw;
+      border-radius: 999px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+     background-color: #b0a695;
+     &:hover{
+      background-color: #857d71;
+      
+    }
+  }
+ 
+  button{
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 1.5rem;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    gap: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+  }
+}

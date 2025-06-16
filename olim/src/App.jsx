@@ -17,7 +17,14 @@ import TestimonialCard from "./components/sections/testimonio/TestimonioCard.jsx
 import Header from "./components/Layouts/header.jsx";
 import ServiciosMenu from "./components/UI/serviciosli.jsx";
 import Perfil from "./components/sections/perfilc/Perfil.jsx";
+import Cardobjetos from "./components/UI/CardObjetos.jsx";
+import SectionFav from "./components/sections/favoritos/SectionsFavoritos.jsx";
+
 function App() {
+
+
+
+
 
 
   const [packages, setPackages] = useState([
@@ -73,7 +80,7 @@ function App() {
                 <Link to="/blog" key="blog">Blog</Link>,
               ]}
             />
-
+            
             <SectionHome />
             <Carousel />
             <Testimonios />
@@ -84,6 +91,19 @@ function App() {
           <>
             
             <SectionHome />
+            <Footer />
+          </>
+        } />
+          <Route path='/Favoritos' element={
+          <>
+             <Header 
+              title={<h1>♥ Mis Favoritos</h1>}
+              menuItems={[
+                <Link to="/" key="inicio">Inicio</Link>,
+                <ServiciosMenu key="servicios" />,
+                <Link to="/contacto" key="contacto">Contacto</Link>,
+              ]}/>
+            <SectionFav></SectionFav>
             <Footer />
           </>
         } />
