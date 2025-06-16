@@ -19,7 +19,7 @@ import ServiciosMenu from "./components/UI/serviciosli.jsx";
 import Perfil from "./components/sections/perfilc/Perfil.jsx";
 import Cardobjetos from "./components/UI/CardObjetos.jsx";
 import SectionFav from "./components/sections/favoritos/SectionsFavoritos.jsx";
-
+import SectionNotificaciones from "./components/sections/notificaciones/SectionNotificaciones.jsx";
 function App() {
 
 
@@ -88,11 +88,25 @@ function App() {
           </>
         } />
         <Route path='/Paquetes' element={
-          <>
-            
+          <>  
             <SectionHome />
             <Footer />
           </>
+        
+        } />
+        <Route path='/Notificaciones' element={
+          <>  
+              <Header 
+              title={<h1>Notificaciones</h1>}
+              menuItems={[
+                <Link to="/" key="inicio">Inicio</Link>,
+                <ServiciosMenu key="servicios" />,
+                <Link to="/contacto" key="contacto">Contacto</Link>,
+              ]}/>
+            <SectionNotificaciones/>
+            <Footer />
+          </>
+        
         } />
           <Route path='/Favoritos' element={
           <>

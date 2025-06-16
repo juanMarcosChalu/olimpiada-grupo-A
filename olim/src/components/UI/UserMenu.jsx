@@ -28,8 +28,12 @@ function UsuarioMenu() {
                             <li>
                                 <span className={`${styles.icon} material-symbols-outlined`}>person</span>Mi perfil</li>
                         </Link>
+                        <Link to="/Favoritos">
                         <li><span className={`${styles.icon} material-symbols-outlined`}>favorite</span>Mis favoritos</li>
+                        </Link>
+                        <Link to="/Notificaciones">
                         <li><span className={`${styles.icon} material-symbols-outlined`}>notifications</span>Notificaciones</li>
+                        </Link>
                     </ul>
                     <button className={styles.logout}>Cerrar Sesión</button>
                 </div>
