@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "../../styles/cardobjetos.module.css";
-
 function Cardobjetos({ imagen, titulo, contenido = [], precio, botones = [] }) {+
   function hola() {
     console.log("hola");

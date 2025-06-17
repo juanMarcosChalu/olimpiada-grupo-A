@@ -26,7 +26,6 @@ function App() {
 
 
 
-
   const [packages, setPackages] = useState([
     {
       id: 1,
@@ -81,7 +80,6 @@ function App() {
               ]}
             />
             
-            <SectionHome />
             <Carousel />
             <Testimonios />
             <Footer />
