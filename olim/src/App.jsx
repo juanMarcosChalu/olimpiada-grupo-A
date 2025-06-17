@@ -84,6 +84,7 @@ function App() {
             <Testimonios />
 
             <Registro />
+            <contacto/>
             <Footer />
           </>
         } />
