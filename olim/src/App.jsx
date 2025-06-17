@@ -91,7 +91,15 @@ function App() {
         } />
         <Route path='/Paquetes' element={
           <>  
-            <SectionHome />
+          <Header 
+              title={<h1>Paquetes</h1>}
+              menuItems={[
+                <Link to="/" key="inicio">Inicio</Link>,
+                <ServiciosMenu key="servicios" />,
+
+
+              ]}/>
+            <Paquetes/>
             <Footer />
           </>
         
@@ -139,7 +147,12 @@ function App() {
         } />
         <Route path='/perfil' element={
           <>
-              <Header title={<h1>Perfil</h1>} />
+              <Header title={<h1>Perfil</h1>} 
+              menuItems={[
+                <Link to="/" key="inicio">Inicio</Link>,
+                <ServiciosMenu key="servicios" />,
+                <Link to="/contacto" key="contacto">Contacto</Link>,
+              ]}/>
               <Perfil></Perfil>
               <Footer />
           </>
