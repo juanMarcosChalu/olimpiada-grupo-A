@@ -96,14 +96,8 @@ function App() {
                 <ServiciosMenu key="servicios" />,
 
 
-<<<<<<< Updated upstream
               ]} />
             <Paquetes />
-=======
-              ]}/>
-            <Paquetes/>
-            <GridPaquetes/>
->>>>>>> Stashed changes
             <Footer />
           </>
 
