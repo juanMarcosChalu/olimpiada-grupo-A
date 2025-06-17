@@ -97,7 +97,18 @@ function App() {
 
 
               ]} />
+
             <Paquetes />
+              <Header
+              title={<h1>Paquetes Románticos</h1>}
+              menuItems={[
+                <Link to="/" key="inicio">Inicio</Link>,
+                <ServiciosMenu key="servicios" />,
+
+
+              ]} />
+
+            <GridPaquetes/>
             <Footer />
           </>
 

@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import CardPaquetes from '../../UI/CardPaquetes';
 import '../../../styles/GridPaquetes.css';
-import img2 from '../../../assets/madrid.jpg';
-import HeaderPaquetes from "../../Layouts/HeaderPaquetes";
+import image_of_paris from '../../../../src/assets/paris.jpg';
+import image_of_santorini from '../../../../src/assets/santorini.jpg';
+import image_of_kioto from '../../../../src/assets/kioto.jpg';
+import image_of_venecia from '../../../../src/assets/venecia.jpeg';
+
 
 function GridPaquetes() {
   const [paquetes, setPaquetes] = useState([]);
@@ -12,12 +15,12 @@ function GridPaquetes() {
   useEffect(() => {
     setTimeout(() => {
       const dataSimulada = [
-        { titulo: "Paris, Francia - 5 dias", precio: "Desde $890 USD", imagenSrc: img2, fondo: "#c88c8c", resumen: "Hotel + Museo + Vuelo " },
-        { titulo: "Europa Clásica", precio: "Desde $1.200 USD", imagenSrc: img2, fondo: "#c88c8c", resumen: "Hotel + Museo + Vuelo " },
-        { titulo: "Caribe Relax", precio: "Desde $750 USD", imagenSrc: img2, fondo: "#d9a273", resumen: "Hotel + Museo + Vuelo " },
-        { titulo: "Aventura en Perú", precio: "Desde $600 USD", imagenSrc: img2, fondo: "#d9a273", resumen: "Hotel + Museo + Vuelo " },
-        { titulo: "Safari en África", precio: "Desde $1.500 USD", imagenSrc: img2, fondo: "#d9a273", resumen: "Hotel + Museo + Vuelo " },
-        { titulo: "Nieve en Suiza", precio: "Desde $1.000 USD", imagenSrc: img2, fondo: "#d9a273", resumen: "Hotel + Museo + Vuelo " }
+        { titulo: "París, Francia – 5 días", precio: "$1.200.000 ARS (Con vuelo)", imagenSrc: image_of_paris, fondo: "#c88c8c", resumen: "🏨 Hotel + museo + cena " },
+        { titulo: "Santorini, Grecia – 6 días", precio: "$1.150.000 ARS (Con vuelo)", imagenSrc:  image_of_santorini, fondo: "#c88c8c", resumen: "🏨 Hotel + traslado + cena" },
+        { titulo: "Kioto, Japón - 7 días", precio: "Desde $750 USD", imagenSrc:  image_of_kioto, fondo: "#c88c8c", resumen: "🏨 Hotel + guía + desayuno" },
+        { titulo: "Venecia, Italia · 5 días", precio: "$1.100.000 ARS (Con vuelo)", imagenSrc:  image_of_venecia, fondo: "#c88c8c", resumen: "🏨 Hotel + góndola + 🍝 cena" },
+        { titulo: "Bali, Indonesia - 7 días", precio: "$1.250.000 ARS (Con vuelo)", imagenSrc:  image_of_paris, fondo: "#c88c8c", resumen: "🏨 Hotel + 🚐 Traslados + ☕" },
+        { titulo: "Nieve en Suiza", precio: "Desde $1.000 USD", imagenSrc:  image_of_paris, fondo: "#c88c8c", resumen: "Hotel + Museo + Vuelo " }
       ];
       setPaquetes(dataSimulada);
     }, 1000);
@@ -35,7 +38,6 @@ function GridPaquetes() {
 
   return (
     <section>
-      <HeaderPaquetes title="Paquetes culturales"/>
       <div className="grid-paquetes">
         {paquetes.map((paquete, index) => (
           <CardPaquetes
