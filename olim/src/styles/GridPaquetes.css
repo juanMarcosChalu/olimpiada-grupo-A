@@ -6,3 +6,180 @@
   margin-left: 10%;
   padding: 2rem;
 }
+
+.modal {
+  position: fixed;
+  color: black;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.modal-content {
+  background: #e5ddd0;
+  padding: 1.5rem;
+  padding-top: 1rem;
+  border-radius: 1rem;
+  max-width: 700px;
+  width: 90%;
+  padding-bottom: 0.5rem;
+  position: relative;
+
+  h1 {
+    color: #776b5d;
+    width: 100%;
+    text-align: center;
+  }
+
+  h2 {
+
+    color: #776b5d;
+    width: 100%;
+    font-weight: 300;
+    font-size: 1.2rem;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  h3 {
+    color: #776b5d;
+    width: 100%;
+    font-weight: 300;
+    font-size: 1.4rem;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+}
+
+.close {
+  position: absolute;
+  top: 0rem;
+  right: 1rem;
+  font-size: 3rem;
+  line-height: 3rem;
+  cursor: pointer;
+
+  &:hover {
+    color: rgb(204, 64, 64);
+  }
+}
+
+.modal-content-info {
+  display: flex;
+}
+
+.ModalImgContainer {
+  width: 40%;
+}
+
+.ModalTextContainer {
+  width: 60%;
+  background-color: white;
+  padding: 1rem;
+}
+
+.precioModal {
+  margin-top: 3%;
+  height: 15%;
+  position: relative;
+  text-align: center;
+  color: #807466;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ModalTextContainerResumen {
+  height: 60%;
+  list-style: none;
+
+  li {
+    color: #776b5d;
+    font-size: 1.1rem;
+    text-align: center;
+  }
+}
+
+.ModalFormInputs {
+  margin-top: 1rem;
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+
+  div {
+    display: flex;
+
+    justify-content: space-around;
+    label{
+      width: 35%;
+      color: #776b5d;
+      font-size: 1.2rem;
+    
+    }
+    input {
+      width: 25%;
+      padding: 0.2rem;
+      border-radius: 999px;
+      background: none;
+      background-color: white;
+      text-align: center;
+      font-size: 1.2rem;
+      color: #807466;
+    }
+  input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1); /* invierte colores */
+  cursor: pointer;
+}
+
+  }
+}
+
+form {
+  color: black;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  p {
+    width: 100%;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 300;
+    margin-top:1rem;
+    margin-bottom: 1rem;
+    color: #776b5d;
+  }
+}
+
+.ModalFormButtons {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+
+  align-content: center;
+
+  button {
+    padding: 0.5rem;
+    background-color: #b0a695;
+    border: none;
+    color: white;
+    font-size: 1.4rem;
+    border-radius: 999px;
+    width: 30%;
+    cursor: pointer;
+    &:hover{
+      background-color: #928a7c;
+    }
+  }
+}
