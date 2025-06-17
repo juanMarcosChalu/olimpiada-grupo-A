@@ -17,7 +17,7 @@ function Registrar() {
                     <input className={styles.datosForm} type="text" />
 
                     <input type="checkbox" name="" className={styles.Check} />
-                    <input type="button" value="Registrarse"  className={styles.Boton} />
+                    <input type="button" value="Registrarse" className={styles.Boton} />
                 </form>
             </div>
         </section>

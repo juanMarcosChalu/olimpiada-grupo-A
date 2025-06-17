@@ -6,9 +6,9 @@ function SectionHome() {
     <section className="section-home" style={{ backgroundImage: `url(${principal})` }}>
       <div className="content">
         <h1>
-            Brújula
+          Brújula
         </h1>
-             <h2 className="">Viajes que inspiran, experiencias que perduran</h2>
+        <h2 className="">Viajes que inspiran, experiencias que perduran</h2>
       </div>
     </section>
   );

@@ -80,7 +80,7 @@ function App() {
                 <Link to="/blog" key="blog">Blog</Link>,
               ]}
             />
-            
+
             <SectionHome />
             <Carousel />
             <Testimonios />
@@ -90,50 +90,50 @@ function App() {
           </>
         } />
         <Route path='/Paquetes' element={
-          <>  
-          <Header 
+          <>
+            <Header
               title={<h1>Paquetes</h1>}
               menuItems={[
                 <Link to="/" key="inicio">Inicio</Link>,
                 <ServiciosMenu key="servicios" />,
 
 
-              ]}/>
-            <Paquetes/>
+              ]} />
+            <Paquetes />
             <Footer />
           </>
-        
+
         } />
         <Route path='/Notificaciones' element={
-          <>  
-              <Header 
+          <>
+            <Header
               title={<h1>Notificaciones</h1>}
               menuItems={[
                 <Link to="/" key="inicio">Inicio</Link>,
                 <ServiciosMenu key="servicios" />,
                 <Link to="/contacto" key="contacto">Contacto</Link>,
-              ]}/>
-            <SectionNotificaciones/>
+              ]} />
+            <SectionNotificaciones />
             <Footer />
           </>
-        
+
         } />
-          <Route path='/Favoritos' element={
+        <Route path='/Favoritos' element={
           <>
-             <Header 
+            <Header
               title={<h1>♥ Mis Favoritos</h1>}
               menuItems={[
                 <Link to="/" key="inicio">Inicio</Link>,
                 <ServiciosMenu key="servicios" />,
                 <Link to="/contacto" key="contacto">Contacto</Link>,
-              ]}/>
+              ]} />
             <SectionFav></SectionFav>
             <Footer />
           </>
         } />
         <Route path='/Vuelos' element={
           <>
-              <Header 
+            <Header
               title={<h1>Vuelos</h1>}
               menuItems={[
                 <Link to="/" key="inicio">Inicio</Link>,
@@ -147,14 +147,14 @@ function App() {
         } />
         <Route path='/perfil' element={
           <>
-              <Header title={<h1>Perfil</h1>} 
+            <Header title={<h1>Perfil</h1>}
               menuItems={[
                 <Link to="/" key="inicio">Inicio</Link>,
                 <ServiciosMenu key="servicios" />,
                 <Link to="/contacto" key="contacto">Contacto</Link>,
-              ]}/>
-              <Perfil></Perfil>
-              <Footer />
+              ]} />
+            <Perfil></Perfil>
+            <Footer />
           </>
         } />
       </Routes>

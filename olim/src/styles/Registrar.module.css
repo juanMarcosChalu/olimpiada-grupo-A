@@ -4,16 +4,20 @@
     background-repeat: no-repeat;
     overflow: hidden;
     z-index: -1;
-    background-color: red;
+    background-color: beige;
+    background-position: center center;
 }
 
 .registerContainer {
+    width: 50%;
+    height: 90%;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
     left: 50%;
     transform: translateX(-50%);
-    width: 40%;
-    height: 90%;
-
     border: 1px black solid;
 
 }
