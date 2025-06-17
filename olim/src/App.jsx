@@ -87,7 +87,15 @@ function App() {
         } />
         <Route path='/Paquetes' element={
           <>  
-            <SectionHome />
+          <Header 
+              title={<h1>Paquetes</h1>}
+              menuItems={[
+                <Link to="/" key="inicio">Inicio</Link>,
+                <ServiciosMenu key="servicios" />,
+
+
+              ]}/>
+            <Paquetes/>
             <Footer />
           </>
         
