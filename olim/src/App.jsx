@@ -8,7 +8,6 @@ import Carousel from "./components/sections/carusel/carusel.jsx";
 import Busqueda from "./components/sections/busqueda/busqueda.jsx";
 import Paquetes from "./components/sections/paquetes/Paquetes.jsx";
 import logo from "./assets/Logo.png";
-
 import Testimonios from "./components/sections/testimonio/Testimonios.jsx";
 import img from './assets/madrid.jpg';
 import GridPaquetes from "./components/sections/paquetes/gridPaquetes.jsx"
