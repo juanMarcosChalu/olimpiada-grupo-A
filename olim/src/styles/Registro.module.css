@@ -1,0 +1,79 @@
+.Registro {
+    width: 100%;
+    height: 100vh;
+    background-color: beige;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-repeat: no-repeat;
+    background-position: center center;
+    z-index: -1;
+}
+
+.registroContainer {
+    position: relative;
+    text-align: center;
+    width: 70%;
+    height: 100%;
+}
+
+.registroContainer h1 {
+    height: 30%;
+    top: 20%;
+    position: relative;
+    color: #776b5d;
+    font-size: 3rem;
+    font-family: "Libre Baskerville", serif;
+}
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    width: 30%;
+    left: 50%;
+    top: 5%;
+    gap: 1rem;
+    transform: translateX(-50%);
+}
+
+
+.formulario input {
+    background-color: #b0a695;
+    border: 2px #776b5d solid;
+    color: #d9d4cb;
+    text-align: center;
+    border-radius: 0%;
+}
+
+.formulario input:focus {
+    outline: none;
+    border-color: #776b5d;
+}
+
+.containerClick {
+    top: 10%;
+    height: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.containerClick {
+    width: 20%;
+    background-color: #b0a695;
+    color: #dbd6ce;
+}
+
+.boton {
+    color: white;
+    background-color: #b0a695;
+    border-radius: 20px;
+    width: 40%;
+    height: 1.9rem;
+}

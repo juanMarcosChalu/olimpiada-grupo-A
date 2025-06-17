@@ -8,9 +8,7 @@ import Carousel from "./components/sections/carusel/carusel.jsx";
 import Busqueda from "./components/sections/busqueda/busqueda.jsx";
 import Paquetes from "./components/sections/paquetes/Paquetes.jsx";
 import logo from "./assets/Logo.png";
-
 import Testimonios from "./components/sections/testimonio/Testimonios.jsx";
-import img from './assets/madrid.jpg';
 import GridPaquetes from "./components/sections/paquetes/gridPaquetes.jsx"
 import Footer from "./components/Layouts/Footer.jsx";
 import TestimonialCard from "./components/sections/testimonio/TestimonioCard.jsx";
@@ -20,7 +18,7 @@ import Perfil from "./components/sections/perfilc/Perfil.jsx";
 import Cardobjetos from "./components/UI/CardObjetos.jsx";
 import SectionFav from "./components/sections/favoritos/SectionsFavoritos.jsx";
 import SectionNotificaciones from "./components/sections/notificaciones/SectionNotificaciones.jsx";
-import Registrar from "./components/sections/login/Registrar.jsx";
+import Registro from "./components/sections/login/Registro.jsx";
 function App() {
 
 
@@ -85,7 +83,7 @@ function App() {
             <Carousel />
             <Testimonios />
 
-            <Registrar />
+            <Registro />
             <Footer />
           </>
         } />
