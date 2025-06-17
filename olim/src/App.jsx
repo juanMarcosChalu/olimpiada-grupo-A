@@ -98,8 +98,14 @@ function App() {
                 <ServiciosMenu key="servicios" />,
 
 
+<<<<<<< Updated upstream
               ]} />
             <Paquetes />
+=======
+              ]}/>
+            <Paquetes/>
+            <GridPaquetes/>
+>>>>>>> Stashed changes
             <Footer />
           </>
 
@@ -138,10 +144,12 @@ function App() {
               menuItems={[
                 <Link to="/" key="inicio">Inicio</Link>,
                 <ServiciosMenu key="servicios" />,
+
                 <Link to="/contacto" key="contacto">Contacto</Link>,
               ]}
             />
             <Busqueda></Busqueda>
+            
             <Footer />
           </>
         } />

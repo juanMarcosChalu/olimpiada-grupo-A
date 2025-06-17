@@ -8,8 +8,11 @@
 .headerBox{
     margin-left: 10%;
    background-color: #e5ddd0;
-  height: 35vh;
+  height: min-content;
   width: 80%;
+  position: relative;
+  top: 50%;
+  transform: translatey(-50%);
   display: flex;
   flex-direction: column;
 }
@@ -19,12 +22,14 @@
   height: 50%;
   width: 98%;
   margin: 1%;
+  margin-bottom: 0;
   display: flex;
   gap: 1rem;
   align-items: center;
 }
 .headerImgContainer{
   width: 15%;
+  padding: 5px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -81,15 +86,25 @@
 }
 
 .formulario {
+ transition: height 300ms;
   color: #5e4b41;
   background: white;
-  width: 80%;
+
+  width: 98%;
+  margin: 1%;
+  margin-top: 0;
   height: 35vh;
-  margin-left: 10%;
-  margin-top: 1.5rem;
   padding: 1rem;
-  border-radius: 6px;
+  border-radius: 0px 0px 6px 6px;
     caret-color: black  !important;
+    transform: scale(1);
+}
+.desactivo{
+  transition: height 300ms;
+
+  visibility: hidden;
+ transform: scale(0.5);
+ height: 0;
 }
 
 .formulario h3 {
