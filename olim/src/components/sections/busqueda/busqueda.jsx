@@ -68,7 +68,7 @@ function Busqueda() {
                             <img src={newyork} alt="newyork, eeuu" className="imagenesPopulares" />
                             <div className="overlay">
                                 <span>
-                                    Newyork
+                                    New york
                                 </span>
                             </div>
                         </div>
