@@ -20,6 +20,7 @@ import Perfil from "./components/sections/perfilc/Perfil.jsx";
 import Cardobjetos from "./components/UI/CardObjetos.jsx";
 import SectionFav from "./components/sections/favoritos/SectionsFavoritos.jsx";
 import SectionNotificaciones from "./components/sections/notificaciones/SectionNotificaciones.jsx";
+import Registrar from "./components/sections/login/Registrar.jsx";
 function App() {
 
 
@@ -80,8 +81,11 @@ function App() {
               ]}
             />
             
+            <SectionHome />
             <Carousel />
             <Testimonios />
+
+            <Registrar />
             <Footer />
           </>
         } />
