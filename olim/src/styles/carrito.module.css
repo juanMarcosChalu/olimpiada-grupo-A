@@ -1,0 +1,18 @@
+
+.materialSymbolsOutlinedCarrito {
+    color: #5e4b41;
+    font-size: 50px;
+    cursor: pointer;
+     transition: scale 200ms;
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 700,
+  'GRAD' 0,
+  'opsz' 24
+  ;
+  &:hover{
+    color: #1f1815;
+    scale: 1.1;
+    transition: scale 500ms;
+  }
+}

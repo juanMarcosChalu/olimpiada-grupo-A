@@ -75,7 +75,6 @@ function App() {
               menuItems={[
                 <ServiciosMenu key="servicios" />,
                 <Link to="/contacto" key="contacto">Contacto</Link>,
-                <Link to="/blog" key="blog">Blog</Link>,
               ]}
             />
 
@@ -84,7 +83,6 @@ function App() {
             <Testimonios />
 
             <Registro />
-            <contacto/>
             <Footer />
           </>
         } />
@@ -149,7 +147,7 @@ function App() {
                 <Link to="/" key="inicio">Inicio</Link>,
                 <ServiciosMenu key="servicios" />,
 
-                <Link to="/contacto" key="contacto">Contacto</Link>,
+                
               ]}
             />
             <Busqueda></Busqueda>

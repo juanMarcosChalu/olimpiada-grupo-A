@@ -4,6 +4,7 @@ import styles from "../../styles/header2.module.css"; // estilos
 import { Link } from "react-router-dom";
 import ServiciosMenu from "../UI/serviciosli.jsx";
 import UsuarioMenu from '../UI/UserMenu.jsx';
+import SvgCarrito from '../UI/SvgCarrito.jsx';
 function Header({ title, menuItems = [] }) {
 
   const [userOpen, setUserOpen] = useState(false);
@@ -26,6 +27,7 @@ function Header({ title, menuItems = [] }) {
   )}
 
           {/* Icono usuario fijo al final */}
+          <SvgCarrito />
           <UsuarioMenu></UsuarioMenu>
         </ul>
       </nav>
