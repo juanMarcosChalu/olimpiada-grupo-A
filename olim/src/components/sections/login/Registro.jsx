@@ -1,7 +1,8 @@
+
 import React, { useState } from 'react';
 import styles from "../../../styles/Registro.module.css"
 import fondo from "../../../assets/Logo.png"
-
+import { Link } from 'react-router-dom';
 
 function Registro() {
 
@@ -25,7 +26,7 @@ function Registro() {
           </label>
           <button className={styles.boton}>Registrarse</button>
         </form>
-
+        
       </div>
     </section >
   );

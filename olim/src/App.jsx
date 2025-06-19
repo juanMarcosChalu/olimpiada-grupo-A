@@ -19,6 +19,7 @@ import Cardobjetos from "./components/UI/CardObjetos.jsx";
 import SectionFav from "./components/sections/favoritos/SectionsFavoritos.jsx";
 import SectionNotificaciones from "./components/sections/notificaciones/SectionNotificaciones.jsx";
 import Registro from "./components/sections/login/Registro.jsx";
+import Login from "./components/sections/login/login.jsx";
 function App() {
 
 
@@ -81,7 +82,7 @@ function App() {
             <SectionHome />
             <Carousel />
             <Testimonios />
-
+              <Login></Login>
             <Registro />
             <Footer />
           </>

@@ -40,11 +40,11 @@
     left: 50%;
     gap: 3rem;
     transform: translateX(-50%);
-    height: 60vh;
+    height: 50vh;
 }
 
 .formulario input {
-    height: 20%;
+    height: 10vh;
     width: 60%;
     background-color: #b0a695;
     border: 4px #776b5d solid;
@@ -140,4 +140,21 @@
     border: solid white;
     border-width: 0 2px 2px 0;
     transform: rotate(45deg);
+  }
+  .linkRegister{
+    color: #877c70;
+    font-family: "Libre Baskerville", serif;
+    font-size: 1.6rem;
+  }
+  .registerTitle2{
+    height: 30%;
+    top: 20%;
+    margin-bottom: 5%;
+    position: relative;
+    color: #776b5d;
+    font-size: 4rem;
+    font-weight: 500;
+    width: 100%;
+    text-align: center;
+    font-family: "Libre Baskerville", serif;
   }
