@@ -3,13 +3,20 @@ import React, { useState } from 'react';
 import styles from "../../../styles/Registro.module.css"
 import fondo from "../../../assets/Logo.png"
 import { Link } from 'react-router-dom';
-
+import logo from "../../../assets/Logo.png"
 function Registro() {
 
   return (
 
-    < section className={styles.Registro} >
-
+    < section className={styles.Registro} style={{
+        backgroundImage: `url(${logo})`,
+        backgroundSize: 'contain',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        
+      }}>
+         <div className={styles.overlay}></div>
+     
       <div className={styles.registroContainer}>
 
         <h1 className={styles.registerTitle}>Regístrate en Brújula</h1>
