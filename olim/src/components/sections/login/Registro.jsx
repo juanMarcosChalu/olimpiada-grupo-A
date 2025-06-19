@@ -7,18 +7,23 @@ function Registro() {
 
   return (
 
-    < section className={styles.Registro} style={{ backgroundImage: `url(${fondo})` }}>
+    < section className={styles.Registro} >
 
       <div className={styles.registroContainer}>
 
-        <h1>Regístrate en Brújula</h1>
+        <h1 className={styles.registerTitle}>Regístrate en Brújula</h1>
 
         <form className={styles.formulario}>
           <input type="text" placeholder='Nombre Completo' />
           <input type="text" placeholder='Correo Electronico' />
           <input type="text" placeholder='Contraseña' />
-          <span className={styles.checkbox}><input type="checkbox" name="" id="" />Deseo mantenerme informado sobre promociones de Brújula.</span>
-          <button className={styles.boton}>hola</button>
+         
+          <label className={styles.customcheckbox}>
+            <input type="checkbox" name="" />
+            <span className={styles.checkmark}></span>
+            <p>Deseo mantenerme informado sobre promociones de Brújula</p>
+          </label>
+          <button className={styles.boton}>Registrarse</button>
         </form>
 
       </div>
