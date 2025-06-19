@@ -1,0 +1,82 @@
+/* Centrar la caja de login */
+.login-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #6b73ff 0%, #000dff 100%);
+  font-family: Arial, sans-serif;
+}
+
+/* Caja blanca del login */
+.login-box {
+  background: white;
+  padding: 30px 40px;
+  border-radius: 12px;
+  width: 320px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.login-box h2 {
+  margin-bottom: 25px;
+  color: #333;
+}
+
+.login-box form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.login-box label {
+  font-weight: bold;
+  text-align: left;
+  color: #555;
+}
+
+.login-box input {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1.8px solid #bbb;
+  border-radius: 6px;
+  transition: border-color 0.3s ease;
+}
+
+.login-box input:focus {
+  border-color: #000dff;
+  outline: none;
+}
+
+.login-box button {
+  margin-top: 10px;
+  background-color: #000dff;
+  color: white;
+  font-weight: bold;
+  padding: 12px 0;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.login-box button:hover {
+  background-color: #4a52ff;
+}
+
+.links {
+  margin-top: 20px;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.links a {
+  color: #000dff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.links a:hover {
+  text-decoration: underline;
+}
