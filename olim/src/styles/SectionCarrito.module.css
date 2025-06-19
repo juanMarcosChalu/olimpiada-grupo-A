@@ -1,4 +1,84 @@
-.carritoSection{}
+.carritoSection {
+    width: 100%;
+    min-height: 100vh;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    background-color: #f3eeea;
+    position: relative;
+    display: flex;
+    justify-content: start;
+}
 
-.asideProductos{}
+.asideProductos {
+    position: absolute;
+    background-color: white;
+    border-radius: 20px;
+    height: 30%;
+    width: 20%;
+    left: 10%;
+    font-family: "Open Sans";
+}
 
+.asideProductos h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #776b5d;
+    height: 34%;
+}
+
+.asideProductos ol {
+    position: relative;
+    list-style-type: none;
+    padding-left: 10%;  
+    color: #776b5d;
+    height: 33%;
+}
+
+.divContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    background-color: #fff;
+    position: relative;
+    height: 33%;
+    color: #776b5d;
+    display: flex;
+    border-radius: 20px;
+}
+
+.divContainer button {
+    background-color: white;
+    color: #776b5d;
+    position: relative;
+    border: none;
+}
+
+.divContainer button:hover{
+    cursor: pointer;
+    color: #000000;
+}
+
+.asidePrevista {
+    background-color: white;
+    position: absolute;
+    left: 70%;
+    width: 20%;
+    height: 35%;
+}
+
+.articleResumen {
+    position: relative;
+}
+
+.articleResumen h1{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    top: 50%;
+    transform: translateY(50%);
+    color: #776b5d;
+}
+
+.sectionTexto {}

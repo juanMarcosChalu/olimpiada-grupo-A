@@ -9,7 +9,7 @@ function SectionsCarrito() {
 
             <aside className={styles.asideProductos}>
 
-                <h1 className={styles.titulosCarritoCards}>Alquiler de autos</h1>
+                <h1>Alquiler de autos</h1>
                 <ol>
                     <li>Alquiler: Renault Kwid o similar
                     </li>
@@ -18,22 +18,21 @@ function SectionsCarrito() {
                     <li>15/07 al 20/07</li>
                 </ol>
 
-                <div className={styles.divComtainer
-                }>
-                    <input type="text" className="quitar" />
-                    <span className={styles.spanPrecio}>
+
+                <section className={styles.divContainer}>
+                    <button>Quitar Auto</button>
+                    <span>
                         $220.000  ARS
                     </span>
-                </div>
+                </section>
+
             </aside>
 
-            <aside className={styles.asidePrecio}>
+            <aside className={styles.asidePrevista}>
                 <article className={styles.articleResumen}>
-                    <h1>🧾 RESUMEN FINAL
-                    </h1>
+                    <h1>RESUMEN FINAL</h1>
                     <section className={styles.sectionTexto}>
                         <p>subtotal</p>
-
                     </section>
                 </article>
                 {/* <article className={styles.formaDePagoAcordateJuan}></article> */}
