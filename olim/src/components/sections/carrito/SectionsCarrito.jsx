@@ -1,16 +1,15 @@
 import React from "react";
-import styles from "../../../styles/carrito.module.css";
-import Header from "../../Layouts/header.jsx";
+import styles from "../../../styles/SectionCarrito.module.css";
 
-function carrito() {
+function SectionsCarrito() {
+
     return (
-
-
 
         <section className={styles.carritoSection}>
 
             <aside className={styles.asideProductos}>
-                <h1>Alquiler de autos</h1>
+
+                <h1 className={styles.titulosCarritoCards}>Alquiler de autos</h1>
                 <ol>
                     <li>Alquiler: Renault Kwid o similar
                     </li>
@@ -18,15 +17,16 @@ function carrito() {
                     </li>
                     <li>15/07 al 20/07</li>
                 </ol>
-                <div>
-                    <input type="text"><span>❌ Quitar auto</span></input>
+
+                <div className={styles.divComtainer
+                }>
+                    <input type="text" className="quitar" />
                     <span className={styles.spanPrecio}>
                         $220.000  ARS
                     </span>
                 </div>
-
-
             </aside>
+
             <aside className={styles.asidePrecio}>
                 <article className={styles.articleResumen}>
                     <h1>🧾 RESUMEN FINAL
@@ -43,3 +43,5 @@ function carrito() {
         </section>
     )
 }
+
+export default SectionsCarrito;

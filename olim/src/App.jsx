@@ -18,13 +18,11 @@ import Perfil from "./components/sections/perfilc/Perfil.jsx";
 import Cardobjetos from "./components/UI/CardObjetos.jsx";
 import SectionFav from "./components/sections/favoritos/SectionsFavoritos.jsx";
 import SectionNotificaciones from "./components/sections/notificaciones/SectionNotificaciones.jsx";
+import SectionsCarrito from "./components/sections/carrito/SectionsCarrito.jsx"
 import Registro from "./components/sections/login/Registro.jsx";
 import Login from "./components/sections/login/login.jsx";
+
 function App() {
-
-
-
-
 
   const [packages, setPackages] = useState([
     {
@@ -82,8 +80,9 @@ function App() {
             <SectionHome />
             <Carousel />
             <Testimonios />
-              <Login></Login>
+            <Login />
             <Registro />
+            <SectionsCarrito />
             <Footer />
           </>
         } />
@@ -99,7 +98,7 @@ function App() {
               ]} />
 
             <Paquetes />
-              <Header
+            <Header
               title={<h1>Paquetes Románticos</h1>}
               menuItems={[
                 <Link to="/" key="inicio">Inicio</Link>,
@@ -108,7 +107,7 @@ function App() {
 
               ]} />
 
-            <GridPaquetes/>
+            <GridPaquetes />
             <Footer />
           </>
 
@@ -148,11 +147,11 @@ function App() {
                 <Link to="/" key="inicio">Inicio</Link>,
                 <ServiciosMenu key="servicios" />,
 
-                
+
               ]}
             />
             <Busqueda></Busqueda>
-            
+
             <Footer />
           </>
         } />
