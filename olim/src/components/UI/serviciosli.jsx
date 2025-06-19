@@ -11,8 +11,8 @@ function ServiciosMenu() {
     }
   });
   return (
-    <li className={` ${styles.navbuttons} ${open ? styles.fondoActivo : styles.fondodesactivo}`} key="Servicios">
-      <button  onClick={() => setOpen(!open)}>
+    <li className={open ? styles.fondoActivo : styles.fondodesactivo} key="Servicios">
+      <button className={styles.navbuttons} onClick={() => setOpen(!open)}>
         Servicios
       </button>
       <ul className={`${styles.submenu} ${open ? styles.opacityon : styles.opacityoff}`}>

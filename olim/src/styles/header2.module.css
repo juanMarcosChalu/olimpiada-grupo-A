@@ -22,14 +22,14 @@
 .navigation {
     padding-right: 2%;
     height: 100%;
-    
+    display: flex;
+    align-items: end;
 }
 .navigationList{
         display: flex;
         list-style: none;
-        align-items: end;
+        align-items: center;
         justify-content: center;
-        height: 100%;
          gap: 10%;
         li {
             transition: background 400ms;
@@ -46,7 +46,7 @@
     color: #776b5d;
 }
 .navbuttons {
-    
+  
     font-size: 1.5rem ;
     font-family: "Libre Baskerville", serif;
     background: none;
@@ -55,16 +55,6 @@
     color: #776b5d;
     text-decoration: none;
     font-weight: 400;
-    button{
-        font-size: 1.5rem ;
-    font-family: "Libre Baskerville", serif;
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: #776b5d;
-    text-decoration: none;
-    font-weight: 400;
-    }
     &:hover {
         color: #000000;
         text-decoration: underline;
@@ -119,11 +109,9 @@
         color: #776b5d;
         height: 100%;
         display: flex;
-      
+        align-items: center;
         font-size: 2.5rem;
           font-family: "Libre Baskerville", serif;
-          display: flex;
-          align-items: end;
     }
     img {
         position: relative;
