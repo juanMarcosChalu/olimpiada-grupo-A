@@ -22,20 +22,6 @@ function GridPaquetes() {
   const [modalAbierta, setModalAbierta] = useState(false);
   const [paqueteSeleccionado, setPaqueteSeleccionado] = useState(null);
 
-<<<<<<< HEAD
-  useEffect(() => {
-    setTimeout(() => {
-      const dataSimulada = [
-        { titulo: "París, Francia – 5 días", precio: "$1.200.000 ARS (Con vuelo)", imagenSrc: image_of_paris, fondo: "#c88c8c", resumen: "🏨 Hotel + museo + cena " },
-        { titulo: "Santorini, Grecia – 6 días", precio: "$1.150.000 ARS (Con vuelo)", imagenSrc:  image_of_santorini, fondo: "#c88c8c", resumen: "🏨 Hotel + traslado + cena" },
-        { titulo: "Kioto, Japón - 7 días", precio: "Desde $750 USD", imagenSrc:  image_of_kioto, fondo: "#c88c8c", resumen: "🏨 Hotel + guía + desayuno" },
-        { titulo: "Venecia, Italia · 5 días", precio: "$1.100.000 ARS (Con vuelo)", imagenSrc:  image_of_venecia, fondo: "#c88c8c", resumen: "🏨 Hotel + góndola + 🍝 cena" },
-        { titulo: "Bali, Indonesia - 7 días", precio: "$1.250.000 ARS (Con vuelo)", imagenSrc:  image_of_bali, fondo: "#c88c8c", resumen: "🏨 Hotel + 🚐 Traslados + ☕" },
-        { titulo: "Praga - 6 días", precio: "$980.000 ARS (Con vuelo)", imagenSrc:  image_of_praga, fondo: "#c88c8c", resumen: "🏨 Hotel + 🏰 City tour + ☕" }
-      ];
-      setPaquetes(dataSimulada);
-    }, 1000);
-=======
   const location = useLocation();
 
   useEffect(() => {
@@ -212,7 +198,6 @@ function GridPaquetes() {
     });
 
     setPaquetes(dataSimulada);
->>>>>>> parent of e1ca720 (Merge branch 'main' into Voy-a-personalizar-las-tarjetas)
   }, []);
 
   useEffect(() => {
@@ -238,11 +223,7 @@ function GridPaquetes() {
   };
 
   return (
-<<<<<<< HEAD
-    <section>
-=======
     <section id="romanticos">
->>>>>>> parent of e1ca720 (Merge branch 'main' into Voy-a-personalizar-las-tarjetas)
       <div className="grid-paquetes">
         {paquetes.map((paquete, index) => (
           <CardPaquetes
@@ -257,13 +238,8 @@ function GridPaquetes() {
         <div className="modal">
           <div className="modal-content">
             <span className="close" onClick={cerrarModal}>&times;</span>
-<<<<<<< HEAD
-            <h1 className=''>Personalizar la pagina</h1>
-              <h2>Paquete {paqueteSeleccionado.titulo}</h2>
-=======
             <h1>Personalizar la página</h1>
             <h2>{paqueteSeleccionado.titulo}</h2>
->>>>>>> parent of e1ca720 (Merge branch 'main' into Voy-a-personalizar-las-tarjetas)
             <div className='modal-content-info'>
               <div className='ModalImgContainer'>
                 <img src={paqueteSeleccionado.imagenSrc} alt={paqueteSeleccionado.titulo} />
@@ -278,35 +254,6 @@ function GridPaquetes() {
                 <p className='precioModal'>{paqueteSeleccionado.precio} ARS por persona</p>
               </div>
             </div>
-<<<<<<< HEAD
-            <form >
-              {/* {cantidad de personas, fecha de entrada, fecha de salida, un texto y botones} */}
-            
-                <div className='ModalFormInputs'>
-                  <div>
-                    <label htmlFor="cantidad">Cantidad de personas:</label>
-                    <input type="number" id="cantidad" name="cantidad" placeholder='0' />
-                  </div>
-                  
-                  <div>
-                    <label htmlFor="entrada">Fecha de entrada:</label>
-                    <input type="date" id="entrada" name="entrada" />
-                  </div>
-                  
-                  <div>
-                     <label htmlFor="salida">Fecha de salida:</label>
-                      <input type="date" id="salida" name="salida" />
-                  </div>
-                </div>
-                <p>Precio base por persona. Total con impuestos en el carrito</p>
-                <div className='ModalFormButtons'>
-                  <button type="submit">Añadir al carrito</button>
-                  <button type="button" onClick={cerrarModal}>Cancelar</button>
-                </div>
-
-            </form>
-            
-=======
             <form>
               <div className='ModalFormInputs'>
                 <div>
@@ -328,7 +275,6 @@ function GridPaquetes() {
                 <button type="button" onClick={cerrarModal}>Cancelar</button>
               </div>
             </form>
->>>>>>> parent of e1ca720 (Merge branch 'main' into Voy-a-personalizar-las-tarjetas)
           </div>
         </div>
       )}
