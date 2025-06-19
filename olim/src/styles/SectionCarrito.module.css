@@ -1,4 +1,146 @@
-.carritoSection{}
+.carritoSection {
+    width: 100%;
+    min-height: 100vh;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    background-color: #f3eeea;
+    position: relative;
+    display: flex;
+    justify-content: start;
+}
 
-.asideProductos{}
+.asideProductos {
+    position: absolute;
+    background-color: white;
+    border-radius: 20px;
+    height: 30%;
+    width: 20%;
+    left: 20%;
+    font-family: "Open Sans";
+}
 
+.asideProductos h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #776b5d;
+    height: 34%;
+}
+
+.asideProductos ol {
+    position: relative;
+    list-style-type: none;
+    padding-left: 10%;
+    color: #776b5d;
+    height: 33%;
+    font-size: 0.95rem;
+}
+
+.divContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    background-color: #fff;
+    position: relative;
+    height: 33%;
+    color: #776b5d;
+    display: flex;
+    border-radius: 20px;
+}
+
+.divContainer button {
+    background-color: white;
+    color: #776b5d;
+    position: relative;
+    border: none;
+}
+
+.divContainer button:hover {
+    cursor: pointer;
+    color: #000000;
+}
+
+.divContainer span{
+    font-weight: bold;
+    font-size: 1.2rem
+}
+
+.asidePrevista {
+    background-color: white;
+    position: absolute;
+    left: 60%;
+    width: 20%;
+    height: 40%;
+}
+
+.articleResumen {
+    position: relative;
+}
+
+.articleResumen h1 {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    top: 50%;
+    transform: translateY(50%);
+    color: hsl(32, 12%, 42%);
+}
+
+
+.sectionTexto {
+    font-family: "Open Sans", sans-serif;
+    color: #776b5d;
+    padding: 1rem;
+}
+
+.subtotal,
+.impuestos {
+    margin: 0.5rem 0;
+    font-size: 1rem;
+}
+
+.listaImpuestos {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    color: #776b5d;
+    font-size: 0.95rem;
+}
+
+.total {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin: 1rem 0;
+    color: #776b5d;
+}
+
+.botonCompra {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #776b5d;
+    color: white;
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.botonCompra:hover {
+    background-color: #5e5246;
+}
+
+.articlePago{
+    background-color: white;
+}
+
+.articlePago h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #776b5d;
+}
