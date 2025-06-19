@@ -20,6 +20,7 @@ import SectionFav from "./components/sections/favoritos/SectionsFavoritos.jsx";
 import SectionNotificaciones from "./components/sections/notificaciones/SectionNotificaciones.jsx";
 import SectionsCarrito from "./components/sections/carrito/SectionsCarrito.jsx"
 import Registro from "./components/sections/login/Registro.jsx";
+import Contacto from "./components/sections/contactanos/contacto.jsx";
 import Login from "./components/sections/login/login.jsx";
 
 function App() {
@@ -82,7 +83,7 @@ function App() {
             <Testimonios />
             <Login />
             <Registro />
-            <SectionsCarrito />
+            <Contacto />
             <Footer />
           </>
         } />

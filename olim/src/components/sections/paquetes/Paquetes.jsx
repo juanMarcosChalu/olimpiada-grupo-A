@@ -10,8 +10,7 @@ import { Link } from 'react-router-dom';
 
 function Paquetes() {
     return (
-        <section>
-           
+        <section>  
             <section className="section-paquetes">
                 <h1>Descubre nuestras experiencias armadas para que solo te preocupes por disfrutar. <br />Incluyen vuelos, hospedaje, actividades y más.</h1>
                 <main className="main-paquetes">

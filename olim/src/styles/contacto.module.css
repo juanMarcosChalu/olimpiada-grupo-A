@@ -1,0 +1,94 @@
+main {
+    min-width: 100%;
+    height: 100vh;
+    background-color: #F3EEEA;
+    display: flex;
+    padding: 1rem;
+    flex-direction: column;
+    position: relative;
+}
+
+.contactoContainer {
+    position: relative;
+    width: 90%;
+    height: 90%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.textoContacto {
+    position: relative;
+    max-width: 70%;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #776B5D;
+}
+
+.listaRedes ol {
+  list-style: none;
+  padding: 0;
+}
+
+.listaRedes li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.listaRedes img {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+}
+
+.listaRedes p, .listaRedes a {
+  margin: 0;
+  color: #5c3b2e; /* similar al color que se ve en la imagen */
+  font-family: 'Segoe UI', sans-serif;
+}
+
+
+.seccionForm {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 10px;
+    min-height: 100%;
+}
+
+.seccionForm form {
+    padding: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.seccionForm input{
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #efebe3;
+    border: none;
+    height: 3.5rem;
+    max-width: 90%;
+}
+
+.seccionForm h1{
+    position: relative;;
+}
+
+.botonFomm {
+    position: relative;
+    width: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #776B5D;
+    padding: 5px 0px;
+    border-radius: 9999999px;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
