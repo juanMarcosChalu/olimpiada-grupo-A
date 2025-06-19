@@ -21,7 +21,7 @@ import SectionNotificaciones from "./components/sections/notificaciones/SectionN
 import SectionsCarrito from "./components/sections/carrito/SectionsCarrito.jsx"
 import Registro from "./components/sections/login/Registro.jsx";
 import Login from "./components/sections/login/login.jsx";
-
+import VueloGrid from "./components/sections/VuelosGrid/VuelosGrid.jsx";
 function App() {
 
   const [packages, setPackages] = useState([
@@ -83,6 +83,7 @@ function App() {
             <Login />
             <Registro />
             <SectionsCarrito />
+            <VueloGrid />
             <Footer />
           </>
         } />

@@ -2,17 +2,19 @@
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 1rem;
+  height: max-content;
   max-width: 350px;
   font-family: sans-serif;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
- 
   color: black;
   gap: 2rem;
+  
 }
 .card:nth-child(n){
     background-color: rgb(255, 255, 255);
+    
 }
 .title {
   text-align: center;

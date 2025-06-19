@@ -1,0 +1,13 @@
+.VuelosSection{
+    display: grid;
+    min-height: 100vh;
+    background-color: #f3eeea;
+    width: 100vw;
+    grid-template-columns: repeat(auto-fit, minmax(370px, 1fr));
+    place-items:start center;
+    padding: 1rem;
+    gap: 1rem;
+}
+.VuelosSection:nth-child(n){
+
+}
