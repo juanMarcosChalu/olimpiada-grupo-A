@@ -32,8 +32,20 @@ function SectionsCarrito() {
                 <article className={styles.articleResumen}>
                     <h1>RESUMEN FINAL</h1>
                     <section className={styles.sectionTexto}>
-                        <p>subtotal</p>
+                        <p className={styles.subtotal}>Subtotal: $2,450,000 ARS</p>
+                        <p className={styles.impuestos}>Impuestos: $595.350 ARS</p>
+
+                        <ul className={styles.listaImpuestos}>
+                            <li>IVA 21%: $514.500</li>
+                            <li>Ingresos Brutos 2,3%: $56.350</li>
+                            <li>Tasa Municipal 1%: $24.500</li>
+                        </ul>
+
+                        <p className={styles.total}>Total: <strong>$3.045.350 ARS</strong></p>
+
+                        <button className={styles.botonCompra}>Realizar compra</button>
                     </section>
+
                 </article>
                 {/* <article className={styles.formaDePagoAcordateJuan}></article> */}
             </aside>

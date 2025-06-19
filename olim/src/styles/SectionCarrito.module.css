@@ -15,7 +15,7 @@
     border-radius: 20px;
     height: 30%;
     width: 20%;
-    left: 10%;
+    left: 20%;
     font-family: "Open Sans";
 }
 
@@ -30,9 +30,10 @@
 .asideProductos ol {
     position: relative;
     list-style-type: none;
-    padding-left: 10%;  
+    padding-left: 10%;
     color: #776b5d;
     height: 33%;
+    font-size: 0.95rem;
 }
 
 .divContainer {
@@ -55,30 +56,80 @@
     border: none;
 }
 
-.divContainer button:hover{
+.divContainer button:hover {
     cursor: pointer;
     color: #000000;
+}
+
+.divContainer span{
+    font-weight: bold;
+    font-size: 1.2rem
 }
 
 .asidePrevista {
     background-color: white;
     position: absolute;
-    left: 70%;
+    left: 60%;
     width: 20%;
-    height: 35%;
+    height: 40%;
 }
 
 .articleResumen {
     position: relative;
 }
 
-.articleResumen h1{
+.articleResumen h1 {
     position: relative;
     display: flex;
     justify-content: center;
     top: 50%;
     transform: translateY(50%);
+    color: hsl(32, 12%, 42%);
+}
+
+
+.sectionTexto {
+    font-family: "Open Sans", sans-serif;
+    color: #776b5d;
+    padding: 1rem;
+}
+
+.subtotal,
+.impuestos {
+    margin: 0.5rem 0;
+    font-size: 1rem;
+}
+
+.listaImpuestos {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    color: #776b5d;
+    font-size: 0.95rem;
+}
+
+.total {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin: 1rem 0;
     color: #776b5d;
 }
 
-.sectionTexto {}
+.botonCompra {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #776b5d;
+    color: white;
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.botonCompra:hover {
+    background-color: #5e5246;
+}
