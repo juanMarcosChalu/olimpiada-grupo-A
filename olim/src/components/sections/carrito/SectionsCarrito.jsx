@@ -45,14 +45,13 @@ function SectionsCarrito() {
 
                         <button className={styles.botonCompra}>Realizar compra</button>
                     </section>
+
                 </article>
-
-                {/* <article className={styles.articlePago}><h1>RESUMEN FINAL</h1><button className={styles.botonCompra}>ELEGÍ TU FORMA DE PAGO</button></article> */}
-
+                {/* <article className={styles.formaDePagoAcordateJuan}></article> */}
             </aside>
 
 
-        </section >
+        </section>
     )
 }
 
