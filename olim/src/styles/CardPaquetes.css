@@ -39,7 +39,6 @@
             }
         }
 
-
         .lista-card {
             position: relative;
             padding-left: 15%;
@@ -69,14 +68,6 @@
 
 
 }
-
-.paquete-texto {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-}
-
-
 .CardPaquetesResumen{
     width: 100%;
     text-align: center;
@@ -109,46 +100,4 @@
     top: 20vh;
     background-color: blue;
     z-index: 99;
-}
-
-.link-romantico {
-  background-color: #c88c8c;
-}
-.link-romantico:hover {
-  background-color: #a86f6f;
-}
-
-.link-familiar {
-  background-color: #88bdbc;
-}
-.link-familiar:hover {
-  background-color: #6ea6a5;
-}
-
-.link-aventurero {
-  background-color: #ff914d;
-}
-.link-aventurero:hover {
-  background-color: #e27b35;
-}
-
-.link-naturaleza {
-  background-color: #6baf5b;
-}
-.link-naturaleza:hover {
-  background-color: #549646;
-}
-
-.link-relax {
-  background-color: #9c8ec5;
-}
-.link-relax:hover {
-  background-color: #8370b3;
-}
-
-.link-cultural {
-  background-color: #f4b860;
-}
-.link-cultural:hover {
-  background-color: #dca447;
 }

@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
 import CardPaquetes from '../../UI/CardPaquetes';
 import '../../../styles/GridPaquetes.css';
-
 import image_of_paris from '../../../../src/assets/paris.jpg';
 import image_of_santorini from '../../../../src/assets/santorini.jpg';
 import image_of_kioto from '../../../../src/assets/kioto.jpg';
@@ -10,21 +8,14 @@ import image_of_venecia from '../../../../src/assets/venecia.jpeg';
 import image_of_bali from '../../../../src/assets/bali.jpg';
 import image_of_praga from '../../../../src/assets/praga.jpg';
 
-import image_disney from '../../../../src/assets/disney.jpg';
-import image_riviera from '../../../../src/assets/rivieramaya.jpg';
-import image_universal from '../../../../src/assets/universal.jpg';
-import image_sandiego from '../../../../src/assets/sandiego.jpg';
-import image_londres from '../../../../src/assets/londres.jpg';
-import image_bari from '../../../../src/assets/bariloche.jpg';
 
 function GridPaquetes() {
   const [paquetes, setPaquetes] = useState([]);
   const [modalAbierta, setModalAbierta] = useState(false);
   const [paqueteSeleccionado, setPaqueteSeleccionado] = useState(null);
 
-  const location = useLocation();
-
   useEffect(() => {
+
   const dataSimulada = [
     // Románticos
     {
@@ -198,19 +189,19 @@ function GridPaquetes() {
     });
 
     setPaquetes(dataSimulada);
-  }, []);
+    setTimeout(() => {
+      const dataSimulada = [
+        { titulo: "París, Francia – 5 días", precio: "$1.200.000 ARS (Con vuelo)", imagenSrc: image_of_paris, fondo: "#c88c8c", resumen: "🏨 Hotel + museo + cena " },
+        { titulo: "Santorini, Grecia – 6 días", precio: "$1.150.000 ARS (Con vuelo)", imagenSrc:  image_of_santorini, fondo: "#c88c8c", resumen: "🏨 Hotel + traslado + cena" },
+        { titulo: "Kioto, Japón - 7 días", precio: "Desde $750 USD", imagenSrc:  image_of_kioto, fondo: "#c88c8c", resumen: "🏨 Hotel + guía + desayuno" },
+        { titulo: "Venecia, Italia · 5 días", precio: "$1.100.000 ARS (Con vuelo)", imagenSrc:  image_of_venecia, fondo: "#c88c8c", resumen: "🏨 Hotel + góndola + 🍝 cena" },
+        { titulo: "Bali, Indonesia - 7 días", precio: "$1.250.000 ARS (Con vuelo)", imagenSrc:  image_of_bali, fondo: "#c88c8c", resumen: "🏨 Hotel + 🚐 Traslados + ☕" },
+        { titulo: "Praga - 6 días", precio: "$980.000 ARS (Con vuelo)", imagenSrc:  image_of_praga, fondo: "#c88c8c", resumen: "🏨 Hotel + 🏰 City tour + ☕" }
+      ];
+      setPaquetes(dataSimulada);
+    }, 1000);
 
-  useEffect(() => {
-    if (location.hash) {
-      const id = location.hash.replace("#", "");
-      const element = document.getElementById(id);
-      if (element) {
-        setTimeout(() => {
-          element.scrollIntoView({ behavior: "smooth" });
-        }, 0);
-      }
-    }
-  }, [location]);
+  }, []);
 
   const abrirModal = (paquete) => {
     setPaqueteSeleccionado(paquete);
@@ -223,7 +214,11 @@ function GridPaquetes() {
   };
 
   return (
+
     <section id="romanticos">
+
+    <section>
+
       <div className="grid-paquetes">
         {paquetes.map((paquete, index) => (
           <CardPaquetes
@@ -237,23 +232,33 @@ function GridPaquetes() {
       {modalAbierta && (
         <div className="modal">
           <div className="modal-content">
+
             <span className="close" onClick={cerrarModal}>&times;</span>
+
             <h1>Personalizar la página</h1>
             <h2>{paqueteSeleccionado.titulo}</h2>
+
+            <h1 className=''>Personalizar la pagina</h1>
+              <h2>Paquete {paqueteSeleccionado.titulo}</h2>
+
             <div className='modal-content-info'>
               <div className='ModalImgContainer'>
                 <img src={paqueteSeleccionado.imagenSrc} alt={paqueteSeleccionado.titulo} />
               </div>
               <div className='ModalTextContainer'>
+                {/* {title, content, precio} */}
                 <h3>{paqueteSeleccionado.titulo}</h3>
                 <ul className='ModalTextContainerResumen'>
-                  {paqueteSeleccionado.detalleServicios.map((item, idx) => (
-                    <li key={idx}>{item}</li>
-                  ))}
+                  <li>Hotel Boutique</li>
+                  <li>Vuelos ida y vuelta</li>
+                  <li>Translados aeropuerto-hotel</li>
+                  <li>Cena romantica en terraza</li>
+                  <li>Paseo en barco</li>
                 </ul>
                 <p className='precioModal'>{paqueteSeleccionado.precio} ARS por persona</p>
               </div>
             </div>
+
             <form>
               <div className='ModalFormInputs'>
                 <div>
@@ -275,6 +280,35 @@ function GridPaquetes() {
                 <button type="button" onClick={cerrarModal}>Cancelar</button>
               </div>
             </form>
+
+            <form >
+              {/* {cantidad de personas, fecha de entrada, fecha de salida, un texto y botones} */}
+            
+                <div className='ModalFormInputs'>
+                  <div>
+                    <label htmlFor="cantidad">Cantidad de personas:</label>
+                    <input type="number" id="cantidad" name="cantidad" placeholder='0' />
+                  </div>
+                  
+                  <div>
+                    <label htmlFor="entrada">Fecha de entrada:</label>
+                    <input type="date" id="entrada" name="entrada" />
+                  </div>
+                  
+                  <div>
+                     <label htmlFor="salida">Fecha de salida:</label>
+                      <input type="date" id="salida" name="salida" />
+                  </div>
+                </div>
+                <p>Precio base por persona. Total con impuestos en el carrito</p>
+                <div className='ModalFormButtons'>
+                  <button type="submit">Añadir al carrito</button>
+                  <button type="button" onClick={cerrarModal}>Cancelar</button>
+                </div>
+
+            </form>
+            
+
           </div>
         </div>
       )}

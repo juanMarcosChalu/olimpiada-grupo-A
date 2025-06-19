@@ -9,7 +9,7 @@ function SectionsCarrito() {
 
             <aside className={styles.asideProductos}>
 
-                <h1 className={styles.titulosCarritoCards}>Alquiler de autos</h1>
+                <h1>Alquiler de autos</h1>
                 <ol>
                     <li>Alquiler: Renault Kwid o similar
                     </li>
@@ -18,29 +18,41 @@ function SectionsCarrito() {
                     <li>15/07 al 20/07</li>
                 </ol>
 
-                <div className={styles.divComtainer
-                }>
-                    <input type="text" className="quitar" />
-                    <span className={styles.spanPrecio}>
+
+                <section className={styles.divContainer}>
+                    <button>Quitar Auto</button>
+                    <span>
                         $220.000  ARS
                     </span>
-                </div>
+                </section>
+
             </aside>
 
-            <aside className={styles.asidePrecio}>
+            <aside className={styles.asidePrevista}>
                 <article className={styles.articleResumen}>
-                    <h1>🧾 RESUMEN FINAL
-                    </h1>
+                    <h1>RESUMEN FINAL</h1>
                     <section className={styles.sectionTexto}>
-                        <p>subtotal</p>
+                        <p className={styles.subtotal}>Subtotal: $2,450,000 ARS</p>
+                        <p className={styles.impuestos}>Impuestos: $595.350 ARS</p>
 
+                        <ul className={styles.listaImpuestos}>
+                            <li>IVA 21%: $514.500</li>
+                            <li>Ingresos Brutos 2,3%: $56.350</li>
+                            <li>Tasa Municipal 1%: $24.500</li>
+                        </ul>
+
+                        <p className={styles.total}>Total: <strong>$3.045.350 ARS</strong></p>
+
+                        <button className={styles.botonCompra}>Realizar compra</button>
                     </section>
                 </article>
-                {/* <article className={styles.formaDePagoAcordateJuan}></article> */}
+
+                {/* <article className={styles.articlePago}><h1>RESUMEN FINAL</h1><button className={styles.botonCompra}>ELEGÍ TU FORMA DE PAGO</button></article> */}
+
             </aside>
 
 
-        </section>
+        </section >
     )
 }
 
