@@ -6,9 +6,9 @@ function UsuarioMenu() {
     const [userOpen, setUserOpen] = useState(false);
     document.addEventListener("click", (e) => {
         if (!e.target.closest(`.${styles.userButton}`)) {
-          setUserOpen(false);
+            setUserOpen(false);
         }
-      });
+    });
     return (
         <li className={styles.userItem}>
             <button onClick={() => setUserOpen(!userOpen)} className={styles.userButton}>
@@ -25,14 +25,13 @@ function UsuarioMenu() {
                     <hr className={styles.divider} />
                     <ul className={styles.options}>
                         <Link to="/perfil">
-                            <li>
-                                <span className={`${styles.icon} material-symbols-outlined`}>person</span>Mi perfil</li>
+                            <li><span className={`${styles.icon} material-symbols-outlined`}>person</span>Mi perfil</li>
                         </Link>
                         <Link to="/Favoritos">
-                        <li><span className={`${styles.icon} material-symbols-outlined`}>favorite</span>Mis favoritos</li>
+                            <li><span className={`${styles.icon} material-symbols-outlined`}>favorite</span>Mis favoritos</li>
                         </Link>
                         <Link to="/Notificaciones">
-                        <li><span className={`${styles.icon} material-symbols-outlined`}>notifications</span>Notificaciones</li>
+                            <li><span className={`${styles.icon} material-symbols-outlined`}>notifications</span>Notificaciones</li>
                         </Link>
                     </ul>
                     <button className={styles.logout}>Cerrar Sesión</button>

@@ -8,7 +8,8 @@
   border: none;
   cursor: pointer;
   color: #5e4b41;
-  span{
+
+  span {
     font-size: 60px;
   }
 }
@@ -24,14 +25,18 @@
   width: 20vw;
   z-index: 10;
 }
-.usercontain{
-    display: flex;
-    text-align: center;
-    align-items: center;
-    h1{
-        width: 100%;
-    }
+
+.usercontain {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  color: #5e4b41;
+
+  h1 {
+    width: 100%;
+  }
 }
+
 .greeting {
   font-size: 16px;
   font-weight: bold;
@@ -54,12 +59,23 @@
 }
 
 .options a {
-    height: 100%;
- cursor: pointer;
-  &:hover{
-    background-color:#bbb3a8; ;
+  height: 100%;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #bbb3a8;
+
+    li {
+    
+        background-color: #bbb3a8;
+
+      
+    }
+
+    
   }
 }
+
 .options li {
   display: flex;
   align-items: center;
@@ -67,13 +83,12 @@
   margin-bottom: 0.5rem;
   color: #5e4b41;
   cursor: pointer;
-  &:hover{
-    background-color:#bbb3a8; ;
-  }
+  pointer-events: none;
 }
+
 .icon {
   font-size: 2rem;
-  
+
 }
 
 .logout {
@@ -88,16 +103,21 @@
   display: block;
   width: 100%;
   &:hover{
-    background-color: #493b34;
+    background-color: #302621;
   }
+
 }
+
 .userBox::before {
   content: "";
   position: absolute;
-  top: -14px; /* arriba del menú */
-  right: 6.5%; /* alineado al botón */
-  
+  top: -14px;
+  /* arriba del menú */
+  right: 6.5%;
+  /* alineado al botón */
+
   border-left: 18px solid transparent;
   border-right: 18px solid transparent;
-  border-bottom: 20px solid #f3e9dc; /* color del menú */
+  border-bottom: 20px solid #f3e9dc;
+  /* color del menú */
 }
