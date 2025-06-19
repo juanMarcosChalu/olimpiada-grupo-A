@@ -1,5 +1,6 @@
 import styles from "../../../styles/SectionNotificaciones.module.css"
 import React from "react";
+import CardVuelo from "../../UI/CardVuelo/CardVuelo";
 import { FaUser, FaMapMarkerAlt, FaCalendarAlt, FaTrash, FaShoppingCart } from "react-icons/fa";
 function SectionNotificaciones() {
     return(
@@ -17,6 +18,7 @@ function SectionNotificaciones() {
                </article>
                <h1 className={styles.noNotificacionesmessage}>No Tienes Mas Notificaciones</h1>
             </div>
+            <CardVuelo/>
         </section>
     ) 
 }

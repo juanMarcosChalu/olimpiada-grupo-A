@@ -1,0 +1,65 @@
+.card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+  max-width: 350px;
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+ 
+  color: black;
+  gap: 2rem;
+}
+.card:nth-child(n){
+    background-color: rgb(255, 255, 255);
+}
+.title {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.column {
+  text-align: center;
+}
+
+.details {
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.icon {
+  margin-right: 5px;
+  color: #333;
+}
+
+.footerPrecio {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #ccc;
+  padding-top: 0.5rem;
+ 
+}
+
+.precio {
+  font-size: 1.1rem;
+}
+
+.boton {
+  background-color: #b8ae9c;
+  color: white;
+  border: none;
+  border-radius: 999px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-weight: bold;
+}
