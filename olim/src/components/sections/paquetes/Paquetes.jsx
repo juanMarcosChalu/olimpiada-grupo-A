@@ -45,7 +45,7 @@ function Paquetes() {
                             </span>
                         </div>
                         <div className="button-container">
-                            <Link id="link2" to="">Ver Más</Link>
+                            <Link to="/paquetes#familiares" className="link-familiar">Ver Más</Link>
                         </div>
 
                     </div>
@@ -61,7 +61,7 @@ function Paquetes() {
                             </span>
                         </div>
                         <div className="button-container">
-                            <Link id="link3" to="">Ver Más</Link>
+                              <Link to="/paquetes#aventureros" className="link-aventurero">Ver Más</Link>
                         </div>
 
                     </div>
@@ -77,7 +77,7 @@ function Paquetes() {
                             </span>
                         </div>
                         <div className="button-container">
-                            <Link id="link4" to="">Ver Más</Link>
+                             <Link to="/paquetes#naturaleza" className="link-naturaleza">Ver Más</Link>
                         </div>
 
                     </div>
@@ -93,7 +93,7 @@ function Paquetes() {
                             </span>
                         </div>
                         <div className="button-container">
-                            <Link id="link5" to="">Ver Más</Link>
+                            <Link to="/paquetes#relax" className="link-relax">Ver Más</Link>
                         </div>
 
                     </div>
@@ -109,7 +109,7 @@ function Paquetes() {
                                 </span>
                         </div>
                         <div className="button-container">
-                            <Link id="link6" to="">Ver Más</Link>
+                            <Link to="/paquetes#cultural" className="link-cultural">Ver Más</Link>
                         </div>
 
                     </div>

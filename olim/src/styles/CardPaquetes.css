@@ -3,14 +3,15 @@
     position: relative;
     background-color: blanchedalmond;
     width: 90%;
-    height: 65vh;
+    min-height: 65vh;
+    height: fit-content;
     left: 50%;
     transform: translateX(-50%);
     .foto-card {
         position: relative;
         
         width: 100%;
-        height: 60%;
+        height: 35vh;
         
         img {
             width: 100%;
@@ -112,43 +113,43 @@
 }
 
 .link-romantico {
-  background-color: #c88c8c;
+  background-color: #E3B4B4;
 }
 .link-romantico:hover {
   background-color: #a86f6f;
 }
 
 .link-familiar {
-  background-color: #88bdbc;
+  background-color: #EDC3A4;
 }
 .link-familiar:hover {
-  background-color: #6ea6a5;
+  background-color: #D9A273;
 }
 
 .link-aventurero {
-  background-color: #ff914d;
+  background-color: #D28A82;
 }
 .link-aventurero:hover {
-  background-color: #e27b35;
+  background-color: #B55B52;
 }
 
 .link-naturaleza {
-  background-color: #6baf5b;
+  background-color: #B1C387;
 }
 .link-naturaleza:hover {
-  background-color: #549646;
+  background-color: #889D5C;
 }
 
 .link-relax {
-  background-color: #9c8ec5;
+  background-color: #D0DEE0;
 }
 .link-relax:hover {
-  background-color: #8370b3;
+  background-color: #AFC1C4  ;
 }
 
 .link-cultural {
-  background-color: #f4b860;
+  background-color: #B88C84;
 }
 .link-cultural:hover {
-  background-color: #dca447;
+  background-color: #8C5C51;
 }
