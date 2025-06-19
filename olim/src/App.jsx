@@ -83,7 +83,7 @@ function App() {
             <Login />
             <Registro />
             <SectionsCarrito />
-            <VueloGrid />
+      
             <Footer />
           </>
         } />
@@ -147,12 +147,18 @@ function App() {
               menuItems={[
                 <Link to="/" key="inicio">Inicio</Link>,
                 <ServiciosMenu key="servicios" />,
-
+               
 
               ]}
             />
             <Busqueda></Busqueda>
-
+             <Header
+              title={<h1>Vuelos</h1>}
+              menuItems={[
+                <Link to="/" key="inicio">Inicio</Link>,
+                <ServiciosMenu key="servicios" />,
+              ]} />
+               <VueloGrid/>
             <Footer />
           </>
         } />
