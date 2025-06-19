@@ -2,19 +2,17 @@
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 1rem;
-  height: max-content;
   max-width: 350px;
   font-family: sans-serif;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+ 
   color: black;
   gap: 2rem;
-  
 }
 .card:nth-child(n){
     background-color: rgb(255, 255, 255);
-    
 }
 .title {
   text-align: center;
@@ -60,12 +58,8 @@
   background-color: #b8ae9c;
   color: white;
   border: none;
-  font-size: 1.2rem;
   border-radius: 999px;
-  padding: 1rem 1rem;
+  padding: 0.5rem 1rem;
   cursor: pointer;
   font-weight: bold;
-  &:hover{
-    background-color: #928a7a;
-  }
 }

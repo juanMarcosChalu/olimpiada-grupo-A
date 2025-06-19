@@ -1,4 +1,4 @@
-import styles from "./Cardvuelo.module.css";
+import styles from "./CardVuelo.module.css";
 import { FaClock, FaSuitcaseRolling } from "react-icons/fa"; // Usa react-icons
 
 function CardVuelo() {
