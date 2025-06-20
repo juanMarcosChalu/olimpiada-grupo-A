@@ -85,7 +85,7 @@ function App() {
             <Testimonios />
             <Login />
             <Registro />
-            <Contacto />
+    
             <Footer />
           </>
         } />
@@ -125,6 +125,20 @@ function App() {
                 <Link to="/contacto" key="contacto">Contacto</Link>,
               ]} />
             <SectionNotificaciones />
+            <Footer />
+          </>
+
+        } />
+         <Route path='/Contacto' element={
+          <>
+            <Header
+              title={<h1>Contactanos</h1>}
+              menuItems={[
+                <Link to="/" key="inicio">Inicio</Link>,
+                <ServiciosMenu key="servicios" />,
+                <Link to="/contacto" key="contacto">Contacto</Link>,
+              ]} />
+            <Contacto />
             <Footer />
           </>
 

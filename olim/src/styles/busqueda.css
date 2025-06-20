@@ -99,11 +99,12 @@
 .section-busqueda{
     height: 100vh;
     width: 100%;
- 
+    
 }
 .main-busqueda {
    
 
+    
    
     position: relative;
     height: 100%;
@@ -115,11 +116,6 @@
     justify-content: space-between;
     background-size: cover;
     background-position: center center;
-
-
-
-
-
     .article-busqueda {
         width: 25vw;
         height: 60vh;

@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../../../styles/contacto.module.css";
+import styles from "./contacto.module.css";
 import Footer from "../../Layouts/Footer.jsx";
 import calendar from "../../../assets/svgs/calendar.svg";
 import email from "../../../assets/svgs/email.svg";
@@ -7,7 +7,7 @@ import phone from "../../../assets/svgs/phone.svg";
 
 function Contacto() {
     return (
-        <main>
+        <main className={styles.main}>
             <section className={styles.contactoContainer}>
                 <article className={styles.textoContacto}>
                     <span>
