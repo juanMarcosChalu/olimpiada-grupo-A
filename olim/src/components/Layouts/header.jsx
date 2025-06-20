@@ -5,12 +5,12 @@ import { Link } from "react-router-dom";
 import ServiciosMenu from "../UI/serviciosli.jsx";
 import UsuarioMenu from '../UI/UserMenu.jsx';
 import SvgCarrito from '../UI/SvgCarrito.jsx';
-function Header({ title, menuItems = [] }) {
+function Header({ title, menuItems = [],backgroundColorProp }) {
 
   const [userOpen, setUserOpen] = useState(false);
  
   return (
-    <header className={styles.header}>
+    <header className={styles.header} style={{ backgroundColor: backgroundColorProp }}>
       <div className={styles.logocontainer}>{title}</div>
       <nav className={styles.navigation}>
         <ul className={styles.navigationList}>

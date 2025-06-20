@@ -57,7 +57,7 @@ function GridPaquetes() {
       // Románticos
       {
         tipo: "romantico",
-        titulo: "París, Francia – 5 días",
+        titulo: "París, Francia – 5 días - 5 noches testi oara que baje esto xd",
         precio: "$1.200.000 ARS (Con vuelo)",
         imagenSrc: image_of_paris,
         resumen: "🏨 Hotel + museo + cena",

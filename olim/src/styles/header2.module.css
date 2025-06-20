@@ -1,20 +1,31 @@
 .header {
+    
     a{
         color: #776b5d;
         text-decoration: none;
     }
-    width: 80%;
-    margin-left: 10%;
+    width: 100%;
+    position: relative;
     height: 14vh;
-    background-color: #f3eeea;
+    background-color: #ffffff;
     color: white;
     display: flex;
     align-items: end;
-    justify-content: space-between;
+    justify-content: space-around;
     padding-bottom: 50px;
     padding: 0 20px;
     padding-bottom: 0.5rem;
-    border-bottom: 4px solid #776b5d;
+    &::after{
+        position: absolute;
+        border-bottom: 4px solid #776b5d;
+        content: "";
+        top: 100%;
+        width: 75%;
+       
+        left: 12.5%;
+        z-index: 55;
+    }
+   
 }
 .title {
     color: black;
