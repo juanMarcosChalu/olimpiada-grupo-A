@@ -123,7 +123,7 @@
   flex: 1 1 45%;
 }
 
-input[type="text"] {
+.input[type="text"] {
   width: 100%;
   border: 2px solid #5e4b41;
   border-radius: 10px;

@@ -34,20 +34,20 @@ function Perfil() {
             <div className={styles.row}>
               <div>
                 <label htmlFor="nombres">Nombres</label>
-                <input id="nombres" name="nombres" type="text" />
+                <input id="nombres" name="nombres"  className={styles.input} type="text" />
               </div>
               <div>
                 <label htmlFor="apellidos">Apellidos</label>
-                <input id="apellidos" name="apellidos" type="text" />
+                <input id="apellidos" name="apellidos"  className={styles.input} type="text" />
               </div>
             </div>
 
             <div className={styles.row}>
               <fieldset className={styles.fecha}>
                 <legend>Fecha de nacimiento</legend>
-                <input type="text" placeholder="Día" name="dia" />
-                <input type="text" placeholder="Mes" name="mes" />
-                <input type="text" placeholder="Año" name="anio" />
+                <input type="text"  className={styles.input} placeholder="Día" name="dia" />
+                <input type="text"  className={styles.input} placeholder="Mes" name="mes" />
+                <input type="text"  className={styles.input} placeholder="Año" name="anio" />
               </fieldset>
 
               <fieldset className={styles.genero}>

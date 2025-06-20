@@ -34,22 +34,45 @@ function Contacto() {
                 </article>
 
                 <article className={styles.seccionForm}>
+                    <h1 className={styles.seccionFormTitle}>Envianos tu mensaje</h1>
                     <form>
-                        <h1>Nombre</h1>
-                        <input type="text" placeholder="Nombre" />
 
-                        <h1>Correo Electrónico</h1>
-                        <input type="text" placeholder="Correo electrónico" />
+                        <div className={styles.formGroup}>
+                            <label htmlFor="nombre">Nombre:</label>
+                            <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" className={styles.infoForm} required />
+                        </div>
 
-                        <h1>Asunto</h1>
-                        <input type="text" placeholder="Asunto" />
+                        <div className={styles.formGroup}>
+                            <label htmlFor="correo">Correo electrónico:</label>
+                            <input type="email" id="correo" name="correo" placeholder="tu@correo.com" className={styles.infoForm} required />
+                        </div>
 
-                        <h1>Mensaje</h1>
-                        <input type="text" placeholder="Mensaje" />
+                        <div className={styles.formGroup}>
+                            <label htmlFor="asunto">Asunto:</label>
+                            <input type="text" id="asunto" name="asunto" placeholder="Asunto del mensaje" className={styles.infoForm} required />
+                        </div>
 
-                        <h1>Motivo</h1>
-                        <input type="button" className={styles.botonFomm} value="Enviar Mensaje" />
+                        <div className={styles.formGroup}>
+                            <label htmlFor="mensaje">Mensaje:</label>
+                            <textarea id="mensaje" name="mensaje" placeholder="Escribe tu mensaje aquí" rows="5" className={styles.infoForm} required></textarea>
+                        </div>
+
+                        <div className={styles.formGroup}>
+                            <label  htmlFor="motivo">Motivo:</label>
+                            <select id="motivo" name="motivo" className={styles.infoForm} required>
+                                <option value="">Selecciona un motivo</option>
+                                <option value="consulta">Consulta</option>
+                                <option value="soporte">Soporte</option>
+                                <option value="otros">Otros</option>
+                            </select>
+                        </div>
+
+                        <div className={styles.formGroup}>
+                            <button type="submit" className={styles.formButton}>Enviar Mensaje</button>
+                        </div>
+
                     </form>
+
                 </article>
             </section>
             {/* <Footer /> */}
