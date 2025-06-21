@@ -11,7 +11,7 @@ function ServiciosMenu() {
     }
   });
   return (
-    <li className={open ? styles.fondoActivo : styles.fondodesactivo} key="Servicios">
+    <div className={open ? styles.fondoActivo : styles.fondodesactivo} key="Servicios">
       <button className={styles.navbuttons} onClick={() => setOpen(!open)}>
         Servicios
       </button>
@@ -22,7 +22,7 @@ function ServiciosMenu() {
         <li><Link to="/paquetes">Paquetes</Link></li>
         <li><Link to="/asistencia">Asistencia al Viajero</Link></li>
       </ul>
-    </li>
+    </div>
   );
 }
 

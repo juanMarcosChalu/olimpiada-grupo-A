@@ -1,5 +1,5 @@
 import React, { useState, useEffect,useMemo } from "react";
-import { useFetch } from '../../../useFetch';
+import { useFetch } from '../../../hooks/useFetch';
 
 import img1 from "../../../assets/disney.jpg";
 import img2 from "../../../assets/costarica.jpg";
@@ -10,7 +10,10 @@ import "../../../styles/Carousel.css";
 
 
 
+
 const Carousel = () => {
+
+
     const imagene1 = { img: img1, texto: "Disney" };
     const imagene2 = { img: img2, texto: "Costa Rica" };
     const imagene3 = { img: img3, texto: "Madrid" };

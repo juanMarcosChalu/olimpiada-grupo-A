@@ -1,4 +1,5 @@
 .testimonios-cards-container {
+
     height: auto;
     display: grid;
     width: 100%;
@@ -8,8 +9,8 @@
      gap: 3rem;
     position: relative;
     border-radius: 5px;
-    margin-top: 2.5rem;
-
+    margin-top: 3rem;
+    justify-content: center;
     .testimonios-cards {
         color: #545651;
         border: 1px black solid;
@@ -35,4 +36,14 @@
         justify-content: center;
         color: #776b5d;
     }
+}
+
+@media (max-width:768px) {
+    .testimonios-background{
+    .descripcion-container{
+        font-size: 1.6rem;
+        text-align: center;
+        margin-top: 2rem;
+        
+    }}
 }

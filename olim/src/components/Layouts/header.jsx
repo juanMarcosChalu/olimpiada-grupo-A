@@ -19,7 +19,7 @@ function Header({ title, menuItems = [], backgroundColorProp }) {
             item.key === "servicios" ? (
 
               // Este ya devuelve <li>, no lo envuelvas en otro
-                <li className={styles.navbarPc}> <ServiciosMenu key={index}  /></li>
+                <li className={styles.navbarPc} key={index}> <ServiciosMenu   /></li>
              
             ) : (
               // Este sí necesita <li> si es un <Link> o similar

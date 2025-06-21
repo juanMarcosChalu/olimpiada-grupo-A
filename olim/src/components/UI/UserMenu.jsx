@@ -10,7 +10,7 @@ function UsuarioMenu() {
         }
     });
     return (
-        <li className={styles.userItem}>
+        <div className={styles.userItem}>
             <button onClick={() => setUserOpen(!userOpen)} className={styles.userButton}>
                 <span className="material-symbols-outlined">account_circle</span>
             </button>
@@ -37,7 +37,7 @@ function UsuarioMenu() {
                     <button className={styles.logout}>Cerrar Sesión</button>
                 </div>
             )}
-        </li>
+        </div>
     );
 }
 

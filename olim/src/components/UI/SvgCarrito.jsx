@@ -1,10 +1,10 @@
 import styles from "../../styles/carrito.module.css"
 const SvgCarrito = (props) => (
-    <li>
+    <div>
         <span className={`${styles.materialSymbolsOutlinedCarrito} material-symbols-outlined`}>
             shopping_cart
         </span>
-    </li>
+    </div>
 
 );
 
