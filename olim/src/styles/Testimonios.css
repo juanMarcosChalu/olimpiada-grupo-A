@@ -4,11 +4,11 @@
     width: 100%;
     place-items: center;
     height: 85%;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
+     grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+     gap: 3rem;
     position: relative;
     border-radius: 5px;
-
+    margin-top: 2.5rem;
 
     .testimonios-cards {
         color: #545651;
@@ -21,7 +21,8 @@
 
 .testimonios-background {
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
+    max-height: min-content;
 
     .descripcion-container {
         font-family: "Libre Baskerville", serif;

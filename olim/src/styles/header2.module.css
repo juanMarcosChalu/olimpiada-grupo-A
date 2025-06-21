@@ -158,3 +158,150 @@
     display: flex;
     
 }
+.navbar-logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.navbar-links a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.navbar-links a:hover {
+  color: #aaa;
+}
+
+/* HAMBURGUESA */
+.hamburguesa {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+}
+
+.hamburguesa span {
+  width: 25px;
+  height: 3px;
+  background: white;
+  transition: all 0.3s ease;
+}
+
+.hamburguesa {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 4px;
+  margin-left: 1rem;
+}
+
+.hamburguesa span {
+  width: 24px;
+  height: 3px;
+  background-color: #776b5d;
+  transition: all 0.3s ease;
+}
+
+.hamburguesa.open span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.hamburguesa.open span:nth-child(2) {
+  opacity: 0;
+}
+.hamburguesa.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+.open{
+    position: absolute;
+    top: 20px;
+    left: 100vw;
+    
+    transform: translateX(-200%);
+    z-index: 100000;
+    span{
+        background-color: black;
+    }
+}
+.navbarLinks {
+  display: none;
+  flex-direction: column;
+  background-color: #9c9993;
+
+  padding: 1rem;
+  left: 100vw;
+  width: 50vw;
+  transform: translateX(-100%);
+  position: fixed;
+  top: 0%;
+  height: 100vh;
+  z-index: 999;
+  gap: 0.5rem;
+  padding-top: 10%;
+}
+
+.navbarLinks a {
+
+      color: rgb(26, 25, 25);
+    
+font-size: 1.4rem;
+  text-decoration: none;
+  padding: 0.5rem 0;
+  transition: color 0.3s;
+  &:hover{
+    color: #30281f;
+  }
+}
+
+.navbarLinks a:hover {
+  color: #ccc;
+}
+
+.active {
+  display: flex;
+}
+
+/* Mostrar hamburguesa solo en pantallas pequeñas */
+@media (max-width: 768px) {
+  .hamburguesa {
+    display: flex;
+  }
+  .navbarPc{
+    display: none !important;
+  }
+  .navigation{
+    align-items: center;
+  
+   
+  }
+   .header{
+        height: 10vh;
+        justify-content: space-between;
+        
+        padding: 0;
+        padding-left: 2rem;
+        padding-right: 2rem;
+        &::after{
+            width: 100%;
+            left: 0;
+        }
+    }
+    .navbuttons{
+        font-size: 1rem
+    }
+    .logocontainer{
+        img{
+            width: 50px;
+            height: auto;
+        }
+    }
+}
+
+
+
+

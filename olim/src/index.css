@@ -2,11 +2,11 @@
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-  width: 100vw;
+  width: 100%;
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   caret-color: transparent;
-  height: 100vh;
+  height:max-content;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -18,5 +18,8 @@
     margin: 0;
    
   }
+}
+body{
+ width: 100vw;
 }
 
