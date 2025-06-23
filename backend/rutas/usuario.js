@@ -38,6 +38,37 @@ router.post("/registro", (req, res) => {
   });
 });
 
+router.post('/login', (req, res) => {
+  const { correo, contrasena } = req.body;
+
+  if (!correo || !contrasena) {
+    return res.status(400).json({ message: 'Todos los campos son obligatorios' });
+  }
+
+  db.query('SELECT * FROM usuarios WHERE correo = ?', [correo], (err, results) => {
+    if (err) return res.status(500).json({ message: 'Error de servidor' });
+    if (results.length === 0) {
+      return res.status(401).json({ message: 'Correo no registrado' });
+    }
+
+    const usuario = results[0];
+
+    if (usuario.contrasena !== contrasena) { // En producción usa bcrypt
+      return res.status(401).json({ message: 'Contraseña incorrecta' });
+    }
+
+    req.session.usuario = {
+      id: usuario.id,
+      nombre: usuario.nombre,
+      correo: usuario.correo,
+      rol: usuario.rol,
+    };
+
+    res.json({ message: 'Login exitoso', usuario: req.session.usuario });
+  });
+});
+
+
 router.get("/usuario-actual", (req, res) => {
   if (req.session.usuario) {
     return res.json(req.session.usuario);

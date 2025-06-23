@@ -4,32 +4,39 @@ const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [usuario, setUsuario] = useState(null);
-  const [loading, setLoading] = useState(true); // opcional
+  const [loading, setLoading] = useState(true); // para saber si está cargando
 
   useEffect(() => {
-    // Verificar sesión al cargar
     fetch("http://localhost:3000/usuario/usuario-actual", {
       method: "GET",
-      credentials: "include" // importante para que mande la cookie
+      credentials: "include",
     })
-      .then(res => {
-        if (!res.ok) throw new Error();
-        return res.json();
+      .then(async (res) => {
+        if (res.ok) {
+          const data = await res.json();
+          setUsuario(data);
+        } else {
+          // 401 o 403 → simplemente no hay sesión, lo ignoramos
+          setUsuario(null);
+        }
       })
-      .then(data => {
-        setUsuario(data);
-      })
-      .catch(() => {
-        setUsuario(null); // no hay sesión
-      })
-      .finally(() => setLoading(false));
+     .catch((error) => {
+  if (error.name !== "AbortError") {
+    console.error("Error al verificar sesión:", error);
+  }
+})
+
+      .finally(() => {
+        setLoading(false);
+      });
   }, []);
 
   const login = (datosUsuario) => setUsuario(datosUsuario);
+
   const logout = () => {
     fetch("http://localhost:3000/usuarios/logout", {
       method: "POST",
-      credentials: "include"
+      credentials: "include",
     }).then(() => setUsuario(null));
   };
 
