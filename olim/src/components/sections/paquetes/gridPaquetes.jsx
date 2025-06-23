@@ -10,43 +10,9 @@ import image_of_venecia from '../../../assets/venecia.jpeg';
 import image_of_bali from '../../../assets/bali.jpg';
 import image_of_praga from '../../../assets/praga.jpg';
 
-import image_disney from '../../../assets/disney.jpg';
-import image_riviera from '../../../assets/rivieramaya.jpg';
-import image_universal from '../../../assets/universal.jpg';
-import image_sandiego from '../../../assets/sandiego.jpg';
-import image_londres from '../../../assets/londres.jpg';
-import image_bari from '../../../assets/bariloche.jpg';
-
-import image_chiapas from '../../../assets/chiapas.jpg';
-import image_calafate from '../../../assets/calafate.jpg';
-import image_canoncobre from '../../../assets/cañon.jpeg';
-import image_alpes from '../../../assets/alpes.jpg';
-import image_acatenango from '../../../assets/volcan.jpg';
-import image_islandia from '../../../assets/islandia.jpg';
-
-import image_valledeuco from '../../../assets/valledeuco.jpg';
-import image_ibera from '../../../assets/ibera.jpeg';
-import image_paine from '../../../assets/torresdelpaine.jpg';
-import image_siankaan from '../../../assets/siankaan.jpeg';
-import image_amazonas from '../../../assets/amazonas.jpg';
-import image_fiordos from '../../../assets/fiordos.jpg';
-
-import image_ubud from '../../../assets/ubud.jpg';
-import image_maldivas from '../../../assets/maldivas.jpg';
-import image_arenal from '../../../assets/arenal.jpeg';
-import image_lagunas from '../../../assets/lagunasislandia.jpg';
-import image_sanmiguel from '../../../assets/sanmiguel.jpg';
-import image_tulum from '../../../assets/tulum.jpg';
-
-import image_marrakech from '../../../assets/marrakech.jpg';
-import image_roma from '../../../assets/roma.jpg';
-import image_machuPicchu from '../../../assets/machuPicchu.jpg';
-import image_edimburgo from '../../../assets/edimburgo.jpg';
-import image_valledelloira from '../../../assets/valledelloira.jpg';
-import image_elcairo from '../../../assets/elcairo.jpeg';
 
 
-function GridPaquetes() {
+function GridPaquetes(tipoPaquete) {
   const [paquetes, setPaquetes] = useState([]);
   const [modalAbierta, setModalAbierta] = useState(false);
   const [paqueteSeleccionado, setPaqueteSeleccionado] = useState(null);
@@ -54,7 +20,7 @@ function GridPaquetes() {
 
   useEffect(() => {
     const dataSimulada = [
-      // Románticos
+      
       {
         tipo: "romantico",
         titulo: "París, Francia – 5 días - 5 noches testi oara que baje esto xd",
@@ -295,237 +261,238 @@ function GridPaquetes() {
         ]
       },
 
-     {
-  tipo: "naturaleza",
-  titulo: "Valle de Uco, MZA — 4 días",
-  precio: "$390.000 ARS (Con vuelo)",
-  imagenSrc: image_valledeuco,
-  resumen: "📽️ Videos + 🏔️ Montañas",
-  detalleServicios: [
-    "Hotel de montaña",
-    "Excursiones a bodegas",
-    "Trekking en la cordillera",
-    "Guía local especializado"
-  ]
-},
-{
-  tipo: "naturaleza",
-  titulo: "Iberá, Corrientes — 4 días",
-  precio: "$370.000 ARS (Con vuelo)",
-  imagenSrc: image_ibera,
-  resumen: "🔭 Avistaje + 🛶 Canoa",
-  detalleServicios: [
-    "Hospedaje rural",
-    "Safari fotográfico",
-    "Recorridos en canoa",
-    "Avistaje de fauna autóctona"
-  ]
-},
-{
-  tipo: "naturaleza",
-  titulo: "Torres del Paine, CHI — 5 días",
-  precio: "$720.000 ARS (Con vuelo)",
-  imagenSrc: image_paine,
-  resumen: "🥾 Trekking + 🏞️ Miradores",
-  detalleServicios: [
-    "Refugio en el parque",
-    "Caminatas guiadas",
-    "Miradores panorámicos",
-    "Traslados desde Punta Arenas"
-  ]
-},
-{
-  tipo: "naturaleza",
-  titulo: "Sian Ka'an, MEX — 5 días",
-  precio: "$750.000 ARS (Con vuelo)",
-  imagenSrc: image_siankaan,
-  resumen: "🏝️ Eco-tour + 🐠 Fauna",
-  detalleServicios: [
-    "Eco-hotel",
-    "Navegación en lagunas",
-    "Snorkel con guía",
-    "Avistaje de delfines y aves"
-  ]
-},
-{
-  tipo: "naturaleza",
-  titulo: "Amazonas, Perú – 6 días",
-  precio: "$890.000 ARS (Con vuelo)",
-  imagenSrc: image_amazonas,
-  resumen: "🌴 Fauna + 🛶 Paseo río",
-  detalleServicios: [
-    "Lodge en la selva",
-    "Excursiones fluviales",
-    "Guías naturalistas",
-    "Visita a comunidades locales"
-  ]
-},
-{
-  tipo: "naturaleza",
-  titulo: "Fiordos, Noruega — 7 días", 
-  precio: "$2.200.000 ARS (Con vuelo)",
-  imagenSrc: image_fiordos,
-  resumen: "🛳️ Navegación + ❄️ Excursión",
-  detalleServicios: [
-    "Hotel con vista al fiordo",
-    "Crucero entre fiordos",
-    "Excursión a glaciares",
-    "Guía en español"
-  ]
-},
+      {
+        tipo: "naturaleza",
+        titulo: "Valle de Uco, MZA — 4 días",
+        precio: "$390.000 ARS (Con vuelo)",
+        imagenSrc: image_valledeuco,
+        resumen: "📽️ Videos + 🏔️ Montañas",
+        detalleServicios: [
+          "Hotel de montaña",
+          "Excursiones a bodegas",
+          "Trekking en la cordillera",
+          "Guía local especializado"
+        ]
+      },
+      {
+        tipo: "naturaleza",
+        titulo: "Iberá, Corrientes — 4 días",
+        precio: "$370.000 ARS (Con vuelo)",
+        imagenSrc: image_ibera,
+        resumen: "🔭 Avistaje + 🛶 Canoa",
+        detalleServicios: [
+          "Hospedaje rural",
+          "Safari fotográfico",
+          "Recorridos en canoa",
+          "Avistaje de fauna autóctona"
+        ]
+      },
+      {
+        tipo: "naturaleza",
+        titulo: "Torres del Paine, CHI — 5 días",
+        precio: "$720.000 ARS (Con vuelo)",
+        imagenSrc: image_paine,
+        resumen: "🥾 Trekking + 🏞️ Miradores",
+        detalleServicios: [
+          "Refugio en el parque",
+          "Caminatas guiadas",
+          "Miradores panorámicos",
+          "Traslados desde Punta Arenas"
+        ]
+      },
+      {
+        tipo: "naturaleza",
+        titulo: "Sian Ka'an, MEX — 5 días",
+        precio: "$750.000 ARS (Con vuelo)",
+        imagenSrc: image_siankaan,
+        resumen: "🏝️ Eco-tour + 🐠 Fauna",
+        detalleServicios: [
+          "Eco-hotel",
+          "Navegación en lagunas",
+          "Snorkel con guía",
+          "Avistaje de delfines y aves"
+        ]
+      },
+      {
+        tipo: "naturaleza",
+        titulo: "Amazonas, Perú – 6 días",
+        precio: "$890.000 ARS (Con vuelo)",
+        imagenSrc: image_amazonas,
+        resumen: "🌴 Fauna + 🛶 Paseo río",
+        detalleServicios: [
+          "Lodge en la selva",
+          "Excursiones fluviales",
+          "Guías naturalistas",
+          "Visita a comunidades locales"
+        ]
+      },
+      {
+        tipo: "naturaleza",
+        titulo: "Fiordos, Noruega — 7 días",
+        precio: "$2.200.000 ARS (Con vuelo)",
+        imagenSrc: image_fiordos,
+        resumen: "🛳️ Navegación + ❄️ Excursión",
+        detalleServicios: [
+          "Hotel con vista al fiordo",
+          "Crucero entre fiordos",
+          "Excursión a glaciares",
+          "Guía en español"
+        ]
+      },
 
-{
-  tipo: "relax",
-  titulo: "Ubud, Bali — 6 días",
-  precio: "$1.250.000 ARS (Con vuelo)",
-  imagenSrc: image_ubud,
-  resumen: "🌾 Arrozales + 🧘 Spa + 🍽️ Cena",
-  detalleServicios: [
-    "Resort entre arrozales",
-    "Sesión de spa y masajes",
-    "Cena gourmet balinesa",
-    "Clases de yoga al amanecer"
-  ]
-},
-{
-  tipo: "relax",
-  titulo: "Islas Maldivas — 7 días",
-  precio: "$2.400.000 ARS (Con vuelo)",
-  imagenSrc: image_maldivas,
-  resumen: "🏝️ Isla privada + 🧘 Masajes",
-  detalleServicios: [
-    "Villa sobre el agua",
-    "Masajes en la playa",
-    "Desayuno flotante",
-    "Atardeceres en catamarán"
-  ]
-},
-{
-  tipo: "relax",
-  titulo: "Arenal, Costa Rica — 6 días",
-  precio: "$810.000 ARS (Con vuelo)",
-  imagenSrc: image_arenal,
-  resumen: "🌋 Termas + 🏨 Hotel en selva",
-  detalleServicios: [
-    "Hotel inmerso en la selva",
-    "Baños termales naturales",
-    "Masajes relajantes",
-    "Comidas saludables"
-  ]
-},
-{
-  tipo: "relax",
-  titulo: "Lagunas de Islandia — 5 días",
-  precio: "$1.850.000 ARS (Con vuelo)",
-  imagenSrc: image_lagunas,
-  resumen: "💧 Blue Lagoon + 🧴 Spa",
-  detalleServicios: [
-    "Entrada a Blue Lagoon",
-    "Spa termal completo",
-    "Alojamiento en hotel nórdico",
-    "Avistaje de auroras boreales"
-  ]
-},
-{
-  tipo: "relax",
-  titulo: "San Miguel, México — 5 días",
-  precio: "$680.000 ARS (Con vuelo)",
-  imagenSrc: image_sanmiguel,
-  resumen: "🧖‍♀️ Termas + 🏨 Hotel colonial",
-  detalleServicios: [
-    "Hotel boutique colonial",
-    "Termas naturales",
-    "Terapias holísticas",
-    "Caminatas relajantes"
-  ]
-},
-{
-  tipo: "relax",
-  titulo: "Tulum, México — 6 días",
-  precio: "$740.000 ARS (Con vuelo)",
-  imagenSrc: image_tulum,
-  resumen: "🏖️ Playa + 🧘 Spa + 🍹 Hotel",
-  detalleServicios: [
-    "Resort frente al mar",
-    "Spa holístico y yoga",
-    "Cocktails en la playa",
-    "Excursión a cenotes"
-  ]
-},
+      {
+        tipo: "relax",
+        titulo: "Ubud, Bali — 6 días",
+        precio: "$1.250.000 ARS (Con vuelo)",
+        imagenSrc: image_ubud,
+        resumen: "🌾 Arrozales + 🧘 Spa + 🍽️ Cena",
+        detalleServicios: [
+          "Resort entre arrozales",
+          "Sesión de spa y masajes",
+          "Cena gourmet balinesa",
+          "Clases de yoga al amanecer"
+        ]
+      },
+      {
+        tipo: "relax",
+        titulo: "Islas Maldivas — 7 días",
+        precio: "$2.400.000 ARS (Con vuelo)",
+        imagenSrc: image_maldivas,
+        resumen: "🏝️ Isla privada + 🧘 Masajes",
+        detalleServicios: [
+          "Villa sobre el agua",
+          "Masajes en la playa",
+          "Desayuno flotante",
+          "Atardeceres en catamarán"
+        ]
+      },
+      {
+        tipo: "relax",
+        titulo: "Arenal, Costa Rica — 6 días",
+        precio: "$810.000 ARS (Con vuelo)",
+        imagenSrc: image_arenal,
+        resumen: "🌋 Termas + 🏨 Hotel en selva",
+        detalleServicios: [
+          "Hotel inmerso en la selva",
+          "Baños termales naturales",
+          "Masajes relajantes",
+          "Comidas saludables"
+        ]
+      },
+      {
+        tipo: "relax",
+        titulo: "Lagunas de Islandia — 5 días",
+        precio: "$1.850.000 ARS (Con vuelo)",
+        imagenSrc: image_lagunas,
+        resumen: "💧 Blue Lagoon + 🧴 Spa",
+        detalleServicios: [
+          "Entrada a Blue Lagoon",
+          "Spa termal completo",
+          "Alojamiento en hotel nórdico",
+          "Avistaje de auroras boreales"
+        ]
+      },
+      {
+        tipo: "relax",
+        titulo: "San Miguel, México — 5 días",
+        precio: "$680.000 ARS (Con vuelo)",
+        imagenSrc: image_sanmiguel,
+        resumen: "🧖‍♀️ Termas + 🏨 Hotel colonial",
+        detalleServicios: [
+          "Hotel boutique colonial",
+          "Termas naturales",
+          "Terapias holísticas",
+          "Caminatas relajantes"
+        ]
+      },
+      {
+        tipo: "relax",
+        titulo: "Tulum, México — 6 días",
+        precio: "$740.000 ARS (Con vuelo)",
+        imagenSrc: image_tulum,
+        resumen: "🏖️ Playa + 🧘 Spa + 🍹 Hotel",
+        detalleServicios: [
+          "Resort frente al mar",
+          "Spa holístico y yoga",
+          "Cocktails en la playa",
+          "Excursión a cenotes"
+        ]
+      },
 
-  {
-    tipo: "cultural",
-    titulo: "Marrakech, MAR — 6 días",
-    precio: "$910.000 ARS (Con vuelo)",
-    imagenSrc: image_marrakech,
-    resumen: "🕌 Medinas + 🛍️ Mercados",
-    detalleServicios: [
-      "Tours por medinas históricas",
-      "Visita a mercados tradicionales",
-      "Cena en restaurante local",
-    ],
-  },
-  {
-    tipo: "cultural",
-    titulo: "Roma, Italia — 5 días",
-    precio: "$870.000 ARS (Con vuelo)",
-    imagenSrc: image_roma,
-    resumen: "🏛️ Ruinas + 🍝 Gastronomía",
-    detalleServicios: [
-      "Visita al Coliseo",
-      "Tour gastronómico por la ciudad",
-      "Museos y galerías incluidas",
-    ],
-  },
-  {
-    tipo: "cultural",
-    titulo: "Machu Picchu, Perú — 5 días",
-    precio: "$930.000 ARS (Con vuelo)",
-    imagenSrc: image_machuPicchu,
-    resumen: "🏞️ Ruinas + 🥾 Trekking",
-    detalleServicios: [
-      "Entrada y guía oficial a Machu Picchu",
-      "Trekking acompañado",
-      "Hospedaje incluido",
-    ],
-  },
-  {
-    tipo: "cultural",
-    titulo: "Edimburgo, Escocia — 5 días",
-    precio: "$950.000 ARS (Con vuelo)",
-    imagenSrc: image_edimburgo,
-    resumen: "🏰 Castillos + 🎭 Festivales",
-    detalleServicios: [
-      "Visitas a castillos históricos",
-      "Entradas a festivales culturales",
-      "Tour por la ciudad y museos",
-    ],
-  },
-  {
-    tipo: "cultural",
-    titulo: "Valle del Loira, FRA — 6 días",
-    precio: "$1.100.000 ARS (Con vuelo)",
-    imagenSrc: image_valledelloira,
-    resumen: "🏰 Castillos + 🍇 Viñedos",
-    detalleServicios: [
-      "Tour por castillos emblemáticos",
-      "Visita a viñedos con degustación",
-      "Hospedaje en cabañas tradicionales",
-    ],
-  },
-  {
-    tipo: "cultural",
-    titulo: "El Cairo, Egipto — 6 días",
-    precio: "$900.000 ARS (Con vuelo)",
-    imagenSrc: image_elcairo,
-    resumen: "🕌 Pirámides + 🏺 Museos",
-    detalleServicios: [
-      "Entrada a pirámides de Giza",
-      "Visita a museos arqueológicos",
-      "Guía turístico especializado",
-    ],
-  },
-];
+      {
+        tipo: "cultural",
+        titulo: "Marrakech, MAR — 6 días",
+        precio: "$910.000 ARS (Con vuelo)",
+        imagenSrc: image_marrakech,
+        resumen: "🕌 Medinas + 🛍️ Mercados",
+        detalleServicios: [
+          "Tours por medinas históricas",
+          "Visita a mercados tradicionales",
+          "Cena en restaurante local",
+        ],
+      },
+      {
+        tipo: "cultural",
+        titulo: "Roma, Italia — 5 días",
+        precio: "$870.000 ARS (Con vuelo)",
+        imagenSrc: image_roma,
+        resumen: "🏛️ Ruinas + 🍝 Gastronomía",
+        detalleServicios: [
+          "Visita al Coliseo",
+          "Tour gastronómico por la ciudad",
+          "Museos y galerías incluidas",
+        ],
+      },
+      {
+        tipo: "cultural",
+        titulo: "Machu Picchu, Perú — 5 días",
+        precio: "$930.000 ARS (Con vuelo)",
+        imagenSrc: image_machuPicchu,
+        resumen: "🏞️ Ruinas + 🥾 Trekking",
+        detalleServicios: [
+          "Entrada y guía oficial a Machu Picchu",
+          "Trekking acompañado",
+          "Hospedaje incluido",
+        ],
+      },
+      {
+        tipo: "cultural",
+        titulo: "Edimburgo, Escocia — 5 días",
+        precio: "$950.000 ARS (Con vuelo)",
+        imagenSrc: image_edimburgo,
+        resumen: "🏰 Castillos + 🎭 Festivales",
+        detalleServicios: [
+          "Visitas a castillos históricos",
+          "Entradas a festivales culturales",
+          "Tour por la ciudad y museos",
+        ],
+      },
+      {
+        tipo: "cultural",
+        titulo: "Valle del Loira, FRA — 6 días",
+        precio: "$1.100.000 ARS (Con vuelo)",
+        imagenSrc: image_valledelloira,
+        resumen: "🏰 Castillos + 🍇 Viñedos",
+        detalleServicios: [
+          "Tour por castillos emblemáticos",
+          "Visita a viñedos con degustación",
+          "Hospedaje en cabañas tradicionales",
+        ],
+      },
+      {
+        tipo: "cultural",
+        titulo: "El Cairo, Egipto — 6 días",
+        precio: "$900.000 ARS (Con vuelo)",
+        imagenSrc: image_elcairo,
+        resumen: "🕌 Pirámides + 🏺 Museos",
+        fondo:"#000000",
+        detalleServicios: [
+          "Entrada a pirámides de Giza",
+          "Visita a museos arqueológicos",
+          "Guía turístico especializado",
+        ],
+      },
+    ];
 
     dataSimulada.forEach(element => {
       if (element.tipo === "romantico") {
@@ -538,7 +505,7 @@ function GridPaquetes() {
         element.fondo = "#B1C387";
       } else if (element.tipo === "relax") {
         element.fondo = "#AFC1C4";
-      } else if (element.tipo === "cultural") {
+      } else if (element.tipo === "cultu2ral") {
         element.fondo = "#B88C84";
       }
 
@@ -547,17 +514,7 @@ function GridPaquetes() {
     setPaquetes(dataSimulada);
   }, []);
 
-  useEffect(() => {
-    if (location.hash) {
-      const id = location.hash.replace("#", "");
-      const element = document.getElementById(id);
-      if (element) {
-        setTimeout(() => {
-          element.scrollIntoView({ behavior: "smooth" });
-        }, 0);
-      }
-    }
-  }, [location]);
+ 
 
   const abrirModal = (paquete) => {
     setPaqueteSeleccionado(paquete);
@@ -598,26 +555,26 @@ function GridPaquetes() {
       <section id="naturaleza">
         <div className="grid-paquetes">
           {paquetes.filter(p => p.tipo === "naturaleza").map((paquete, index) => (
-          <CardPaquetes key={index} {...paquete} onVerMas={() => abrirModal(paquete)} />
-        ))}
-      </div>
-    </section>
+            <CardPaquetes key={index} {...paquete} onVerMas={() => abrirModal(paquete)} />
+          ))}
+        </div>
+      </section>
 
-    <section id="relax">
-      <div className="grid-paquetes">
-        {paquetes.filter(p => p.tipo === "relax").map((paquete, index) => (
-          <CardPaquetes key={index} {...paquete} onVerMas={() => abrirModal(paquete)} />
-      ))}
-     </div>
-   </section>
-   
-   <section id="culturales">
-    <div className="grid-paquetes">
-    {paquetes.filter(p => p.tipo === "cultural").map((paquete, index) => (
-      <CardPaquetes key={index} {...paquete} onVerMas={() => abrirModal(paquete)} />
-    ))}
-    </div>
-  </section>
+      <section id="relax">
+        <div className="grid-paquetes">
+          {paquetes.filter(p => p.tipo === "relax").map((paquete, index) => (
+            <CardPaquetes key={index} {...paquete} onVerMas={() => abrirModal(paquete)} />
+          ))}
+        </div>
+      </section>
+
+      <section id="culturales">
+        <div className="grid-paquetes">
+          {paquetes.filter(p => p.tipo === "cultural").map((paquete, index) => (
+            <CardPaquetes key={index} {...paquete} onVerMas={() => abrirModal(paquete)} />
+          ))}
+        </div>
+      </section>
 
 
 

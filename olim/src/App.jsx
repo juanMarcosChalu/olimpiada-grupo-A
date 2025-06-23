@@ -22,7 +22,7 @@ import SectionsCarrito from "./components/sections/carrito/SectionsCarrito.jsx"
 import Registro from "./components/sections/login/Registro.jsx";
 import Contacto from "./components/sections/contactanos/contacto.jsx";
 import Login from "./components/sections/login/login.jsx";
-
+import GridPaquetes2 from "./components/sections/paquetes/gridcopia.jsx";
 function App() {
 
   const [packages, setPackages] = useState([
@@ -110,7 +110,7 @@ function App() {
 
               ]} />
 
-            <GridPaquetes />
+            <GridPaquetes2 />
             <Footer />
           </>
 
