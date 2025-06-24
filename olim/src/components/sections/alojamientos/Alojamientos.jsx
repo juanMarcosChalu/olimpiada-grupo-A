@@ -22,6 +22,11 @@ export default function Alojamientos() {
   const [alojamientoSeleccionado, setAlojamientoSeleccionado] = useState(null);
   const [favoritos, setFavoritos] = useState([]);
   const [mensaje, setMensaje] = useState("");
+  const [descripcionesExpand, setDescripcionesExpand] = useState({});
+
+  // Estados para notificación flotante de favoritos
+  const [mensajeFavorito, setMensajeFavorito] = useState("");
+  const [mostrarMensajeFavorito, setMostrarMensajeFavorito] = useState(false);
 
   const [reserva, setReserva] = useState({
     nombre: "",
@@ -33,44 +38,50 @@ export default function Alojamientos() {
     {
       id: 1,
       nombre: "Cabañas Los Arrayanes",
-      descripcion: "Vista al lago · Hasta 5 personas · Cocina completa",
+      descripcion:
+        "Vista al lago · Hasta 5 personas · Cocina completa. Disfrutá de una estadía inolvidable en nuestras cabañas completamente equipadas, con todas las comodidades y una vista espectacular al lago.",
       precio: "$312.000 ARS · 7 noches",
-      imagenes: [image_of_cabañas_lago, image_of_cabañas_lago, image_of_cabañas_lago],
+      imagenes: [image_of_departamento, image_of_cabañas_lago, image_of_depto_catedral],
     },
     {
       id: 2,
       nombre: "Departamento Bariloche",
-      descripcion: "Centro Cívico · Para 2 personas · Wi-Fi gratis",
+      descripcion:
+        "Centro Cívico · Para 2 personas · Wi-Fi gratis. Departamento cómodo, céntrico y con acceso a todos los servicios. Ideal para parejas o viajeros solos.",
       precio: "$278.000 ARS · 7 noches",
-      imagenes: [image_of_departamento, image_of_departamento, image_of_departamento],
+      imagenes: [image_of_depto_catedral, image_of_depto_patagonia, image_of_departamento],
     },
     {
       id: 3,
       nombre: "Hostel Patagonia",
-      descripcion: "Para 1-4 personas · Baño privado",
+      descripcion:
+        "Para 1-4 personas · Baño privado · Wi-Fi incluido. Ambiente relajado y seguro, con todas las facilidades para una estadía económica y confortable.",
       precio: "$180.000 ARS · 7 noches",
-      imagenes: [image_of_depto_patagonia, image_of_depto_patagonia, image_of_depto_patagonia],
+      imagenes: [image_of_depto_patagonia, image_of_departamento, image_of_cabañas_lago],
     },
     {
       id: 4,
       nombre: "EcoLodge del Bosque",
-      descripcion: "Rodeado de naturaleza · Piscina climatizada",
+      descripcion:
+        "Rodeado de naturaleza · Piscina climatizada. Un lugar único para desconectarte y disfrutar de la naturaleza con todas las comodidades.",
       precio: "$350.000 ARS · 7 noches",
-      imagenes: [image_of_cabañas_lago, image_of_cabañas_lago, image_of_cabañas_lago],
+      imagenes: [image_of_cabañas_lago, image_of_depto_catedral, image_of_depto_patagonia],
     },
     {
       id: 5,
       nombre: "Suite Panorámica",
-      descripcion: "Vista a la montaña · Jacuzzi privado",
+      descripcion:
+        "Vista a la montaña · Jacuzzi privado · Balcón. Disfrutá de un lujo sin igual con vistas panorámicas y todas las comodidades que merecés.",
       precio: "$420.000 ARS · 7 noches",
-      imagenes: [image_of_depto_catedral, image_of_depto_catedral, image_of_depto_catedral],
+      imagenes: [image_of_departamento, image_of_cabañas_lago, image_of_depto_patagonia],
     },
     {
       id: 6,
       nombre: "Cabaña Familiar Andina",
-      descripcion: "Ideal para grupos grandes · Parrilla",
+      descripcion:
+        "Ideal para grupos grandes · Parrilla · Amplio jardín. Espacios amplios y cómodos para que toda la familia disfrute de una estadía inolvidable.",
       precio: "$299.000 ARS · 7 noches",
-      imagenes: [image_of_departamento, image_of_departamento, image_of_departamento],
+      imagenes: [image_of_depto_catedral, image_of_departamento, image_of_cabañas_lago],
     },
   ];
 
@@ -104,21 +115,37 @@ export default function Alojamientos() {
       setMensaje("Completá todos los campos.");
       return;
     }
-    // Simulación de redirección al carrito
-    console.log("Reserva confirmada. Datos enviados al carrito:", {
-      ...reserva,
-      alojamiento: alojamientoSeleccionado,
-    });
     setMensaje("¡Reserva confirmada! Redirigiendo al carrito...");
     setTimeout(() => {
-      window.location.href = "/carrito"; // Ajustar según tu ruta real
+      window.location.href = "/carrito";
     }, 1500);
   };
 
+  const mostrarMensaje = (texto) => {
+    setMensajeFavorito(texto);
+    setMostrarMensajeFavorito(true);
+    setTimeout(() => {
+      setMostrarMensajeFavorito(false);
+    }, 2000);
+  };
+
   const toggleFavorito = (id) => {
-    setFavoritos((prev) =>
-      prev.includes(id) ? prev.filter((fav) => fav !== id) : [...prev, id]
-    );
+    setFavoritos((prev) => {
+      if (prev.includes(id)) {
+        mostrarMensaje("Eliminado de favoritos");
+        return prev.filter((fav) => fav !== id);
+      } else {
+        mostrarMensaje("Agregado a favoritos");
+        return [...prev, id];
+      }
+    });
+  };
+
+  const toggleDescripcion = (id) => {
+    setDescripcionesExpand((prev) => ({
+      ...prev,
+      [id]: !prev[id],
+    }));
   };
 
   return (
@@ -142,7 +169,9 @@ export default function Alojamientos() {
             value={busqueda.personas}
             onChange={(e) => setBusqueda({ ...busqueda, personas: e.target.value })}
           >
-            <option value="">Cantidad de personas</option>
+            <option value="" disabled>
+              Cantidad de personas
+            </option>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -171,23 +200,56 @@ export default function Alojamientos() {
             {alojamientosData.map((a) => (
               <div className="card" key={a.id}>
                 <div className="carousel-container">
-                  <Carousel showThumbs={false} showStatus={false} infiniteLoop autoPlay>
+                  <Carousel
+                    showThumbs={false}
+                    showStatus={false}
+                    infiniteLoop
+                    autoPlay
+                    interval={3000}
+                    stopOnHover={true}
+                    swipeable={true}
+                  >
                     {a.imagenes.map((img, index) => (
                       <div key={index}>
                         <img src={img} alt={`Alojamiento ${a.nombre} ${index + 1}`} />
                       </div>
                     ))}
                   </Carousel>
-                  <div className="heart-icon" onClick={() => toggleFavorito(a.id)}>
-                    {favoritos.includes(a.id) ? <FaHeart color="#E74C3C" /> : <FaRegHeart />}
+                  <div
+                    className="heart-icon"
+                    onClick={() => toggleFavorito(a.id)}
+                    aria-label="Agregar a favoritos"
+                  >
+                    {favoritos.includes(a.id) ? (
+                      <FaHeart color="#E74C3C" />
+                    ) : (
+                      <FaRegHeart />
+                    )}
                   </div>
                 </div>
-                <h4>{a.nombre}</h4>
-                <p>{a.descripcion}</p>
-                <p>
-                  <strong>{a.precio}</strong>
-                </p>
-                <button onClick={() => abrirModal(a)}>Siguiente</button>
+
+                <div className="card-info">
+                  <h4>{a.nombre}</h4>
+                  <p
+                    className={
+                      descripcionesExpand[a.id] ? "descripcion expandido" : "descripcion"
+                    }
+                  >
+                    {a.descripcion}
+                  </p>
+                  <button
+                    onClick={() => toggleDescripcion(a.id)}
+                    className="ver-mas-btn"
+                  >
+                    {descripcionesExpand[a.id] ? "Ver menos" : "Ver más"}
+                  </button>
+                  <p>
+                    <strong>{a.precio}</strong>
+                  </p>
+                  <button onClick={() => abrirModal(a)} className="siguiente">
+                    Siguiente
+                  </button>
+                </div>
               </div>
             ))}
           </div>
@@ -228,6 +290,13 @@ export default function Alojamientos() {
             {mensaje && <p className="form-message">{mensaje}</p>}
             <button onClick={cerrarModal}>Cerrar</button>
           </div>
+        </div>
+      )}
+
+      {/* Mensaje flotante para favoritos */}
+      {mostrarMensajeFavorito && (
+        <div className="mensaje-favorito-flotante">
+          {mensajeFavorito}
         </div>
       )}
     </div>
