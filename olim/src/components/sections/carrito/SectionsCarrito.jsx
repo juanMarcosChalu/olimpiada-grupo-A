@@ -4,7 +4,6 @@ import styles from "../../../styles/SectionCarrito.module.css";
 function SectionsCarrito() {
 
     return (
-
         <section className={styles.carritoSection}>
 
             <aside className={styles.asideProductos}>

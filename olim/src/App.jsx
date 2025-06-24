@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 
 import "./App.css";
-
+import './index.css';
 import SectionHome from "./components/sections/home/SectionHome.jsx";
 import Carousel from "./components/sections/carusel/carusel.jsx";
 import Busqueda from "./components/sections/busqueda/busqueda.jsx";
