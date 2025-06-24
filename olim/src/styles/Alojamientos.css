@@ -1,37 +1,64 @@
-/* Alojamientos.css */
 .alojamiento-container {
-  max-width: 900px;
-  margin: auto;
-  padding: 2rem;
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #fff;
+  max-width: 100%;
+  min-height: 100vh;
+  padding: 3rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Open Sans', sans-serif;
   color: #3a2e25;
+  transition: background 0.3s ease;
 }
 
+/* Solo aplica la imagen de fondo cuando no hay resultados */
+.alojamiento-container.con-fondo {
+  background-image: url('../assets/alojamientos.jpg'); /* Asegurate del path correcto */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Fondo liso al mostrar resultados */
+.alojamiento-container.sin-fondo {
+  background-color: #F3EEEA;
+}
+
+
 .form-box {
-  background-color: #f7ecdc;
-  padding: 1.5rem;
+  background-color: rgba(243, 238, 234, 0.92);
+  padding: 2rem 2.5rem;
   border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
   text-align: center;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+.form-box h3 {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 1.5rem;
+  margin-bottom: 1.2rem;
 }
 
 .form-box input,
 .form-box select {
-  width: 90%;
-  margin: 0.5rem 0;
+  width: 100%;
   padding: 0.6rem;
-  border: 1px solid #ccc;
+  margin: 0.4rem 0;
+  border: 1px solid  #F3EEEA;
   border-radius: 8px;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .form-box button {
+  margin-top: 1rem;
   background-color: #876445;
-  color: #fff;
-  padding: 0.7rem 1.2rem;
+  color: white;
+  padding: 0.6rem 1.2rem;
   border: none;
   border-radius: 8px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .form-box button:hover {
@@ -46,15 +73,123 @@
 
 .grid-alojamientos {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 1.5rem;
-  margin-top: 1rem;
+  max-width: 960px;
+  margin-top: 2rem;
+  width: 100%;
 }
 
 .card {
-  background: #f5f5f5;
+  background-color:  #F3EEEA;
   padding: 1rem;
-  border-radius: 10px;
-  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   text-align: left;
+}
+
+.card h4 {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: #4c382d;
+}
+
+.card p {
+  margin: 0.3rem 0;
+}
+
+.card button {
+  margin-top: 0.5rem;
+  background-color: #876445;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.card button:hover {
+  background-color: #6f553e;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  background:  #F3EEEA;
+  padding: 2rem;
+  border-radius: 14px;
+  width: 90%;
+  max-width: 420px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.modal h3 {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.modal input {
+  width: 90%;
+  padding: 0.6rem;
+  margin: 0.4rem 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.modal button {
+  margin-top: 0.5rem;
+  background-color: #876445;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.modal button:hover {
+  background-color: #6f553e;
+}
+
+.carousel-container {
+  position: relative;
+}
+
+.carousel-container img {
+  border-radius: 12px;
+  height: 180px;
+  object-fit: cover;
+  width: 100%;
+}
+
+.heart-icon {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 1.2rem;
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 6px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 2;
+  transition: transform 0.2s ease;
+}
+
+.heart-icon:hover {
+  transform: scale(1.1);
 }
