@@ -1,0 +1,146 @@
+main {
+    position: relative;
+    background-color: #F3EEEA;
+    padding: 0%;
+    margin: 0%;
+    width: 100%;
+    height: 100vh;
+}
+
+.headAsistencia {
+    position: relative;
+    display: flex;
+    font-family: "Open Sans";
+    color: #776B5D;
+    font-size: 1.3rem;
+    font-weight: bold;
+    text-align: justify;
+    justify-content: center;
+    width: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 3rem 0 1.5rem 0;
+}
+
+.entradasAsistencia {
+    transform: translateX(-30%);
+    position: relative;
+    display: flex;
+    justify-content: start;
+    gap: 3rem;
+    max-width: 80%;
+    height: 3rem;
+    max-height: 3rem;
+    left: 50%;
+    align-items: center;
+}
+
+.entradasAsistencia input[type="text"] {
+    border: none;
+    width: 15%;
+    border-radius: 7px;
+    padding: 8px;
+    color: #776B5D;
+    text-align: center;
+    font-size: 1.2rem;
+
+}
+
+.entradasAsistencia input[type="button"] {
+    position: relative;
+    height: 2rem;
+    width: 15%;
+    font-size: 1rem;
+    border: none;
+    border-radius: 999px;
+    background-color: #776B5D;
+    color: #fff;
+}
+
+.cardsAsistencia {
+    position: relative;
+    width: 100%;
+    display: grid;
+    place-items: center;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-top: 1rem;
+}
+
+.planBasico {
+    background-color: white;
+    position: relative;
+    border: 1px solid black;
+    width: 60%;
+    height: 100%;
+}
+
+.planBasico h1 {
+    width: 100%;
+    text-align: center;
+    padding: 1rem 0 1rem 0;
+}
+
+.planBasico h2 {
+    width: 100%;
+    text-align: center;
+    padding: 0 0 1rem 0;
+}
+
+.planBasico p {
+    width: 100%;
+    text-align: start;
+    padding: 0 0 0 1rem;
+    font-family: "Open Sans";
+    font-size: 1.2rem;
+}
+
+.planBasico input[type="button"] {
+    position: relative;
+    display: flex;
+    place-items: center;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.planEstandar {
+    background-color: white;
+    position: relative;
+    border: 1px solid black;
+    place-content: center;
+    width: 60%;
+    height: 100%;
+}
+
+.planEstandar input[type="button"] {
+    position: relative;
+    display: flex;
+    place-items: center;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.planPremium {
+    background-color: white;
+    position: relative;
+    border: 1px solid black;
+    place-content: center;
+    width: 60%;
+    height: 100%;
+}
+
+.planPremium input[type="button"] {
+    position: relative;
+    display: flex;
+    place-items: center;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+
+ol {
+    list-style-type: none;
+}
+
+.containerButton{
+    position: relative;
+}

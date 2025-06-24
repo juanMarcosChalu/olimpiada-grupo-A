@@ -44,14 +44,18 @@ function SectionsCarrito() {
                     </section>
                 </article>
 
-                <article className={styles.articlePago}>
+                {/* cambiar estos li para que eligan el metodo de pago  */}
+                
+                {/*<article className={styles.articlePago}>
                     <h1>ELEGÍ TU FORMA DE PAGO</h1>
                     <ol>
-                        <li></li>
-                        <li></li>
+                        <li>Transferencia bancaria</li>
+                        <li>Targeta de credito/efectivo</li>
                     </ol>
-                    <button className={styles.botonCompra2}>ELEGÍ TU FORMA DE PAGO</button>
-                </article>
+                    <button className={styles.botonCompra2}>Pagar con mercado pago</button>
+                </article>   */}
+
+
 
             </aside>
         </section>
