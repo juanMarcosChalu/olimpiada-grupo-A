@@ -21,6 +21,7 @@ import SectionsCarrito from "./components/sections/carrito/SectionsCarrito.jsx";
 import Contacto from "./components/sections/contactanos/contacto.jsx";
 import Login from "./components/sections/login/login.jsx";
 import Alojamientos from "./components/sections/alojamientos/Alojamientos.jsx";
+import AlquilerAutos from "./components/sections/alquilerdeautos/AlquilerAutos.jsx";
 import GridPaquetes from "./components/sections/paquetes/gridPaquetes.jsx";
 
 function App() {
@@ -129,7 +130,7 @@ function App() {
           </>
         } />
 
-        <Route path='/alquileres' element={
+              <Route path='/alquileres' element={
           <>
             <Header
               title={<h1>Alquileres de Auto</h1>}
@@ -138,7 +139,7 @@ function App() {
                 <ServiciosMenu key="servicios" />,
               ]}
             />
-            {/* Aquí puedes poner tu componente para alquileres */}
+            <AlquilerAutos />
             <Footer />
           </>
         } />
