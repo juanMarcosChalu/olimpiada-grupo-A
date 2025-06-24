@@ -2,10 +2,11 @@
   width: 300px;
   background-color: #726454; /* marrón */
   border-radius: 10px;
-  padding: 30px 20px 20px;
+  padding: 30px 20px 20px !important;
   position: relative;
   text-align: center;
   font-family: sans-serif;
+  
 }
 
 .avatar {
@@ -31,7 +32,7 @@
 .card-content {
   background-color: #e7e0d5;
   border-radius: 10px;
-  padding: 20px;
+  padding: 20px !important;
   text-align: left;
   strong{
     color: #333;

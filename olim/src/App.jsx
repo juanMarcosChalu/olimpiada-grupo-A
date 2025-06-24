@@ -21,6 +21,7 @@ import SectionsCarrito from "./components/sections/carrito/SectionsCarrito.jsx";
 import Contacto from "./components/sections/contactanos/contacto.jsx";
 import Login from "./components/sections/login/login.jsx";
 import Alojamientos from "./components/sections/alojamientos/Alojamientos.jsx";
+import GridPaquetes from "./components/sections/paquetes/gridPaquetes.jsx";
 
 function App() {
   return (
@@ -63,6 +64,7 @@ function App() {
               ]}
             />
             <GridPaquetes2 />
+            <GridPaquetes/>
             <Footer />
           </>
         } />
