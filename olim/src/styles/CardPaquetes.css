@@ -1,14 +1,17 @@
 .paquetes-card {
   place-items: center;
   position: relative;
-  background-color: blanchedalmond;
   width: 90%;
   height: 65vh;
-
+  color: white;
   left: 50%;
   transform: translateX(-50%);
-
-  .foto-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 0.4rem;
+   .foto-card {
     position: relative;
 
     width: 100%;
@@ -99,7 +102,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
+  
+  
   button {
     background-color: white;
     border: none;

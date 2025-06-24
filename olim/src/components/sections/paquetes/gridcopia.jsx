@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useFetch } from "../../../hooks/useFetch.js"; // Asegurate de importar tu hook
 import CardPaquetes from "../../UI/CardPaquetes.jsx";
+import '../../../styles/GridPaquetes.css';
 const coloresPorTipo = {
     romantico: "#E3B4B4",
     familiar: "#EDC3A4",
