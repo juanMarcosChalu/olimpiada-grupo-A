@@ -99,25 +99,13 @@ export default function AlquilerAutos() {
   const handleChange = (e) => {
     setBusqueda({ ...busqueda, [e.target.name]: e.target.value });
   };
-
   const handleBuscar = (e) => {
     e.preventDefault();
-    if (
-      !busqueda.lugarRetiro ||
-      !busqueda.fechaRetiro ||
-      !busqueda.fechaEntrega ||
-      !busqueda.pasajeros
-    ) {
-      alert("Por favor, completá todos los campos del formulario.");
-      return;
-    }
-
-    // Guardar búsqueda (opcional: localStorage)
-    // localStorage.setItem("busquedaAlquilerAutos", JSON.stringify(busqueda));
-
-    // Redirigir a "página de resultados"
-    window.location.href = "/alquiler-autos";
+    // Simular navegación a resultados
+    setMostrarResultados(true);
+    // Aquí podrías guardar la búsqueda en localStorage si es necesario
   };
+  
 
   const abrirModal = (auto) => {
     setAutoSeleccionado(auto);
@@ -181,8 +169,8 @@ export default function AlquilerAutos() {
           : `url(${background_of_home_alquiler_de_autos})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
-        minHeight: "100vh",
-        padding: "3rem 1rem",
+    
+        
         fontFamily: "'Open Sans', sans-serif",
         color: "#3a2e25",
         transition: "background 0.3s ease",
@@ -240,21 +228,13 @@ export default function AlquilerAutos() {
       )}
 
       {/* Mostrar resultados si estamos en /alquiler-autos */}
-      {mostrarResultados && (
+    {mostrarResultados && (
         <>
           <h3 style={{ marginBottom: "1rem", color: "#776B5D" }}>
             Autos disponibles en {busqueda.lugarRetiro || "tu ciudad"}
           </h3>
 
-          <div className="requisitos-basicos">
-            <h4>Requisitos basicos</h4>
-            <ul>
-              <li>Edad minima: 21 años</li>
-              <li>Licencia de conducir vigente</li>
-              <li>Tarjeta de credito para garantia</li>
-              <li>DNI o pasaporte</li>
-            </ul>
-          </div>
+          
 
           <div className="grid-alojamientos">
             {autosData.map((auto) => (
@@ -316,8 +296,7 @@ export default function AlquilerAutos() {
               </div>
             ))}
           </div>
-        </>
-      )}
+        </>)}
 
       {/* Modal de reserva */}
       {mostrarModal && (

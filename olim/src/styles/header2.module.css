@@ -17,13 +17,15 @@
     padding-bottom: 0.5rem;
     &::after{
         position: absolute;
-        border-bottom: 4px solid #776b5d;
+        border-bottom: 4px solid #534a40;
+      box-shadow: black 2px 2px;
         content: "";
-        top: 100%;
-        width: 75%;
+        top: 98%;
+        width: 85%;
        
-        left: 12.5%;
-        z-index: 1;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 2;
     }
    
 }

@@ -27,7 +27,7 @@ function ServiciosMenu() {
                               <Link to="/perfil">
                                   <li><span className={`${styles.icon} material-symbols-outlined`}>person</span>Vuelos</li>
                               </Link>
-                              <Link to="/Favoritos">
+                              <Link to="/alquileres">
                                   <li><span className={`${styles.icon} material-symbols-outlined`}>favorite</span>Alquileres de auto</li>
                               </Link>
                               <Link to="/Notificaciones">
