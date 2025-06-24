@@ -258,7 +258,7 @@ export default function Alojamientos() {
 
       {mostrarModal && (
         <div className="modal-overlay">
-          <div className="modal">
+          <div className="modalAlojamientos">
             <h3>Completá tu reserva</h3>
             <p>
               <strong>{alojamientoSeleccionado.nombre}</strong>
@@ -288,7 +288,7 @@ export default function Alojamientos() {
               <button type="submit">Reservar</button>
             </form>
             {mensaje && <p className="form-message">{mensaje}</p>}
-            <button onClick={cerrarModal}>Cerrar</button>
+            <button onClick={cerrarModal} className="cerrarModalAlojamientos">Cerrar</button>
           </div>
         </div>
       )}
