@@ -1,121 +1,71 @@
-import React, { useState } from "react";
+import React from "react";
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 
 import "./App.css";
-import './index.css';
+
 import SectionHome from "./components/sections/home/SectionHome.jsx";
 import Carousel from "./components/sections/carusel/carusel.jsx";
 import Busqueda from "./components/sections/busqueda/busqueda.jsx";
 import Paquetes from "./components/sections/paquetes/Paquetes.jsx";
 import logo from "./assets/Logo.png";
 import Testimonios from "./components/sections/testimonio/Testimonios.jsx";
-import GridPaquetes from "./components/sections/paquetes/gridPaquetes.jsx"
+import GridPaquetes2 from "./components/sections/paquetes/gridcopia.jsx";
 import Footer from "./components/Layouts/Footer.jsx";
-import TestimonialCard from "./components/sections/testimonio/TestimonioCard.jsx";
 import Header from "./components/Layouts/header.jsx";
 import ServiciosMenu from "./components/UI/serviciosli.jsx";
 import Perfil from "./components/sections/perfilc/Perfil.jsx";
-import Cardobjetos from "./components/UI/CardObjetos.jsx";
 import SectionFav from "./components/sections/favoritos/SectionsFavoritos.jsx";
 import SectionNotificaciones from "./components/sections/notificaciones/SectionNotificaciones.jsx";
-import SectionsCarrito from "./components/sections/carrito/SectionsCarrito.jsx"
 import Registro from "./components/sections/login/Registro.jsx";
 import Contacto from "./components/sections/contactanos/contacto.jsx";
 import Login from "./components/sections/login/login.jsx";
-import GridPaquetes2 from "./components/sections/paquetes/gridcopia.jsx";
+import Alojamientos from "./components/sections/alojamientos/Alojamientos.jsx";
+
 function App() {
-
-  const [packages, setPackages] = useState([
-    {
-      id: 1,
-      title: "Paquete a Cancún",
-      price: 500,
-      description: "Incluye vuelos y hotel por 3 noches.",
-      image: "https://via.placeholder.com/300x200",
-    },
-    {
-      id: 2,
-      title: "Tour por Machu Picchu",
-      price: 800,
-      description: "Excursión y hotel 2 noches.",
-      image: "https://via.placeholder.com/300x200",
-    },
-  ]);
-  const navigation = [
-    {
-      label: 'Inicio',
-      to: '/'
-    },
-    {
-      label: 'Servicios',
-      submenu: [
-        { label: 'Vuelos', to: '/vuelos' },
-        { label: 'Alquileres de auto', to: '/alquileres' },
-        { label: 'Alojamiento', to: '/alojamiento' }
-      ]
-    }
-  ];
-
-  const [cart, setCart] = useState([]);
-
-  const handleAddToCart = (pkg) => {
-    setCart([...cart, pkg]);
-  };
-
   return (
     <BrowserRouter>
-
       <Routes>
         <Route path='/' element={
           <>
-            {/* {index} */}
-
             <Header
               title={<img src={logo} alt="Logo" />}
               menuItems={[
                 <ServiciosMenu key="servicios" />,
                 <Link to="/contacto" key="contacto">Contacto</Link>,
-                
               ]}
-           
             />
-
             <SectionHome />
             <Carousel />
             <Testimonios />
             <Login />
             <Registro />
-    
             <Footer />
           </>
         } />
-        <Route path='/Paquetes' element={
+
+        <Route path='/paquetes' element={
           <>
             <Header
               title={<h1>Paquetes</h1>}
               menuItems={[
                 <Link to="/" key="inicio">Inicio</Link>,
                 <ServiciosMenu key="servicios" />,
-
-
-              ]} />
-
+              ]}
+            />
             <Paquetes />
             <Header
               title={<h1>Paquetes Románticos</h1>}
               menuItems={[
                 <Link to="/" key="inicio">Inicio</Link>,
                 <ServiciosMenu key="servicios" />,
-
-
-              ]} />
-
+              ]}
+            />
             <GridPaquetes2 />
             <Footer />
           </>
-
         } />
-        <Route path='/Notificaciones' element={
+
+        <Route path='/notificaciones' element={
           <>
             <Header
               title={<h1>Notificaciones</h1>}
@@ -123,27 +73,29 @@ function App() {
                 <Link to="/" key="inicio">Inicio</Link>,
                 <ServiciosMenu key="servicios" />,
                 <Link to="/contacto" key="contacto">Contacto</Link>,
-              ]} />
+              ]}
+            />
             <SectionNotificaciones />
             <Footer />
           </>
-
         } />
-         <Route path='/Contacto' element={
+
+        <Route path='/contacto' element={
           <>
             <Header
-              title={<h1>Contactanos</h1>}
+              title={<h1>Contáctanos</h1>}
               menuItems={[
                 <Link to="/" key="inicio">Inicio</Link>,
                 <ServiciosMenu key="servicios" />,
                 <Link to="/contacto" key="contacto">Contacto</Link>,
-              ]} />
+              ]}
+            />
             <Contacto />
             <Footer />
           </>
-
         } />
-        <Route path='/Favoritos' element={
+
+        <Route path='/favoritos' element={
           <>
             <Header
               title={<h1>♥ Mis Favoritos</h1>}
@@ -151,42 +103,73 @@ function App() {
                 <Link to="/" key="inicio">Inicio</Link>,
                 <ServiciosMenu key="servicios" />,
                 <Link to="/contacto" key="contacto">Contacto</Link>,
-              ]} />
-            <SectionFav></SectionFav>
+              ]}
+            />
+            <SectionFav />
             <Footer />
           </>
         } />
-        <Route path='/Vuelos' element={
+
+        {/* Rutas Servicios */}
+        <Route path='/vuelos' element={
           <>
             <Header
               title={<h1>Vuelos</h1>}
               menuItems={[
                 <Link to="/" key="inicio">Inicio</Link>,
                 <ServiciosMenu key="servicios" />,
-
-
               ]}
             />
-            <Busqueda></Busqueda>
-
+            <Busqueda />
             <Footer />
           </>
         } />
-        <Route path='/perfil' element={
+
+        <Route path='/alquileres' element={
           <>
-            <Header title={<h1>Perfil</h1>}
+            <Header
+              title={<h1>Alquileres de Auto</h1>}
+              menuItems={[
+                <Link to="/" key="inicio">Inicio</Link>,
+                <ServiciosMenu key="servicios" />,
+              ]}
+            />
+            {/* Aquí puedes poner tu componente para alquileres */}
+            <Footer />
+          </>
+        } />
+
+        <Route path='/alojamiento' element={
+          <>
+            <Header
+              title={<h1>Alojamientos</h1>}
               menuItems={[
                 <Link to="/" key="inicio">Inicio</Link>,
                 <ServiciosMenu key="servicios" />,
                 <Link to="/contacto" key="contacto">Contacto</Link>,
-              ]} />
-            <Perfil></Perfil>
+              ]}
+            />
+            <Alojamientos />
+            <Footer />
+          </>
+        } />
+
+        <Route path='/perfil' element={
+          <>
+            <Header
+              title={<h1>Perfil</h1>}
+              menuItems={[
+                <Link to="/" key="inicio">Inicio</Link>,
+                <ServiciosMenu key="servicios" />,
+                <Link to="/contacto" key="contacto">Contacto</Link>,
+              ]}
+            />
+            <Perfil />
             <Footer />
           </>
         } />
       </Routes>
     </BrowserRouter>
-
   );
 }
 
