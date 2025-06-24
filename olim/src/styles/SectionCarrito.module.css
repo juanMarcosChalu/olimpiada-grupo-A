@@ -130,9 +130,8 @@
     font-size: 1rem;
 }
 
-.botonCompra:hover {
-    background-color: #5e5246;
-}
+
+
 
 .articlePago {
     background-color: white;
@@ -143,4 +142,23 @@
     justify-content: center;
     align-items: center;
     color: #776b5d;
+
+}
+
+.botonCompra2 {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #776b5d;
+    color: white;
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+
+    .botonCompra2:hover {
+        background-color: #5e5246;
+    }
 }

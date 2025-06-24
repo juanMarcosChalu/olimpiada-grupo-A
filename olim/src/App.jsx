@@ -17,6 +17,7 @@ import Perfil from "./components/sections/perfilc/Perfil.jsx";
 import SectionFav from "./components/sections/favoritos/SectionsFavoritos.jsx";
 import SectionNotificaciones from "./components/sections/notificaciones/SectionNotificaciones.jsx";
 import Registro from "./components/sections/login/Registro.jsx";
+import SectionsCarrito from "./components/sections/carrito/SectionsCarrito.jsx";
 import Contacto from "./components/sections/contactanos/contacto.jsx";
 import Login from "./components/sections/login/login.jsx";
 import Alojamientos from "./components/sections/alojamientos/Alojamientos.jsx";
@@ -39,7 +40,7 @@ function App() {
             <Testimonios />
             <Login />
             <Registro />
-            <Contacto />
+            <SectionsCarrito />
             <Footer />
           </>
         } />

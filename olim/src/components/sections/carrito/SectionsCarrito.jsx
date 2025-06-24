@@ -39,21 +39,23 @@ function SectionsCarrito() {
                             <li>Ingresos Brutos 2,3%: $56.350</li>
                             <li>Tasa Municipal 1%: $24.500</li>
                         </ul>
-
                         <p className={styles.total}>Total: <strong>$3.045.350 ARS</strong></p>
-
                         <button className={styles.botonCompra}>Realizar compra</button>
                     </section>
-
                 </article>
 
-                {/* <article className={styles.articlePago}><h1>RESUMEN FINAL</h1><button className={styles.botonCompra}>ELEGÍ TU FORMA DE PAGO</button></article> */}
+                <article className={styles.articlePago}>
+                    <h1>ELEGÍ TU FORMA DE PAGO</h1>
+                    <ol>
+                        <li></li>
+                        <li></li>
+                    </ol>
+                    <button className={styles.botonCompra2}>ELEGÍ TU FORMA DE PAGO</button>
+                </article>
 
             </aside>
-
-
         </section>
-        
+
     )
 }
 export default SectionsCarrito;
