@@ -39,6 +39,7 @@ function App() {
             <Testimonios />
             <Login />
             <Registro />
+            <Contacto />
             <Footer />
           </>
         } />
