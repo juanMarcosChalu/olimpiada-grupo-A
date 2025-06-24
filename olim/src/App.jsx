@@ -21,11 +21,8 @@ import SectionsCarrito from "./components/sections/carrito/SectionsCarrito.jsx";
 import Contacto from "./components/sections/contactanos/contacto.jsx";
 import Login from "./components/sections/login/login.jsx";
 import Alojamientos from "./components/sections/alojamientos/Alojamientos.jsx";
-<<<<<<< Updated upstream
 import AlquilerAutos from "./components/sections/alquilerdeautos/AlquilerAutos.jsx";
-=======
 import Asistencia from "./components/sections/asistenciaViajero/Asistencia.jsx";
->>>>>>> Stashed changes
 import GridPaquetes from "./components/sections/paquetes/gridPaquetes.jsx";
 
 function App() {
@@ -47,6 +44,7 @@ function App() {
             <Login />
             <Registro />
             <SectionsCarrito />
+            <Asistencia/>
             <Footer />
           </>
         } />
