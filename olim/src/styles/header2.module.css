@@ -41,6 +41,7 @@
         list-style: none;
         align-items: center;
         justify-content: center;
+        
          gap: 10%;
         li {
             transition: background 400ms;
@@ -48,14 +49,8 @@
             
         }
 }
- .fondoActivo {
-            background-color: #bdb8af;
-            color: #776b5d;
-            transition: background 400ms;
-        }
-.fondodesactivo{
-    color: #776b5d;
-}
+
+
 .navbuttons {
   
     font-size: 1.5rem ;
@@ -79,6 +74,7 @@
     width: 200%;
     background-color: #bdb8af;
     list-style: disc;
+    padding: 0.5rem;
     list-style-position: inside;
     padding-left: 10%;
     z-index: 100;
@@ -266,6 +262,102 @@ font-size: 1.4rem;
   display: flex;
 }
 
+
+
+
+
+
+
+
+
+
+.userBox {
+  position: absolute;
+  top: 130%;
+  right: 0;
+  transform: translateX(-25%);
+  background-color: #f3e9dc;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  width: max-content;
+  height: min-content;
+  z-index: 10;
+}
+
+
+
+.options {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0;
+}
+
+.options a {
+  height: 100%;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #bbb3a8;
+
+    li {
+    
+        background-color: #bbb3a8;
+
+      
+    }
+
+    
+  }
+}
+
+.options li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  color: #5e4b41;
+  cursor: pointer;
+  pointer-events: none;
+}
+
+.icon {
+  font-size: 2rem;
+
+}
+
+.logout {
+  background-color: #5e4b41;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 0.4rem 1rem;
+  font-weight: bold;
+  margin-top: 0.5rem;
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  &:hover{
+    background-color: #302621;
+  }
+
+}
+
+.userBox::before {
+  content: "";
+  position: absolute;
+  top: -14px;
+  /* arriba del menú */
+  left: 50%;
+  transform: translateX(-12.4px);
+  /* alineado al botón */
+  border-left: 18px solid transparent;
+  border-right: 18px solid transparent;
+  border-bottom: 20px solid #f3e9dc;
+  /* color del menú */
+}
+
+
 /* Mostrar hamburguesa solo en pantallas pequeñas */
 @media (max-width: 768px) {
   .hamburguesa {
@@ -301,7 +393,5 @@ font-size: 1.4rem;
         }
     }
 }
-
-
 
 
