@@ -8,7 +8,7 @@
 .headerBox{
     margin-left: 10%;
    background-color: #e5ddd0;
-  height: min-content;
+  height: max-content;
   width: 80%;
   position: relative;
   top: 50%;
@@ -89,19 +89,16 @@
  transition: height 300ms;
   color: #5e4b41;
   background: white;
-
-  width: 98%;
+  position: relative;
   margin: 1%;
   margin-top: 0;
-  height: 35vh;
-  padding: 1rem;
+  min-height: max-content;
   border-radius: 0px 0px 6px 6px;
     caret-color: black  !important;
     transform: scale(1);
 }
 .desactivo{
   transition: height 300ms;
-
   visibility: hidden;
  transform: scale(0.5);
  height: 0;
@@ -109,25 +106,37 @@
 
 .formulario h3 {
   margin-bottom: 1rem;
+  margin-top: 1rem;
+  margin-left: 2rem;
   font-size: 20px;
 }
 
 .row {
   display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
+  gap: 2%;
+  padding: 2%;
+  max-width: 100%;
   margin-bottom: 1rem;
+  justify-content: space-around;
+  legend{
+    
+    top: -0.3rem;
+    position: relative;
+  }
 }
 
-.row div {
-  flex: 1 1 45%;
+.row div{
+  width: 43%;
+  
+  
 }
+
 
 .input[type="text"] {
-  width: 100%;
-  border: 2px solid #5e4b41;
+  width: 94%;
+  border: 1% solid #5e4b41;
   border-radius: 10px;
-  padding: 0.4rem;
+  padding: 2%;
   background: none;
 }
 
@@ -135,7 +144,7 @@
   display: flex;
   gap: 0.5rem;
   border: none;
-  max-width: 49%;
+  width: 45%;
 }
 
 .fecha input {
@@ -149,17 +158,20 @@
  
   display: flex;
   align-items: center;
-  width: 49%;
-  height: 10vh;
+  width: 45%;
+  height: 7vh;
   justify-content: center;
   margin-top: 0.5rem;
   border-radius: 999px;
   border: none;
+  legend{
+    top: -0.9rem;
+  }
 }
 
 .genero label {
   display: flex;
-  padding: 0.5rem;
+  padding: 0.7rem;
   border: solid 3px #776b5d;
   align-items: center;
   width: 50%;
