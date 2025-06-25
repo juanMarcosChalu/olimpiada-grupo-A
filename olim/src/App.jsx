@@ -44,7 +44,6 @@ function App() {
             <Login />
             <Registro />
             <SectionsCarrito />
-            <Asistencia/>
             <Footer />
           </>
         } />

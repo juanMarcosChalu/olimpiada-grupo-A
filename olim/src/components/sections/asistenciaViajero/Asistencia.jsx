@@ -18,9 +18,11 @@ function Asistencia() {
 
             <section className={styles.cardsAsistencia}>
                 <div className={styles.planBasico}>
-                    <h1>Plan Básico</h1>
-                    <h2>50.000 <b>ARG</b> por semana</h2>
-                    <p>Incluye:</p>
+
+                    <h1 className={styles.tituloPlan}>Plan Estándar</h1>
+                    <h2 className={styles.subtituloPlan}>50.000 <b>ARG</b> por semana</h2>
+                    <p className={styles.pPlan}>Incluye:</p>
+
                     <div className={styles.listaContainer}>
                         <ol>
                             <li>Atención medica por enfermedad o accidente hasta 5.000.000 <b>ARG</b></li>
@@ -37,9 +39,11 @@ function Asistencia() {
                     </div>
                 </div>
                 <div className={styles.planEstandar}>
-                    <h1>Plan Estándar</h1>
-                    <h2>100.000 <b>ARG</b> por semana</h2>
-                    <p>Incluye:</p>
+                    <div>
+                        <h1 className={styles.tituloPlan}>Plan Estándar</h1>
+                        <h2 className={styles.subtituloPlan}>100.000 <b>ARG</b> por semana</h2>
+                        <p className={styles.pPlan}>Incluye:</p>
+                    </div>
                     <div className={styles.listaContainer}>
                         <ol>
                             <li>Atención medica por enfermedad o accidente hasta 10.000.000 <b>ARG</b></li>
@@ -58,10 +62,11 @@ function Asistencia() {
                     </div>
                 </div>
                 <div className={styles.planPremium}>
-                    <h1>Plan Premium</h1>
-                    <h2>250.000 <b>ARG</b> por semana</h2>
-                    <p>Incluye:</p>
-
+                    <div>
+                        <h1 className={styles.tituloPlan}>Plan Estándar</h1>
+                        <h2 className={styles.subtituloPlan}> 250.000 <b>ARG</b> por semana</h2>
+                        <p className={styles.pPlan}>Incluye:</p>
+                    </div>
                     <div className={styles.listaContainer}>
                         <ol>
                             <li>Atención medica por enfermedad o accidente hasta 100.000.000 <b>ARG</b></li>
