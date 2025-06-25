@@ -19,7 +19,7 @@ function UsuarioMenu() {
                 <div className={styles.userBox}>
                     <div className={styles.usercontain}>
                         <span className={`${styles.icon} material-symbols-outlined`}>account_circle</span>
-                        <h1 className={styles.greeting}>¡Hola, Martina!</h1>
+                        <h1 className={styles.greeting}>¡Hola!</h1>
                     </div>
 
                     <hr className={styles.divider} />

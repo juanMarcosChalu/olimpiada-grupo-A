@@ -21,12 +21,12 @@ function Busqueda() {
                     <form>
                         <label>
                             Origen
-                            <input type="text" name="origen" placeholder="Correo electrónico" />
+                            <input type="text" name="origen" placeholder="Ingrese desde donde se dirige" />
                         </label>
 
                         <label>
                             Destino
-                            <input type="text" name="destino" placeholder="Correo electrónico" />
+                            <input type="text" name="destino" placeholder="Ingrese hacia donde se dirige" />
                         </label>
 
                         <label>
@@ -36,10 +36,10 @@ function Busqueda() {
 
                         <label>
                             Pasajeros
-                            <input type="text" name="pasajeros" placeholder="Correo electrónico" />
+                            <input type="text" name="pasajeros" placeholder="Cantidad de pasajeros" />
                         </label>
 
-                        <button className="boton">Buscar</button>
+                        <button className="boton" >Buscar</button>
                     </form>
 
                 </article>

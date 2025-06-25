@@ -1,11 +1,13 @@
 import React, { useState, useEffect,useMemo } from "react";
 import { useFetch } from '../../../hooks/useFetch';
 
-import img1 from "../../../assets/disney.jpg";
-import img2 from "../../../assets/costarica.jpg";
-import img3 from "../../../assets/madrid.jpg";
-import img4 from "../../../assets/newyork.jpg";
-import img5 from "../../../assets/paris.jpg";
+import image_of_city from "../../../assets/ciudad.jpg";
+import image_of_desert from "../../../assets/desierto.jpg";
+import image_of_mountain from "../../../assets/montañas.jpg";
+import image_of_lake from "../../../assets/lago.jpg";
+import image_of_field from "../../../assets/campo.jpg";
+import image_of_beach from "../../../assets/playa.jpg";
+import image_of_snow from "../../../assets/nevado.jpg";
 import "../../../styles/Carousel.css";
 
 
@@ -14,13 +16,16 @@ import "../../../styles/Carousel.css";
 const Carousel = () => {
 
 
-    const imagene1 = { img: img1, texto: "Disney" };
-    const imagene2 = { img: img2, texto: "Costa Rica" };
-    const imagene3 = { img: img3, texto: "Madrid" };
-    const imagene4 = { img: img4, texto: "New York" };
-    const imagene5 = { img: img5, texto: "Paris" };
+    const imagene1 = { img: image_of_city, texto: "Ciudades" };
+    const imagene2 = { img: image_of_desert, texto: "Desiertos" };
+    const imagene3 = { img: image_of_mountain, texto: "Montañas" };
+    const imagene4 = { img: image_of_lake, texto: "Lagos" };
+    const imagene5 = { img: image_of_beach, texto: "Playas" };
+    const imagene6 = { img: image_of_snow, texto: "Nieve" };
+    const imagene7 = { img: image_of_field, texto: "Campos" };
 
-    const imagenes = [imagene1, imagene2, imagene3, imagene4, imagene5];
+
+    const imagenes = [imagene1, imagene2, imagene3, imagene4, imagene5, imagene6, imagene7];
 
     const [width, setWidth] = useState(window.innerWidth);
     const [startIndex, setStartIndex] = useState(0);

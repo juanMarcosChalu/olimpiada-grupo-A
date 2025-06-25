@@ -24,23 +24,22 @@ function ServiciosMenu() {
       
                         
                           <ul className={styles.options}>
-                              <Link to="/perfil">
-                                  <li><span className={`${styles.icon} material-symbols-outlined`}>person</span>Vuelos</li>
+                              <Link to="/vuelos">
+                                  <li>Vuelos</li>
                               </Link>
-                              <Link to="/alquileres">
-                                  <li><span className={`${styles.icon} material-symbols-outlined`}>favorite</span>Alquileres de auto</li>
+                              <Link to="/Alquileres">
+                                  <li>Alquileres de autos</li>
+                              </Link>
+                              <Link to="/Alojamiento">
+                                  <li>Alojamientos</li>
+                              </Link>
+                              <Link to="/Paquetes">
+                                  <li>Paquetes</li>
                               </Link>
                               <Link to="/Notificaciones">
-                                  <li><span className={`${styles.icon} material-symbols-outlined`}>notifications</span>alojamiento</li>
-                              </Link>
-                              <Link to="/Notificaciones">
-                                  <li><span className={`${styles.icon} material-symbols-outlined`}>notifications</span>Paquetes</li>
-                              </Link>
-                              <Link to="/Notificaciones">
-                                  <li><span className={`${styles.icon} material-symbols-outlined`}>notifications</span>Asistencia al Viajero</li>
+                                  <li>Asistencia al Viajero</li>
                               </Link>
                           </ul>
-                          {/* <button className={styles.logout}>Cerrar Sesión</button> */}
                       </div>
                   )}
     </div>

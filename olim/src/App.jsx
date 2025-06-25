@@ -24,6 +24,8 @@ import Alojamientos from "./components/sections/alojamientos/Alojamientos.jsx";
 import AlquilerAutos from "./components/sections/alquilerdeautos/AlquilerAutos.jsx";
 import Asistencia from "./components/sections/asistenciaViajero/Asistencia.jsx";
 import GridPaquetes from "./components/sections/paquetes/gridPaquetes.jsx";
+import PoliticaPrivacidad from "./components/sections/politicaprivacidad/PoliticaPrivacidad.jsx";
+import TerminosCondiciones from "./components/sections/terminoscondiciones/TerminosCondiciones.jsx";
 
 function App() {
   return (
@@ -89,7 +91,7 @@ function App() {
         <Route path='/contacto' element={
           <>
             <Header
-              title={<h1>Contáctanos</h1>}
+              title={<h1>Contacto</h1>}
               menuItems={[
                 <Link to="/" key="inicio">Inicio</Link>,
                 <ServiciosMenu key="servicios" />,
@@ -174,6 +176,35 @@ function App() {
             <Footer />
           </>
         } />
+
+        <Route path='/politica-privacidad' element={
+          <>
+        <Header
+         title={<h1>Política de Privacidad</h1>}
+         menuItems={[
+        <Link to="/" key="inicio">Inicio</Link>,
+        <ServiciosMenu key="servicios" />,
+        ]}
+       />
+      <PoliticaPrivacidad />
+      <Footer />
+      </>
+      } />
+
+
+        <Route path='/terminos-condiciones' element={
+          <>
+        <Header
+         title={<h1>Terminos y Condiciones</h1>}
+         menuItems={[
+        <Link to="/" key="inicio">Inicio</Link>,
+        <ServiciosMenu key="servicios" />,
+        ]}
+       />
+      <TerminosCondiciones/>
+      <Footer />
+     </>
+     } />
       </Routes>
     </BrowserRouter>
   );
