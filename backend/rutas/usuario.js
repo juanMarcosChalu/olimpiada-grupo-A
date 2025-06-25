@@ -1,87 +1,75 @@
-// rutas/usuarios.js
-const express = require("express");
+const express = require('express');
+const bcrypt = require('bcryptjs');
+const conexion = require('../db');
 const router = express.Router();
-const db = require("../db");
 
-// Endpoint de registro
-router.post("/registro", (req, res) => {
-  const { nombre, correo, contrasena, recibirPromos } = req.body;
+// Login
+router.post('/login', (req, res) => {
+  const { nombre, password } = req.body.usuario;
 
-  // Validaciones básicas
-  if (!nombre || !correo || !contrasena) {
-    return res.status(400).json({ message: "Completa todos los campos." });
+  if (!nombre || !password) {
+    return res.status(400).send('Nombre y contraseña son requeridos');
   }
 
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo)) {
-    return res.status(400).json({ message: "Correo electrónico inválido." });
-  }
+  const sql = "SELECT * FROM usuarios WHERE nombre = ?";
+  conexion.query(sql, [nombre], (err, rows) => {
+    if (err) return res.status(500).send("Error interno");
+    if (rows.length === 0) return res.status(401).send("Usuario no encontrado");
 
-  if (contrasena.length < 6) {
-    return res.status(400).json({ message: "La contraseña debe tener al menos 6 caracteres." });
-  }
+    const usuario = rows[0];
+    const ok = bcrypt.compareSync(password, usuario.Contra);
 
-  // Verifica si ya existe el correo
-  db.query("SELECT * FROM usuarios WHERE correo = ?", [correo], (err, result) => {
-    if (err) return res.status(500).json({ message: "Error del servidor" });
+    if (!ok) return res.status(401).send("Contraseña incorrecta");
 
-    if (result.length > 0) {
-      return res.status(400).json({ message: "Este correo ya está registrado." });
+    // Guardar datos mínimos en la sesión
+    req.session.usuario = {
+      id: usuario.idTabla,
+      nombre: usuario.nombre,
+      rol: usuario.rol,
+    };
+
+    // Confirmar login
+    res.json({ mensaje: "Inicio de sesión exitoso", usuario: req.session.usuario });
+  });
+});
+
+// Registro
+router.post('/registrar', (req, res) => {
+  const { nombre, password } = req.body.usuario;
+
+  const checkQuery = 'SELECT * FROM usuarios WHERE nombre = ?';
+  conexion.query(checkQuery, [nombre], (err, rows) => {
+    console.log(err);
+    
+    if (err) {
+      console.log('❌ Error al verificar usuario existente:', err);
+      return res.status(500).send('Error interno al verificar usuario');
     }
 
-    // Inserta el nuevo usuario
-    const sql = "INSERT INTO usuarios (nombre, correo, contrasena, promociones) VALUES (?, ?, ?, ?)";
-    db.query(sql, [nombre, correo, contrasena, recibirPromos ? 1 : 0], (err, result) => {
-      if (err) return res.status(500).json({ message: "Error al registrar usuario" });
-      req.session.usuario = { nombre, correo, rol: "user" };
-      return res.status(201).json({ message: "Usuario registrado correctamente" });
+    if (rows.length > 0) {
+      return res.status(409).send('El nombre de usuario ya está en uso');
+    }
+
+    const hash = bcrypt.hashSync(password, 6);
+    const insertQuery = 'INSERT INTO usuarios (nombre, contrasena, rol) VALUES (?, ?, ?)';
+    const rol = "user";
+
+    conexion.query(insertQuery, [nombre, hash, rol], (error) => {
+      if (error) {
+        console.log('❌ Error al registrar usuario:', error);
+        return res.status(500).send('Error al registrar el usuario');
+      }
+      res.send('Registro exitoso');
     });
   });
 });
 
-router.post('/login', (req, res) => {
-  const { correo, contrasena } = req.body;
-
-  if (!correo || !contrasena) {
-    return res.status(400).json({ message: 'Todos los campos son obligatorios' });
-  }
-
-  db.query('SELECT * FROM usuarios WHERE correo = ?', [correo], (err, results) => {
-    if (err) return res.status(500).json({ message: 'Error de servidor' });
-    if (results.length === 0) {
-      return res.status(401).json({ message: 'Correo no registrado' });
-    }
-
-    const usuario = results[0];
-
-    if (usuario.contrasena !== contrasena) { // En producción usa bcrypt
-      return res.status(401).json({ message: 'Contraseña incorrecta' });
-    }
-
-    req.session.usuario = {
-      id: usuario.id,
-      nombre: usuario.nombre,
-      correo: usuario.correo,
-      rol: usuario.rol,
-    };
-
-    res.json({ message: 'Login exitoso', usuario: req.session.usuario });
-  });
-});
-
-
-router.get("/usuario-actual", (req, res) => {
-  if (req.session.usuario) {
-    return res.json(req.session.usuario);
-  } else {
-    return res.status(401).json({ message: "No has iniciado sesión" });
-  }
-});
-
-router.post("/logout", (req, res) => {
-  req.session.destroy((err) => {
-    if (err) return res.status(500).json({ message: "Error al cerrar sesión" });
-    res.clearCookie("connect.sid");
-    return res.json({ message: "Sesión cerrada correctamente" });
+// Logout
+router.get('/logout', (req, res) => {
+  req.session.destroy(err => {
+    if (err) return res.status(500).send("Error al cerrar sesión");
+    res.clearCookie('connect.sid'); // Borra la cookie del navegador
+    res.send("Sesión cerrada");
   });
 });
 

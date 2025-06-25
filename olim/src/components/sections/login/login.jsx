@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styles from "../../../styles/Registro.module.css";
-import { useNavigate, Link} from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from "../../../context/AuthContext"; // Asegurate de importar bien
 import logo from "../../../assets/Logo.png";
 
@@ -9,30 +9,28 @@ function Login() {
   const [contrasena, setContrasena] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
-  const { login } = useAuth();
 
-  const handleSubmit = async (e) => {
+
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
-    setError("");
 
-    try {
-      const res = await fetch("http://localhost:3000/usuario/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        credentials: "include", // importante para sesiones
-        body: JSON.stringify({ correo, contrasena }),
-      });
+    
 
-      const data = await res.json();
+    fetch('http://localhost:3000/usuario/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      credentials: 'include',
+      body: JSON.stringify({
+        usuario: {
+          nombre: correo, // tu backend espera "nombre", no "email"
+          password: contrasena
+        }
+      })
 
-      if (!res.ok) throw new Error(data.message);
-      login(data.usuario); // Guardamos en contexto
-      navigate("/perfil"); // Redirigir
-    } catch (err) {
-      setError(err.message || "Error al iniciar sesión");
-    }
+    });
+
   };
 
   return (
@@ -47,7 +45,7 @@ function Login() {
       <div className={styles.registroContainer}>
         <h1 className={styles.registerTitle2}>Inicia Sesión en Brújula</h1>
 
-        <form className={styles.formulario} onSubmit={handleSubmit}>
+        <form className={styles.formulario} onSubmit={handleFormSubmit}>
           <input
             type="email"
             placeholder='Correo Electrónico'

@@ -13,29 +13,33 @@ function Registro() {
    const { post, loading, error, response } = usePost();
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    const data = {
-      nombre,
-      correo,
-      contrasena,
-      recibirPromos: promos
-    };
-    await post("http://localhost:3000/usuario/registro", data);
-   
-    // Limpieza si todo salió bien
-    if (!error) {
-     
-      setNombre("");
-      setCorreo("");
-      setContrasena("");
-      setPromos(false);
-    }
-    if (error) {
- 
-      alert(error)
-    }
+  e.preventDefault();
 
+  const data = {
+    usuario: {
+      nombre,
+      password: contrasena,
+      correo,
+      recibirPromos: promos
+    }
   };
+
+  const res = await post("http://localhost:3000/usuario/registrar", data);
+
+  // Limpieza si no hubo error
+  if (!error && res) {
+    setNombre("");
+    setCorreo("");
+    setContrasena("");
+    setPromos(false);
+    alert("¡Registro exitoso!");
+  }
+
+  if (error) {
+    alert(error);
+  }
+};
+
     
 
   return (
