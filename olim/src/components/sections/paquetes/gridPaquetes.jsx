@@ -23,7 +23,7 @@ function GridPaquetes(tipoPaquete) {
       
       {
         tipo: "romantico",
-        titulo: "París, Francia – 5 días - 5 noches testi oara que baje esto xd",
+        titulo: "París, Francia – 5 días / 4 noches",
         precio: "$1.200.000 ARS (Con vuelo)",
         imagenSrc: image_of_paris,
         resumen: "🏨 Hotel + museo + cena",
@@ -217,11 +217,11 @@ function GridPaquetes(tipoPaquete) {
                   <input type="number" id="cantidad" name="cantidad" placeholder='0' />
                 </div>
                 <div>
-                  <label htmlFor="entrada">Fecha de entrada:</label>
+                  <label htmlFor="entrada">Fecha de ida:</label>
                   <input type="date" id="entrada" name="entrada" />
                 </div>
                 <div>
-                  <label htmlFor="salida">Fecha de salida:</label>
+                  <label htmlFor="salida">Fecha de vuelta:</label>
                   <input type="date" id="salida" name="salida" />
                 </div>
               </div>

@@ -1,6 +1,6 @@
 
 .materialSymbolsOutlinedCarrito {
-    color: #5e4b41;
+    color: #776B5D;
     font-size: 50px;
     cursor: pointer;
  
@@ -11,7 +11,7 @@
   'opsz' 24
   ;
   &:hover{
-    color: #1f1815;
+    color:  #B0A695;
     scale: 1.1;
    
   }
