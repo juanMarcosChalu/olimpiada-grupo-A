@@ -10,17 +10,28 @@ export default function usePost() {
     setLoading(true);
     setError(null);
     setResponse(null);
+
     try {
       const res = await fetch(url, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
+
       const json = await res.json();
-      if (!res.ok) throw new Error(json.message || "Error en la solicitud");
+
+      if (!res.ok) {
+        // ⛔ Lanzamos un error con el mensaje real del backend
+        const message = json?.message || json?.error || "Error en la solicitud";
+        throw new Error(message);
+      }
+
       setResponse(json);
+      return json;
     } catch (err) {
-      setError(err.message);
+      console.error("❌ Error del post:", err);
+      setError(err.message); // ✅ Guarda el mensaje del backend
+      throw err; // ⚠️ Sigue lanzando para el componente
     } finally {
       setLoading(false);
     }

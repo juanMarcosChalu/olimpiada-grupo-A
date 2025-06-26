@@ -44,11 +44,11 @@ router.post('/registrar', (req, res) => {
     
     if (err) {
       console.log('❌ Error al verificar usuario existente:', err);
-      return res.status(500).send('Error interno al verificar usuario');
+      return res.status(500).json({ error: 'Error interno al verificar usuario' });
     }
 
     if (rows.length > 0) {
-      return res.status(409).send('El nombre de usuario ya está en uso');
+     return res.status(409).json({ error: 'El nombre del usuario ya esta en uso' });
     }
 
     const hash = bcrypt.hashSync(password, 6);

@@ -10,43 +10,39 @@ function Registro() {
   const [nombre, setNombre] = useState('');
   const [correo, setCorreo] = useState('');
   const [contrasena, setContrasena] = useState('');
+  
   const [promos, setPromos] = useState(false);
    const { post, loading, error, response } = usePost();
 
-  const handleSubmit = async (e) => {
+const handleSubmit = async (e) => {
   e.preventDefault();
-toast("Event has been created", {
-          description: "Sunday, December 03, 2023 at 9:00 AM",
-          action: {
-            label: "Undo",
-            onClick: () => console.log("Undo"),
-          },
-        });
 
-  const data = {
-    usuario: {
-      nombre,
-      password: contrasena,
-      correo,
-      recibirPromos: promos
-    }
-  };
-
-  const res = await post("http://localhost:3000/usuario/registrar", data);
-
-  // Limpieza si no hubo error
-  if (!error && res) {
+  try {
+    const res = await post("http://localhost:3000/usuario/registrar", {
+      usuario: {
+        nombre,
+        password: contrasena,
+        correo,
+        recibirPromos: promos,
+      }
+      
+    });
+    console.log(error.message);
+    
+    console.log("✅ Usuario registrado:", res);
+    alert("¡Registro exitoso!");
+    // Limpieza
     setNombre("");
     setCorreo("");
     setContrasena("");
     setPromos(false);
-    alert("¡Registro exitoso!");
-  }
+  } catch (err) {
+  // Ahora sí muestra el mensaje real que envió el backend
+  toast(err.message);
+};}
 
-  if (error) {
-    alert(error);
-  }
-};
+
+
 
     
 
@@ -70,18 +66,21 @@ toast("Event has been created", {
             type="text"
             placeholder='Nombre Completo'
             value={nombre}
+            required
             onChange={(e) => setNombre(e.target.value)}
           />
           <input
             type="email"
             placeholder='Correo Electrónico'
             value={correo}
+            required
             onChange={(e) => setCorreo(e.target.value)}
           />
           <input
             type="password"
             placeholder='Contraseña'
             value={contrasena}
+            required
             onChange={(e) => setContrasena(e.target.value)}
           />
 
