@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { FaHeart, FaRegHeart } from "react-icons/fa";
+import { FaHeart, FaRegHeart, FaWifi, FaUtensils, FaFire, FaPaw, FaWater } from "react-icons/fa";
+
 import "../../../styles/Alojamientos.css";
 
 import image_of_departamento from "../../../assets/departamento.jpg";
@@ -24,7 +25,6 @@ export default function Alojamientos() {
   const [mensaje, setMensaje] = useState("");
   const [descripcionesExpand, setDescripcionesExpand] = useState({});
 
-  // Estados para notificación flotante de favoritos
   const [mensajeFavorito, setMensajeFavorito] = useState("");
   const [mostrarMensajeFavorito, setMostrarMensajeFavorito] = useState(false);
 
@@ -39,49 +39,91 @@ export default function Alojamientos() {
       id: 1,
       nombre: "Cabañas Los Arrayanes",
       descripcion:
-        "Vista al lago · Hasta 5 personas · Cocina completa. Disfrutá de una estadía inolvidable en nuestras cabañas completamente equipadas, con todas las comodidades y una vista espectacular al lago.",
+        "Vista al lago · Hasta 5 personas · Cocina completa.",
       precio: "$312.000 ARS · 7 noches",
       imagenes: [image_of_departamento, image_of_cabañas_lago, image_of_depto_catedral],
+      caracteristicas: {
+        wifi: true,
+        cocina: true,
+        parrilla: false,
+        mascotas: true,
+        piscina: false,
+      },
     },
     {
       id: 2,
       nombre: "Departamento Bariloche",
       descripcion:
-        "Centro Cívico · Para 2 personas · Wi-Fi gratis. Departamento cómodo, céntrico y con acceso a todos los servicios. Ideal para parejas o viajeros solos.",
+        "Centro Cívico · Para 2 personas · Wi-Fi gratis.",
       precio: "$278.000 ARS · 7 noches",
       imagenes: [image_of_depto_catedral, image_of_depto_patagonia, image_of_departamento],
+      caracteristicas: {
+        wifi: true,
+        cocina: true,
+        parrilla: false,
+        mascotas: false,
+        piscina: false,
+      },
     },
     {
       id: 3,
       nombre: "Hostel Patagonia",
       descripcion:
-        "Para 1-4 personas · Baño privado · Wi-Fi incluido. Ambiente relajado y seguro, con todas las facilidades para una estadía económica y confortable.",
+        "Para 1-4 personas · Baño privado · Wi-Fi incluido.",
       precio: "$180.000 ARS · 7 noches",
       imagenes: [image_of_depto_patagonia, image_of_departamento, image_of_cabañas_lago],
+      caracteristicas: {
+        wifi: true,
+        cocina: false,
+        parrilla: false,
+        mascotas: true,
+        piscina: false,
+      },
     },
     {
       id: 4,
       nombre: "EcoLodge del Bosque",
       descripcion:
-        "Rodeado de naturaleza · Piscina climatizada. Un lugar único para desconectarte y disfrutar de la naturaleza con todas las comodidades.",
+        "Rodeado de naturaleza · Piscina climatizada.",
       precio: "$350.000 ARS · 7 noches",
       imagenes: [image_of_cabañas_lago, image_of_depto_catedral, image_of_depto_patagonia],
+      caracteristicas: {
+        wifi: false,
+        cocina: true,
+        parrilla: true,
+        mascotas: false,
+        piscina: true,
+      },
     },
     {
       id: 5,
       nombre: "Suite Panorámica",
       descripcion:
-        "Vista a la montaña · Jacuzzi privado · Balcón. Disfrutá de un lujo sin igual con vistas panorámicas y todas las comodidades que merecés.",
+        "Vista a la montaña · Jacuzzi privado · Balcón.",
       precio: "$420.000 ARS · 7 noches",
       imagenes: [image_of_departamento, image_of_cabañas_lago, image_of_depto_patagonia],
+      caracteristicas: {
+        wifi: true,
+        cocina: true,
+        parrilla: false,
+        mascotas: false,
+        piscina: false,
+      },
     },
     {
       id: 6,
       nombre: "Cabaña Familiar Andina",
       descripcion:
-        "Ideal para grupos grandes · Parrilla · Amplio jardín. Espacios amplios y cómodos para que toda la familia disfrute de una estadía inolvidable.",
+        "Ideal para grupos grandes · Parrilla · Amplio jardín.",
       precio: "$299.000 ARS · 7 noches",
       imagenes: [image_of_depto_catedral, image_of_departamento, image_of_cabañas_lago],
+      caracteristicas: {
+        wifi: false,
+        cocina: true,
+        parrilla: true,
+        mascotas: true,
+        piscina: false,
+      },
     },
   ];
 
@@ -237,6 +279,40 @@ export default function Alojamientos() {
                   >
                     {a.descripcion}
                   </p>
+                  {descripcionesExpand[a.id] && (
+                    <div className="detalles-alojamiento">
+                      <div className="detalle-item" title="Wi-Fi">
+                        <FaWifi size={22} color={a.caracteristicas.wifi ? "green" : "grey"} />
+                        <span style={{ marginLeft: "6px" }}>
+                          {a.caracteristicas.wifi ? "Sí" : "No"}
+                        </span>
+                      </div>
+                      <div className="detalle-item" title="Cocina">
+                        <FaUtensils size={22} color={a.caracteristicas.cocina ? "green" : "grey"} />
+                        <span style={{ marginLeft: "6px" }}>
+                          {a.caracteristicas.cocina ? "Sí" : "No"}
+                        </span>
+                      </div>
+                      <div className="detalle-item" title="Parrilla">
+                        <FaFire size={22} color={a.caracteristicas.parrilla ? "green" : "grey"} />
+                        <span style={{ marginLeft: "6px" }}>
+                          {a.caracteristicas.parrilla ? "Sí" : "No"}
+                        </span>
+                      </div>
+                      <div className="detalle-item" title="Mascotas permitidas">
+                        <FaPaw size={22} color={a.caracteristicas.mascotas ? "green" : "grey"} />
+                        <span style={{ marginLeft: "6px" }}>
+                          {a.caracteristicas.mascotas ? "Sí" : "No"}
+                        </span>
+                      </div>
+                      <div className="detalle-item" title="Piscina">
+                        <FaWater size={22} color={a.caracteristicas.piscina ? "green" : "grey"} />
+                        <span style={{ marginLeft: "6px" }}>
+                          {a.caracteristicas.piscina ? "Sí" : "No"}
+                        </span>
+                      </div>
+                    </div>
+                  )}
                   <button
                     onClick={() => toggleDescripcion(a.id)}
                     className="ver-mas-btn"
@@ -293,7 +369,6 @@ export default function Alojamientos() {
         </div>
       )}
 
-      {/* Mensaje flotante para favoritos */}
       {mostrarMensajeFavorito && (
         <div className="mensaje-favorito-flotante">
           {mensajeFavorito}

@@ -7,10 +7,9 @@
   align-items: center;
   font-family: 'Open Sans', sans-serif;
   color: #3a2e25;
-  transition: background 0.3s ease;
+  background-color: #F3EEEA;
 }
 
-/* Solo aplica la imagen de fondo cuando no hay resultados */
 .alojamiento-container.con-fondo {
   background-image: url('../assets/alojamientos.jpg');
   background-size: cover;
@@ -18,7 +17,6 @@
   background-repeat: no-repeat;
 }
 
-/* Fondo liso al mostrar resultados */
 .alojamiento-container.sin-fondo {
   background-color: #F3EEEA;
 }
@@ -43,10 +41,9 @@
 
 .form-box input,
 .form-box select {
- 
   padding: 0.6rem;
   margin: 0.4rem 0;
-  border: 1px solid  #F3EEEA;
+  border: 1px solid #776B5D;
   border-radius: 8px;
   font-family: 'Open Sans', sans-serif;
   color: #3a2e25;
@@ -54,12 +51,12 @@
 
 .form-box input::placeholder,
 .form-box select {
-  color: #776B5D; /* Marrón placeholder */
+  color: #776B5D;
 }
 
 .form-box button {
   margin-top: 1rem;
-  background-color: #876445;
+  background-color: #776B5D;
   color: white;
   padding: 0.6rem 1.2rem;
   border: none;
@@ -69,7 +66,7 @@
 }
 
 .form-box button:hover {
-  background-color: #6f553e;
+  background-color: #B0A695;
 }
 
 .form-message {
@@ -141,12 +138,11 @@
 .card-info h4 {
   margin-bottom: 0.5rem;
   font-family: 'Libre Baskerville', serif;
-  color: #4c382d;
+  color: #776B5D;
 }
 
-/* Descripción con límite y expansión */
 .card-info p.descripcion {
-  max-height: 3.9em; /* Aproximadamente 2 líneas */
+  max-height: 3.9em;
   overflow: hidden;
   transition: max-height 0.3s ease;
   margin-bottom: 0.5rem;
@@ -155,13 +151,12 @@
 }
 
 .card-info p.descripcion.expandido {
-  max-height: 1000px; /* Para expandir todo el texto */
+  max-height: 1000px;
 }
 
-/* Botón ver más / ver menos */
 .card-info button.ver-mas-btn {
   background-color: transparent;
-  color: #876445;
+  color: #776B5D;
   border: none;
   cursor: pointer;
   padding: 0;
@@ -172,14 +167,14 @@
 }
 
 .card-info button.ver-mas-btn:hover {
+  color: #B0A695;
   text-decoration: underline;
 }
 
-/* Ajuste margen botón siguiente para que esté más cerca */
 .card-info button.siguiente {
   margin-top: 0.5rem;
   width: 100%;
-  background-color: #876445;
+  background-color: #776B5D;
   color: white;
   padding: 0.5rem 1rem;
   border: none;
@@ -189,7 +184,7 @@
 }
 
 .card-info button.siguiente:hover {
-  background-color: #6f553e;
+  background-color: #B0A695;
 }
 
 @media (max-width: 768px) {
@@ -212,22 +207,20 @@
 }
 
 .modalAlojamientos {
-  background:  #F3EEEA;
+  background: #F3EEEA;
   padding: 2rem;
   border-radius: 14px;
   width: 90%;
   max-width: 420px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   text-align: center;
-  p{
-    margin-bottom: 0.3rem;
-  }
 }
 
 .modalAlojamientos h3 {
   font-family: 'Libre Baskerville', serif;
   font-size: 1.4rem;
   margin-bottom: 0.5rem;
+  color: #776B5D;
 }
 
 .modalAlojamientos input {
@@ -237,38 +230,41 @@
   left: 50%;
   padding: 0.6rem;
   margin: 0.4rem 0;
-  border: 1px solid #ccc;
+  border: 1px solid #776B5D;
   border-radius: 8px;
   font-family: 'Open Sans', sans-serif;
+  color: #3a2e25;
 }
 
 .modalAlojamientos button {
   margin-top: 0.5rem;
-  background-color: #876445;
+  background-color: #776B5D;
   color: white;
   padding: 0.6rem 1.2rem;
   border: none;
   border-radius: 8px;
   cursor: pointer;
   font-family: 'Open Sans', sans-serif;
+  transition: background-color 0.3s ease;
 }
 
 .modalAlojamientos button:hover {
-  background-color: #6f553e;
+  background-color: #B0A695;
 }
-.cerrarModalAlojamientos{
+
+.cerrarModalAlojamientos {
   width: 100%;
 }
-/* Mensaje flotante favoritos */
+
 .mensaje-favorito-flotante {
   position: fixed;
   top: 20px;
   right: 20px;
-  background-color: #876445;
+  background-color: #776B5D;
   color: white;
   padding: 0.7rem 1.2rem;
   border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   font-family: 'Open Sans', sans-serif;
   font-weight: 600;
   z-index: 1100;
@@ -277,3 +273,64 @@
   pointer-events: none;
   transition: opacity 0.3s ease;
 }
+
+/* Aplica al botón del formulario de búsqueda */
+form.form-box button[type="submit"],
+/* Aplica al botón de reservar del modal */
+.modalAlojamientos form button[type="submit"],
+/* Aplica al botón "Cerrar" del modal */
+.modalAlojamientos button.cerrarModalAlojamientos {
+  background-color: #776B5D !important;
+  color: white !important;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: 'Open Sans', sans-serif;
+  transition: background-color 0.3s ease;
+}
+
+form.form-box button[type="submit"]:hover,
+.modalAlojamientos form button[type="submit"]:hover,
+.modalAlojamientos button.cerrarModalAlojamientos:hover {
+  background-color: #B0A695 !important;
+}
+
+.modalAlojamientos form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modalAlojamientos button.cerrarModalAlojamientos {
+  margin-top: 1rem;
+  align-self: center;
+}
+
+.detalles-alojamiento {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem 1.2rem;
+  margin: 0.5rem 0 1rem 0;
+  font-size: 1rem;
+  color: #3a2e25;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.detalle-item {
+  display: flex;
+  align-items: center;
+  background-color: #f1e8df;
+  padding: 0.3rem 0.8rem;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  cursor: default;
+  user-select: none;
+  font-weight: 600;
+}
+
+.detalle-item span {
+  margin-left: 6px;
+}
+
