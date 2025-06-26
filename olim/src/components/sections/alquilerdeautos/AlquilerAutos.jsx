@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { FaHeart, FaRegHeart } from "react-icons/fa";
+import { FaHeart, FaRegHeart, FaCheckCircle } from "react-icons/fa";
 import "../../../styles/AlquilerAutos.css";
 
 import auto1 from "../../../assets/fiat500.jpg";
@@ -19,7 +19,6 @@ export default function AlquilerAutos() {
     pasajeros: "",
   });
 
-  // Detectar si estamos en la "página de resultados" simulada
   const [mostrarResultados, setMostrarResultados] = useState(false);
   const [mostrarModal, setMostrarModal] = useState(false);
   const [autoSeleccionado, setAutoSeleccionado] = useState(null);
@@ -34,14 +33,9 @@ export default function AlquilerAutos() {
   });
   const [mensajeReserva, setMensajeReserva] = useState("");
 
-  // Para que los datos de búsqueda puedan persistir y mostrar en resultados
   useEffect(() => {
-    // Si la url incluye '/alquiler-autos' (simulamos ruta resultados)
     if (window.location.pathname === "/alquiler-autos") {
-      // En la práctica, la búsqueda se podría pasar por query params o contexto
-      // Aquí forzamos mostrar resultados para simular la navegación
       setMostrarResultados(true);
-      // Podrías restaurar busqueda desde localStorage si querés persistirla
     }
   }, []);
 
@@ -50,48 +44,85 @@ export default function AlquilerAutos() {
       id: 1,
       nombre: "Volkswagen T-Roc – SUV",
       imagen: auto6,
-      descripcion:
-        "✔️ 5 puertas – Hasta 5 pasajeros\n✔️ Aire acondicionado – Bluetooth\n✔️ Seguro con franquicia reducida\n✔️ Motor turbo eficiente\n✔️ Sistema de navegación integrado\n✔️ Bluetooth y USB\n✔️ Espacio amplio para equipaje\n✔️ Consumo moderado",
+      descripcion: [
+        "5 puertas – Hasta 5 pasajeros",
+        "Aire acondicionado – Bluetooth",
+        "Seguro con franquicia reducida",
+        "Motor turbo eficiente",
+        "Sistema de navegación integrado",
+        "Bluetooth y USB",
+        "Espacio amplio para equipaje",
+        "Consumo moderado",
+      ],
       precio: "Desde $78.000 ARS/día",
     },
     {
       id: 2,
       nombre: "Fiat 500",
       imagen: auto1,
-      descripcion:
-        "✔️ 3 puertas - Bajo consumo\n✔️ Estilo retro moderno\n✔️ Fácil de manejar\n✔️ Compacto para ciudad\n✔️ Aire acondicionado\n✔️ Sistema multimedia básico",
+      descripcion: [
+        "3 puertas - Bajo consumo",
+        "Estilo retro moderno",
+        "Fácil de manejar",
+        "Compacto para ciudad",
+        "Aire acondicionado",
+        "Sistema multimedia básico",
+      ],
       precio: "Desde $64.000 ARS/día",
     },
     {
       id: 3,
       nombre: "Peugeot 208",
       imagen: auto2,
-      descripcion:
-        "✔️ 5 puertas - Interior tecnológico\n✔️ Buen rendimiento\n✔️ Perfecto para ciudad\n✔️ Pantalla táctil 7''\n✔️ Sensores de estacionamiento\n✔️ Consumo eficiente",
+      descripcion: [
+        "5 puertas - Interior tecnológico",
+        "Buen rendimiento",
+        "Perfecto para ciudad",
+        "Pantalla táctil 7''",
+        "Sensores de estacionamiento",
+        "Consumo eficiente",
+      ],
       precio: "Desde $74.000 ARS/día",
     },
     {
       id: 4,
       nombre: "Ford Focus",
       imagen: auto3,
-      descripcion:
-        "✔️ 5 pasajeros\n✔️ Diseño elegante - Motor eficiente\n✔️ Buen rendimiento en ciudad\n✔️ Control de crucero\n✔️ Bluetooth y sistema audio premium",
+      descripcion: [
+        "5 pasajeros",
+        "Diseño elegante - Motor eficiente",
+        "Buen rendimiento en ciudad",
+        "Control de crucero",
+        "Bluetooth y sistema audio premium",
+      ],
       precio: "Desde $74.000 ARS/día",
     },
     {
       id: 5,
       nombre: "Renault Captur",
       imagen: auto4,
-      descripcion:
-        "✔️ 5 pasajeros\n✔️ Pantalla multimedia\n✔️ Buen despeje al suelo\n✔️ Cámara trasera\n✔️ Control de estabilidad\n✔️ GPS integrado",
+      descripcion: [
+        "5 pasajeros",
+        "Pantalla multimedia",
+        "Buen despeje al suelo",
+        "Cámara trasera",
+        "Control de estabilidad",
+        "GPS integrado",
+      ],
       precio: "Desde $74.000 ARS/día",
     },
     {
       id: 6,
       nombre: "Renault Clio",
       imagen: auto5,
-      descripcion:
-        "✔️ 5 puertas\n✔️ Bajo consumo - Baúl mediano\n✔️ Fácil de estacionar\n✔️ Aire acondicionado\n✔️ Conectividad Bluetooth\n✔️ Sistema de seguridad básico",
+      descripcion: [
+        "5 puertas",
+        "Bajo consumo - Baúl mediano",
+        "Fácil de estacionar",
+        "Aire acondicionado",
+        "Conectividad Bluetooth",
+        "Sistema de seguridad básico",
+      ],
       precio: "Desde $60.000 ARS/día",
     },
   ];
@@ -99,13 +130,11 @@ export default function AlquilerAutos() {
   const handleChange = (e) => {
     setBusqueda({ ...busqueda, [e.target.name]: e.target.value });
   };
+
   const handleBuscar = (e) => {
     e.preventDefault();
-    // Simular navegación a resultados
     setMostrarResultados(true);
-    // Aquí podrías guardar la búsqueda en localStorage si es necesario
   };
-  
 
   const abrirModal = (auto) => {
     setAutoSeleccionado(auto);
@@ -169,14 +198,11 @@ export default function AlquilerAutos() {
           : `url(${background_of_home_alquiler_de_autos})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
-    
-        
         fontFamily: "'Open Sans', sans-serif",
         color: "#3a2e25",
         transition: "background 0.3s ease",
       }}
     >
-      {/* Si NO estamos en resultados mostramos el formulario y requisitos */}
       {!mostrarResultados && (
         <>
           <form className="form-box" onSubmit={handleBuscar}>
@@ -214,28 +240,20 @@ export default function AlquilerAutos() {
             <button type="submit">Buscar</button>
           </form>
 
-          {/* Requisitos básicos fuera del form */}
           <div className="requisitos-basicos">
-            <h4>Requisitos basicos</h4>
+            <h4>Requisitos básicos</h4>
             <ul>
-              <li>Edad minima: 21 años</li>
+              <li>Edad mínima: 21 años</li>
               <li>Licencia de conducir vigente</li>
-              <li>Tarjeta de credito para garantia</li>
+              <li>Tarjeta de crédito para garantía</li>
               <li>DNI o pasaporte</li>
             </ul>
           </div>
         </>
       )}
 
-      {/* Mostrar resultados si estamos en /alquiler-autos */}
-    {mostrarResultados && (
+      {mostrarResultados && (
         <>
-          <h3 style={{ marginBottom: "1rem", color: "#776B5D" }}>
-            Autos disponibles en {busqueda.lugarRetiro || "tu ciudad"}
-          </h3>
-
-          
-
           <div className="grid-alojamientos">
             {autosData.map((auto) => (
               <div className="card" key={auto.id}>
@@ -244,24 +262,35 @@ export default function AlquilerAutos() {
                   <div
                     className="heart-icon"
                     onClick={() => toggleFavorito(auto.id)}
-                    aria-label="Agregar a favoritos"
+                    title={
+                      favoritos.includes(auto.id)
+                        ? "Quitar de favoritos"
+                        : "Agregar a favoritos"
+                    }
                   >
                     {favoritos.includes(auto.id) ? (
-                      <FaHeart color="#E74C3C" />
+                      <FaHeart color="#876445" />
                     ) : (
-                      <FaRegHeart />
+                      <FaRegHeart color="#876445" />
                     )}
                   </div>
                 </div>
+
                 <div className="card-info">
                   <h4>{auto.nombre}</h4>
+
                   {descripcionExpandida === auto.id ? (
                     <>
-                      {auto.descripcion.split("\n").map((linea, index) => (
-                        <p key={index} className="descripcion expandido">
-                          {linea}
-                        </p>
-                      ))}
+                      <ul className="descripcion-lista expandido">
+                        {auto.descripcion.map((item, i) => (
+                          <li key={i}>
+                            <FaCheckCircle
+                              style={{ color: "#876445", marginRight: "6px" }}
+                            />
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
                       <button
                         className="ver-mas-btn"
                         onClick={() => toggleDescripcion(auto.id)}
@@ -271,9 +300,16 @@ export default function AlquilerAutos() {
                     </>
                   ) : (
                     <>
-                      <p className="descripcion">
-                        {auto.descripcion.split("\n")[0]}
-                      </p>
+                      <ul className="descripcion-lista">
+                        {auto.descripcion.slice(0, 3).map((item, i) => (
+                          <li key={i}>
+                            <FaCheckCircle
+                              style={{ color: "#876445", marginRight: "6px" }}
+                            />
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
                       <button
                         className="ver-mas-btn"
                         onClick={() => toggleDescripcion(auto.id)}
@@ -282,35 +318,47 @@ export default function AlquilerAutos() {
                       </button>
                     </>
                   )}
-                  <p>
-                    <strong>{auto.precio}</strong>
+
+                  <p
+                    style={{
+                      color: "#786D60",
+                      fontWeight: "600",
+                      fontSize: "1rem",
+                      marginTop: "0.3rem",
+                    }}
+                  >
+                    {auto.precio}
                   </p>
+
                   <button
                     className="siguiente"
                     onClick={() => abrirModal(auto)}
-                    aria-label={`Continuar reserva de ${auto.nombre}`}
+                    aria-label={`Reservar ${auto.nombre}`}
                   >
-                    Siguiente
+                    Alquilar
                   </button>
                 </div>
               </div>
             ))}
           </div>
-        </>)}
+        </>
+      )}
 
-      {/* Modal de reserva */}
       {mostrarModal && (
-        <div className="modal-overlay">
-          <div className="modalAlojamientos">
-            <h3>Completá tu reserva</h3>
-            <p>
-              <strong>{autoSeleccionado.nombre}</strong>
-            </p>
+        <div className="modal-overlay" onClick={cerrarModal}>
+          <div
+            className="modalAlojamientos"
+            onClick={(e) => e.stopPropagation()}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="modal-title"
+          >
+            <h3 id="modal-title">Reservar {autoSeleccionado.nombre}</h3>
             <form onSubmit={confirmarReserva}>
               <input
                 type="text"
                 name="nombre"
-                placeholder="Nombre y apellido"
+                placeholder="Nombre completo"
                 value={reserva.nombre}
                 onChange={handleReservaChange}
               />
@@ -328,22 +376,24 @@ export default function AlquilerAutos() {
                 value={reserva.telefono}
                 onChange={handleReservaChange}
               />
-              <button type="submit">Continuar reserva</button>
+              <button type="submit">Confirmar reserva</button>
             </form>
             {mensajeReserva && (
-              <p className="form-message">{mensajeReserva}</p>
+              <p style={{ color: "red", marginTop: "0.5rem" }}>
+                {mensajeReserva}
+              </p>
             )}
             <button
               className="cerrarModalAlojamientos"
               onClick={cerrarModal}
+              aria-label="Cerrar formulario de reserva"
             >
-              Cerrar
+              Cancelar
             </button>
           </div>
         </div>
       )}
 
-      {/* Mensaje flotante favoritos */}
       {mostrarMensajeFavorito && (
         <div className="mensaje-favorito-flotante">{mensajeFavorito}</div>
       )}
