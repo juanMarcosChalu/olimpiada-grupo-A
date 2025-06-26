@@ -43,13 +43,20 @@ function App() {
             <SectionHome />
             <Carousel />
             <Testimonios />
-            <Login />
-            <Registro />
             <SectionsCarrito />
             <Footer />
           </>
         } />
-
+        <Route path='/login' element={
+          <>
+           <Login/>
+          </>
+        } />
+        <Route path='/registro' element={
+          <>
+           <Registro/>
+          </>
+        } />
         <Route path='/paquetes' element={
           <>
             <Header
