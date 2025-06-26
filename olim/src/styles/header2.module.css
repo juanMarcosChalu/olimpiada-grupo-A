@@ -1,163 +1,176 @@
 .header {
-    
-    a{
-        color: #776b5d;
-        text-decoration: none;
-    }
-    width: 100%;
-    position: relative;
-    height: 14vh;
-    background-color: #ffffff;
-    color: white;
-    display: flex;
-    align-items: end;
-    justify-content: space-around;
-    padding-bottom: 50px;
-    padding: 0 20px;
-    padding-bottom: 0.5rem;
-    &::after{
-        position: absolute;
-        border-bottom: 3px solid #534a40;
-      box-shadow: black 2px 2px;
-        content: "";
-        top: 98%;
-        width: 85%;
-       
-        left: 50%;
-        transform: translateX(-50%);
-        z-index: 2;
-    }
-   
+
+  a {
+    color: #776b5d;
+    text-decoration: none;
+  }
+
+  width: 100%;
+  position: relative;
+  height: 14vh;
+  background-color: #ffffff;
+  color: white;
+  display: flex;
+  align-items: end;
+  justify-content: space-around;
+  padding-bottom: 50px;
+  padding: 0 20px;
+  padding-bottom: 0.5rem;
+
+  &::after {
+    position: absolute;
+    border-bottom: 3px solid #534a40;
+    box-shadow: black 2px 2px;
+    content: "";
+    top: 98%;
+    width: 85%;
+
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+  }
+
 }
+
 .title {
-    color: black;
+  color: black;
 }
+
 .navigation {
-    padding-right: 2%;
-    height: 70%;
-    display: flex;
-    align-items: center;
+  padding-right: 2%;
+  height: 70%;
+  display: flex;
+  align-items: center;
 }
-.navigationList{
-        display: flex;
-        list-style: none;
-        align-items: center;
-        justify-content: center;
-        
-         gap: 10%;
-        li {
-            transition: background 400ms;
-            position: relative;
-            line-height: 1.5rem;
-        }
+
+.navigationList {
+  display: flex;
+  list-style: none;
+  align-items: center;
+  justify-content: center;
+
+  gap: 10%;
+
+  li {
+    transition: background 400ms;
+    position: relative;
+    line-height: 1.5rem;
+  }
 }
 
 
 .navbuttons {
-  
-    font-size: 1.5rem ;
-    font-family: "Libre Baskerville", serif;
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: #776b5d;
-    text-decoration: none;
-    font-weight: 400;
-    &:hover {
-        color: #b0a695;
-        
-    }
-    
+
+  font-size: 1.5rem;
+  font-family: "Libre Baskerville", serif;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #776b5d;
+  text-decoration: none;
+  font-weight: 400;
+
+  &:hover {
+    color: #b0a695;
+
+  }
+
 }
 
-.submenu{
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 200%;
-    background-color: #bdb8af;
-    list-style: disc;
-    padding: 0.5rem;
-    list-style-position: inside;
-    padding-left: 10%;
-    z-index: 100;
-    display: flex;
-    flex-direction: column;
-     
-    a {
-        font-size: 1rem;
-        color: #5a5147;
-        text-decoration: none;
+.submenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 200%;
+  background-color: #bdb8af;
+  list-style: disc;
+  padding: 0.5rem;
+  list-style-position: inside;
+  padding-left: 10%;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
 
-        &:hover {
-            text-decoration: underline;
-        }
+  a {
+    font-size: 1rem;
+    color: #5a5147;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
     }
+  }
 }
 
 
 
 .opacityoff {
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 400ms;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 400ms;
 }
 
 .opacityon {
-    opacity: 1;
-    transition: opacity 400ms;
+  opacity: 1;
+  transition: opacity 400ms;
 }
 
 .logocontainer {
-    height: 75%;
+  height: 75%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
+  h1 {
+    color: #776b5d;
+    height: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    font-size: 2.5rem;
+    line-height: 1.5rem;
+    font-family: "Libre Baskerville", serif;
+  }
+
+  img {
     position: relative;
-  
-    h1{
-        color: #776b5d;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        font-size: 2.5rem;
-        line-height: 1.5rem;
-          font-family: "Libre Baskerville", serif;
+
+    width: 100%;
+    height: 90%;
+
+    &:hover {
+      transform: scale(1.05);
+      transition: transform 0.3s ease;
+      cursor: pointer;
     }
-    img {
-        position: relative;
-   
-        width: 100%;
-        height: 90%;
-        
-        &:hover {
-            transform: scale(1.05);
-            transition: transform 0.3s ease;
-            cursor: pointer;
-        }
-    }
+  }
 }
-.userBox{
+
+.userBox {
+  position: absolute;
+  top: 100%;
+  z-index: 99;
+  left: 0;
+  width: 20vw;
+  height: 20vh;
+  background-color: black;
+
+  .f {
     position: absolute;
-    top: 100%;
-    z-index: 99;
-    left:0;
-    width: 20vw;
-    height: 20vh;
-    background-color: black;
-    .f{
-        position: absolute;
-        top:10%;
-    }
+    top: 10%;
+  }
 }
-.userBoxClosed{
-    display: none;
-    opacity: 0;
+
+.userBoxClosed {
+  display: none;
+  opacity: 0;
 }
-.userBoxOpen{
-    display: flex;
-    
+
+.userBoxOpen {
+  display: flex;
+
 }
+
 .navbar-logo {
   font-size: 1.5rem;
   font-weight: bold;
@@ -211,23 +224,28 @@
 .hamburguesa.open span:nth-child(1) {
   transform: rotate(45deg) translate(5px, 5px);
 }
+
 .hamburguesa.open span:nth-child(2) {
   opacity: 0;
 }
+
 .hamburguesa.open span:nth-child(3) {
   transform: rotate(-45deg) translate(5px, -5px);
 }
-.open{
-    position: absolute;
-    top: 20px;
-    left: 100vw;
-    
-    transform: translateX(-200%);
-    z-index: 100000;
-    span{
-        background-color: black;
-    }
+
+.open {
+  position: absolute;
+  top: 20px;
+  left: 100vw;
+
+  transform: translateX(-200%);
+  z-index: 100000;
+
+  span {
+    background-color: black;
+  }
 }
+
 .navbarLinks {
   display: none;
   flex-direction: column;
@@ -247,13 +265,14 @@
 
 .navbarLinks a {
 
-      color: rgb(26, 25, 25);
-    
-font-size: 1.4rem;
+  color: rgb(26, 25, 25);
+
+  font-size: 1.4rem;
   text-decoration: none;
   padding: 0.5rem 0;
   transition: color 0.3s;
-  &:hover{
+
+  &:hover {
     color: #30281f;
   }
 }
@@ -305,13 +324,13 @@ font-size: 1.4rem;
     background-color: #bbb3a8;
 
     li {
-    
-        background-color: #bbb3a8;
 
-      
+      background-color: #bbb3a8;
+
+
     }
 
-    
+
   }
 }
 
@@ -341,7 +360,8 @@ font-size: 1.4rem;
   cursor: pointer;
   display: block;
   width: 100%;
-  &:hover{
+
+  &:hover {
     background-color: #302621;
   }
 
@@ -367,35 +387,40 @@ font-size: 1.4rem;
   .hamburguesa {
     display: flex;
   }
-  .navbarPc{
+
+  .navbarPc {
     display: none !important;
   }
-  .navigation{
+
+  .navigation {
     align-items: center;
-  
-   
+
+
   }
-   .header{
-        height: 10vh;
-        justify-content: space-between;
-        
-        padding: 0;
-        padding-left: 2rem;
-        padding-right: 2rem;
-        &::after{
-            width: 100%;
-            left: 0;
-        }
+
+  .header {
+    height: 10vh;
+    justify-content: space-between;
+    
+    padding: 0;
+    &::after {
+      position: absolute;
+      border-bottom: 3px solid #534a40;
+      content: "";
+      top: 100%;
+      width: 100%;
+      z-index: 2;
     }
-    .navbuttons{
-        font-size: 1rem
+  }
+
+  .navbuttons {
+    font-size: 1rem
+  }
+
+  .logocontainer {
+    img {
+      width: 50px;
+      height: auto;
     }
-    .logocontainer{
-        img{
-            width: 50px;
-            height: auto;
-        }
-    }
+  }
 }
-
-

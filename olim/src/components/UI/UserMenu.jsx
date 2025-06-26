@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from '../../styles/UserMenu.module.css';
-
+import { useAuth } from "../../hooks/useAuth.js";
 function UsuarioMenu() {
+    const { usuario, cargando, error,isLogin } = useAuth();
     const [userOpen, setUserOpen] = useState(false);
     document.addEventListener("click", (e) => {
         if (!e.target.closest(`.${styles.userButton}`)) {
@@ -15,7 +16,7 @@ function UsuarioMenu() {
                 <span className="material-symbols-outlined">account_circle</span>
             </button>
 
-            {userOpen && (
+            {(userOpen && isLogin) && (
                 <div className={styles.userBox}>
                     <div className={styles.usercontain}>
                         <span className={`${styles.icon} material-symbols-outlined`}>account_circle</span>

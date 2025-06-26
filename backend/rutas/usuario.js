@@ -5,32 +5,44 @@ const router = express.Router();
 
 // Login
 router.post('/login', (req, res) => {
-  const { nombre, password } = req.body.usuario;
+  const { email, password } = req.body.usuario;
 
-  if (!nombre || !password) {
-    return res.status(400).send('Nombre y contraseña son requeridos');
+  if (!email || !password) {
+   
+    return res.status(400).json({ message: 'Email y contraseña son requeridos' });
   }
 
-  const sql = "SELECT * FROM usuarios WHERE nombre = ?";
-  conexion.query(sql, [nombre], (err, rows) => {
-    if (err) return res.status(500).send("Error interno");
-    if (rows.length === 0) return res.status(401).send("Usuario no encontrado");
+  const sql = "SELECT * FROM usuarios WHERE correo = ?";
+  conexion.query(sql, [email], (err, rows) => {
+    if (err) return res.status(500).json({error:`Error interno`});
+    if (rows.length === 0) return res.status(401).json({error:`Usuario no encontrado`});
 
     const usuario = rows[0];
-    const ok = bcrypt.compareSync(password, usuario.Contra);
+    console.log(usuario);
+    
+    const ok = bcrypt.compareSync(password, usuario.contrasena);
 
-    if (!ok) return res.status(401).send("Contraseña incorrecta");
+    if (!ok) return res.status(401).json({error:"Contraseña incorrecta"});
 
     // Guardar datos mínimos en la sesión
     req.session.usuario = {
       id: usuario.idTabla,
       nombre: usuario.nombre,
+      email:usuario.correo,
       rol: usuario.rol,
     };
 
     // Confirmar login
     res.json({ mensaje: "Inicio de sesión exitoso", usuario: req.session.usuario });
   });
+});
+// Por ejemplo: /usuario/sesion
+router.get('/sesion', (req, res) => {
+  if (req.session.usuario) {
+    res.json({ logueado: true, usuario: req.session.usuario });
+  } else {
+    res.status(401).json({ logueado: false, mensaje: "No hay sesión activa" });
+  }
 });
 
 // Registro

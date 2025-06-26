@@ -6,7 +6,7 @@ const session = require('express-session');
 
 const paquetesRoutes = require('./rutas/paquetes');
 const registrarRoutes = require('./rutas/usuario');
-app.use(cors());
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));

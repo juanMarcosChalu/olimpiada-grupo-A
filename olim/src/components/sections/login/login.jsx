@@ -11,27 +11,39 @@ function Login() {
   const navigate = useNavigate();
 
 
-  const handleFormSubmit = async (e) => {
-    e.preventDefault();
+ const handleFormSubmit = async (e) => {
+  e.preventDefault();
 
-    toast("formulario enviado");
+  fetch('http://localhost:3000/usuario/login', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    credentials: 'include',
+    body: JSON.stringify({
+      usuario: {
+        email: correo,
+        password: contrasena
+      }
+    })
+  })
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Error en la solicitud');
+    }
+    return response.json();
+  })
+  .then(data => {
+    console.log(data);
+    toast.success("Inicio de sesión exitoso");
+    navigate("/");
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    toast.error("Error al iniciar sesión");
+  });
+};
 
-    fetch('http://localhost:3000/usuario/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      credentials: 'include',
-      body: JSON.stringify({
-        usuario: {
-          nombre: correo, // tu backend espera "nombre", no "email"
-          password: contrasena
-        }
-      })
-
-    });
-
-  };
 
   return (
     <section className={styles.Registro} style={{
@@ -50,11 +62,13 @@ function Login() {
             type="email"
             placeholder='Correo Electrónico'
             value={correo}
+            name='email'
             onChange={(e) => setCorreo(e.target.value)}
           />
           <input
             type="password"
             placeholder='Contraseña'
+            name='password'
             value={contrasena}
             onChange={(e) => setContrasena(e.target.value)}
           />
