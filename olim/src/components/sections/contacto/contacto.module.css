@@ -1,0 +1,250 @@
+.main {
+  width: 100%;
+  padding: 2rem 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.contactoContainer {
+  width: 100%;
+  max-width: 1100px;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  padding: 0;
+  background: none;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+.textoContacto p {
+  color: #776b5d;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  text-align: center;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.infoGrid {
+  display: flex;
+  justify-content: space-between;
+  gap: 4rem;
+  flex-wrap: wrap;
+}
+
+.listaDatos {
+  flex: 1;
+  min-width: 260px;
+}
+
+.listaDatos ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.listaDatos li {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.listaDatos img {
+  width: 24px;
+  height: 24px;
+}
+
+.listaDatos p,
+.listaDatos a {
+  margin-top: 2rem;
+  color: #776b5d;
+  font-family: "Open sans";
+  font-size: 1.4rem;
+  text-decoration: none;
+}
+
+.listaDatos a:hover {
+  text-decoration: underline;
+}
+
+.redesSociales {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  font-size: 1.4rem;
+  min-width: 180px;
+  margin-top: 2rem;
+}
+
+.socialLink {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #776b5d;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.2rem;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.socialLink svg {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.socialLink span {
+  font-size: 1.2rem;
+}
+
+.socialLink:hover {
+  color: #b0a695;
+}
+
+.seccionForm {
+  margin-top: 10rem;
+  width: 100%;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.seccionFormTitle {
+  color: #776b5d;
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-family: "Open Sans", sans-serif;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.formGroup label {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 700;
+  color: #787878;
+  font-size: 1rem;
+}
+
+.infoForm {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  background-color: #efebe3;
+  border: none;
+  border-radius: 15px;
+  padding: 1rem 1.2rem;
+  color: #000;
+  font-size: 1rem;
+  caret-color: black;
+  resize: vertical;
+  transition: box-shadow 0.3s ease;
+  box-sizing: border-box;
+}
+
+.infoForm:focus {
+  outline: none;
+  box-shadow: 0 0 5px 2px #776b5d;
+  background-color: #f9f7f3;
+}
+
+textarea.infoForm {
+  min-height: 7rem;
+  max-height: 12rem;
+  resize: vertical;
+}
+
+.formButton {
+  width: max-content;
+  align-self: center;
+  background-color: #b0a695;
+  color: white;
+  border-radius: 999px;
+  padding: 0.7rem 2rem;
+  font-size: 1.3rem;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.4s ease;
+  user-select: none;
+}
+
+.formButton:hover {
+  background-color: #686258;
+}
+
+.formButton:active {
+  transform: scale(0.97);
+}
+
+.infoForm:-webkit-autofill {
+  -webkit-text-fill-color: black !important;
+  transition: background-color 9999s ease-in-out 0s !important;
+}
+
+/* ✅ Mensaje de confirmación */
+.confirmacion {
+  text-align: center;
+  margin-top: 1.5rem;
+  color: #776b5d;
+  font-weight: 600;
+  font-family: "Open Sans", sans-serif;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+/* Efecto de entrada */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .infoGrid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .seccionForm,
+  .listaRedes {
+    width: 100%;
+  }
+
+  .formButton {
+    font-size: 1.2rem;
+    padding: 0.6rem 1.5rem;
+  }
+
+  .tituloContacto {
+    text-align: center;
+    font-size: 1.8rem;
+  }
+
+  .listaRedes li {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

@@ -1,91 +1,70 @@
 import React from "react";
-import styles from "./asistencia.module.css"
+import styles from "./asistencia.module.css";
 import Footer from "../../Layouts/Footer";
-import Header from "../../Layouts/header";
+import { useNavigate } from "react-router-dom";
+import PlanCard from "./PlanCard";
 
 function Asistencia() {
+    const navigate = useNavigate();
+
+    const planes = [
+        {
+            nombre: "Plan Básico",
+            precio: "50.000 ARG por semana",
+            beneficios: [
+                "Atención médica hasta 5.000.000 ARG",
+                "Medicación ambulatoria",
+                "Odontología de urgencia",
+                "No cubre cancelación de viaje",
+                "No incluye repatriación sanitaria"
+            ]
+        },
+        {
+            nombre: "Plan Estándar",
+            precio: "100.000 ARG por semana",
+            beneficios: [
+                "Atención médica hasta 10.000.000 ARG",
+                "Hospitalización y medicación",
+                "Asistencia legal",
+                "Equipaje hasta 500.000 ARG",
+                "No incluye protección de móviles"
+            ],
+            destacado: true
+        },
+        {
+            nombre: "Plan Premium",
+            precio: "250.000 ARG por semana",
+            beneficios: [
+                "Atención médica hasta 100.000.000 ARG",
+                "Cirugía, hospitalización",
+                "Robo de equipaje hasta 1.000.000 ARG",
+                "App con geolocalización de clínicas"
+            ]
+        }
+    ];
+
+    const handleSeleccionar = (planNombre) => {
+        // Redirige al carrito
+        navigate("/carrito");
+    };
 
     return (
-        <main>
+        <main className={styles.main}>
             <section className={styles.headAsistencia}>
-                <p>Encuentra la proteccion adecuada para tu viaje y viajar con tranquilidad.</p>
-            </section>
-            <section className={styles.entradasAsistencia}>
-                <input type="text" value="Fecha de inicio" />
-                <input type="text" value="Destino" />
-                <input type="button" value="Buscar" />
+                <p>Encontrá la protección adecuada para tu viaje y viajá con tranquilidad.</p>
             </section>
 
             <section className={styles.cardsAsistencia}>
-                <div className={styles.planBasico}>
-
-                    <h1 className={styles.tituloPlan}>Plan Estándar</h1>
-                    <h2 className={styles.subtituloPlan}>50.000 <b>ARG</b> por semana</h2>
-                    <p className={styles.pPlan}>Incluye:</p>
-
-                    <div className={styles.listaContainer}>
-                        <ol>
-                            <li>Atención medica por enfermedad o accidente hasta 5.000.000 <b>ARG</b></li>
-                            <li>Medicación ambulatoria</li>
-                            <li>Atención odontológica de urgencia</li>
-                            <li>Atención odontológica de urgencia</li>
-                            <li>Atención odontológica de urgencia</li>
-                            <li>No cubre cancelación de viaje </li>
-                            <li>No incluye repatriación sanitaria</li>
-                        </ol>
-                    </div>
-                    <div className={styles.containerButton}>
-                        <input type="button" value="Seleccionar" />
-                    </div>
-                </div>
-                <div className={styles.planEstandar}>
-                    <div>
-                        <h1 className={styles.tituloPlan}>Plan Estándar</h1>
-                        <h2 className={styles.subtituloPlan}>100.000 <b>ARG</b> por semana</h2>
-                        <p className={styles.pPlan}>Incluye:</p>
-                    </div>
-                    <div className={styles.listaContainer}>
-                        <ol>
-                            <li>Atención medica por enfermedad o accidente hasta 10.000.000 <b>ARG</b></li>
-                            <li>Medicación ambulatoria + hospitalizacion</li>
-                            <li>Atención odontológica de urgencia</li>
-                            <li>Asistencia telefónica 24/7 en múltiples idiomas</li>
-                            <li>Asistencia legal presencial</li>
-                            <li>Cobertura por perdida de equipaje hasta 500.000 <b>ARG</b></li>
-                            <li>Cancelacion e interrupcion de viaje por fuerza mayor</li>
-                            <li>No cubre deportos extremos</li>
-                            <li>No incluye proteccion de dispositivos moviles</li>
-                        </ol>
-                    </div>
-                    <div className={styles.containerButton}>
-                        <input type="button" value="Seleccionar" />
-                    </div>
-                </div>
-                <div className={styles.planPremium}>
-                    <div>
-                        <h1 className={styles.tituloPlan}>Plan Estándar</h1>
-                        <h2 className={styles.subtituloPlan}> 250.000 <b>ARG</b> por semana</h2>
-                        <p className={styles.pPlan}>Incluye:</p>
-                    </div>
-                    <div className={styles.listaContainer}>
-                        <ol>
-                            <li>Atención medica por enfermedad o accidente hasta 100.000.000 <b>ARG</b></li>
-                            <li>Medicación + hospitalizacion + cirugia</li>
-                            <li>Atención odontológica de urgencia</li>
-                            <li>Servicio de orientación legal telefónica</li>
-                            <li>Cancelacion total de viaje por cualquier motivo justificado</li>
-                            <li>Asistencia legal completa + tramites de emergencia</li>
-                            <li>Reparacion sanitaria y funeraria</li>
-                            <li>Perdida o robo de equipaje de riesgo hasta 1.000.000 <b>ARG</b></li>
-                            <li>Proteccio de dispositivos moviles hasta 500.000 <b>ARG</b></li>
-                            <li>Acceso prioritario al centro de ayuda 24/7</li>
-                            <li>App con geolocalizacion de clinicas cercanas</li>
-                        </ol>
-                    </div>
-                    <div className={styles.containerButton}>
-                        <input type="button" value="Seleccionar" />
-                    </div>
-                </div>
+                {planes.map((plan, index) => (
+                    <PlanCard
+                        key={index}
+                        nombre={plan.nombre}
+                        precio={plan.precio}
+                        beneficios={plan.beneficios}
+                        destacado={plan.destacado}
+                        onSeleccionar={() => handleSeleccionar(plan.nombre)}
+                    />
+                ))}
             </section>
         </main>
     );

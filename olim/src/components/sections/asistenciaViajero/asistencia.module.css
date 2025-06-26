@@ -1,156 +1,142 @@
-main {
-    position: relative;
-    background-color: #F3EEEA;
-    padding: 0%;
-    margin: 0%;
-    width: 100%;
-    height: 100vh;
+.main {
+  background-color: #f3eeea;
+  width: 100%;
+  min-height: 100vh;
+  padding: 0;
+  margin: 0;
 }
 
 .headAsistencia {
-    position: relative;
-    display: flex;
-    font-family: "Open Sans";
-    color: #776B5D;
-    font-size: 1.3rem;
-    font-weight: bold;
-    text-align: justify;
-    justify-content: center;
-    width: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 3rem 0 1.5rem 0;
-}
-
-.planBasico,
-.planEstandar,
-.planPremium {
-    background-color: white;
-    position: relative;
-    width: 60%;
-    height: 100%;
-    min-height: 550px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.containerButton {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin-top: 1rem;
-}
-
-input[type="button"] {
-    padding: 0.5rem 1.5rem;
-    border-radius: 999px;
-    background-color: #776B5D;
-    color: white;
-    border: none;
-    font-size: 1rem;
-    cursor: pointer;
-    margin-bottom: 0.5rem;
-}
-
-.entradasAsistencia {
-    transform: translateX(-30%);
-    position: relative;
-    display: flex;
-    justify-content: start;
-    gap: 3rem;
-    max-width: 80%;
-    height: 3rem;
-    max-height: 3rem;
-    left: 50%;
-    align-items: center;
-}
-
-.entradasAsistencia input[type="text"] {
-    border: none;
-    width: 15%;
-    border-radius: 7px;
-    padding: 8px;
-    color: #776B5D;
-    text-align: center;
-    font-size: 1.2rem;
-}
-
-.entradasAsistencia input[type="button"] {
-    position: relative;
-    height: 2rem;
-    width: 15%;
-    font-size: 1rem;
-    border: none;
-    border-radius: 999px;
-    background-color: #776B5D;
-    color: #fff;
+  font-family: "Open Sans", sans-serif;
+  color: #776b5d;
+  font-size: 1.3rem;
+  font-weight: bold;
+  text-align: center;
+  padding: 3rem 1rem 2rem;
 }
 
 .cardsAsistencia {
-    position: relative;
-    width: 100%;
-    max-height: 100%;
-    display: grid;
-    place-items: center;
-    grid-template-columns: 1fr 1fr 1fr;
-    margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem 1rem;
+  align-items: stretch;
 }
 
+.planCard {
+  background-color: white;
+  width: 300px;
+  min-height: auto;
+  border-radius: 12px;
+  padding: 1.2rem 1rem 1.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
+.planCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
 
 .tituloPlan {
-    position: relative;
-    width: 100%;
-    height: 0%;
-    text-align: center;
+  text-align: center;
+  font-size: 1.3rem;
+  margin-bottom: 0.3rem;
+  color: #4a403a;
 }
 
 .subtituloPlan {
-    width: 100%;
-    text-align: center;
-    padding: 0 0 0.5rem 0;
+  text-align: center;
+  font-size: 1.05rem;
+  color: #776b5d;
+  margin-bottom: 0.5rem;
 }
 
-.pPlan{
-    position: relative;
-    width: 100%;
-    height: 0%;
-    text-align: start;
-    padding: 0 0 0 1rem;
-    font-family: "Open Sans";
-    font-size: 1.1rem;
+.pPlan {
+  font-family: "Open Sans", sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  padding-left: 0.5rem;
+  margin: 0.5rem 0;
+  color: #333;
 }
 
 .listaContainer {
-    position: relative;
+  padding-left: 1rem;
+  margin-bottom: 1rem;
+}
+
+.listaContainer li {
+  margin-bottom: 0.4rem;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+/* Etiqueta Recomendado */
+.etiqueta {
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  background-color: #f2c14e;
+  color: #333;
+  padding: 0.3rem 0.6rem;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.destacado {
+  border: 2px solid #f2c14e;
+}
+
+.containerButton button {
+  padding: 0.6rem 2rem;
+  border-radius: 30px;
+  background-color: #776b5d;
+  color: #fff;
+  border: 2px solid transparent;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: "Open Sans", sans-serif;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.containerButton {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.containerButton button:hover {
+  background-color: transparent;
+  color: #776b5d;
+  border: 2px solid #776b5d;
+  transform: scale(1.03);
+}
+
+.containerButton button:active {
+  transform: scale(0.97);
+  box-shadow: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .cardsAsistencia {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .planCard {
     width: 90%;
-    left: 5%;   
-}
-
-.planBasico input[type="button"] {
-    position: relative;
-    display: flex;
-    place-items: center;
-}
-
-
-.planEstandar input[type="button"] {
-    position: relative;
-    display: flex;
-    place-items: center;
-}
-
-
-.planPremium input[type="button"] {
-    position: relative;
-    display: flex;
-    place-items: center;
-}
-
-
-ol {
-    position: relative;
-    list-style-type: none;
-
+    max-width: 400px;
+  }
 }

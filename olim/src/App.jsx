@@ -18,7 +18,7 @@ import SectionFav from "./components/sections/favoritos/SectionsFavoritos.jsx";
 import SectionNotificaciones from "./components/sections/notificaciones/SectionNotificaciones.jsx";
 import Registro from "./components/sections/login/Registro.jsx";
 import SectionsCarrito from "./components/sections/carrito/SectionsCarrito.jsx";
-import Contacto from "./components/sections/contactanos/contacto.jsx";
+import Contacto from "./components/sections/contacto/contacto.jsx";
 import Login from "./components/sections/login/login.jsx";
 import Alojamientos from "./components/sections/alojamientos/Alojamientos.jsx";
 import AlquilerAutos from "./components/sections/alquilerdeautos/AlquilerAutos.jsx";
@@ -208,11 +208,28 @@ function App() {
         <Link to="/" key="inicio">Inicio</Link>,
         <ServiciosMenu key="servicios" />,
         ]}
-       />
-      <TerminosCondiciones/>
-      <Footer />
-     </>
-     } />
+      />
+       <TerminosCondiciones/>
+       <Footer />
+       </>
+       } />
+
+        <Route path='/Asistencia' element={
+          <>
+        <Header
+         title={<h1>Asistencia al Viajero</h1>}
+         menuItems={[
+        <Link to="/" key="inicio">Inicio</Link>,
+        <ServiciosMenu key="servicios" />,
+        ]}
+      />
+       <Asistencia/>
+       <Footer />
+       </>
+       } />
+
+
+
       </Routes>
     </BrowserRouter>
   );

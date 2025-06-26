@@ -36,7 +36,7 @@ function ServiciosMenu() {
                               <Link to="/Paquetes">
                                   <li>Paquetes</li>
                               </Link>
-                              <Link to="/Notificaciones">
+                              <Link to="/Asistencia">
                                   <li>Asistencia al Viajero</li>
                               </Link>
                           </ul>
