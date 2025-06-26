@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-
+"use client"
 import "./App.css";
 
 import SectionHome from "./components/sections/home/SectionHome.jsx";
@@ -26,10 +26,11 @@ import Asistencia from "./components/sections/asistenciaViajero/Asistencia.jsx";
 import GridPaquetes from "./components/sections/paquetes/gridPaquetes.jsx";
 import PoliticaPrivacidad from "./components/sections/politicaprivacidad/PoliticaPrivacidad.jsx";
 import TerminosCondiciones from "./components/sections/terminoscondiciones/TerminosCondiciones.jsx";
-
+import {Toaster} from "./components/UI/sonner.tsx";
 function App() {
   return (
     <BrowserRouter>
+     <Toaster theme="dark"></Toaster>
       <Routes>
         <Route path='/' element={
           <>

@@ -5,6 +5,7 @@ import fondo from "../../../assets/Logo.png"
 import { Link } from 'react-router-dom';
 import logo from "../../../assets/Logo.png"
 import usePost from "../../../hooks/usePost.js";
+import { toast } from "sonner";
 function Registro() {
   const [nombre, setNombre] = useState('');
   const [correo, setCorreo] = useState('');
@@ -14,6 +15,13 @@ function Registro() {
 
   const handleSubmit = async (e) => {
   e.preventDefault();
+toast("Event has been created", {
+          description: "Sunday, December 03, 2023 at 9:00 AM",
+          action: {
+            label: "Undo",
+            onClick: () => console.log("Undo"),
+          },
+        });
 
   const data = {
     usuario: {

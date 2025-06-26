@@ -35,8 +35,9 @@ router.post('/login', (req, res) => {
 
 // Registro
 router.post('/registrar', (req, res) => {
-  const { nombre, password } = req.body.usuario;
-
+  const { nombre, password,correo,recibirPromos } = req.body.usuario;
+  console.log(req.body.usuario);
+  
   const checkQuery = 'SELECT * FROM usuarios WHERE nombre = ?';
   conexion.query(checkQuery, [nombre], (err, rows) => {
     console.log(err);
@@ -51,10 +52,10 @@ router.post('/registrar', (req, res) => {
     }
 
     const hash = bcrypt.hashSync(password, 6);
-    const insertQuery = 'INSERT INTO usuarios (nombre, contrasena, rol) VALUES (?, ?, ?)';
+    const insertQuery = 'INSERT INTO usuarios (nombre, contrasena, rol,correo,promociones) VALUES (?, ?, ?,? ,? )';
     const rol = "user";
 
-    conexion.query(insertQuery, [nombre, hash, rol], (error) => {
+    conexion.query(insertQuery, [nombre, hash, rol,correo,recibirPromos], (error) => {
       if (error) {
         console.log('❌ Error al registrar usuario:', error);
         return res.status(500).send('Error al registrar el usuario');

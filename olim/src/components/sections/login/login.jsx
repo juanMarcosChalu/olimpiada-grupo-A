@@ -3,7 +3,7 @@ import styles from "../../../styles/Registro.module.css";
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from "../../../context/AuthContext"; // Asegurate de importar bien
 import logo from "../../../assets/Logo.png";
-
+import { toast } from "sonner";
 function Login() {
   const [correo, setCorreo] = useState("");
   const [contrasena, setContrasena] = useState("");
@@ -14,7 +14,7 @@ function Login() {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
 
-    
+    toast("formulario enviado");
 
     fetch('http://localhost:3000/usuario/login', {
       method: 'POST',
