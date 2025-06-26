@@ -26,12 +26,16 @@ import Asistencia from "./components/sections/asistenciaViajero/Asistencia.jsx";
 import GridPaquetes from "./components/sections/paquetes/gridPaquetes.jsx";
 import PoliticaPrivacidad from "./components/sections/politicaprivacidad/PoliticaPrivacidad.jsx";
 import TerminosCondiciones from "./components/sections/terminoscondiciones/TerminosCondiciones.jsx";
-import {Toaster} from "./components/UI/sonner.tsx";
+import ResultadosVuelos from "./components/sections/resultadosvuelos/ResultadosVuelos.jsx";
+import { Toaster } from "./components/UI/sonner.tsx";
+
 function App() {
   return (
     <BrowserRouter>
-     <Toaster theme="dark"></Toaster>
+      <Toaster theme="dark" />
       <Routes>
+
+        {/* INICIO */}
         <Route path='/' element={
           <>
             <Header
@@ -47,16 +51,12 @@ function App() {
             <Footer />
           </>
         } />
-        <Route path='/login' element={
-          <>
-           <Login/>
-          </>
-        } />
-        <Route path='/registro' element={
-          <>
-           <Registro/>
-          </>
-        } />
+
+        {/* LOGIN / REGISTRO */}
+        <Route path='/login' element={<Login />} />
+        <Route path='/registro' element={<Registro />} />
+
+        {/* PAQUETES */}
         <Route path='/paquetes' element={
           <>
             <Header
@@ -75,11 +75,12 @@ function App() {
               ]}
             />
             <GridPaquetes2 />
-            <GridPaquetes/>
+            <GridPaquetes />
             <Footer />
           </>
         } />
 
+        {/* NOTIFICACIONES */}
         <Route path='/notificaciones' element={
           <>
             <Header
@@ -95,6 +96,7 @@ function App() {
           </>
         } />
 
+        {/* CONTACTO */}
         <Route path='/contacto' element={
           <>
             <Header
@@ -110,6 +112,7 @@ function App() {
           </>
         } />
 
+        {/* FAVORITOS */}
         <Route path='/favoritos' element={
           <>
             <Header
@@ -125,7 +128,7 @@ function App() {
           </>
         } />
 
-        {/* Rutas Servicios */}
+        {/* BUSQUEDA DE VUELOS */}
         <Route path='/vuelos' element={
           <>
             <Header
@@ -133,6 +136,7 @@ function App() {
               menuItems={[
                 <Link to="/" key="inicio">Inicio</Link>,
                 <ServiciosMenu key="servicios" />,
+                <Link to="/contacto" key="contacto">Contacto</Link>,
               ]}
             />
             <Busqueda />
@@ -140,13 +144,31 @@ function App() {
           </>
         } />
 
-              <Route path='/alquileres' element={
+        {/* NUEVA RUTA: RESULTADOS DE VUELOS */}
+        <Route path='/resultadosvuelos' element={
+          <>
+            <Header
+              title={<h1>Resultados de Vuelos</h1>}
+              menuItems={[
+                <Link to="/" key="inicio">Inicio</Link>,
+                <ServiciosMenu key="servicios" />,
+                <Link to="/contacto" key="contacto">Contacto</Link>,
+              ]}
+            />
+            <ResultadosVuelos />
+            <Footer />
+          </>
+        } />
+
+        {/* ALQUILER DE AUTOS */}
+        <Route path='/alquileres' element={
           <>
             <Header
               title={<h1>Alquileres de Auto</h1>}
               menuItems={[
                 <Link to="/" key="inicio">Inicio</Link>,
                 <ServiciosMenu key="servicios" />,
+                <Link to="/contacto" key="contacto">Contacto</Link>,
               ]}
             />
             <AlquilerAutos />
@@ -154,6 +176,7 @@ function App() {
           </>
         } />
 
+        {/* ALOJAMIENTOS */}
         <Route path='/alojamiento' element={
           <>
             <Header
@@ -169,6 +192,7 @@ function App() {
           </>
         } />
 
+        {/* PERFIL */}
         <Route path='/perfil' element={
           <>
             <Header
@@ -184,65 +208,69 @@ function App() {
           </>
         } />
 
+        {/* POLÍTICA DE PRIVACIDAD */}
         <Route path='/politica-privacidad' element={
           <>
-        <Header
-         title={<h1>Política de Privacidad</h1>}
-         menuItems={[
-        <Link to="/" key="inicio">Inicio</Link>,
-        <ServiciosMenu key="servicios" />,
-        ]}
-       />
-      <PoliticaPrivacidad />
-      <Footer />
-      </>
-      } />
+            <Header
+              title={<h1>Política de Privacidad</h1>}
+              menuItems={[
+                <Link to="/" key="inicio">Inicio</Link>,
+                <ServiciosMenu key="servicios" />,
+                <Link to="/contacto" key="contacto">Contacto</Link>,
+              ]}
+            />
+            <PoliticaPrivacidad />
+            <Footer />
+          </>
+        } />
 
-
+        {/* TÉRMINOS Y CONDICIONES */}
         <Route path='/terminos-condiciones' element={
           <>
-        <Header
-         title={<h1>Terminos y Condiciones</h1>}
-         menuItems={[
-        <Link to="/" key="inicio">Inicio</Link>,
-        <ServiciosMenu key="servicios" />,
-        ]}
-      />
-       <TerminosCondiciones/>
-       <Footer />
-       </>
-       } />
+            <Header
+              title={<h1>Términos y Condiciones</h1>}
+              menuItems={[
+                <Link to="/" key="inicio">Inicio</Link>,
+                <ServiciosMenu key="servicios" />,
+                <Link to="/contacto" key="contacto">Contacto</Link>,
+              ]}
+            />
+            <TerminosCondiciones />
+            <Footer />
+          </>
+        } />
 
-        <Route path='/Asistencia' element={
+        {/* ASISTENCIA */}
+        <Route path='/asistencia' element={
           <>
-        <Header
-         title={<h1>Asistencia al Viajero</h1>}
-         menuItems={[
-        <Link to="/" key="inicio">Inicio</Link>,
-        <ServiciosMenu key="servicios" />,
-        ]}
-      />
-       <Asistencia/>
-       <Footer />
-       </>
-       } />
+            <Header
+              title={<h1>Asistencia al Viajero</h1>}
+              menuItems={[
+                <Link to="/" key="inicio">Inicio</Link>,
+                <ServiciosMenu key="servicios" />,
+                <Link to="/contacto" key="contacto">Contacto</Link>,
+              ]}
+            />
+            <Asistencia />
+            <Footer />
+          </>
+        } />
 
-       <Route path='/carrito' element={
-        <>
-        <Header
-        title={<h1>Tu carrito de compras</h1>}
-        menuItems={[
-        <Link to="/" key="inicio">Inicio</Link>,
-        <ServiciosMenu key="servicios" />,
-        <Link to="/contacto" key="contacto">Contacto</Link>,
-      ]}
-      />
-    <SectionsCarrito />
-    <Footer />
-  </>
-} />
-
-
+        {/* CARRITO */}
+        <Route path='/carrito' element={
+          <>
+            <Header
+              title={<h1>Tu carrito de compras</h1>}
+              menuItems={[
+                <Link to="/" key="inicio">Inicio</Link>,
+                <ServiciosMenu key="servicios" />,
+                <Link to="/contacto" key="contacto">Contacto</Link>,
+              ]}
+            />
+            <SectionsCarrito />
+            <Footer />
+          </>
+        } />
 
       </Routes>
     </BrowserRouter>

@@ -1,0 +1,22 @@
+.resultados-vuelos-container {
+  padding: 2rem 1rem;
+  background-color: #F3EEEA;
+  min-height: 75vh;
+  font-family: 'Open Sans', sans-serif;
+  color: #3a2e25;
+  text-align: center;
+}
+
+.titulo {
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+  color: #6f5a42;
+}
+
+.grid-vuelos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}

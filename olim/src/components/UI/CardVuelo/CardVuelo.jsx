@@ -1,5 +1,5 @@
 import styles from "./CardVuelo.module.css";
-import { FaClock, FaSuitcaseRolling } from "react-icons/fa"; // Usa react-icons
+import { FaClock, FaSuitcaseRolling } from "react-icons/fa";
 
 function CardVuelo() {
   return (
@@ -31,7 +31,10 @@ function CardVuelo() {
       </section>
 
       <footer className={styles.footerPrecio}>
-        <div className={styles.precio}>Por persona desde<br /><strong>$134 USD</strong></div>
+        <div className={styles.precio}>
+          Por persona desde <br />
+          <strong>$134 USD</strong>
+        </div>
         <button className={styles.boton}>Siguiente</button>
       </footer>
     </article>

@@ -1,65 +1,77 @@
 .card {
-  border: 1px solid #ddd;
+  background-color: white;
   border-radius: 8px;
-  padding: 1rem;
-  max-width: 350px;
-  font-family: sans-serif;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
- 
-  color: black;
-  gap: 2rem;
+  height: 100%;
+  overflow: hidden;
+  font-family: 'Open Sans', sans-serif;
 }
-.card:nth-child(n){
-    background-color: rgb(255, 255, 255);
-}
+
 .title {
-  text-align: center;
-  font-weight: bold;
+  background-color: #776B5D;
+  color: white;
+  padding: 0.8rem;
   font-size: 1.2rem;
-  margin-bottom: 1rem;
+  text-align: center;
 }
 
 .info {
   display: flex;
-  justify-content: space-between;
-  margin-bottom: 1rem;
+  justify-content: space-around;
+  padding: 1rem;
+  background: #F3EEEA;
 }
 
-.column {
-  text-align: center;
+.column h3 {
+  margin-bottom: 0.3rem;
+  font-size: 1rem;
+  color: #3a2e25;
+}
+.column p {
+  margin: 0.2rem 0;
+  font-size: 0.9rem;
+  color: #776B5D;
 }
 
 .details {
+  padding: 0 1rem 1rem;
   font-size: 0.9rem;
-  margin-bottom: 1rem;
+  color: #3a2e25;
 }
 
 .icon {
-  margin-right: 5px;
-  color: #333;
+  margin-right: 0.4rem;
+  color: #B0A695;
 }
 
 .footerPrecio {
+  margin-top: auto;
+  padding: 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-top: 1px solid #ccc;
-  padding-top: 0.5rem;
- 
+  background: #F3EEEA;
 }
 
 .precio {
-  font-size: 1.1rem;
+  color: #3a2e25;
+  font-size: 1rem;
+  text-align: left;
 }
 
 .boton {
-  background-color: #b8ae9c;
+  background-color: #776B5D;
   color: white;
+  padding: 0.8rem 1.2rem;
   border: none;
   border-radius: 999px;
-  padding: 0.5rem 1rem;
   cursor: pointer;
-  font-weight: bold;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.boton:hover {
+  background-color: #B0A695;
 }
