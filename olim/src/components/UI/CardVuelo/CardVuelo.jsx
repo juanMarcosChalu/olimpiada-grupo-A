@@ -1,5 +1,6 @@
 import styles from "./CardVuelo.module.css";
 import { FaClock, FaSuitcaseRolling } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 function CardVuelo() {
   return (
@@ -33,9 +34,12 @@ function CardVuelo() {
       <footer className={styles.footerPrecio}>
         <div className={styles.precio}>
           Por persona desde <br />
-          <strong>$134 USD</strong>
+          <strong>$</strong>
         </div>
-        <button className={styles.boton}>Siguiente</button>
+        
+        <Link to="/carrito" className={styles.boton}>
+        Siguiente
+        </Link>
       </footer>
     </article>
   );

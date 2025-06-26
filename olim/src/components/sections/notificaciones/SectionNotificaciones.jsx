@@ -18,7 +18,6 @@ function SectionNotificaciones() {
                </article>
                <h1 className={styles.noNotificacionesmessage}>No Tienes Mas Notificaciones</h1>
             </div>
-            <CardVuelo/>
         </section>
     ) 
 }
