@@ -1,7 +1,7 @@
 .paquetes-card {
   place-items: center;
   position: relative;
-  width: 90%;
+  width: 100%;
   height: 65vh;
   color: white;
   left: 50%;
@@ -80,8 +80,6 @@
       font-weight: 700;
     }
   }
-
-
 }
 
 .paquete-texto {
