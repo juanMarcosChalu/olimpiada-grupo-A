@@ -1,198 +1,308 @@
-.carritoSection {
-    width: 100%;
-    min-height: 100vh;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    background-color: #f3eeea;
-    position: relative;
-    display: flex;
-    justify-content: start;
+.carritoSection { 
+  display: flex;
+  gap: 2rem;
+  padding: 2rem;
+  background-color: #f3eeea;
+  min-height: 100vh;
+  font-family: "Open Sans", sans-serif;
+  box-sizing: border-box;
+}
+
+/* Container servicios */
+.serviciosContainer {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-height: 75vh; /* menos altura para que quede menos grande */
+  overflow-y: auto;
+  padding-right: 1rem;
+  border-right: 1px solid #ccc;
+}
+
+/* Sin servicios */
+.sinServicios {
+  font-size: 1.2rem;
+  color: #776b5d;
+  text-align: center;
+  margin-top: 3rem;
+}
+
+/* Card servicio */
+.servicioCard {
+  display: flex;
+  gap: 1rem;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
+  padding: 1rem;
+  align-items: center;
+  max-width: 600px; /* límite ancho */
+  margin: 0 auto; /* centrar */
+}
+
+/* Imagen servicio - más grande */
+.imagenContainer {
+  height: 13rem;
+  overflow: hidden;
+}
+
+.imagenServicio {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Info textual */
+.infoServicio {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.categoria {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #776b5d;
+  text-transform: uppercase;
+}
+
+.nombre {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #3a2e25;
+}
+
+.ubicacion,
+.fechas,
+.precio,
+.totalServicio,
+.personas {
+  font-size: 0.9rem;
+  color: #776b5d;
+}
+
+.totalServicio {
+  font-weight: 700;
+  margin-top: 0.3rem;
+}
+
+/* Botones quitar y editar */
+.botonesServicio {
+  margin-top: 0.5rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.btnQuitar,
+.btnEditar {
+  padding: 0.3rem 0.8rem;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease;
+}
+
+.btnQuitar {
+  background-color: #e4c1c1;
+  color: #7a4949;
+}
+
+.btnQuitar:hover {
+  background-color: #d17777;
+  color: white;
+}
+
+.btnEditar {
+  background-color: #c1d4e4;
+  color: #486c7a;
+}
+
+.btnEditar:hover {
+  background-color: #7a9db8;
+  color: white;
+}
+
+.resumenContainer {
+  flex: 1;
+  background: white;
+  border-radius: 15px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  height: fit-content;
+  box-sizing: border-box;
+  cursor: default;
+}
+
+.resumenContainer h2 {
+  margin: 0;
+  color: #3a2e25;
+  text-align: center;
+  line-height: normal;
+  user-select: none;
 }
 
 
-/* seccion alquiler de autos */
-
-.asideProductos {
-    position: absolute;
-    background-color: white;
-    border-radius: 20px;
-    height: 30%;
-    width: 20%;
-    left: 20%;
-    font-family: "Open Sans";
+.resumenContainer.resumenDesplegado {
+  max-height: 100vh; /* despliega todo */
+  overflow-y: auto;
+  cursor: default;
 }
 
-.asideProductos h1 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #776b5d;
-    height: 34%;
+.resumenContainer p {
+  color: #776b5d;
+  font-size: 1rem;
+  margin: 0;
 }
 
-.asideProductos ol {
-    position: relative;
-    list-style-type: none;
-    padding-left: 10%;
-    color: #776b5d;
-    height: 33%;
-    font-size: 0.95rem;
-}
-
-.divContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
-    background-color: #fff;
-    position: relative;
-    height: 33%;
-    color: #776b5d;
-    display: flex;
-    border-radius: 20px;
-}
-
-.divContainer button {
-    background-color: white;
-    color: #776b5d;
-    position: relative;
-    border: none;
-}
-
-.divContainer button:hover {
-    cursor: pointer;
-    color: #000000;
-}
-
-.divContainer span {
-    font-weight: bold;
-    font-size: 1.2rem
-}
-
-
-/* seccion resumen final */
-
-.asidePrevista {
-    background-color: white;
-    position: absolute;
-    left: 60%;
-    width: 20%;
-    height: 40%;
-}
-
-.articleResumen {
-    position: relative;
-}
-
-.articleResumen h1 {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    top: 50%;
-    transform: translateY(50%);
-    color: hsl(32, 12%, 42%);
-}
-
-
-.sectionTexto {
-    font-family: "Open Sans", sans-serif;
-    color: #776b5d;
-    padding: 1rem;
-}
-
-.subtotal,
-.impuestos {
-    margin: 0.5rem 0;
-    font-size: 1rem;
-}
-
-.listaImpuestos {
-    list-style-type: disc;
-    padding-left: 1.5rem;
-    margin-top: 0.5rem;
-    margin-bottom: 1rem;
-    color: #776b5d;
-    font-size: 0.95rem;
-}
-
-.total {
-    font-weight: bold;
-    font-size: 1.1rem;
-    margin: 1rem 0;
-    color: #776b5d;
+.totalFinal {
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: #3a2e25;
+  margin-top: 1rem;
+  text-align: center;
 }
 
 .botonCompra {
-    width: 60%;
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #776b5d;
-    color: white;
-    padding: 0.8rem;
-    border: none;
-    border-radius:999px;
-    cursor: pointer;
-    font-weight: 500;
-    font-size: 1rem;
-    transition: all 500ms;
-
-    &:hover {
-        background-color: #585046;
-    }
+  padding: 0.8rem;
+  border: none;
+  background-color: #776b5d;
+  color: white;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 1rem;
+  transition: background-color 0.4s ease;
+  width: 100%;
 }
 
-
-
-
-/* seccion que se abre para elegir metodo de pago */
-
-.articlePago {
-    position: relative;
-    font-family: "Open Sans";
-    background-color: white;
-    width: 100%;
-    height: 70%;
-    margin-top: 5rem;
+.botonCompra:disabled {
+  background-color: #c4b9af;
+  cursor: not-allowed;
 }
 
-.articlePago h1 {
-    width: 100%;
-    height: 33%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #776b5d;
+.botonCompra:hover:not(:disabled) {
+  background-color: #585046;
 }
 
-.articlePago ol {
-    color: #776b75;
-    width: 100%;
-    height: 33%;
-    position: relative;
-    list-style-type: none;
-    text-align: center;
+/* Métodos de pago */
+.metodosPago {
+  margin-top: 1rem;
+  text-align: center;
 }
 
-.articlePago a{
-
+.metodosPago h3 {
+  margin-bottom: 1rem;
+  color: #3a2e25;
 }
 
-.botonCompra2 {
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #009ee3;
-    color: white;
-    padding: 1rem 1.2rem;
-    border: none;
-    border-radius: 999px;
-    cursor: pointer;
-    font-weight: 500;
-    font-size: 1rem;
-    transition: all 500ms ease;
+.btnMercadoPago {
+  background-color: #009ee3;
+  color: white;
+  padding: 0.8rem 1.2rem;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+  width: 100%;
+}
 
-    &:hover {
-        background-color: #0072a3;
-    }
+.btnMercadoPago:hover {
+  background-color: #0072a3;
+}
+
+/* Modal overlay */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* Modal contenido */
+.modalContent {
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  width: 350px;
+  max-width: 90%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.modalContent h3 {
+  margin: 0;
+  text-align: center;
+  color: #3a2e25;
+}
+
+.modalContent label {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #776b5d;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.modalContent input[type="text"],
+.modalContent input[type="date"],
+.modalContent input[type="number"] {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  color: #3a2e25;
+}
+
+.modalBotones {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.btnGuardar,
+.btnCancelar {
+  flex: 1;
+  padding: 0.7rem;
+  font-weight: 700;
+  font-size: 1rem;
+  border-radius: 999px;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.btnGuardar {
+  background-color: #776b5d;
+  color: white;
+}
+
+.btnGuardar:hover {
+  background-color: #585046;
+}
+
+.btnCancelar {
+  background-color: #ccc;
+  color: #333;
+}
+
+.btnCancelar:hover {
+  background-color: #aaa;
 }

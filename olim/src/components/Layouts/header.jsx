@@ -26,11 +26,13 @@ function Header({ title, menuItems = [], backgroundColorProp }) {
               <li key={index} className={`${styles.navbuttons} ${styles.navbarPc}`}>{item}</li>
             )
           )}
-
-          {/* Icono usuario fijo al final */}
+          
           <li className={styles.navbarPc}>
+            <Link to="/carrito">
             <SvgCarrito />
-          </li>
+            </Link>
+            </li>
+            
           <li className={styles.navbarPc}>
             <UsuarioMenu />
           </li>

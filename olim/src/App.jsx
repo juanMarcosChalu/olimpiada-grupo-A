@@ -44,7 +44,6 @@ function App() {
             <SectionHome />
             <Carousel />
             <Testimonios />
-            <SectionsCarrito />
             <Footer />
           </>
         } />
@@ -227,6 +226,21 @@ function App() {
        <Footer />
        </>
        } />
+
+       <Route path='/carrito' element={
+        <>
+        <Header
+        title={<h1>Tu carrito de compras</h1>}
+        menuItems={[
+        <Link to="/" key="inicio">Inicio</Link>,
+        <ServiciosMenu key="servicios" />,
+        <Link to="/contacto" key="contacto">Contacto</Link>,
+      ]}
+      />
+    <SectionsCarrito />
+    <Footer />
+  </>
+} />
 
 
 
