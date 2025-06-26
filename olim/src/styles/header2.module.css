@@ -34,9 +34,9 @@
 }
 .navigation {
     padding-right: 2%;
-    height: 100%;
+    height: 70%;
     display: flex;
-    align-items: end;
+    align-items: center;
 }
 .navigationList{
         display: flex;
@@ -48,7 +48,7 @@
         li {
             transition: background 400ms;
             position: relative;
-            
+            line-height: 1.5rem;
         }
 }
 
@@ -108,7 +108,7 @@
 }
 
 .logocontainer {
-    height: 100%;
+    height: 75%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -120,6 +120,7 @@
         display: flex;
         align-items: center;
         font-size: 2.5rem;
+        line-height: 1.5rem;
           font-family: "Libre Baskerville", serif;
     }
     img {
