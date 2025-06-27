@@ -1,0 +1,200 @@
+.Registro {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-repeat: no-repeat;
+    background-position: center center;
+    z-index: 0;
+    flex-direction: column;
+    gap: 0;
+}
+.overlay{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #f3eeeacc;
+  z-index: -1;
+  pointer-events: none;
+}
+.registroContainer {
+    position: relative;
+    text-align: center;
+    width: 70%;
+    height: 100%;
+}
+
+.registerTitle{
+    height: 30%;
+    top: 13%;
+    margin-bottom: 2%;
+    position: relative;
+    color: #776b5d;
+    font-size: 4rem;
+    font-weight: 500;
+    width: 100%;
+    text-align: center;
+    font-family: "Libre Baskerville", serif;
+}
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    left: 50%;
+    gap: 3rem;
+    transform: translateX(-50%);
+  height: 50vh;
+    min-height:max-content;
+  
+}
+
+.formulario input {
+    height: 8vh;
+    min-height: 7vh;
+    width: 60%;
+    background-color: #b0a695;
+    border: 4px #776b5d solid;
+    color: #3a3a3a;
+    text-align: center;
+    border-radius: 0%;
+    caret-color: black;
+    font-family: "Open Sans";
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+}
+.formulario input::placeholder{
+    color: #d9d4cb;
+    opacity: 1;
+}
+.formulario input:focus {
+    outline: none;
+    border-color: #776b5d;
+    
+}
+
+
+.boton {
+    color: white;
+    background-color: #b0a695;
+    border: none;
+    border-radius: 20px;
+    width: 40%;
+    padding: 0.4rem;
+    font-size: 1.6rem;
+    font-family: "Open Sans";
+    cursor: pointer;
+    &:hover{
+        background-color: #777065;
+    }
+}
+
+
+.customcheckbox {
+    position: relative;
+    display: flex;
+    width:100%;
+    height: 20px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    p{
+        width: max-content;
+        text-align: center;
+        position: relative;
+        font-family: "Open Sans";
+        font-size: 1.2rem;
+        font-weight: 800;
+        
+    }
+    &:hover{
+          p{
+          color: #50483e;
+        }
+        .checkmark{
+          border-color: #4b433a;
+        }
+  }}
+
+  .customcheckbox input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    
+  }
+
+  .checkmark {
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: transparent;
+    border:#776b5d 2px solid;
+ 
+  }
+
+  .customcheckbox input:checked ~ .checkmark {
+    background-color: #776b5d;
+  }
+
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+
+  .customcheckbox input:checked ~ .checkmark:after {
+    display: block;
+  }
+
+  .customcheckbox .checkmark:after {
+    left: 25%;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+  .linkRegister{
+    color: #877c70;
+    font-family: "Libre Baskerville", serif;
+    font-size: 1.6rem;
+    &:hover{
+      color: #47413a;
+    }
+  }
+  .registerTitle2{
+    height: 25%;
+    top: 20%;
+    margin-bottom: 5%;
+    position: relative;
+    color: #776b5d;
+    font-size: 4rem;
+    font-weight: 500;
+    width: 100%;
+    text-align: center;
+    font-family: "Libre Baskerville", serif;
+  }
+.linkLogintoRegister{
+  position: relative;
+  top: -2%;
+  color: #5d5348;
+}
+@media (max-width:768px) {
+  .registerTitle , .registerTitle2{
+    top: 0;
+    font-size: 2rem;
+  }
+  .formulario input{
+    height: 5vh;
+    font-size: 1.2rem;
+  }
+}

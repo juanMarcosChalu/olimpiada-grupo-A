@@ -15,14 +15,14 @@ router.post('/login', (req, res) => {
   const sql = "SELECT * FROM usuarios WHERE correo = ?";
   conexion.query(sql, [email], (err, rows) => {
     if (err) return res.status(500).json({error:`Error interno`});
-    if (rows.length === 0) return res.status(401).json({error:`Usuario no encontrado`});
+    if (rows.length === 0) return res.status(401).json({error:`Correo o Contraseña incorrectos`});
 
     const usuario = rows[0];
     console.log(usuario);
     
     const ok = bcrypt.compareSync(password, usuario.contrasena);
 
-    if (!ok) return res.status(401).json({error:"Contraseña incorrecta"});
+    if (!ok) return res.status(401).json({error:"Correo o Contraseña incorrectos"});
 
     // Guardar datos mínimos en la sesión
     req.session.usuario = {
@@ -50,35 +50,62 @@ router.post('/registrar', (req, res) => {
   const { nombre, password,correo,recibirPromos } = req.body.usuario;
   console.log(req.body.usuario);
   
-  const checkQuery = 'SELECT * FROM usuarios WHERE nombre = ?';
-  conexion.query(checkQuery, [nombre], (err, rows) => {
-    console.log(err);
-    
+  if (nombre===null||password==null||correo==null||recibirPromos==null||nombre===""||password===""||correo===""||recibirPromos===""
+  ) {
+    return res.status(400).json({
+      error: "Debes de completar todos los campos"
+    });
+  }
+ const contraseñaSegura = /^(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}$/;
+  if (!contraseñaSegura.test(password)) {
+    return res.status(400).json({
+      error: "La contraseña debe tener al menos una mayúscula, un número y un carácter especial, y mínimo 8 caracteres."
+    });
+  }
+
+  // Validar si el correo ya está en uso
+  const checkEmailQuery = 'SELECT * FROM usuarios WHERE correo = ?';
+  conexion.query(checkEmailQuery, [correo], (err, rows) => {
     if (err) {
-      console.log('❌ Error al verificar usuario existente:', err);
-      return res.status(500).json({ error: 'Error interno al verificar usuario' });
+      console.log('❌ Error al verificar correo existente:', err);
+      return res.status(500).json({ error: 'Error interno al verificar correo' });
     }
 
     if (rows.length > 0) {
-     return res.status(409).json({ error: 'El nombre del usuario ya esta en uso' });
+      return res.status(409).json({ error: 'El correo ya está en uso' });
     }
 
-    const hash = bcrypt.hashSync(password, 6);
-    const insertQuery = 'INSERT INTO usuarios (nombre, contrasena, rol,correo,promociones) VALUES (?, ?, ?,? ,? )';
-    const rol = "user";
-
-    conexion.query(insertQuery, [nombre, hash, rol,correo,recibirPromos], (error) => {
-      if (error) {
-        console.log('❌ Error al registrar usuario:', error);
-        return res.status(500).send('Error al registrar el usuario');
+    // Validar si el nombre ya está en uso
+    const checkNameQuery = 'SELECT * FROM usuarios WHERE nombre = ?';
+    conexion.query(checkNameQuery, [nombre], (err, rows) => {
+      if (err) {
+        console.log('❌ Error al verificar usuario existente:', err);
+        return res.status(500).json({ error: 'Error interno al verificar usuario' });
       }
-      res.send('Registro exitoso');
+
+      if (rows.length > 0) {
+        return res.status(409).json({ error: 'El nombre del usuario ya está en uso' });
+      }
+
+      // Todo validado: insertar usuario
+      const hash = bcrypt.hashSync(password, 6);
+      const insertQuery = 'INSERT INTO usuarios (nombre, contrasena, rol, correo, promociones) VALUES (?, ?, ?, ?, ?)';
+      const rol = "user";
+
+      conexion.query(insertQuery, [nombre, hash, rol, correo, recibirPromos], (error) => {
+        if (error) {
+          console.log('❌ Error al registrar usuario:', error);
+          return res.status(500).json({ error: 'Error al registrar el usuario' });
+        }
+
+        res.json({ mensaje: 'Registro exitoso' });
+      });
     });
   });
 });
 
 // Logout
-router.get('/logout', (req, res) => {
+router.post('/logout', (req, res) => {
   req.session.destroy(err => {
     if (err) return res.status(500).send("Error al cerrar sesión");
     res.clearCookie('connect.sid'); // Borra la cookie del navegador
