@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import styles from "../../../styles/Registro.module.css"
 import fondo from "../../../assets/Logo.png"
-import { Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import logo from "../../../assets/Logo.png"
 import usePost from "../../../hooks/usePost.js";
 import { toast } from "sonner";
@@ -12,8 +12,8 @@ function Registro() {
   const [contrasena, setContrasena] = useState('');
   const [promos, setPromos] = useState(false);
   const { post, loading, error, response } = usePost();
-
-  const handleSubmit = async (e) => {
+  const navigate = useNavigate();
+  const handleSubmitRegister = async (e) => {
     e.preventDefault();
 
     try {
@@ -26,34 +26,18 @@ function Registro() {
         }
 
       });
-      console.log(error.message);
-
-      console.log("✅ Usuario registrado:", res);
-
-      // Limpieza
+      
       setNombre("");
       setCorreo("");
       setContrasena("");
       setPromos(false);
+      console.log("✅ Usuario registrado:", res);
       toast.success("Registro exitoso");
-      try {
-            const data = await post("http://localhost:3000/usuario/login", {
-              usuario: {
-                email: correo,
-                password: contrasena,
-              },
-            });
-      
-            console.log(data);
-            toast.success("Inicio de sesión exitoso");
-            navigate("/");
-          } catch (err) {
-            toast.error(err.message || "Error al iniciar sesión");
-          }
+      navigate("/");
     } catch (err) {
-      // Ahora sí muestra el mensaje real que envió el backend
       toast.error(err.message);
     };
+    
   }
 
 
@@ -76,7 +60,7 @@ function Registro() {
 
         <h1 className={styles.registerTitle}>Regístrate en Brújula</h1>
 
-        <form className={styles.formulario} onSubmit={handleSubmit}>
+        <form className={styles.formulario} onSubmit={handleSubmitRegister}>
           <input
             type="text"
             placeholder='Nombre Completo'

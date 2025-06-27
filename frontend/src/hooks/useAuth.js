@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 export function useAuth() {
   const [usuario, setUsuario] = useState(null);
   const [cargando, setCargando] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState(false);
   const [isLogin, setIsLogin] = useState(true);
   useEffect(() => {
     fetch('http://localhost:3000/usuario/sesion', {

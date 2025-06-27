@@ -8,27 +8,27 @@ router.post('/login', (req, res) => {
   const { email, password } = req.body.usuario;
 
   if (!email || !password) {
-   
+
     return res.status(400).json({ message: 'Email y contraseña son requeridos' });
   }
 
   const sql = "SELECT * FROM usuarios WHERE correo = ?";
   conexion.query(sql, [email], (err, rows) => {
-    if (err) return res.status(500).json({error:`Error interno`});
-    if (rows.length === 0) return res.status(401).json({error:`Correo o Contraseña incorrectos`});
+    if (err) return res.status(500).json({ error: `Error interno` });
+    if (rows.length === 0) return res.status(401).json({ error: `Correo o Contraseña incorrectos` });
 
     const usuario = rows[0];
     console.log(usuario);
-    
+
     const ok = bcrypt.compareSync(password, usuario.contrasena);
 
-    if (!ok) return res.status(401).json({error:"Correo o Contraseña incorrectos"});
+    if (!ok) return res.status(401).json({ error: "Correo o Contraseña incorrectos" });
 
     // Guardar datos mínimos en la sesión
     req.session.usuario = {
-      id: usuario.idTabla,
+      id: usuario.id,
       nombre: usuario.nombre,
-      email:usuario.correo,
+      email: usuario.correo,
       rol: usuario.rol,
     };
 
@@ -47,16 +47,16 @@ router.get('/sesion', (req, res) => {
 
 // Registro
 router.post('/registrar', (req, res) => {
-  const { nombre, password,correo,recibirPromos } = req.body.usuario;
+  const { nombre, password, correo, recibirPromos } = req.body.usuario;
   console.log(req.body.usuario);
-  
-  if (nombre===null||password==null||correo==null||recibirPromos==null||nombre===""||password===""||correo===""||recibirPromos===""
+
+  if (nombre === null || password == null || correo == null || recibirPromos == null || nombre === "" || password === "" || correo === "" || recibirPromos === ""
   ) {
     return res.status(400).json({
       error: "Debes de completar todos los campos"
     });
   }
- const contraseñaSegura = /^(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}$/;
+  const contraseñaSegura = /^(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}$/;
   if (!contraseñaSegura.test(password)) {
     return res.status(400).json({
       error: "La contraseña debe tener al menos una mayúscula, un número y un carácter especial, y mínimo 8 caracteres."
@@ -92,13 +92,30 @@ router.post('/registrar', (req, res) => {
       const insertQuery = 'INSERT INTO usuarios (nombre, contrasena, rol, correo, promociones) VALUES (?, ?, ?, ?, ?)';
       const rol = "user";
 
+
+
       conexion.query(insertQuery, [nombre, hash, rol, correo, recibirPromos], (error) => {
         if (error) {
           console.log('❌ Error al registrar usuario:', error);
           return res.status(500).json({ error: 'Error al registrar el usuario' });
         }
 
-        res.json({ mensaje: 'Registro exitoso' });
+        const sql = "SELECT * FROM usuarios WHERE correo = ?";
+        conexion.query(sql, [correo], (err, rows) => {
+          const usuario = rows[0];
+          console.log(usuario);
+          
+          req.session.usuario = {
+            id: usuario.id,
+            nombre: usuario.nombre,
+            email: usuario.correo,
+            rol: usuario.rol,
+          };
+          res.json({ mensaje: "Registro exitoso", usuario: req.session.usuario });
+        });
+
+
+        
       });
     });
   });

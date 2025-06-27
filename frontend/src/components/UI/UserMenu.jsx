@@ -23,7 +23,7 @@ function UsuarioMenu() {
         }
     };
     document.addEventListener("click", (e) => {
-        console.log(usuario);
+        
         
         if (!e.target.closest(`.${styles.userButton}`)) {
             setUserOpen(false);
