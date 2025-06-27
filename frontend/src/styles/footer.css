@@ -5,6 +5,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   position: relative;
+  padding: 0.5rem 0 1rem 0;
 
   #legal {
     display: flex;
@@ -60,6 +61,7 @@
         text-decoration: none;
         list-style-type: none;
 
+
         a {
           font-size: 1rem;
           color: #776b5d;
@@ -105,9 +107,14 @@
         gap: 10px;
       }
 
+
       .facebook-container,
       .instagram-container {
         list-style: none;
+
+        &:hover{
+          scale: 1.01;
+        }
 
         .social-link {
           display: flex;
@@ -120,7 +127,15 @@
             color: #B0A695;
           }
 
-          svg {
+          #facebookLogoFooter{
+            width: 17px;
+            height: 17px;
+            background-color: #776b5d;
+            border-radius: 999px;
+            padding: 0.2rem;
+          }
+
+          #instagramLogoFooter{
             width: 24px;
             height: 24px;
           }

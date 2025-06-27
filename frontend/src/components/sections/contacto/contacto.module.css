@@ -61,8 +61,8 @@
   gap: 0.8rem;
   margin: 0 0 2rem 0;
   cursor: pointer;
-  
-  &:hover{
+
+  &:hover {
     scale: 1.01;
   }
 }
