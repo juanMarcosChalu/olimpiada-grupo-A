@@ -149,8 +149,15 @@
                     position: relative;
                     color: black;
                     text-align: center;
+                    padding-top: 0.3rem;
                     border-radius: 999px;
                     width: 30%;
+                    height: 1.5rem;
+                    font-weight: 400;
+                    text-decoration: none;
+
+
+                    transition: color 0.3s ease, background-color 0.3s ease;
 
                 }
 

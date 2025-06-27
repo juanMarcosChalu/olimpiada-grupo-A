@@ -115,7 +115,7 @@ function GridPaquetes(tipoPaquete) {
         element.fondo = "#B1C387";
       } else if (element.tipo === "relax") {
         element.fondo = "#AFC1C4";
-      } else if (element.tipo === "cultu2ral") {
+      } else if (element.tipo === "cultural") {
         element.fondo = "#B88C84";
       }
 

@@ -1,82 +1,178 @@
-/* Centrar la caja de login */
-.login-container {
-  height: 100vh;
+/* Contenedor principal */
+.main {
+  padding: 2rem 10%;
+  font-family: 'Open Sans', sans-serif;
+  color: #776b5d;
+  background-color: #e5ddd0;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* Contenedor general del contacto */
+.contactoContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+/* Texto bienvenida */
+.textoContacto {
+  font-size: 1.2rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  grid-column: span 2;
+}
+
+/* Grid de info y redes sociales */
+.infoGrid {
   display: flex;
-  justify-content: center;
+  gap: 3rem;
+  justify-content: space-between;
+}
+
+.listaDatos ul {
+  list-style: none;
+  padding: 0;
+}
+
+.listaDatos li {
+  display: flex;
   align-items: center;
-  background: linear-gradient(135deg, #6b73ff 0%, #000dff 100%);
-  font-family: Arial, sans-serif;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
 }
 
-/* Caja blanca del login */
-.login-box {
-  background: white;
-  padding: 30px 40px;
-  border-radius: 12px;
-  width: 320px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-  text-align: center;
+.listaDatos img {
+  width: 25px;
+  margin-right: 10px;
 }
 
-.login-box h2 {
-  margin-bottom: 25px;
-  color: #333;
-}
-
-.login-box form {
+/* Redes sociales */
+.redesContainer {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 1rem;
+  justify-content: center;
 }
 
-.login-box label {
-  font-weight: bold;
-  text-align: left;
-  color: #555;
-}
-
-.login-box input {
-  padding: 10px;
-  font-size: 1rem;
-  border: 1.8px solid #bbb;
-  border-radius: 6px;
-  transition: border-color 0.3s ease;
-}
-
-.login-box input:focus {
-  border-color: #000dff;
-  outline: none;
-}
-
-.login-box button {
-  margin-top: 10px;
-  background-color: #000dff;
-  color: white;
-  font-weight: bold;
-  padding: 12px 0;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 1rem;
-  transition: background-color 0.3s ease;
-}
-
-.login-box button:hover {
-  background-color: #4a52ff;
-}
-
-.links {
-  margin-top: 20px;
-  font-size: 0.9rem;
-  color: #333;
-}
-
-.links a {
-  color: #000dff;
+.socialLink {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   text-decoration: none;
+  color: #776b5d;
   font-weight: 600;
 }
 
-.links a:hover {
-  text-decoration: underline;
+.socialLink img {
+  width: 25px;
+}
+
+/* Sección formulario */
+.seccionForm {
+  grid-column: span 2;
+  margin-top: 2rem;
+}
+
+.seccionFormTitle {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 1.6rem;
+  color: #776b5d;
+}
+
+.formGroup {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.formGroup label {
+  margin-bottom: 0.3rem;
+  font-weight: 600;
+}
+
+.infoForm {
+  padding: 0.6rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  font-family: 'Open Sans', sans-serif;
+  resize: vertical;
+}
+
+.formButton {
+  width: 100%;
+  padding: 0.8rem;
+  background-color: #c88c8c;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.formButton:hover {
+  background-color: #a96b6b;
+}
+
+/* Notificación de éxito */
+.notificacion {
+  background-color: #c8e6c9;
+  border: 1px solid #388e3c;
+  color: #2e7d32;
+  padding: 1rem;
+  border-radius: 8px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 0 8px rgba(46, 125, 50, 0.5);
+  animation: fadeInOut 5s forwards;
+}
+
+@keyframes fadeInOut {
+  0% {opacity: 0;}
+  10% {opacity: 1;}
+  90% {opacity: 1;}
+  100% {opacity: 0;}
+}
+
+/* Responsive */
+
+@media (max-width: 900px) {
+  .contactoContainer {
+    grid-template-columns: 1fr;
+    padding: 0 1rem;
+  }
+
+  .infoGrid {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .listaDatos li {
+    font-size: 1rem;
+  }
+
+  .socialLink {
+    justify-content: flex-start;
+  }
+
+  .seccionForm {
+    margin-top: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .textoContacto {
+    font-size: 1rem;
+  }
+
+  .formButton {
+    font-size: 1rem;
+  }
 }

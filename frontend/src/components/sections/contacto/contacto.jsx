@@ -38,7 +38,7 @@ function Contacto() {
             <ul>
               <li>
                 <img src={email} alt="Email" />
-                <p>Email: <a href="mailto:Brujula.viajes282@gmail.com">Brujula.viajes282@gmail.com</a></p>
+                <p>Email: <a href="mailto:Brujula.viajes@gmail.com">Brujula.viajes@gmail.com</a></p>
               </li>
               <li>
                 <img src={phone} alt="Teléfono" />
