@@ -1,7 +1,7 @@
 .alquiler-container {
   max-width: 100%;
   height: max-content;
-  min-height: 73vh;
+  min-height: 80vh;
   padding: 3rem 1rem;
   font-family: 'Open Sans', sans-serif;
   color: #3a2e25;
@@ -19,14 +19,14 @@
 }
 
 .form-box {
-  background-color: rgba(243, 238, 234, 0.92);
+  background-color: rgba(236, 232, 228, 0.941);
   padding: 1rem 1.5rem;
   border-radius: 12px;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
   text-align: center;
   width: 90%;
   max-width: 320px;
-  margin: 2rem auto 1.5rem auto;
+  margin: 6rem auto 1.5rem auto;
 }
 
 .form-box h3 {
@@ -73,57 +73,6 @@
   background-color: #6f553e;
 }
 
-.requisitos-basicos {
-  background-color: rgba(243, 238, 234, 0.92);
-  padding: 1rem 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  width: 90%;
-  max-width: 600px;
-  margin: 0 auto 2rem auto;
-  color: #5a4c3f;
-  font-weight: 600;
-  font-size: 0.95rem;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-.requisitos-basicos h4 {
-  flex-basis: 100%;
-  text-align: center;
-  font-size: 1.2rem;
-  margin-bottom: 0.8rem;
-  font-family: 'Open Sans', serif;
-  color: #6f5a42;
-  font-weight: 700;
-  text-transform: none;
-}
-
-.requisitos-basicos ul {
-  list-style: disc;
-  list-style-position: inside;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  place-content: center;
-  gap: 1.3rem;
-  padding-left: 0;
-  margin: 0;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.requisitos-basicos li {
-  position: relative;
-  padding-left: 1.2rem;
-  margin-bottom: 0.3rem;
-  font-weight: 500;
-  color: #6b5840;
-  white-space: nowrap;
-  user-select: none;
-}
 
 /* Grid de autos */
 .grid-alojamientos {

@@ -239,16 +239,6 @@ export default function AlquilerAutos() {
             </select>
             <button type="submit">Buscar</button>
           </form>
-
-          <div className="requisitos-basicos">
-            <h4>Requisitos básicos</h4>
-            <ul>
-              <li>Edad mínima: 21 años</li>
-              <li>Licencia de conducir vigente</li>
-              <li>Tarjeta de crédito para garantía</li>
-              <li>DNI o pasaporte</li>
-            </ul>
-          </div>
         </>
       )}
 
