@@ -36,6 +36,20 @@ function Registro() {
       setContrasena("");
       setPromos(false);
       toast.success("Registro exitoso");
+      try {
+            const data = await post("http://localhost:3000/usuario/login", {
+              usuario: {
+                email: correo,
+                password: contrasena,
+              },
+            });
+      
+            console.log(data);
+            toast.success("Inicio de sesión exitoso");
+            navigate("/");
+          } catch (err) {
+            toast.error(err.message || "Error al iniciar sesión");
+          }
     } catch (err) {
       // Ahora sí muestra el mensaje real que envió el backend
       toast.error(err.message);
