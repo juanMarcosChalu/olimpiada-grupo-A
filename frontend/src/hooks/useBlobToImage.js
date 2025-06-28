@@ -9,17 +9,10 @@ const useImageURL = (blob, typeMime) => {
       return;
     }
     const imagenSrc = `data:${typeMime};base64,${blob}`
-                  
-   
     setSrc(imagenSrc);
 
-    
-
-
-    
   }, [blob, typeMime]);
-  console.log("asdas"+ src);
-  
+
   return src;
 };
 

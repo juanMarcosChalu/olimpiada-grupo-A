@@ -204,3 +204,17 @@
 .overlay:hover {
   background-color: rgba(0, 0, 0, 0.8);
 }
+.saveBtn{
+  border: 1px black solid;
+
+  height: 4vh;
+  color: #5e4b41;
+  cursor: pointer;
+  background-color: #ededed;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: "Open Sans";
+  &:hover{
+    background-color: #d3d2d2;
+  }
+}

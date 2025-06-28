@@ -29,8 +29,8 @@
 }
 
 .registerTitle{
-    height: 30%;
-    top: 13%;
+   
+   
     margin-bottom: 2%;
     position: relative;
     color: #776b5d;
@@ -48,7 +48,7 @@
     position: relative;
     width: 100%;
     left: 50%;
-    gap: 3rem;
+    gap: 2rem;
     transform: translateX(-50%);
   height: 50vh;
     min-height:max-content;

@@ -2,8 +2,113 @@ const express = require('express');
 const bcrypt = require('bcryptjs');
 const conexion = require('../db');
 const router = express.Router();
+const multer = require('multer');
+const upload = multer({ storage: multer.memoryStorage() }); // guardamos en memoria
 
 // Login
+router.patch('/update/:id', upload.single('imagen'), (req, res) => {
+  const { id } = req.params;
+  const { nombre, apellido, genero, birthday } = req.body;
+
+  if (!nombre || !apellido || !genero || !birthday) {
+    return res.status(400).json({ error: "Faltan campos obligatorios" });
+  }
+
+  const sqlUpdateUser = `
+    UPDATE usuarios
+    SET nombre = ?, apellido = ?, genero = ?, birthday = ?
+    WHERE id = ?
+  `;
+
+  conexion.query(sqlUpdateUser, [nombre, apellido, genero, birthday, id], (err, result) => {
+    if (err) {
+      console.error("Error actualizando usuario:", err);
+      return res.status(500).json({ error: "Error interno al actualizar usuario" });
+    }
+
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ error: "Usuario no encontrado" });
+    }
+
+    // 🔄 Actualizar la sesión con los NUEVOS datos (sin depender de `usuariopasado`)
+    const updateSession = async (imagenBuffer = null, tipoMime = null) => {
+  try {
+    req.session.usuario = {
+      ...req.session.usuario,
+      id,
+      nombre,
+      apellido,
+      genero,
+      birthday,
+      ...(imagenBuffer && { 
+        imagen: imagenBuffer.toString('base64'),
+        tipodeimagen: tipoMime
+      })
+    };
+
+    // 🔥 Guarda explícitamente la sesión
+    await new Promise((resolve, reject) => {
+      req.session.save(err => {
+        if (err) reject(err);
+        else resolve();
+      });
+    });
+
+    console.log("Sesión actualizada y guardada:", req.session.usuario);
+    res.json({ mensaje: "Usuario actualizado correctamente" });
+  } catch (err) {
+    console.error("Error guardando sesión:", err);
+    res.status(500).json({ error: "Error al actualizar la sesión" });
+  }
+};
+
+    // Caso 1: No hay imagen nueva
+    if (!req.file) {
+      updateSession();
+      return;
+    }
+
+    // Caso 2: Hay imagen nueva (actualizar en BD y luego sesión)
+    const imagenBuffer = req.file.buffer;
+    const tipoMime = req.file.mimetype;
+
+    conexion.query(
+      'INSERT INTO imagenes (imagen, tipo_mime, nombre) VALUES (?, ?, ?)',
+      [imagenBuffer, tipoMime, "user Image"],
+      (err, resultImagen) => {
+        if (err) {
+          console.error("Error guardando imagen:", err);
+          return res.status(500).json({ error: "Error interno guardando imagen" });
+        }
+
+        const nuevaImagenId = resultImagen.insertId;
+
+        conexion.query(
+          'UPDATE usuario_imagen SET imagen_id = ? WHERE usuario_id = ?',
+          [nuevaImagenId, id],
+          (err, resultUsuarioImagen) => {
+            if (err || resultUsuarioImagen.affectedRows === 0) {
+              // Si no existe la relación, crearla
+              conexion.query(
+                'INSERT INTO usuario_imagen (usuario_id, imagen_id) VALUES (?, ?)',
+                [id, nuevaImagenId],
+                (err) => {
+                  if (err) return res.status(500).json({ error: "Error insertando relación usuario-imagen" });
+                  updateSession(imagenBuffer, tipoMime);
+                }
+              );
+            } else {
+              updateSession(imagenBuffer, tipoMime);
+            }
+          }
+        );
+      }
+    );
+  });
+});
+
+
+
 router.post('/login', (req, res) => {
   const { email, password } = req.body.usuario;
 
@@ -12,13 +117,16 @@ router.post('/login', (req, res) => {
     return res.status(400).json({ message: 'Email y contraseña son requeridos' });
   }
 
-  const sql =`SELECT 
+  const sql = `SELECT 
     u.id,
     u.nombre,
     u.correo,
     u.contrasena,
     u.promociones,
     u.rol,
+     u.apellido,
+      u.genero,
+      u.birthday,
     i.imagen,
     i.tipo_mime
     FROM usuarios u
@@ -44,8 +152,12 @@ router.post('/login', (req, res) => {
       nombre: usuario.nombre,
       email: usuario.correo,
       rol: usuario.rol,
-      imagen:usuario.imagen.toString('base64'),
-      tipodeimagen:usuario.tipo_mime,
+      apellido: usuario.apellido,
+      genero: usuario.genero,
+      birthday: usuario.birthday,
+      promociones: usuario.promociones,
+      imagen: usuario.imagen.toString('base64'),
+      tipodeimagen: usuario.tipo_mime,
     };
 
     // Confirmar login

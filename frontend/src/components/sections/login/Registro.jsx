@@ -8,8 +8,10 @@ import usePost from "../../../hooks/usePost.js";
 import { toast } from "sonner";
 function Registro() {
   const [nombre, setNombre] = useState('');
+  const [apellido,setApellido]=useState('');
   const [correo, setCorreo] = useState('');
   const [contrasena, setContrasena] = useState('');
+  const [birthday, setBirthday] = useState('');
   const [promos, setPromos] = useState(false);
   const { post, loading, error, response } = usePost();
   const navigate = useNavigate();
@@ -63,10 +65,17 @@ function Registro() {
         <form className={styles.formulario} onSubmit={handleSubmitRegister}>
           <input
             type="text"
-            placeholder='Nombre Completo'
+            placeholder='Nombre'
             value={nombre}
             required
             onChange={(e) => setNombre(e.target.value)}
+          />
+          <input
+            type="text"
+            placeholder='Apellido'
+            value={apellido}
+            required
+            onChange={(e) => setApellido(e.target.value)}
           />
           <input
             type="email"
@@ -82,7 +91,13 @@ function Registro() {
             required
             onChange={(e) => setContrasena(e.target.value)}
           />
-
+          <input
+            type="date"
+            placeholder='birthday'
+            value={birthday}
+            required
+            onChange={(e) => setBirthday(e.target.value)}
+          />
           <label className={styles.customcheckbox}>
             <input
               type="checkbox"

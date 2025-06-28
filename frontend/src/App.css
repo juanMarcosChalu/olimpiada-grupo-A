@@ -7,7 +7,11 @@ body{
   padding: 0;
 }
 
+input:-webkit-autofill {
+  -webkit-text-fill-color: black !important;
+  transition: background-color 9999s ease-in-out 0s !important;
 
+}
 body {
   overflow-x: hidden;
   font-family: Arial, sans-serif;
