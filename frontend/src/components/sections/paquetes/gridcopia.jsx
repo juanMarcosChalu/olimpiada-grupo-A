@@ -14,7 +14,7 @@ const coloresPorTipo = {
 function PaquetesTuristicos() {
     const { data, loading, error } = useFetch("http://localhost:3000/paquetes"); // URL de tu API
     const [paquetes, setPaquetes] = useState([]);
-
+    
     useEffect(() => {
         if (data) {
             const paquetesConImagen = data.map(paquete => {

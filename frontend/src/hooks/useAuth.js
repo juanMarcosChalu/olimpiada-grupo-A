@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 export function useAuth() {
-  const [usuario, setUsuario] = useState(null);
+  const [usuario, setUsuario] = useState("");
   const [cargando, setCargando] = useState(true);
   const [error, setError] = useState(false);
   const [isLogin, setIsLogin] = useState(true);

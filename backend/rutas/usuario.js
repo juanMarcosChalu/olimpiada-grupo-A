@@ -12,7 +12,21 @@ router.post('/login', (req, res) => {
     return res.status(400).json({ message: 'Email y contraseña son requeridos' });
   }
 
-  const sql = "SELECT * FROM usuarios WHERE correo = ?";
+  const sql =`SELECT 
+    u.id,
+    u.nombre,
+    u.correo,
+    u.contrasena,
+    u.promociones,
+    u.rol,
+    i.imagen,
+    i.tipo_mime
+    FROM usuarios u
+    JOIN usuario_imagen ui ON u.id = ui.usuario_id
+    JOIN imagenes i ON ui.imagen_id = i.id
+    WHERE u.correo = ? `
+    ;
+
   conexion.query(sql, [email], (err, rows) => {
     if (err) return res.status(500).json({ error: `Error interno` });
     if (rows.length === 0) return res.status(401).json({ error: `Correo o Contraseña incorrectos` });
@@ -30,6 +44,8 @@ router.post('/login', (req, res) => {
       nombre: usuario.nombre,
       email: usuario.correo,
       rol: usuario.rol,
+      imagen:usuario.imagen.toString('base64'),
+      tipodeimagen:usuario.tipo_mime,
     };
 
     // Confirmar login
@@ -104,7 +120,7 @@ router.post('/registrar', (req, res) => {
         conexion.query(sql, [correo], (err, rows) => {
           const usuario = rows[0];
           console.log(usuario);
-          
+
           req.session.usuario = {
             id: usuario.id,
             nombre: usuario.nombre,
@@ -115,7 +131,7 @@ router.post('/registrar', (req, res) => {
         });
 
 
-        
+
       });
     });
   });
