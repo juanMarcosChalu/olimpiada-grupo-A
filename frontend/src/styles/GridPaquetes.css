@@ -9,7 +9,7 @@
   height: max-content;
   min-height: 100vh;
   gap: 2rem;
-  
+  padding-bottom: 2rem;
 }
 
 .modal {

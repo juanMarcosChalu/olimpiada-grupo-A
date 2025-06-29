@@ -3,12 +3,12 @@ import { useFetch } from "../../../hooks/useFetch.js"; // Asegurate de importar 
 import CardPaquetes from "../../UI/CardPaquetes.jsx";
 import '../../../styles/GridPaquetes.css';
 const coloresPorTipo = {
-    romantico: "#E3B4B4",
-    familiar: "#EDC3A4",
-    aventurero: "#D28A82",
-    naturaleza: "#B1C387",
-    relax: "#AFC1C4",
-    cultural: "#B88C84"
+    romantico: "#c88c8c",
+    familiar: "#d9a273",
+    aventura: "#b55b52",
+    naturaleza: "#889d5c",
+    relax: "#7d9aa0",
+    cultural: "#8c5c51"
 };
 
 function PaquetesTuristicos({type}) {
