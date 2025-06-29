@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 "use client"
 import "./App.css";
-
+import AlquilerAutos2 from "./components/sections/alquilerdeautos/AlquilerAutos2.jsx"
 import SectionHome from "./components/sections/home/SectionHome.jsx";
 import Carousel from "./components/sections/carusel/carusel.jsx";
 import Busqueda from "./components/sections/busqueda/busqueda.jsx";
@@ -235,7 +235,8 @@ function App() {
                 <Link to="/contacto" key="contacto">Contacto</Link>,
               ]}
             />
-            <AlquilerAutos />
+            {/* <AlquilerAutos /> */}
+            <AlquilerAutos2/>
             <Footer />
           </>
         } />

@@ -1,0 +1,13 @@
+.grid-autos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+  padding: 2rem;
+}
+
+.mensaje-cargando,
+.mensaje-error {
+  font-size: 1.1rem;
+  font-style: italic;
+  color: #555;
+}

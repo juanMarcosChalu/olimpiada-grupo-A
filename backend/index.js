@@ -6,6 +6,7 @@ const session = require('express-session');
 
 const paquetesRoutes = require('./rutas/paquetes');
 const registrarRoutes = require('./rutas/usuario');
+const autosRoutes = require('./rutas/autos');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -28,6 +29,7 @@ app.use(session({
 }));
 app.use('/paquetes', paquetesRoutes);
 app.use('/usuario', registrarRoutes);
+app.use('/autos', autosRoutes);
 
 const PORT = 3000;
 app.listen(PORT, () => {

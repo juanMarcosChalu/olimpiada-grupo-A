@@ -1,24 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect} from "react";
 import { FaHeart, FaRegHeart, FaCheckCircle } from "react-icons/fa";
 import "../../../styles/AlquilerAutos.css";
+import { useFetch } from "../../../hooks/useFetch";
 
-import auto1 from "../../../assets/fiat500.jpg";
-import auto2 from "../../../assets/peugeot208.jpg";
-import auto3 from "../../../assets/focus.jpg";
-import auto4 from "../../../assets/captur.jpg";
-import auto5 from "../../../assets/clio.jpg";
-import auto6 from "../../../assets/volkswagen.jpg";
 
 import background_of_home_alquiler_de_autos from "../../../assets/alquilerautos.jpg";
 
-export default function AlquilerAutos() {
+export default function AlquilerAutos2() {
   const [busqueda, setBusqueda] = useState({
     lugarRetiro: "",
     fechaRetiro: "",
     fechaEntrega: "",
     pasajeros: "",
   });
-
+  const { data, loading, error } = useFetch(`http://localhost:3000/autos`);
+    const [autos, setAutos] = useState([]);
   const [mostrarResultados, setMostrarResultados] = useState(false);
   const [mostrarModal, setMostrarModal] = useState(false);
   const [autoSeleccionado, setAutoSeleccionado] = useState(null);
@@ -39,93 +35,23 @@ export default function AlquilerAutos() {
     }
   }, []);
 
-  const autosData = [
-    {
-      id: 1,
-      nombre: "Volkswagen T-Roc – SUV",
-      imagen: auto6,
-      descripcion: [
-        "5 puertas – Hasta 5 pasajeros",
-        "Aire acondicionado – Bluetooth",
-        "Seguro con franquicia reducida",
-        "Motor turbo eficiente",
-        "Sistema de navegación integrado",
-        "Bluetooth y USB",
-        "Espacio amplio para equipaje",
-        "Consumo moderado",
-      ],
-      precio: "Desde $78.000 ARS/día",
-    },
-    {
-      id: 2,
-      nombre: "Fiat 500",
-      imagen: auto1,
-      descripcion: [
-        "3 puertas - Bajo consumo",
-        "Estilo retro moderno",
-        "Fácil de manejar",
-        "Compacto para ciudad",
-        "Aire acondicionado",
-        "Sistema multimedia básico",
-      ],
-      precio: "Desde $64.000 ARS/día",
-    },
-    {
-      id: 3,
-      nombre: "Peugeot 208",
-      imagen: auto2,
-      descripcion: [
-        "5 puertas - Interior tecnológico",
-        "Buen rendimiento",
-        "Perfecto para ciudad",
-        "Pantalla táctil 7''",
-        "Sensores de estacionamiento",
-        "Consumo eficiente",
-      ],
-      precio: "Desde $74.000 ARS/día",
-    },
-    {
-      id: 4,
-      nombre: "Ford Focus",
-      imagen: auto3,
-      descripcion: [
-        "5 pasajeros",
-        "Diseño elegante - Motor eficiente",
-        "Buen rendimiento en ciudad",
-        "Control de crucero",
-        "Bluetooth y sistema audio premium",
-      ],
-      precio: "Desde $74.000 ARS/día",
-    },
-    {
-      id: 5,
-      nombre: "Renault Captur",
-      imagen: auto4,
-      descripcion: [
-        "5 pasajeros",
-        "Pantalla multimedia",
-        "Buen despeje al suelo",
-        "Cámara trasera",
-        "Control de estabilidad",
-        "GPS integrado",
-      ],
-      precio: "Desde $74.000 ARS/día",
-    },
-    {
-      id: 6,
-      nombre: "Renault Clio",
-      imagen: auto5,
-      descripcion: [
-        "5 puertas",
-        "Bajo consumo - Baúl mediano",
-        "Fácil de estacionar",
-        "Aire acondicionado",
-        "Conectividad Bluetooth",
-        "Sistema de seguridad básico",
-      ],
-      precio: "Desde $60.000 ARS/día",
-    },
-  ];
+   useEffect(() => {
+          if (data) {
+              const autosConImagen = data.map(auto => {
+                  const imagenSrc = auto.imagen
+                      ? `data:${auto.imagen.tipo};base64,${auto.imagen.data}`
+                      : " ";
+  
+                  return {
+                      ...auto,
+                      imagenSrc
+                  };
+              });
+  
+              setAutos(autosConImagen);
+          }
+      }, [data]);
+
 
   const handleChange = (e) => {
     setBusqueda({ ...busqueda, [e.target.name]: e.target.value });
@@ -240,13 +166,13 @@ export default function AlquilerAutos() {
       {mostrarResultados && (
         <>
           <div className="grid-alojamientos">
-            {autosData.map((auto) => (
+            {autos.map((auto) => (
             
               <div className="card" key={auto.id}>
               {console.log(auto)}
 
                 <div className="carousel-container">
-                  <img src={auto.imagen} alt={auto.nombre} />
+                  <img src={auto.imagenSrc} alt={auto.nombre} />
                   <div
                     className="heart-icon"
                     onClick={() => toggleFavorito(auto.id)}
@@ -315,7 +241,7 @@ export default function AlquilerAutos() {
                       marginTop: "0.3rem",
                     }}
                   >
-                    {auto.precio}
+                    Desde: {auto.precio} ARS/dia
                   </p>
 
                   <button

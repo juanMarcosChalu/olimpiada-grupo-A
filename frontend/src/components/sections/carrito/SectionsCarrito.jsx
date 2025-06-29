@@ -17,6 +17,7 @@ function SectionsCarrito() {
       precioPorDia: 44000,
       imagenSrc: image_of_captur,
     },
+    
     {
       id: 2,
       categoria: "Paquete turístico",
@@ -94,6 +95,7 @@ function SectionsCarrito() {
           ) : (
             servicios.map((servicio) => (
               <article key={servicio.id} className={styles.servicioCard}>
+                {console.log(servicio)}
                 <div className={styles.imagenContainer}>
                   <img
                     src={servicio.imagenSrc}
