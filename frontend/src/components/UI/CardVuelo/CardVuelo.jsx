@@ -2,6 +2,15 @@ import styles from "./CardVuelo.module.css";
 import { FaClock, FaSuitcaseRolling } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
+// 📌 Esta es la función que necesitás para arreglar la fecha
+function formatearFecha(fechaISO) {
+  const fecha = new Date(fechaISO);
+  const dia = String(fecha.getDate()).padStart(2, '0');
+  const mes = String(fecha.getMonth() + 1).padStart(2, '0');
+  const año = String(fecha.getFullYear()).slice(2);
+  return `${dia}/${mes}/${año}`;
+}
+
 function formatearHora(hora) {
   return hora.slice(0, 5) + " hs"; // "06:15:00" -> "06:15 hs"
 }
@@ -9,11 +18,6 @@ function formatearHora(hora) {
 function formatearDuracion(duracion) {
   const [hh, mm] = duracion.split(":");
   return `${parseInt(hh)}h ${parseInt(mm)}m`;
-}
-
-function formatearFecha(fecha) {
-  const [year, month, day] = fecha.split("-");
-  return `${day}/${month}/${year.slice(2)}`;
 }
 
 function CardVuelo({ vuelo }) {
