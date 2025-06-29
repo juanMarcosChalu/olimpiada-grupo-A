@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import CardVuelo from "../../UI/CardVuelo/CardVuelo";
 import "../../../styles/ResultadosVuelos.css";
-
+import { useFetch } from "../../../hooks/useFetch";
 export default function ResultadosVuelos() {
   const [modalOpen, setModalOpen] = useState(false);
   const [filtros, setFiltros] = useState({
@@ -10,18 +10,22 @@ export default function ResultadosVuelos() {
     escalas: 'cualquiera',
   });
 
-  const vuelos = [
-    { aerolinea: "Aerolíneas Argentinas", precioARS: 32000 },
-    { aerolinea: "Flybondi", precioARS: 24000 },
-    { aerolinea: "LATAM Airlines", precioARS: 35000 },
-    { aerolinea: "Sky Airline", precioARS: 22000 },
-    { aerolinea: "JetSMART", precioARS: 26000 },
-    { aerolinea: "LATAM Airlines", precioARS: 29000 },
-  ];
+  // const vuelos = [
+  //   { aerolinea: "Aerolíneas Argentinas", precioARS: 32000 },
+  //   { aerolinea: "Flybondi", precioARS: 24000 },
+  //   { aerolinea: "LATAM Airlines", precioARS: 35000 },
+  //   { aerolinea: "Sky Airline", precioARS: 22000 },
+  //   { aerolinea: "JetSMART", precioARS: 26000 },
+  //   { aerolinea: "LATAM Airlines", precioARS: 29000 },
+  // ];
+
+  const { data, loading, error } = useFetch(`http://localhost:3000/vuelos`);
 
   const abrirModal = () => setModalOpen(true);
   const cerrarModal = () => setModalOpen(false);
-
+  const vuelos = data || [];
+  console.log(data+vuelos);
+  
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFiltros(prev => ({ ...prev, [name]: value }));
@@ -43,11 +47,7 @@ export default function ResultadosVuelos() {
 
       <div className="grid-vuelos" id="grid-vuelos">
         {vuelos.map((vuelo, index) => (
-          <CardVuelo
-            key={index}
-            aerolinea={vuelo.aerolinea}
-            precio={`ARS ${vuelo.precioARS.toLocaleString()}`}
-          />
+            <CardVuelo key={index} vuelo={vuelo} />
         ))}
       </div>
 

@@ -2,43 +2,61 @@ import styles from "./CardVuelo.module.css";
 import { FaClock, FaSuitcaseRolling } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-function CardVuelo() {
+function formatearHora(hora) {
+  return hora.slice(0, 5) + " hs"; // "06:15:00" -> "06:15 hs"
+}
+
+function formatearDuracion(duracion) {
+  const [hh, mm] = duracion.split(":");
+  return `${parseInt(hh)}h ${parseInt(mm)}m`;
+}
+
+function formatearFecha(fecha) {
+  const [year, month, day] = fecha.split("-");
+  return `${day}/${month}/${year.slice(2)}`;
+}
+
+function CardVuelo({ vuelo }) {
   return (
     <article className={styles.card}>
-      <header className={styles.title}>Flybondi</header>
+      <header className={styles.title}>{vuelo.aerolinea}</header>
 
       <section className={styles.info}>
         <div className={styles.column}>
           <h3>IDA</h3>
-          <p>Buenos Aires (EZE)</p>
-          <p>20/07/25</p>
-          <p>06:15 hs</p>
+          <p>{vuelo.origen_ida}</p>
+          <p>{formatearFecha(vuelo.fecha_ida)}</p>
+          <p>{formatearHora(vuelo.hora_ida)}</p>
         </div>
         <div className={styles.column}>
           <h3>VUELTA</h3>
-          <p>Bariloche (BRC)</p>
-          <p>27/07/25</p>
-          <p>21:00 hs</p>
+          <p>{vuelo.origen_vuelta}</p>
+          <p>{formatearFecha(vuelo.fecha_vuelta)}</p>
+          <p>{formatearHora(vuelo.hora_vuelta)}</p>
         </div>
       </section>
 
       <section className={styles.details}>
         <p>
-          <FaClock className={styles.icon} /> Duración: 2h 25m (ida) · 2h 20m (vuelta) · Ambos directos
+          <FaClock className={styles.icon} />
+          Duración: {formatearDuracion(vuelo.duracion_ida)} (ida) ·{" "}
+          {formatearDuracion(vuelo.duracion_vuelta)} (vuelta) ·{" "}
+          {vuelo.directos ? "Ambos directos" : "Con escalas"}
         </p>
         <p>
-          <FaSuitcaseRolling className={styles.icon} /> Equipaje: 1 bolso de mano
+          <FaSuitcaseRolling className={styles.icon} />
+          Equipaje: {vuelo.equipaje}
         </p>
       </section>
 
       <footer className={styles.footerPrecio}>
         <div className={styles.precio}>
           Por persona desde <br />
-          <strong>$</strong>
+          <strong>${vuelo.precio.toLocaleString("es-AR")}</strong>
         </div>
-        
+
         <Link to="/carrito" className={styles.boton}>
-        Siguiente
+          Siguiente
         </Link>
       </footer>
     </article>
