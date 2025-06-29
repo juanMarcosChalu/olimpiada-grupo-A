@@ -135,7 +135,7 @@ function Perfil() {
             }
           </div>
           <div className={styles.headertext}>
-            <h2 id="titulo-perfil">{usuario.nombre}</h2>
+            <h2 id="titulo-perfil">{usuario.nombre+" "+usuario.apellido}</h2>
             {/* <p>{usuario.email}</p> */}
           </div>
           <div className={styles.headerButtonContainer}>

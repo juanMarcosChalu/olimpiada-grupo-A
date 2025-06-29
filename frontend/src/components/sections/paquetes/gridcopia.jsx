@@ -11,16 +11,16 @@ const coloresPorTipo = {
     cultural: "#B88C84"
 };
 
-function PaquetesTuristicos() {
-    const { data, loading, error } = useFetch("http://localhost:3000/paquetes"); // URL de tu API
+function PaquetesTuristicos({type}) {
+    const { data, loading, error } = useFetch(`http://localhost:3000/paquetes/${type}`);
     const [paquetes, setPaquetes] = useState([]);
     
     useEffect(() => {
         if (data) {
             const paquetesConImagen = data.map(paquete => {
-                const imagenSrc = paquete.imagenBase64
-                    ? `data:${paquete.imagenTipo};base64,${paquete.imagenBase64}`
-                    : "";
+                const imagenSrc = paquete.imagen
+                    ? `data:${paquete.imagen.tipo};base64,${paquete.imagen.data}`
+                    : " ";
 
                 return {
                     ...paquete,

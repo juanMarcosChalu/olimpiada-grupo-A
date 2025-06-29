@@ -26,7 +26,7 @@ function Paquetes() {
                             </span>
                         </div>
                         <div className="button-container">
-                            <Link to="/paquetes#romanticos" className="link-romantico">Ver Más</Link>
+                            <Link to="/romantico" className="link-romantico">Ver Más</Link>
                         </div>
 
 
@@ -44,7 +44,7 @@ function Paquetes() {
                             </span>
                         </div>
                         <div className="button-container">
-                            <Link to="/paquetes#familiares" className="link-familiar">Ver Más</Link>
+                            <Link to="/familiar" className="link-familiar">Ver Más</Link>
                         </div>
 
                     </div>
@@ -60,7 +60,7 @@ function Paquetes() {
                             </span>
                         </div>
                         <div className="button-container">
-                              <Link to="/paquetes#aventureros" className="link-aventurero">Ver Más</Link>
+                              <Link to="/aventura" className="link-aventurero">Ver Más</Link>
                         </div>
 
                     </div>
@@ -76,7 +76,7 @@ function Paquetes() {
                             </span>
                         </div>
                         <div className="button-container">
-                             <Link to="/paquetes#naturaleza" className="link-naturaleza">Ver Más</Link>
+                             <Link to="/naturaleza" className="link-naturaleza">Ver Más</Link>
                         </div>
 
                     </div>
@@ -92,7 +92,7 @@ function Paquetes() {
                             </span>
                         </div>
                         <div className="button-container">
-                            <Link to="/paquetes#relax" className="link-relax">Ver Más</Link>
+                            <Link to="/relax" className="link-relax">Ver Más</Link>
                         </div>
 
                     </div>
@@ -108,7 +108,7 @@ function Paquetes() {
                                 </span>
                         </div>
                         <div className="button-container">
-                            <Link to="/paquetes#cultural" className="link-cultural">Ver Más</Link>
+                            <Link to="/cultural" className="link-cultural">Ver Más</Link>
                         </div>
 
                     </div>

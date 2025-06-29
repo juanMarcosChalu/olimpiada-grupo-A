@@ -67,7 +67,7 @@ function App() {
               ]}
             />
             <Paquetes />
-            <Header
+            {/* <Header
               title={<h1>Paquetes Románticos</h1>}
               menuItems={[
                 <Link to="/" key="inicio">Inicio</Link>,
@@ -75,11 +75,75 @@ function App() {
               ]}
             />
             <GridPaquetes2 />
-            <GridPaquetes />
+            <GridPaquetes /> */}
             <Footer />
           </>
         } />
-
+         <Route path='/aventura' element={
+          <>
+            <Header
+              title={<h1>Paquetes de Aventuras</h1>}
+              menuItems={[
+                <Link to="/" key="inicio">Inicio</Link>,
+                <ServiciosMenu key="servicios" />,
+              ]}
+            />
+             <GridPaquetes2 type="aventura" />
+            <Footer />
+          </>
+        } />
+        <Route path='/romantico' element={
+          <>
+            <Header
+              title={<h1>Paquetes Románticos</h1>}
+              menuItems={[
+                <Link to="/" key="inicio">Inicio</Link>,
+                <ServiciosMenu key="servicios" />,
+              ]}
+            />
+             <GridPaquetes2 type="romantico" />
+            <Footer />
+          </>
+        } />
+        <Route path='/familiar' element={
+          <>
+            <Header
+              title={<h1>Paquetes Familiares</h1>}
+              menuItems={[
+                <Link to="/" key="inicio">Inicio</Link>,
+                <ServiciosMenu key="servicios" />,
+              ]}
+            />
+             <GridPaquetes2 type="familiar" />
+            <Footer />
+          </>
+        } />
+        <Route path='/relax' element={
+          <>
+            <Header
+              title={<h1>Paquetes Relax</h1>}
+              menuItems={[
+                <Link to="/" key="inicio">Inicio</Link>,
+                <ServiciosMenu key="servicios" />,
+              ]}
+            />
+             <GridPaquetes2 type="relax" />
+            <Footer />
+          </>
+        } />
+        <Route path='/naturaleza' element={
+          <>
+            <Header
+              title={<h1>Paquetes Naturaes</h1>}
+              menuItems={[
+                <Link to="/" key="inicio">Inicio</Link>,
+                <ServiciosMenu key="servicios" />,
+              ]}
+            />
+             <GridPaquetes2 type="naturaleza" />
+            <Footer />
+          </>
+        } />
         {/* NOTIFICACIONES */}
         <Route path='/notificaciones' element={
           <>

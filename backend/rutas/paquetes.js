@@ -1,26 +1,55 @@
-// rutas/paquetes.js
 const express = require('express');
 const router = express.Router();
 const db = require('../db');
 
-router.get('/', (req, res) => {
-    db.query('SELECT * FROM paquetes', (err, results) => {
-        if (err) return res.status(500).json({ error: err.message });
-        console.log(results);
+router.get('/:type', (req, res) => {
+    const { type } = req.params;
+  
+ 
+    
+    const query = `
+        SELECT 
+            p.id,
+            p.tipo,
+            p.titulo,
+            p.precio,
+            p.resumen,
+            p.detalleServicios,
+            p.fondo,
+            i.nombre as imagen_nombre,
+            i.imagen as imagen_data,
+            i.tipo_mime as imagen_tipo
+        FROM paquetes p
+        LEFT JOIN paquete_imagen pi ON p.id = pi.paquete_id
+        LEFT JOIN imagenes i ON pi.imagen_id = i.id
+        WHERE p.tipo = ?
+    `;
 
-        // Parsear detalleServicios como JSON
+    db.query(query,[type], (err, results) => {
+        if (err) return res.status(500).json({ error: err.message });
+        console.log("resutados"+results);
+        
         const paquetes = results.map(paquete => {
-            // Convierte Buffer a base64
-            const imagenBase64 = paquete.imagen.toString('base64');
+            // Convertir imagen a base64 si existe
+            const imagenBase64 = paquete.imagen_data 
+                ? paquete.imagen_data.toString('base64') 
+                : null;
 
             return {
-                ...paquete,
-                detalleServicios: JSON.parse(paquete.detalleServicios),
-                imagenBase64, // Agregamos la imagen en base64
-                imagen: undefined // Opcional: eliminar el buffer crudo si no lo necesitas
+                id: paquete.id,
+                tipo: paquete.tipo,
+                titulo: paquete.titulo,
+                precio: paquete.precio,
+                resumen: paquete.resumen,
+                detalleServicios: paquete.detalleServicios ? JSON.parse(paquete.detalleServicios) : null,
+                fondo: paquete.fondo,
+                imagen: {
+                    nombre: paquete.imagen_nombre,
+                    data: imagenBase64,
+                    tipo: paquete.imagen_tipo
+                }
             };
         });
-
 
         res.json(paquetes);
     });
