@@ -120,26 +120,11 @@
   background-color: #a96b6b;
 }
 
-/* Notificación de éxito */
-.notificacion {
-  background-color: #c8e6c9;
-  border: 1px solid #388e3c;
-  color: #2e7d32;
-  padding: 1rem;
-  border-radius: 8px;
-  font-weight: 700;
-  text-align: center;
-  margin-bottom: 1.5rem;
-  box-shadow: 0 0 8px rgba(46, 125, 50, 0.5);
-  animation: fadeInOut 5s forwards;
+.toast {
+  background: red;
+  color: white;
 }
 
-@keyframes fadeInOut {
-  0% {opacity: 0;}
-  10% {opacity: 1;}
-  90% {opacity: 1;}
-  100% {opacity: 0;}
-}
 
 /* Responsive */
 
