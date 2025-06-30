@@ -25,7 +25,7 @@ const Footer = () => {
 
       <section id="explore">
 
-        <div className="titulo-footer">Explora Brujula</div>
+        <div className="titulo-footer">Explora Brújula</div>
 
         <div className="lista-footer-explore">
           <ol>

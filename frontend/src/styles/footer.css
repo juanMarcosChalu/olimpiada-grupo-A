@@ -4,8 +4,8 @@
   background-color: #e5ddd0;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  position: relative;
   padding: 0.5rem 0 1rem 0;
+  margin-top: auto; /* ⭐ Clave para que se quede al fondo */
 
   #legal {
     display: flex;

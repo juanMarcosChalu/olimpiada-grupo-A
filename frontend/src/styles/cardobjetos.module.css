@@ -1,13 +1,19 @@
 .card {
-  width: 300px;
-
+  width: 100%;
+  max-width: 300px;
   overflow: hidden;
   background: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  font-family: sans-serif;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  font-family: "Open Sans", sans-serif;
   display: flex;
   flex-direction: column;
-  justify-self: center;
+  border-radius: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
 }
 
 .imagen {
@@ -18,24 +24,29 @@
 
 .info {
   padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
 }
 
 .titulo {
   text-align: center;
   font-size: 1.2rem;
   margin-bottom: 0.5rem;
-  color: #444;
+  color: #3a2e25;
 }
 
 .lista {
   list-style: none;
   padding: 0;
-  margin: 0 0 0.5rem 0;
-  color: #666;
+  margin: 0 0 0.8rem 0;
+  color: #776b5d;
+  font-size: 0.9rem;
 }
 
 .lista li {
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.4rem;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -44,40 +55,41 @@
 .precio {
   font-weight: bold;
   font-size: 1.1rem;
-  color: #333;
+  color: #3a2e25;
   margin: 0.5rem 0;
   text-align: center;
 }
 
 .botones {
   display: flex;
-  justify-content: space-between;
-  gap: 0.5rem;
+  justify-content: center;
+  gap: 0.6rem;
+}
 
-  span{
-     min-width: 5vw;
-      border-radius: 999px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-     background-color: #b0a695;
-     &:hover{
-      background-color: #857d71;
-      
-    }
-  }
- 
-  button{
-    width: 100%;
-    padding: 0.5rem;
-    font-size: 1.5rem;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    gap: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    
-  }
+.botones span {
+  flex: 1;
+  border-radius: 999px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #b0a695;
+  transition: background-color 0.3s ease;
+}
+
+.botones span:hover {
+  background-color: #857d71;
+}
+
+.botones button {
+  width: 100%;
+  padding: 0.4rem 0.6rem;
+  font-size: 1rem;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  gap: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
 }

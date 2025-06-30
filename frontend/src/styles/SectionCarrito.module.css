@@ -40,8 +40,6 @@
   box-sizing: border-box;
   overflow: hidden;
   flex-wrap: wrap;
-
-  /* Animación para hover */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -52,18 +50,19 @@
 
 /* Card vuelo (sin imagen) */
 .vueloCard {
-  width: 650px;
-  min-height: 130px;
-  padding: 1rem;
   background: white;
   border-radius: 15px;
   box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
-  margin: 0 auto;
+  padding: 1rem;
+  margin: 0 auto 1.5rem auto;
   box-sizing: border-box;
+  color: #776b5d;
+
+  width: 650px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 0.6rem 1rem;
-  color: #776b5d;
+  min-height: 130px;
 }
 
 /* Ocultar imagen en vuelo */
@@ -91,7 +90,7 @@
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
-  justify-content: flex-end; /* Botones alineados derecha */
+  justify-content: flex-end;
 }
 
 /* Orden específico botones en vuelo: Quitar primero, Editar segundo */
@@ -194,7 +193,7 @@
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
-  justify-content: flex-end; /* Botones siempre a la derecha */
+  justify-content: flex-end;
 }
 
 .btnQuitar,
@@ -434,4 +433,67 @@
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
+}
+
+/* Responsive */
+
+/* Para pantallas medianas y menores */
+@media (max-width: 1024px) {
+  .carritoSection {
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  .serviciosContainer {
+    padding-right: 0;
+  }
+
+  .vueloCard {
+    width: 100%;
+    max-width: 650px;
+    grid-template-columns: 1fr;
+    padding: 1rem 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .servicioCard {
+    max-width: 100%;
+  }
+
+  .resumenContainer {
+    max-width: 100%;
+    margin-top: 1.5rem;
+  }
+}
+
+/* Para pantallas pequeñas (móviles) */
+@media (max-width: 767px) {
+  .carritoSection {
+    padding: 0.8rem;
+  }
+
+  .servicioCard {
+    flex-direction: column;
+    padding: 1rem;
+    min-height: auto;
+  }
+
+  .imagenContainer {
+    flex: 0 0 100%;
+    min-width: 100%;
+    height: 180px;
+  }
+
+  .vueloCard {
+    width: 100%;
+    max-width: 100%;
+    grid-template-columns: 1fr;
+    padding: 0.8rem 1rem;
+    min-height: auto;
+    margin-bottom: 1rem;
+  }
+
+  .infoServicio {
+    min-width: auto;
+  }
 }
