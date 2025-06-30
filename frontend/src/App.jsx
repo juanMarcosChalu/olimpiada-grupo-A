@@ -67,6 +67,8 @@ function App() {
               ]}
             />
             <Paquetes />
+            {/* eliminar despues de correguir */}
+            <GridPaquetes></GridPaquetes>
             {/* <Header
               title={<h1>Paquetes Románticos</h1>}
               menuItems={[
