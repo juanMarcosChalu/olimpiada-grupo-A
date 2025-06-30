@@ -57,14 +57,19 @@
     }
 
     .lista-footer-explore {
+      position: relative;
+      place-content: center;
       li {
         text-decoration: none;
         list-style-type: none;
+        height: 2rem;
 
         a {
           font-size: 1.1rem;
           color: #776b5d;
           text-decoration: none;
+          font-weight: 400;
+          
 
           &:hover {
             color: #B0A695;

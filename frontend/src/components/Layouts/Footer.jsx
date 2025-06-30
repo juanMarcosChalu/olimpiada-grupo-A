@@ -29,10 +29,8 @@ const Footer = () => {
 
         <div className="lista-footer-explore">
           <ol>
-            <li><Link to="/home">Inicio</Link></li>
-            <li><Link to="">Servicios</Link></li>
-            <li><Link to="">Carrito</Link></li>
-            <li><Link to="">mi perfil</Link></li>
+            <li><Link to="/carrito">Carrito</Link></li>
+            <li><Link to="/perfil">Mi perfil</Link></li>
             <li><Link to="/contacto">Contacto</Link></li>
           </ol>
         </div>

@@ -134,6 +134,10 @@
                 height: 20%;
                 font-family: "Open Sans";
                 font-size: 16px;
+
+                .tituloPaqutes{
+                font-weight: 600;
+                }
             }
 
             .button-container {

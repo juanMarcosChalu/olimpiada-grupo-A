@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 
 function Paquetes() {
     return (
-        <section>  
+        <section>
             <section className="section-paquetes">
                 <h1>Descubre nuestras experiencias armadas para que solo te preocupes por disfrutar. <br />Incluyen vuelos, hospedaje, actividades y más.</h1>
                 <main className="main-paquetes">
@@ -20,8 +20,8 @@ function Paquetes() {
                             <img src={paquete_romantico} alt="" />
                         </div>
                         <div className="marco-text">
-                             <span className="paquete-texto">
-                                <span>Paquete Romántico</span>
+                            <span className="paquete-texto">
+                                <span className="tituloPaqutes">Paquete Romántico</span>
                                 <span>Momentos únicos para disfrutar en pareja.</span>
                             </span>
                         </div>
@@ -35,11 +35,11 @@ function Paquetes() {
 
                     <div className="cards-paquetes">
                         <div className="marco-cards">
-                            <img src={paquete_familiar} alt=""  />
+                            <img src={paquete_familiar} alt="" />
                         </div>
                         <div className="marco-text">
                             <span className="paquete-texto">
-                                <span>Paquete Familiar</span>
+                                <span className="tituloPaqutes">Paquete Familiar</span>
                                 <span>Diversión y descanso para toda la familia.</span>
                             </span>
                         </div>
@@ -51,32 +51,32 @@ function Paquetes() {
 
                     <div className="cards-paquetes">
                         <div className="marco-cards">
-                            <img src={paquete_aventurero} alt=""  />
+                            <img src={paquete_aventurero} alt="" />
                         </div>
                         <div className="marco-text">
                             <span className="paquete-texto">
-                                <span>Paquete Aventurero</span>
+                                <span className="tituloPaqutes">Paquete Aventurero</span>
                                 <span>Acción y emoción en cada destino.</span>
                             </span>
                         </div>
                         <div className="button-container">
-                              <Link to="/aventura" className="link-aventurero">Ver Más</Link>
+                            <Link to="/aventura" className="link-aventurero">Ver Más</Link>
                         </div>
 
                     </div>
 
                     <div className="cards-paquetes">
                         <div className="marco-cards">
-                            <img src={paquete_naturaleza} alt=""/>
+                            <img src={paquete_naturaleza} alt="" />
                         </div>
                         <div className="marco-text">
                             <span className="paquete-texto">
-                                <span>Paquete Naturaleza</span>
+                                <span className="tituloPaqutes">Paquete Naturaleza</span>
                                 <span>Conexión plena con entornos naturales.</span>
                             </span>
                         </div>
                         <div className="button-container">
-                             <Link to="/naturaleza" className="link-naturaleza">Ver Más</Link>
+                            <Link to="/naturaleza" className="link-naturaleza">Ver Más</Link>
                         </div>
 
                     </div>
@@ -86,9 +86,9 @@ function Paquetes() {
                             <img src={paquete_relax} alt="" />
                         </div>
                         <div className="marco-text">
-                         <span className="paquete-texto">
-                            <span>Paquete Relax</span>
-                            <span>Descansa, desconecta y renueva tu energía.</span>
+                            <span className="paquete-texto">
+                                <span className="tituloPaqutes">Paquete Relax</span>
+                                <span>Descansa, desconecta y renueva tu energía.</span>
                             </span>
                         </div>
                         <div className="button-container">
@@ -102,10 +102,10 @@ function Paquetes() {
                             <img src={paquete_cultural} alt="" />
                         </div>
                         <div className="marco-text">
-                             <span className="paquete-texto">
-                                <span>Paquete Cultural</span>
+                            <span className="paquete-texto">
+                                <span className="tituloPaqutes">Paquete Cultural</span>
                                 <span>Explora la historia, el arte y las tradiciones de cada destino.</span>
-                                </span>
+                            </span>
                         </div>
                         <div className="button-container">
                             <Link to="/cultural" className="link-cultural">Ver Más</Link>
