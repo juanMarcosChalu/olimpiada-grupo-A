@@ -72,7 +72,7 @@ function PaquetesTuristicos({ type }) {
             ))}
             {modalAbierta && (
                 <div className="modal">
-                    <div className="modal-content">
+                    <div className="modal-content-paquete">
                         <span className="close" onClick={cerrarModal}>&times;</span>
                         <h1>Personaliza tu paquete</h1>
                         <h2>{paqueteSeleccionado.titulo}</h2>
