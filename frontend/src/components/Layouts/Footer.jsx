@@ -29,11 +29,11 @@ const Footer = () => {
 
         <div className="lista-footer-explore">
           <ol>
-            <li><Link to="">Inicio</Link></li>
+            <li><Link to="/home">Inicio</Link></li>
             <li><Link to="">Servicios</Link></li>
-            <li><Link to="">Contacto</Link></li>
-            <li><Link to="">Sobre Nosotros</Link></li>
-            <li><Link to="">Preguntas Frecuentes</Link></li>
+            <li><Link to="">Carrito</Link></li>
+            <li><Link to="">mi perfil</Link></li>
+            <li><Link to="/contacto">Contacto</Link></li>
           </ol>
         </div>
 

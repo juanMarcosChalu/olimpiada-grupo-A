@@ -61,9 +61,8 @@
         text-decoration: none;
         list-style-type: none;
 
-
         a {
-          font-size: 1rem;
+          font-size: 1.1rem;
           color: #776b5d;
           text-decoration: none;
 
@@ -112,7 +111,7 @@
       .instagram-container {
         list-style: none;
 
-        &:hover{
+        &:hover {
           scale: 1.01;
         }
 
@@ -127,7 +126,7 @@
             color: #B0A695;
           }
 
-          #facebookLogoFooter{
+          #facebookLogoFooter {
             width: 17px;
             height: 17px;
             background-color: #776b5d;
@@ -135,7 +134,7 @@
             padding: 0.2rem;
           }
 
-          #instagramLogoFooter{
+          #instagramLogoFooter {
             width: 24px;
             height: 24px;
           }
