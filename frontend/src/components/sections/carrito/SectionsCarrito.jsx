@@ -5,6 +5,14 @@ import image_of_paris from "../../../assets/paris.jpg";
 import image_of_captur from "../../../assets/captur.jpg";
 
 function SectionsCarrito() {
+  const calcularDias = (inicio, fin) => {
+    const start = new Date(inicio);
+    const end = new Date(fin);
+    const diff = end - start;
+    const dias = Math.max(1, Math.ceil(diff / (1000 * 60 * 60 * 24)));
+    return isNaN(dias) ? 1 : dias;
+  };
+
   const [servicios, setServicios] = useState([
     {
       id: 1,
@@ -13,11 +21,10 @@ function SectionsCarrito() {
       ubicacion: "Río de Janeiro",
       fechaInicio: "2025-07-15",
       fechaFin: "2025-07-20",
-      dias: 5,
+      dias: calcularDias("2025-07-15", "2025-07-20"),
       precioPorDia: 44000,
       imagenSrc: image_of_captur,
     },
-    
     {
       id: 2,
       categoria: "Paquete turístico",
@@ -25,10 +32,27 @@ function SectionsCarrito() {
       ubicacion: "París",
       fechaInicio: "2025-08-10",
       fechaFin: "2025-08-15",
-      dias: 5,
+      dias: calcularDias("2025-08-10", "2025-08-15"),
       precioPorDia: 240000,
       imagenSrc: image_of_paris,
-      personas: 2, 
+      personas: 2,
+    },
+    {
+      id: 3,
+      categoria: "Vuelo",
+      nombre: "Vuelo Buenos Aires - Madrid",
+      ubicacion: "Madrid",
+      fechaInicio: "2025-09-01",
+      fechaFin: "2025-09-01",
+      dias: 1,
+      precioPorDia: 150000,
+      numeroVuelo: "AR1234",
+      horaSalida: "08:00",
+      horaLlegada: "22:00",
+      aeropuertoOrigen: "AEP",
+      aeropuertoDestino: "MAD",
+      clase: "Económica",
+      escalas: 0,
     },
   ]);
 
@@ -46,7 +70,6 @@ function SectionsCarrito() {
     setServicioEditando(null);
   };
 
-  // Esta función actualiza la fecha y recalcula días automáticamente
   const handleFechaChange = (campo, valor) => {
     const nuevoServicio = {
       ...servicioEditando,
@@ -54,11 +77,10 @@ function SectionsCarrito() {
     };
 
     if (nuevoServicio.fechaInicio && nuevoServicio.fechaFin) {
-      const inicio = new Date(nuevoServicio.fechaInicio);
-      const fin = new Date(nuevoServicio.fechaFin);
-      const diffTime = fin - inicio;
-      const diffDias = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-      nuevoServicio.dias = diffDias > 0 ? diffDias : 1;
+      nuevoServicio.dias = calcularDias(
+        nuevoServicio.fechaInicio,
+        nuevoServicio.fechaFin
+      );
     }
 
     setServicioEditando(nuevoServicio);
@@ -78,10 +100,11 @@ function SectionsCarrito() {
     setServicios(servicios.filter((s) => s.id !== id));
   };
 
-  const subtotal = servicios.reduce(
-    (acc, s) => acc + s.precioPorDia * s.dias,
-    0
-  );
+  const subtotal = servicios.reduce((acc, s) => {
+    const cantidadPersonas = s.personas || 1;
+    return acc + s.precioPorDia * s.dias * cantidadPersonas;
+  }, 0);
+
   const iva = subtotal * 0.21;
   const ingresosBrutos = subtotal * 0.023;
   const total = subtotal + iva + ingresosBrutos;
@@ -94,16 +117,29 @@ function SectionsCarrito() {
             <p className={styles.sinServicios}>No hay servicios agregados.</p>
           ) : (
             servicios.map((servicio) => (
-              
-              <article key={servicio.id} className={styles.servicioCard}>
-                {console.log(servicio)}
+              <article
+                key={servicio.id}
+                className={`${styles.servicioCard} ${
+                  servicio.categoria === "Vuelo" ? styles.vueloCard : ""
+                }`}
+              >
+                {/* Imagen o placeholder */}
                 <div className={styles.imagenContainer}>
-                  <img
-                    src={servicio.imagenSrc}
-                    alt={servicio.nombre}
-                    className={styles.imagenServicio}
-                  />
+                  {servicio.imagenSrc ? (
+                    <img
+                      src={servicio.imagenSrc}
+                      alt={servicio.nombre}
+                      className={styles.imagenServicio}
+                    />
+                  ) : servicio.categoria === "Vuelo" ? (
+                    <div>✈️</div>
+                  ) : (
+                    <div className={styles.imagenVacia}>
+                      <span>📷 Sin imagen</span>
+                    </div>
+                  )}
                 </div>
+
                 <div className={styles.infoServicio}>
                   <h3 className={styles.categoria}>{servicio.categoria}</h3>
                   <p className={styles.nombre}>{servicio.nombre}</p>
@@ -118,16 +154,39 @@ function SectionsCarrito() {
                       {servicio.personas > 1 ? "s" : ""}
                     </p>
                   )}
-                  <p className={styles.precio}>
-                    💲 {servicio.precioPorDia.toLocaleString()} ARS x día
-                  </p>
-                  <p className={styles.totalServicio}>
-                    Total:{" "}
-                    <strong>
-                      ${(servicio.precioPorDia * servicio.dias).toLocaleString()} ARS
-                    </strong>
-                  </p>
+
+                  {servicio.categoria === "Vuelo" && (
+                    <>
+                      <p className={styles.numeroVuelo}>✈️ Vuelo: {servicio.numeroVuelo}</p>
+                      <p className={styles.horarios}>
+                        🕗 {servicio.horaSalida} - {servicio.horaLlegada}
+                      </p>
+                      <p className={styles.aeropuertos}>
+                        🛫 {servicio.aeropuertoOrigen} → 🛬 {servicio.aeropuertoDestino}
+                      </p>
+                      <p className={styles.clase}>Clase: {servicio.clase}</p>
+                      <p className={styles.escalas}>
+                        Escalas: {servicio.escalas}
+                      </p>
+                    </>
+                  )}
+
+                  {/* Solo mostrar precioPorDia y total si NO es vuelo */}
+                  {servicio.categoria !== "Vuelo" && (
+                    <>
+                      <p className={styles.precio}>
+                        Precio x día: ${servicio.precioPorDia.toLocaleString()}
+                      </p>
+                      <p className={styles.totalServicio}>
+                        Total: $
+                        {(servicio.precioPorDia * servicio.dias * (servicio.personas || 1)).toLocaleString()}
+                      </p>
+                    </>
+                  )}
+
                   <div className={styles.botonesServicio}>
+                    {/* En todas las cards botones en orden: Editar, Quitar */}
+                    {/* Pero en vuelo el CSS cambia el orden */}
                     <button
                       className={styles.btnQuitar}
                       onClick={() => quitarServicio(servicio.id)}
@@ -148,60 +207,35 @@ function SectionsCarrito() {
         </div>
 
         <aside className={styles.resumenContainer}>
-          <h2>Resumen Final</h2>
-
-          {/* Resumen SIEMPRE visible */}
-          <p>Subtotal: ${subtotal.toLocaleString()} ARS</p>
-          <p>IVA 21%: ${iva.toLocaleString()}</p>
-          <p>Ingresos Brutos 2.3%: ${ingresosBrutos.toLocaleString()}</p>
-          <p className={styles.totalFinal}>
-            Total: <strong>${total.toLocaleString()} ARS</strong>
-          </p>
-
-          {/* Métodos de pago que aparecen solo al hacer click */}
-          {mostrarPago && (
-            <section className={styles.metodosPago}>
-              <h3>Elegí tu forma de pago</h3>
-              <button
-                className={styles.btnMercadoPago}
-                onClick={() => alert("Integración con Mercado Pago")}
-              >
-                Pagar con Mercado Pago
-              </button>
-            </section>
-          )}
+          <h2>Resumen</h2>
+          <p>Subtotal: ${subtotal.toLocaleString()}</p>
+          <p>IVA (21%): ${iva.toLocaleString()}</p>
+          <p>Ingresos Brutos (2.3%): ${ingresosBrutos.toLocaleString()}</p>
+          <p className={styles.totalFinal}>Total: ${total.toLocaleString()}</p>
 
           <button
             className={styles.botonCompra}
-            onClick={() => setMostrarPago(!mostrarPago)}
             disabled={servicios.length === 0}
+            onClick={() => setMostrarPago(true)}
           >
-            {mostrarPago ? "Cancelar" : "Realizar compra"}
+            Finalizar Compra
           </button>
+
+          {mostrarPago && (
+            <div className={styles.metodosPago}>
+              <button className={styles.btnMercadoPago}>Pagar con Mercado Pago</button>
+            </div>
+          )}
         </aside>
       </section>
 
       {modalAbierto && (
         <div className={styles.modalOverlay}>
           <div className={styles.modalContent}>
-            <h3>Editar Servicio</h3>
+            <h3>Editar servicio</h3>
 
             <label>
-              Nombre:
-              <input
-                type="text"
-                value={servicioEditando.nombre}
-                onChange={(e) =>
-                  setServicioEditando({
-                    ...servicioEditando,
-                    nombre: e.target.value,
-                  })
-                }
-              />
-            </label>
-
-            <label>
-              Fecha inicio:
+              Fecha Inicio
               <input
                 type="date"
                 value={servicioEditando.fechaInicio}
@@ -210,7 +244,7 @@ function SectionsCarrito() {
             </label>
 
             <label>
-              Fecha fin:
+              Fecha Fin
               <input
                 type="date"
                 value={servicioEditando.fechaFin}
@@ -218,29 +252,11 @@ function SectionsCarrito() {
               />
             </label>
 
-            {(servicioEditando.categoria === "Vuelo" ||
-              servicioEditando.categoria === "Paquete turístico") && (
-              <label>
-                Cantidad de personas:
-                <input
-                  type="number"
-                  min="1"
-                  value={servicioEditando.personas || 1}
-                  onChange={(e) =>
-                    setServicioEditando({
-                      ...servicioEditando,
-                      personas: Math.max(1, Number(e.target.value)),
-                    })
-                  }
-                />
-              </label>
-            )}
-
             <div className={styles.modalBotones}>
-              <button onClick={guardarCambios} className={styles.btnGuardar}>
+              <button className={styles.btnGuardar} onClick={guardarCambios}>
                 Guardar
               </button>
-              <button onClick={cerrarModal} className={styles.btnCancelar}>
+              <button className={styles.btnCancelar} onClick={cerrarModal}>
                 Cancelar
               </button>
             </div>
