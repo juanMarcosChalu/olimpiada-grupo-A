@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { FaHeart, FaRegHeart, FaWifi, FaUtensils, FaFire, FaPaw, FaWater } from "react-icons/fa";
-
 import "../../../styles/Alojamientos.css";
-
+import { useFetch } from "../../../hooks/useFetch";
 import image_of_departamento from "../../../assets/departamento.jpg";
 import image_of_cabañas_lago from "../../../assets/cabañaslago.jpg";
 import image_of_depto_catedral from "../../../assets/deptocatedral.jpg";
@@ -17,7 +16,8 @@ export default function Alojamientos() {
     entrada: "",
     salida: "",
   });
-
+    const { data, loading, error } = useFetch(`http://localhost:3000/alojamientos`);
+  const [alojamientos, setAlojamientos] = useState([]);
   const [mostrarResultados, setMostrarResultados] = useState(false);
   const [mostrarModal, setMostrarModal] = useState(false);
   const [alojamientoSeleccionado, setAlojamientoSeleccionado] = useState(null);
@@ -33,99 +33,127 @@ export default function Alojamientos() {
     correo: "",
     telefono: "",
   });
+  useEffect(() => {
+    if (!data || !Array.isArray(data)) return;
 
-  const alojamientosData = [
-    {
-      id: 1,
-      nombre: "Cabañas Los Arrayanes",
-      descripcion:
-        "Vista al lago · Hasta 5 personas · Cocina completa.",
-      precio: "$312.000 ARS · 7 noches",
-      imagenes: [image_of_departamento, image_of_cabañas_lago, image_of_depto_catedral],
-      caracteristicas: {
-        wifi: true,
-        cocina: true,
-        parrilla: false,
-        mascotas: true,
-        piscina: false,
-      },
-    },
-    {
-      id: 2,
-      nombre: "Departamento Bariloche",
-      descripcion:
-        "Centro Cívico · Para 2 personas · Wi-Fi gratis.",
-      precio: "$278.000 ARS · 7 noches",
-      imagenes: [image_of_depto_catedral, image_of_depto_patagonia, image_of_departamento],
-      caracteristicas: {
-        wifi: true,
-        cocina: true,
-        parrilla: false,
-        mascotas: false,
-        piscina: false,
-      },
-    },
-    {
-      id: 3,
-      nombre: "Hostel Patagonia",
-      descripcion:
-        "Para 1-4 personas · Baño privado · Wi-Fi incluido.",
-      precio: "$180.000 ARS · 7 noches",
-      imagenes: [image_of_depto_patagonia, image_of_departamento, image_of_cabañas_lago],
-      caracteristicas: {
-        wifi: true,
-        cocina: false,
-        parrilla: false,
-        mascotas: true,
-        piscina: false,
-      },
-    },
-    {
-      id: 4,
-      nombre: "EcoLodge del Bosque",
-      descripcion:
-        "Rodeado de naturaleza · Piscina climatizada.",
-      precio: "$350.000 ARS · 7 noches",
-      imagenes: [image_of_cabañas_lago, image_of_depto_catedral, image_of_depto_patagonia],
-      caracteristicas: {
-        wifi: false,
-        cocina: true,
-        parrilla: true,
-        mascotas: false,
-        piscina: true,
-      },
-    },
-    {
-      id: 5,
-      nombre: "Suite Panorámica",
-      descripcion:
-        "Vista a la montaña · Jacuzzi privado · Balcón.",
-      precio: "$420.000 ARS · 7 noches",
-      imagenes: [image_of_departamento, image_of_cabañas_lago, image_of_depto_patagonia],
-      caracteristicas: {
-        wifi: true,
-        cocina: true,
-        parrilla: false,
-        mascotas: false,
-        piscina: false,
-      },
-    },
-    {
-      id: 6,
-      nombre: "Cabaña Familiar Andina",
-      descripcion:
-        "Ideal para grupos grandes · Parrilla · Amplio jardín.",
-      precio: "$299.000 ARS · 7 noches",
-      imagenes: [image_of_depto_catedral, image_of_departamento, image_of_cabañas_lago],
-      caracteristicas: {
-        wifi: false,
-        cocina: true,
-        parrilla: true,
-        mascotas: true,
-        piscina: false,
-      },
-    },
-  ];
+    const alojamientosProcesados = data.map(alojamiento => {
+        // Verificar que exista el array de imágenes
+        const imagenesValidas = Array.isArray(alojamiento.imagenes) 
+            ? alojamiento.imagenes
+            : [];
+
+        // Crear array de src válidos
+        const imagenesSrc = imagenesValidas.reduce((acc, imagen) => {
+            if (imagen?.tipo && imagen?.data) {
+                acc.push(`data:${imagen.tipo};base64,${imagen.data}`);
+            }
+            return acc;
+        }, []);
+
+        return {
+            ...alojamiento,
+            imagenesSrc,
+            tieneImagenes: imagenesSrc.length > 0
+        };
+    });
+
+    
+    setAlojamientos(alojamientosProcesados);
+    console.log(alojamientosProcesados);
+    
+}, [data]);
+  // const alojamientosData = [
+  //   {
+  //     id: 1,
+  //     nombre: "Cabañas Los Arrayanes",
+  //     descripcion:
+  //       "Vista al lago · Hasta 5 personas · Cocina completa.",
+  //     precio: "$312.000 ARS · 7 noches",
+  //     imagenes: [image_of_departamento, image_of_cabañas_lago, image_of_depto_catedral],
+  //     caracteristicas: {
+  //       wifi: true,
+  //       cocina: true,
+  //       parrilla: false,
+  //       mascotas: true,
+  //       piscina: false,
+  //     },
+  //   },
+  //   {
+  //     id: 2,
+  //     nombre: "Departamento Bariloche",
+  //     descripcion:
+  //       "Centro Cívico · Para 2 personas · Wi-Fi gratis.",
+  //     precio: "$278.000 ARS · 7 noches",
+  //     imagenes: [image_of_depto_catedral, image_of_depto_patagonia, image_of_departamento],
+  //     caracteristicas: {
+  //       wifi: true,
+  //       cocina: true,
+  //       parrilla: false,
+  //       mascotas: false,
+  //       piscina: false,
+  //     },
+  //   },
+  //   {
+  //     id: 3,
+  //     nombre: "Hostel Patagonia",
+  //     descripcion:
+  //       "Para 1-4 personas · Baño privado · Wi-Fi incluido.",
+  //     precio: "$180.000 ARS · 7 noches",
+  //     imagenes: [image_of_depto_patagonia, image_of_departamento, image_of_cabañas_lago],
+  //     caracteristicas: {
+  //       wifi: true,
+  //       cocina: false,
+  //       parrilla: false,
+  //       mascotas: true,
+  //       piscina: false,
+  //     },
+  //   },
+  //   {
+  //     id: 4,
+  //     nombre: "EcoLodge del Bosque",
+  //     descripcion:
+  //       "Rodeado de naturaleza · Piscina climatizada.",
+  //     precio: "$350.000 ARS · 7 noches",
+  //     imagenes: [image_of_cabañas_lago, image_of_depto_catedral, image_of_depto_patagonia],
+  //     caracteristicas: {
+  //       wifi: false,
+  //       cocina: true,
+  //       parrilla: true,
+  //       mascotas: false,
+  //       piscina: true,
+  //     },
+  //   },
+  //   {
+  //     id: 5,
+  //     nombre: "Suite Panorámica",
+  //     descripcion:
+  //       "Vista a la montaña · Jacuzzi privado · Balcón.",
+  //     precio: "$420.000 ARS · 7 noches",
+  //     imagenes: [image_of_departamento, image_of_cabañas_lago, image_of_depto_patagonia],
+  //     caracteristicas: {
+  //       wifi: true,
+  //       cocina: true,
+  //       parrilla: false,
+  //       mascotas: false,
+  //       piscina: false,
+  //     },
+  //   },
+  //   {
+  //     id: 6,
+  //     nombre: "Cabaña Familiar Andina",
+  //     descripcion:
+  //       "Ideal para grupos grandes · Parrilla · Amplio jardín.",
+  //     precio: "$299.000 ARS · 7 noches",
+  //     imagenes: [image_of_depto_catedral, image_of_departamento, image_of_cabañas_lago],
+  //     caracteristicas: {
+  //       wifi: false,
+  //       cocina: true,
+  //       parrilla: true,
+  //       mascotas: true,
+  //       piscina: false,
+  //     },
+  //   },
+  // ];
 
   const handleBuscar = (e) => {
     e.preventDefault();
@@ -239,7 +267,7 @@ export default function Alojamientos() {
             Alojamientos disponibles en {busqueda.lugar}
           </h3>
           <div className="grid-alojamientos">
-            {alojamientosData.map((a) => (
+            {alojamientos.map((a) => (
               <div className="card" key={a.id}>
                 <div className="carousel-container">
                   <Carousel
@@ -251,7 +279,7 @@ export default function Alojamientos() {
                     stopOnHover={true}
                     swipeable={true}
                   >
-                    {a.imagenes.map((img, index) => (
+                    {a.imagenesSrc.map((img, index) => (
                       <div key={index}>
                         <img src={img} alt={`Alojamiento ${a.nombre} ${index + 1}`} />
                       </div>

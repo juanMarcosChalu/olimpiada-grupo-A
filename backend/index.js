@@ -8,6 +8,7 @@ const paquetesRoutes = require('./rutas/paquetes');
 const registrarRoutes = require('./rutas/usuario');
 const autosRoutes = require('./rutas/autos');
 const vuelosRoutes = require("./rutas/vuelos");
+const alojamientosRoutes= require("./rutas/alojamientos");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -32,6 +33,7 @@ app.use('/paquetes', paquetesRoutes);
 app.use('/usuario', registrarRoutes);
 app.use('/autos', autosRoutes);
 app.use('/vuelos', vuelosRoutes);
+app.use("/alojamientos",alojamientosRoutes);
 
 const PORT = 3000;
 app.listen(PORT, () => {
