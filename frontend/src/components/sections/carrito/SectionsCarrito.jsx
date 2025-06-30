@@ -1,4 +1,4 @@
-import React, { useState } from "react"; 
+import React, { useState } from "react";
 import styles from "../../../styles/SectionCarrito.module.css";
 
 import image_of_paris from "../../../assets/paris.jpg";
@@ -40,7 +40,7 @@ function SectionsCarrito() {
     {
       id: 3,
       categoria: "Vuelo",
-      nombre: "Vuelo Buenos Aires - Madrid",
+      nombre: "Buenos Aires - Madrid",
       ubicacion: "Madrid",
       fechaInicio: "2025-09-01",
       fechaFin: "2025-09-01",
@@ -53,6 +53,23 @@ function SectionsCarrito() {
       aeropuertoDestino: "MAD",
       clase: "Económica",
       escalas: 0,
+    },
+    {
+      id: 4,
+      categoria: "Asistencia al viajero",
+      nombre: "Plan Estándar",
+      ubicacion: "Cobertura internacional",
+      fechaInicio: "2025-07-15",
+      fechaFin: "2025-07-22",
+      dias: calcularDias("2025-07-15", "2025-07-22"),
+      precioPorDia: 100000,
+      beneficios: [
+        "Atención médica hasta 10.000.000 ARG",
+        "Hospitalización y medicación",
+        "Asistencia legal",
+        "Equipaje hasta 500.000 ARG",
+        "No incluye protección de móviles",
+      ],
     },
   ]);
 
@@ -120,10 +137,13 @@ function SectionsCarrito() {
               <article
                 key={servicio.id}
                 className={`${styles.servicioCard} ${
-                  servicio.categoria === "Vuelo" ? styles.vueloCard : ""
+                  servicio.categoria === "Vuelo" ||
+                  servicio.categoria === "Asistencia al viajero"
+                    ? styles.vueloCard
+                    : ""
                 }`}
               >
-                {/* Imagen o placeholder */}
+                {/* Imagen o ícono */}
                 <div className={styles.imagenContainer}>
                   {servicio.imagenSrc ? (
                     <img
@@ -134,20 +154,25 @@ function SectionsCarrito() {
                   ) : servicio.categoria === "Vuelo" ? (
                     <div>✈️</div>
                   ) : (
-                    <div className={styles.imagenVacia}>
-                      <span>📷 Sin imagen</span>
-                    </div>
+                    <div>🚑</div>
                   )}
                 </div>
 
                 <div className={styles.infoServicio}>
-                  <h3 className={styles.categoria}>{servicio.categoria}</h3>
-                  <p className={styles.nombre}>{servicio.nombre}</p>
+                  <h3 className={styles.nombre} style={{ fontWeight: "700" }}>
+                    {servicio.categoria}
+                  </h3>
+                  <p className={styles.categoria}>{servicio.nombre}</p>
+
                   <p className={styles.ubicacion}>📍 {servicio.ubicacion}</p>
                   <p className={styles.fechas}>
-                    📅 {servicio.fechaInicio} - {servicio.fechaFin} ({servicio.dias}{" "}
-                    días)
+                    📅 {servicio.fechaInicio} - {servicio.fechaFin}
+                    {servicio.categoria !== "Vuelo" &&
+                      servicio.categoria !== "Asistencia al viajero" && (
+                        <> ({servicio.dias} días)</>
+                      )}
                   </p>
+
                   {servicio.personas !== undefined && (
                     <p className={styles.personas}>
                       👥 {servicio.personas} persona
@@ -157,7 +182,6 @@ function SectionsCarrito() {
 
                   {servicio.categoria === "Vuelo" && (
                     <>
-                      <p className={styles.numeroVuelo}>✈️ Vuelo: {servicio.numeroVuelo}</p>
                       <p className={styles.horarios}>
                         🕗 {servicio.horaSalida} - {servicio.horaLlegada}
                       </p>
@@ -165,13 +189,18 @@ function SectionsCarrito() {
                         🛫 {servicio.aeropuertoOrigen} → 🛬 {servicio.aeropuertoDestino}
                       </p>
                       <p className={styles.clase}>Clase: {servicio.clase}</p>
-                      <p className={styles.escalas}>
-                        Escalas: {servicio.escalas}
-                      </p>
+                      <p className={styles.escalas}>Escalas: {servicio.escalas}</p>
                     </>
                   )}
 
-                  {/* Solo mostrar precioPorDia y total si NO es vuelo */}
+                  {servicio.categoria === "Asistencia al viajero" && (
+                    <ul className={styles.listaBeneficios}>
+                      {servicio.beneficios?.map((b, index) => (
+                        <li key={index}>✅ {b}</li>
+                      ))}
+                    </ul>
+                  )}
+
                   {servicio.categoria !== "Vuelo" && (
                     <>
                       <p className={styles.precio}>
@@ -179,14 +208,16 @@ function SectionsCarrito() {
                       </p>
                       <p className={styles.totalServicio}>
                         Total: $
-                        {(servicio.precioPorDia * servicio.dias * (servicio.personas || 1)).toLocaleString()}
+                        {(
+                          servicio.precioPorDia *
+                          servicio.dias *
+                          (servicio.personas || 1)
+                        ).toLocaleString()}
                       </p>
                     </>
                   )}
 
                   <div className={styles.botonesServicio}>
-                    {/* En todas las cards botones en orden: Editar, Quitar */}
-                    {/* Pero en vuelo el CSS cambia el orden */}
                     <button
                       className={styles.btnQuitar}
                       onClick={() => quitarServicio(servicio.id)}

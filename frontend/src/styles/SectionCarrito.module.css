@@ -40,6 +40,14 @@
   box-sizing: border-box;
   overflow: hidden;
   flex-wrap: wrap;
+
+  /* Animación para hover */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.servicioCard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
 }
 
 /* Card vuelo (sin imagen) */
@@ -414,4 +422,16 @@
   color: #3a2e25;
   text-align: center;
   user-select: none;
+}
+
+.listaBeneficios {
+  grid-column: 1 / -1;
+  padding-left: 1.2rem;
+  margin: 0.5rem 0 0 0;
+  list-style: disc;
+  color: #776b5d;
+  font-size: 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
 }
