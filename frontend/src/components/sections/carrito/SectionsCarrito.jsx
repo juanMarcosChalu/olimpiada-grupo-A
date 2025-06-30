@@ -94,6 +94,7 @@ function SectionsCarrito() {
             <p className={styles.sinServicios}>No hay servicios agregados.</p>
           ) : (
             servicios.map((servicio) => (
+              
               <article key={servicio.id} className={styles.servicioCard}>
                 {console.log(servicio)}
                 <div className={styles.imagenContainer}>

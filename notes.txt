@@ -1,0 +1,5 @@
+types:
+"vuelo",
+"alquilerAuto",
+"paquete",
+"alojamiento"
