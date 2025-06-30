@@ -79,12 +79,10 @@
                     opacity: 0;
                     color: white;
                     pointer-events: none;
-                    /* evita clics cuando no se ve */
                     transition: opacity 0.5s ease, transform 0.5s ease;
                     display: flex;
-                    /* ahora siempre visible, pero transparente/inactivo */
                     transform: scale(1.05);
-                    /* efecto suave al entrar */
+
 
                 }
 
@@ -107,12 +105,3 @@
 
 }
 
-.carousel-title {
-    position: relative;
-    justify-content: center;
-    text-align: center;
-    position: relative;
-    top: -20%;
-    font-family: "Libre Baskerville", serif;
-    color: #776b64;
-}
