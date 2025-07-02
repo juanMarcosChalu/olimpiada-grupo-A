@@ -166,10 +166,11 @@
 /* seccion Formulario */
 
 .seccionForm {
-  margin-top: 5rem;
+  margin-top: 3rem;
   width: 100%;
   max-width: 700px;
   margin-left: auto;
+  margin-bottom: 10rem;
   margin-right: auto;
   background-color: white;
   border-radius: 12px;
