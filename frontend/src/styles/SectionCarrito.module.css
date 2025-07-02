@@ -260,8 +260,8 @@
 .botonCompra {
   padding: 0.8rem;
   border: none;
-  background-color: #776b5d;
-  color: white;
+  background-color: #ffe600;
+  color: #003087;
   border-radius: 999px;
   cursor: pointer;
   font-weight: 700;
@@ -276,7 +276,7 @@
 }
 
 .botonCompra:hover:not(:disabled) {
-  background-color: #585046;
+  background-color: #ffcc00;
 }
 
 .metodosPago {
