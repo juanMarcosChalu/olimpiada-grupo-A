@@ -103,6 +103,7 @@ const Carousel = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedDestino, setSelectedDestino] = useState(null);
   const [isHovered, setIsHovered] = useState(false);
+  const [slideDirection, setSlideDirection] = useState("right"); // nuevo estado
 
   useEffect(() => {
     const handleResize = () => {
@@ -122,6 +123,7 @@ const Carousel = () => {
   useEffect(() => {
     if (!isHovered) {
       const autoSlide = setInterval(() => {
+        setSlideDirection("right");
         setStartIndex((prev) => (prev + 1) % destinosData.length);
       }, 4000);
       return () => clearInterval(autoSlide);
@@ -147,10 +149,12 @@ const Carousel = () => {
   };
 
   const prevSlide = () => {
+    setSlideDirection("left");
     setStartIndex((prev) => (prev - 1 + destinosData.length) % destinosData.length);
   };
 
   const nextSlide = () => {
+    setSlideDirection("right");
     setStartIndex((prev) => (prev + 1) % destinosData.length);
   };
 
@@ -173,8 +177,8 @@ const Carousel = () => {
         <div className="carousel-container">
           {visibleDestinos.map((destino, idx) => (
             <div
-              className="carousel-slide"
-              key={idx}
+              className={`carousel-slide slide-${slideDirection}`}
+              key={`${startIndex}-${idx}`} // fuerza rerender para reiniciar animación
               role="button"
               tabIndex={0}
               aria-label={`Ver detalles del destino ${destino.texto}`}

@@ -200,3 +200,34 @@
   box-sizing: border-box;
 }
 
+
+
+@keyframes slideFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.carousel-slide.slide-left {
+  animation: slideFromLeft 100ms ease;
+}
+
+.carousel-slide.slide-right {
+  animation: slideFromRight 100ms ease;
+}

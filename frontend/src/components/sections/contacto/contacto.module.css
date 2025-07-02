@@ -68,8 +68,8 @@
 }
 
 .listaDatos img {
-  width: 24px;
-  height: 24px;
+  width: 40px;
+  height: 40px;
   background-color: #776b5d;
   padding: 0.5rem;
   border-radius: 999px;
@@ -108,8 +108,8 @@
 }
 
 .facebookContainer img {
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 40px;
+  height: 40px;
   padding: 0.5rem;
   background-color: #776B5D;
   border-radius: 999px;
