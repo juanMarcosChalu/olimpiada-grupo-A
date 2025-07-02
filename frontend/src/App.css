@@ -1,30 +1,49 @@
-body{
+/* Reset básico para márgenes y padding */
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
-* {
+
+/* Asegura que html y body no generen scroll horizontal */
+html, body {
+  width: 100vw;
+  max-width: 100vw;
+  overflow-x: hidden !important;
   margin: 0;
   padding: 0;
-}
-
-input:-webkit-autofill {
-  -webkit-text-fill-color: black !important;
-  transition: background-color 9999s ease-in-out 0s !important;
-
-}
-body {
-  overflow-x: hidden;
   font-family: Arial, sans-serif;
-  margin: 0;
   background-color: #ffffff;
 }
 
-.icono{
+/* Opcional: para inputs con autofill en Chrome */
+input:-webkit-autofill {
+  -webkit-text-fill-color: black !important;
+  transition: background-color 9999s ease-in-out 0s !important;
+}
+
+/* Ejemplo para iconos */
+.icono {
   color: black;
   font-size: 5rem;
   cursor: pointer;
-  &:hover
-  {
-    color: #ffffff;
-  }
+}
+
+.icono:hover {
+  color: #ffffff;
+}
+
+/* Estilo general para imágenes (opcional) */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Estilo para enlaces (opcional) */
+a {
+  text-decoration: none;
+  color: inherit;
 }

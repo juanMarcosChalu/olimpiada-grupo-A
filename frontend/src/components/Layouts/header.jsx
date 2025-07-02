@@ -1,55 +1,88 @@
-import { useState } from 'react';
-import React from "react";
-import styles from "../../styles/header2.module.css"; // estilos
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import ServiciosMenu from "../UI/serviciosli.jsx";
-import UsuarioMenu from '../UI/UserMenu.jsx';
-import SvgCarrito from '../UI/SvgCarrito.jsx';
-function Header({ title, menuItems = [], backgroundColorProp }) {
 
-  const [userOpen, setUserOpen] = useState(false);
+import styles from "../../styles/header2.module.css";
+import ServiciosMenu from "../UI/serviciosli.jsx";
+import UsuarioMenu from "../UI/UserMenu.jsx";
+import SvgCarrito from "../UI/SvgCarrito.jsx";
+
+function Header({ title, menuItems = [], backgroundColorProp }) {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [serviciosOpen, setServiciosOpen] = useState(false);
+
+  // Cerrar submenu servicios si se cierra el menú hamburguesa
+  function toggleMenu() {
+    if (menuOpen) setServiciosOpen(false);
+    setMenuOpen(!menuOpen);
+  }
 
   return (
     <header className={styles.header} style={{ backgroundColor: backgroundColorProp }}>
       <div className={styles.logocontainer}>{title}</div>
+
       <nav className={styles.navigation}>
         <ul className={styles.navigationList}>
           {menuItems.map((item, index) =>
-
             item.key === "servicios" ? (
-
-              // Este ya devuelve <li>, no lo envuelvas en otro
-                <li className={styles.navbarPc} key={index}> <ServiciosMenu   /></li>
-             
+              <li key={index} className={styles.navbarPc}>
+                <ServiciosMenu />
+              </li>
             ) : (
-              // Este sí necesita <li> si es un <Link> o similar
-              <li key={index} className={`${styles.navbuttons} ${styles.navbarPc}`}>{item}</li>
+              <li key={index} className={`${styles.navbuttons} ${styles.navbarPc}`}>
+                {item}
+              </li>
             )
           )}
-          
+
           <li className={styles.navbarPc}>
             <Link to="/carrito">
-            <SvgCarrito />
+              <SvgCarrito />
             </Link>
-            </li>
-            
+          </li>
           <li className={styles.navbarPc}>
             <UsuarioMenu />
           </li>
+
+          {/* Botón hamburguesa - solo visible en mobile */}
           <div
-            className={`${styles.hamburguesa} ${userOpen ? styles.open : ""}`}
-            onClick={() => setUserOpen(!userOpen)}
+            className={`${styles.hamburguesa} ${menuOpen ? styles.open : ""}`}
+            onClick={toggleMenu}
+            aria-label="Abrir menú"
+            role="button"
+            tabIndex={0}
+            onKeyDown={(e) => { if(e.key === "Enter") toggleMenu(); }}
           >
             <span></span>
             <span></span>
             <span></span>
           </div>
 
-          <div className={`${styles.navbarLinks} ${userOpen ? styles.active : ""}`}>
-            <a href="#inicio">Inicio</a>
-            <a href="#servicios">Servicios</a>
-            <a href="#proyectos">Proyectos</a>
-            <a href="#contacto">Contacto</a>
+          {/* Menú hamburguesa lateral */}
+          <div className={`${styles.navbarLinks} ${menuOpen ? styles.active : ""}`}>
+            <a href="http://localhost:5173" onClick={() => setMenuOpen(false)}>Inicio</a>
+
+            {/* Submenu Servicios móvil */}
+            <div className={styles.mobileSubmenuContainer}>
+              <button
+                className={styles.mobileSubmenuTitle}
+                onClick={() => setServiciosOpen(!serviciosOpen)}
+                aria-expanded={serviciosOpen}
+                aria-controls="submenu-servicios"
+              >
+                Servicios {serviciosOpen ? "▲" : "▼"}
+              </button>
+              {serviciosOpen && (
+                <ul id="submenu-servicios" className={styles.mobileSubmenu}>
+                  <li><a href="/vuelos" onClick={() => setMenuOpen(false)}>Vuelos</a></li>
+                  <li><a href="/alquileres" onClick={() => setMenuOpen(false)}>Alquiler de autos</a></li>
+                  <li><a href="/alojamiento" onClick={() => setMenuOpen(false)}>Alojamientos</a></li>
+                  <li><a href="/paquetes" onClick={() => setMenuOpen(false)}>Paquetes</a></li>
+                  <li><a href="/asistencia" onClick={() => setMenuOpen(false)}>Asistencia al viajero</a></li>
+                </ul>
+              )}
+            </div>
+
+            <a href="/contacto" onClick={() => setMenuOpen(false)}>Contacto</a>
           </div>
         </ul>
       </nav>
@@ -58,3 +91,5 @@ function Header({ title, menuItems = [], backgroundColorProp }) {
 }
 
 export default Header;
+
+
