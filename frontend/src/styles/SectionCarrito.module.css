@@ -48,7 +48,6 @@
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
 }
 
-/* Card vuelo (sin imagen) */
 .vueloCard {
   background: white;
   border-radius: 15px;
@@ -57,7 +56,6 @@
   margin: 0 auto 1.5rem auto;
   box-sizing: border-box;
   color: #776b5d;
-
   width: 650px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -65,14 +63,12 @@
   min-height: 130px;
 }
 
-/* Ocultar imagen en vuelo */
 .vueloCard .imagenContainer {
   display: none;
 }
 
-/* Info servicio vuelo con texto color y estilos */
 .vueloCard .infoServicio {
-  display: contents; /* Para que los hijos respeten el grid */
+  display: contents;
 }
 
 .vueloCard .infoServicio > * {
@@ -83,7 +79,6 @@
   word-break: break-word;
 }
 
-/* Botones en vuelo ocupan las dos columnas y color texto */
 .vueloCard .botonesServicio {
   grid-column: 1 / -1;
   margin-top: 0.6rem;
@@ -93,15 +88,13 @@
   justify-content: flex-end;
 }
 
-/* Orden específico botones en vuelo: Quitar primero, Editar segundo */
 .vueloCard .botonesServicio button:first-child {
-  order: 1; /* Quitar */
+  order: 1;
 }
 .vueloCard .botonesServicio button:last-child {
-  order: 2; /* Editar */
+  order: 2;
 }
 
-/* Cards con imagen (autos y paquetes) */
 .servicioCard:not(.vueloCard) {
   max-width: 800px;
   min-height: 180px;
@@ -109,11 +102,10 @@
   flex-wrap: nowrap;
 }
 
-/* Contenedor de imagen más grande y bordes sin redondear */
 .imagenContainer {
   flex: 0 0 45%;
   height: auto;
-  border-radius: 0; /* Sin bordes redondeados */
+  border-radius: 0;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -122,15 +114,13 @@
   background-color: #f0f0f0;
 }
 
-/* Imagen sin bordes redondeados y con protagonismo */
 .imagenServicio {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 0; /* Sin bordes redondeados */
+  border-radius: 0;
 }
 
-/* Placeholder para imagen vacía */
 .imagenContainer > div {
   width: 100%;
   height: 100%;
@@ -311,7 +301,6 @@
   background-color: #e6b800;
 }
 
-/* Modal */
 .modalOverlay {
   position: fixed;
   inset: 0;
@@ -436,8 +425,6 @@
 }
 
 /* Responsive */
-
-/* Para pantallas medianas y menores */
 @media (max-width: 1024px) {
   .carritoSection {
     flex-direction: column;
@@ -466,7 +453,6 @@
   }
 }
 
-/* Para pantallas pequeñas (móviles) */
 @media (max-width: 767px) {
   .carritoSection {
     padding: 0.8rem;

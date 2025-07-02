@@ -4,6 +4,46 @@ import styles from "../../../styles/SectionCarrito.module.css";
 import image_of_paris from "../../../assets/paris.jpg";
 import image_of_captur from "../../../assets/captur.jpg";
 
+function PagoMercadoPago({ productos }) {
+  const [error, setError] = useState(null);
+
+  const iniciarPago = async () => {
+    try {
+      const response = await fetch("http://localhost:3001/create_preference", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(productos),
+      });
+
+      if (!response.ok) {
+        throw new Error("Error al crear la preferencia");
+      }
+
+      const data = await response.json();
+
+      window.location.href = data.init_point;
+    } catch (err) {
+      console.error("Error al iniciar el pago:", err);
+      setError("No se pudo iniciar el pago. Intente más tarde.");
+    }
+  };
+
+  return (
+    <>
+      <button
+        className={styles.botonCompra}
+        disabled={productos.length === 0}
+        onClick={iniciarPago}
+      >
+        Pagar con Mercado Pago
+      </button>
+      {error && <p style={{ color: "red" }}>{error}</p>}
+    </>
+  );
+}
+
 function SectionsCarrito() {
   const calcularDias = (inicio, fin) => {
     const start = new Date(inicio);
@@ -73,7 +113,6 @@ function SectionsCarrito() {
     },
   ]);
 
-  const [mostrarPago, setMostrarPago] = useState(false);
   const [modalAbierto, setModalAbierto] = useState(false);
   const [servicioEditando, setServicioEditando] = useState(null);
 
@@ -117,6 +156,13 @@ function SectionsCarrito() {
     setServicios(servicios.filter((s) => s.id !== id));
   };
 
+  // Preparar productos para MercadoPago (el body que envía el front al backend)
+  const productosParaPago = servicios.map((servicio) => ({
+    title: servicio.nombre,
+    quantity: servicio.personas || 1,
+    unit_price: servicio.precioPorDia * servicio.dias,
+  }));
+
   const subtotal = servicios.reduce((acc, s) => {
     const cantidadPersonas = s.personas || 1;
     return acc + s.precioPorDia * s.dias * cantidadPersonas;
@@ -143,7 +189,6 @@ function SectionsCarrito() {
                     : ""
                 }`}
               >
-                {/* Imagen o ícono */}
                 <div className={styles.imagenContainer}>
                   {servicio.imagenSrc ? (
                     <img
@@ -244,19 +289,7 @@ function SectionsCarrito() {
           <p>Ingresos Brutos (2.3%): ${ingresosBrutos.toLocaleString()}</p>
           <p className={styles.totalFinal}>Total: ${total.toLocaleString()}</p>
 
-          <button
-            className={styles.botonCompra}
-            disabled={servicios.length === 0}
-            onClick={() => setMostrarPago(true)}
-          >
-            Finalizar Compra
-          </button>
-
-          {mostrarPago && (
-            <div className={styles.metodosPago}>
-              <button className={styles.btnMercadoPago}>Pagar con Mercado Pago</button>
-            </div>
-          )}
+          <PagoMercadoPago productos={productosParaPago} />
         </aside>
       </section>
 
