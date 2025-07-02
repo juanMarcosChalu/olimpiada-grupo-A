@@ -22,7 +22,6 @@ router.patch('/update/:id', upload.single('imagen'), (req, res) => {
 
   conexion.query(sqlUpdateUser, [nombre, apellido, genero, birthday, id], (err, result) => {
     if (err) {
-      console.error("Error actualizando usuario:", err);
       return res.status(500).json({ error: "Error interno al actualizar usuario" });
     }
 
@@ -54,10 +53,9 @@ router.patch('/update/:id', upload.single('imagen'), (req, res) => {
       });
     });
 
-    console.log("Sesión actualizada y guardada:", req.session.usuario);
+    
     res.json({ mensaje: "Usuario actualizado correctamente" });
   } catch (err) {
-    console.error("Error guardando sesión:", err);
     res.status(500).json({ error: "Error al actualizar la sesión" });
   }
 };
@@ -140,7 +138,7 @@ router.post('/login', (req, res) => {
     if (rows.length === 0) return res.status(401).json({ error: `Correo o Contraseña incorrectos` });
 
     const usuario = rows[0];
-    console.log(usuario);
+    
 
     const ok = bcrypt.compareSync(password, usuario.contrasena);
 
@@ -176,7 +174,7 @@ router.get('/sesion', (req, res) => {
 // Registro
 router.post('/registrar', (req, res) => {
   const { nombre, password, correo, recibirPromos } = req.body.usuario;
-  console.log(req.body.usuario);
+  
 
   if (nombre === null || password == null || correo == null || recibirPromos == null || nombre === "" || password === "" || correo === "" || recibirPromos === ""
   ) {
@@ -195,7 +193,6 @@ router.post('/registrar', (req, res) => {
   const checkEmailQuery = 'SELECT * FROM usuarios WHERE correo = ?';
   conexion.query(checkEmailQuery, [correo], (err, rows) => {
     if (err) {
-      console.log('❌ Error al verificar correo existente:', err);
       return res.status(500).json({ error: 'Error interno al verificar correo' });
     }
 
@@ -207,7 +204,6 @@ router.post('/registrar', (req, res) => {
     const checkNameQuery = 'SELECT * FROM usuarios WHERE nombre = ?';
     conexion.query(checkNameQuery, [nombre], (err, rows) => {
       if (err) {
-        console.log('❌ Error al verificar usuario existente:', err);
         return res.status(500).json({ error: 'Error interno al verificar usuario' });
       }
 
@@ -224,14 +220,12 @@ router.post('/registrar', (req, res) => {
 
       conexion.query(insertQuery, [nombre, hash, rol, correo, recibirPromos], (error) => {
         if (error) {
-          console.log('❌ Error al registrar usuario:', error);
           return res.status(500).json({ error: 'Error al registrar el usuario' });
         }
 
         const sql = "SELECT * FROM usuarios WHERE correo = ?";
         conexion.query(sql, [correo], (err, rows) => {
           const usuario = rows[0];
-          console.log(usuario);
 
           req.session.usuario = {
             id: usuario.id,

@@ -27,7 +27,7 @@ router.get('/:type', (req, res) => {
 
     db.query(query,[type], (err, results) => {
         if (err) return res.status(500).json({ error: err.message });
-        console.log("resutados"+results);
+        
         
         const paquetes = results.map(paquete => {
             // Convertir imagen a base64 si existe

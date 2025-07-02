@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { useFetch } from "../../../hooks/useFetch.js"; // Asegurate de importar tu hook
 import CardPaquetes from "../../UI/CardPaquetes.jsx";
+import usePost from "../../../hooks/usePost.js";
 import '../../../styles/GridPaquetes.css';
+import { useAuth } from "../../../hooks/useAuth.js";
 const coloresPorTipo = {
     romantico: "#c88c8c",
     familiar: "#d9a273",
@@ -12,13 +14,22 @@ const coloresPorTipo = {
 };
 
 function PaquetesTuristicos({ type }) {
+    //     {
+    //     "userId": 1,  usuario.id
+    //     "tipoProducto": "paquete", 
+    //     "productoID": 1,
+    // }
+    const { usuario, cargando, isLogin } = useAuth();
+    const [idproducto, setIdproducto] = useState(0);
     const { data, loading, error } = useFetch(`http://localhost:3000/paquetes/${type}`);
     const [paquetes, setPaquetes] = useState([]);
+    const { post, response } = usePost();
     const [modalAbierta, setModalAbierta] = useState(false);
     const [paqueteSeleccionado, setPaqueteSeleccionado] = useState(null);
 
     useEffect(() => {
         if (data) {
+
             const paquetesConImagen = data.map(paquete => {
                 const imagenSrc = paquete.imagen
                     ? `data:${paquete.imagen.tipo};base64,${paquete.imagen.data}`
@@ -35,15 +46,44 @@ function PaquetesTuristicos({ type }) {
         }
     }, [data]);
 
-     const abrirModal = (paquete) => {
-    setPaqueteSeleccionado(paquete);
-    setModalAbierta(true);
-  };
+    const abrirModal = async (paquete) => {
 
-  const cerrarModal = () => {
-    setModalAbierta(false);
-    setPaqueteSeleccionado(null);
-  };
+
+        setPaqueteSeleccionado(paquete);
+        
+        
+        setModalAbierta(true);
+    }
+
+
+    const handleSubmitModalForm = async (e) => {
+        e.preventDefault();
+        
+        setModalAbierta(false);
+        try {
+            const res = await post("http://localhost:3000/carrito/anadirProducto", {
+                
+                    userId: usuario.id,
+                    tipoProducto: "paquete",
+                    productoID: paqueteSeleccionado.id,
+                    nombreAsignado: "",
+                    telefonoAsignado: "",
+                    emailAsignado: ""
+                
+            });
+        } catch (err) {
+            console.log(err);
+        }
+        
+        setPaqueteSeleccionado(null);
+    }
+
+
+    const cerrarModal = () => {
+        setModalAbierta(false);
+        setPaqueteSeleccionado(null);
+    };
+
 
     if (loading) return (
         <div className="grid-paquetes">
@@ -66,7 +106,7 @@ function PaquetesTuristicos({ type }) {
         <div className="grid-paquetes">
             {paquetes.map((paquete, index) => (
 
-                console.log(paquete),
+
 
                 <CardPaquetes key={index} {...paquete} onVerMas={() => abrirModal(paquete)} />
             ))}
@@ -75,8 +115,11 @@ function PaquetesTuristicos({ type }) {
                     <div className="modal-content-paquete">
                         <span className="close" onClick={cerrarModal}>&times;</span>
                         <h1>Personaliza tu paquete</h1>
+
                         <h2>{paqueteSeleccionado.titulo}</h2>
+
                         <div className='modal-content-info'>
+
                             <div className='ModalImgContainer'>
                                 <img src={paqueteSeleccionado.imagenSrc} alt={paqueteSeleccionado.titulo} />
                             </div>
@@ -85,12 +128,13 @@ function PaquetesTuristicos({ type }) {
                                 <ul className='ModalTextContainerResumen'>
                                     {paqueteSeleccionado.detalleServicios.map((item, idx) => (
                                         <li key={idx}>{item}</li>
+
                                     ))}
                                 </ul>
                                 <p className='precioModal'>{paqueteSeleccionado.precio} ARS por persona</p>
                             </div>
                         </div>
-                        <form>
+                        <form onSubmit={handleSubmitModalForm}>
                             <div className='ModalFormInputs'>
                                 <div>
                                     <label htmlFor="cantidad">Cantidad de personas:</label>

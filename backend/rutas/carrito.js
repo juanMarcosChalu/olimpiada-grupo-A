@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../db');
+const session = require('express-session');
 
 router.get('/obtenerProductos/:idCliente', (req, res) => {
   console.log(req.params);
@@ -103,8 +104,8 @@ router.get('/obtenerProductos/:idCliente', (req, res) => {
     END AS producto_info
 FROM 
     carrito c
-WHERE 
-    c.idCliente = ?;`;
+WHERE  c.idCliente = ?;`;
+
 
     db.query(query,idCliente, (err, results) => {
         if (err) return res.status(500).json({ error: err.message });
@@ -115,18 +116,39 @@ WHERE
 });
 
 module.exports = router;
-
-router.post('/registrar', (req, res) => {
-  const { nombre, password, correo, recibirPromos } = req.body.usuario;
-  console.log(req.body.usuario);
-
-
-  // Validar si el correo ya está en uso
-  const checkEmailQuery = 'SELECT * FROM usuarios WHERE correo = ?';
-  conexion.query(checkEmailQuery, [correo], (err, rows) => {
+//hace rla consulta para agreagar un producto, tambien para quitar despues, por cierto que tengamos hasta el 7 ahora es una sorpresa muy grande y buena en parte por que queria completar lo que me faltaba, aunque ahora tambien me da pereza por que voy a tener que pensar mas cosas que hacer :/ 
+router.post('/anadirProducto', (req, res) => {
+  const { userId, tipoProducto, productoID, nombreAsignado, telefonoAsignado, emailAsignado } = req.body;
   
-    
-   
-    
-  });
+  console.log(req.body);
+  
+  // Validar que el tipo de producto sea uno de los permitidos
+  const tiposPermitidos = ['paquete', 'vuelo', 'alojamiento', 'alquilerAuto'];
+  if (!tiposPermitidos.includes(tipoProducto)) {
+    return res.status(400).json({ error: 'Tipo de producto no válido' });
+  }
+
+  // Consulta para insertar el producto en el carrito
+  const insertQuery = `
+    INSERT INTO carrito 
+    (idCliente, tipoProducto, productoID, nombreAsignado, telefonoAsignado, emailAsignado) 
+    VALUES (?, ?, ?, ?, ?, ?)
+  `;
+  
+  db.query(
+    insertQuery, 
+    [userId, tipoProducto, productoID, nombreAsignado, telefonoAsignado, emailAsignado],
+    (err, result) => {
+      if (err) {
+        console.error('Error al añadir producto al carrito:', err);
+        return res.status(500).json({ error: 'Error al añadir producto al carrito' });
+      }
+      
+      res.json({ 
+        success: true, 
+        message: 'Producto añadido al carrito correctamente',
+        carritoId: result.insertId 
+      });
+    }
+  );
 });

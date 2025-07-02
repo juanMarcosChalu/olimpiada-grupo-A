@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import CardVuelo from "../../UI/CardVuelo/CardVuelo";
 import "../../../styles/ResultadosVuelos.css";
-import { useFetch } from "../../../hooks/useFetch";
+import { useFetch
+ } from "../../../hooks/useFetch";
 export default function ResultadosVuelos() {
   const [modalOpen, setModalOpen] = useState(false);
   const [filtros, setFiltros] = useState({

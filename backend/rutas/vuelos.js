@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
     db.query(query, (err, results) => {
         if (err) return res.status(500).json({ error: err.message });
         vuelos=results;
-        console.log("resutados"+results);
+        
         res.json(vuelos);
     });
 });

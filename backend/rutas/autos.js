@@ -23,7 +23,7 @@ router.get('/', (req, res) => {
 
     db.query(query, (err, results) => {
         if (err) return res.status(500).json({ error: err.message });
-        console.log("resutados" + results);
+        
 
         const autos = results.map(auto => {
            
