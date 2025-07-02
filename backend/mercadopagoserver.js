@@ -8,7 +8,6 @@ const router = express.Router();
 
 
 
-
 // Configuración Mercado Pago
 const client = new MercadoPagoConfig({
   accessToken: process.env.MP_ACCESS_TOKEN,
@@ -93,3 +92,5 @@ async function getPaymentDetails(id) {
   return response.json();
 }
 
+
+module.exports = router;
