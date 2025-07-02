@@ -3,7 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 const session = require('express-session');
-
+const mercadopagoRoutes = require("./rutas/mercadopago-server");
 const paquetesRoutes = require('./rutas/paquetes');
 const registrarRoutes = require('./rutas/usuario');
 const autosRoutes = require('./rutas/autos');
@@ -34,6 +34,7 @@ app.use('/usuario', registrarRoutes);
 app.use('/autos', autosRoutes);
 app.use('/vuelos', vuelosRoutes);
 app.use("/alojamientos",alojamientosRoutes);
+app.use("/mercadopago", mercadopagoRoutes);
 app.use("/carrito",carritoRoutes);
 const PORT = 3000;
 app.listen(PORT, () => {

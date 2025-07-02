@@ -3,16 +3,11 @@ const express = require("express");
 const { MercadoPagoConfig, Preference } = require("mercadopago");
 const fetch = require("node-fetch");
 const cors = require("cors");
+const router = express.Router();
 
-const app = express();
-app.use(express.json());
 
-// Configurar CORS para que acepte peticiones desde el frontend
-app.use(
-  cors({
-    origin: "http://localhost:5173", // Cambia al puerto de tu frontend si es distinto
-  })
-);
+
+
 
 // Configuración Mercado Pago
 const client = new MercadoPagoConfig({
@@ -20,7 +15,7 @@ const client = new MercadoPagoConfig({
 });
 
 // Ruta para crear preferencia de pago
-app.post("/create_preference", async (req, res) => {
+router.post("/create_preference", async (req, res) => {
   try {
     const products = req.body;
 
@@ -56,7 +51,7 @@ app.post("/create_preference", async (req, res) => {
 });
 
 // Ruta para recibir notificaciones webhook de Mercado Pago
-app.post("/webhook", async (req, res) => {
+router.post("/webhook", async (req, res) => {
   try {
     const queryType = req.query.type;
     const queryId = req.query["data.id"];
@@ -98,7 +93,3 @@ async function getPaymentDetails(id) {
   return response.json();
 }
 
-const PORT = process.env.PORT || 3001;
-app.listen(PORT, () => {
-  console.log(`🚀 Servidor corriendo en http://localhost:${PORT}`);
-});
