@@ -1,14 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap'); 
 
 .options-grid {
   display: grid;
   grid-template-columns: repeat(2, 300px); /* columnas fijas */
-  gap: 3rem 5rem;
+  gap: 0.1rem 5rem;
   justify-content: center;
   margin: 3rem auto 6rem auto;
-  max-width: 700px; /* centrado visual perfecto */
+  max-width: 700px;
   width: 100%;
-  padding: 0 1rem; /* para que no se pegue al borde en pantallas pequeñas */
+  padding: 0 1rem;
+  min-height: 85vh;
 }
 
 .option-card {
@@ -18,15 +19,14 @@
   text-align: center;
   box-shadow: 0 0 10px rgba(191, 182, 167, 0.4);
   transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
-  min-height: 160px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   font-family: 'Open Sans', sans-serif;
   max-width: 340px;
+  height: fit-content;
   width: 100%;
   margin: 0 auto;
-  cursor: pointer;
 }
 
 .option-card:hover {
@@ -58,13 +58,11 @@
   font-weight: 700;
   font-size: 0.9rem;
   box-shadow: 0 4px 6px rgba(102, 92, 73, 0.3);
-  transition: 
-    background-color 0.3s ease,
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
   align-self: center;
   position: relative;
   overflow: hidden;
+  cursor: pointer; /* ✅ El cursor solo en el botón */
 }
 
 .detail-btn::after {
@@ -92,7 +90,6 @@
   transform: translateY(-2px);
   box-shadow: 0 6px 12px rgba(102, 92, 73, 0.4);
 }
-
 
 /* Responsive para celulares */
 @media (max-width: 768px) {
