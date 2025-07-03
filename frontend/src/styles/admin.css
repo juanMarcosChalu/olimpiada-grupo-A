@@ -1,8 +1,10 @@
-.options-grid {
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+.admin-panel .options-grid {
   display: grid;
   grid-template-columns: repeat(2, 300px);
   column-gap: 3.5rem;
-  row-gap: 0.rem;  /* Espacio reducido entre filas */
+  row-gap: 0rem;
   justify-content: center;
   margin: 3rem auto 6rem auto;
   max-width: 700px;
@@ -11,9 +13,9 @@
   min-height: 85vh;
 }
 
-.option-card {
+.admin-panel .option-card {
   background-color: #ffffffcc;
-  padding: 1.2rem 1rem; /* ⬅️ Menos padding */
+  padding: 1.2rem 1rem;
   border-radius: 12px;
   text-align: center;
   box-shadow: 0 0 10px rgba(191, 182, 167, 0.4);
@@ -25,18 +27,17 @@
   font-family: 'Open Sans', sans-serif;
   max-width: 340px;
   width: 100%;
-  margin: 0; /* ⬅️ Quitamos el margin vertical */
+  margin: 0;
   height: fit-content;
 }
 
-
-.option-card:hover {
+.admin-panel .option-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 18px rgba(102, 92, 73, 0.35);
   background-color: #fdfaf6;
 }
 
-.option-card h3 {
+.admin-panel .option-card h3 {
   font-weight: 700;
   font-size: 1.2rem;
   margin-bottom: 0.8rem;
@@ -44,13 +45,13 @@
   text-transform: uppercase;
 }
 
-.option-card p {
+.admin-panel .option-card p {
   font-size: 1rem;
   margin-bottom: 1.2rem;
   color: #665c49;
 }
 
-.detail-btn {
+.admin-panel .detail-btn {
   background-color: #665c49;
   color: white;
   padding: 0.5rem 1.6rem;
@@ -63,10 +64,10 @@
   align-self: center;
   position: relative;
   overflow: hidden;
-  cursor: pointer; /* ✅ El cursor solo en el botón */
+  cursor: pointer;
 }
 
-.detail-btn::after {
+.admin-panel .detail-btn::after {
   content: "";
   position: absolute;
   top: 0;
@@ -82,11 +83,11 @@
   transition: all 0.5s ease;
 }
 
-.detail-btn:hover::after {
+.admin-panel .detail-btn:hover::after {
   left: 100%;
 }
 
-.detail-btn:hover {
+.admin-panel .detail-btn:hover {
   background-color: #4a3f26;
   transform: translateY(-2px);
   box-shadow: 0 6px 12px rgba(102, 92, 73, 0.4);
@@ -94,14 +95,14 @@
 
 /* Responsive para celulares */
 @media (max-width: 768px) {
-  .options-grid {
+  .admin-panel .options-grid {
     grid-template-columns: 1fr;
     gap: 2rem;
     padding: 2rem 1rem 6rem;
     max-width: 90%;
   }
 
-  .option-card {
+  .admin-panel .option-card {
     max-width: 100%;
   }
 }

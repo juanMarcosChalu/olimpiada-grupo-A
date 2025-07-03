@@ -1,4 +1,6 @@
-.compra-admin {
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+.admin-compras-wrapper .compra-admin {
   background-color: #fdfaf6;
   color: #5a5244;
   padding: 2rem;
@@ -9,7 +11,7 @@
   box-shadow: 0 0 10px rgba(102, 92, 73, 0.15);
 }
 
-.compra-header {
+.admin-compras-wrapper .compra-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -18,51 +20,51 @@
   margin-bottom: 1.5rem;
 }
 
-.compra-header h2 {
+.admin-compras-wrapper .compra-header h2 {
   font-size: 1.8rem;
 }
 
-.compra-header a {
+.admin-compras-wrapper .compra-header a {
   color: #776b5d;
   text-decoration: none;
   font-weight: 600;
 }
 
-.detalle-compra h3 {
+.admin-compras-wrapper .detalle-compra h3 {
   font-size: 1.5rem;
   margin-bottom: 1rem;
   color: #665c49;
 }
 
-.usuario-info {
+.admin-compras-wrapper .usuario-info {
   display: flex;
   align-items: center;
   gap: 1.5rem;
   margin-bottom: 1.5rem;
 }
 
-.foto-usuario {
+.admin-compras-wrapper .foto-usuario {
   width: 60px;
   height: 60px;
   border-radius: 999px;
   object-fit: cover;
 }
 
-.datos-usuario,
-.contacto-usuario {
+.admin-compras-wrapper .datos-usuario,
+.admin-compras-wrapper .contacto-usuario {
   font-size: 0.95rem;
 }
 
-.detalle-servicios {
+.admin-compras-wrapper .detalle-servicios {
   font-size: 0.95rem;
   line-height: 1.6;
 }
 
-.detalle-servicios ul {
+.admin-compras-wrapper .detalle-servicios ul {
   margin: 0.5rem 0 1rem 1rem;
   padding-left: 1rem;
 }
 
-.detalle-servicios ul li {
+.admin-compras-wrapper .detalle-servicios ul li {
   margin-bottom: 0.5rem;
 }

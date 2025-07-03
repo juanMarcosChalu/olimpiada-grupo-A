@@ -74,56 +74,58 @@ function UsuariosAdmin() {
   }, []);
 
   return (
-    <div className="usuarios-container">
-      <h2>Administración de Usuarios</h2>
-      <table className="usuarios-table" aria-label="Tabla de usuarios">
-        <thead>
-          <tr>
-            <th>Nombre</th>
-            <th>Email</th>
-            <th>Estado</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          {usuarios.map(user => (
-            <tr key={user.id} className={user.estado === "Suspendido" ? "suspendido" : ""} tabIndex={0}>
-              <td>{user.nombre}</td>
-              <td>{user.email}</td>
-              <td>{user.estado}</td>
-              <td>
-                <button onClick={() => handleVerInfo(user)} className="verinfo-btn">
-                  Ver Información
-                </button>
-                <button
-                  className={user.estado === "Activo" ? "suspender-btn" : "activar-btn"}
-                  onClick={() => toggleSuspender(user.id)}
-                >
-                  {user.estado === "Activo" ? "Suspender" : "Activar"}
-                </button>
-              </td>
+    <div className="admin-usuarios-wrapper">
+      <div className="usuarios-container">
+        <h2>Administración de Usuarios</h2>
+        <table className="usuarios-table" aria-label="Tabla de usuarios">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Email</th>
+              <th>Estado</th>
+              <th>Acciones</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {usuarios.map(user => (
+              <tr key={user.id} className={user.estado === "Suspendido" ? "suspendido" : ""} tabIndex={0}>
+                <td>{user.nombre}</td>
+                <td>{user.email}</td>
+                <td>{user.estado}</td>
+                <td>
+                  <button onClick={() => handleVerInfo(user)} className="verinfo-btn">
+                    Ver Información
+                  </button>
+                  <button
+                    className={user.estado === "Activo" ? "suspender-btn" : "activar-btn"}
+                    onClick={() => toggleSuspender(user.id)}
+                  >
+                    {user.estado === "Activo" ? "Suspender" : "Activar"}
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
 
-      {usuarioSeleccionado && (
-        <div className="modal-overlay" onClick={cerrarModal} role="dialog" aria-modal="true" aria-labelledby="modal-title">
-          <div className="modal-content" onClick={e => e.stopPropagation()}>
-            <h3 id="modal-title">Información del Usuario</h3>
-            <p><strong>Nombre:</strong> {usuarioSeleccionado.nombre}</p>
-            <p><strong>Email:</strong> {usuarioSeleccionado.email}</p>
-            <p><strong>Estado:</strong> {usuarioSeleccionado.estado}</p>
-            {usuarioSeleccionado.estado === "Suspendido" && (
-              <>
-                <p><strong>Motivo de suspensión:</strong> {usuarioSeleccionado.motivoSuspension}</p>
-                <p><strong>Duración de la suspensión:</strong> {formatDuracion(usuarioSeleccionado.diasSuspension)}</p>
-              </>
-            )}
-            <button onClick={cerrarModal} className="cerrar-btn">Cerrar</button>
+        {usuarioSeleccionado && (
+          <div className="modal-overlay" onClick={cerrarModal} role="dialog" aria-modal="true" aria-labelledby="modal-title">
+            <div className="modal-content" onClick={e => e.stopPropagation()}>
+              <h3 id="modal-title">Información del Usuario</h3>
+              <p><strong>Nombre:</strong> {usuarioSeleccionado.nombre}</p>
+              <p><strong>Email:</strong> {usuarioSeleccionado.email}</p>
+              <p><strong>Estado:</strong> {usuarioSeleccionado.estado}</p>
+              {usuarioSeleccionado.estado === "Suspendido" && (
+                <>
+                  <p><strong>Motivo de suspensión:</strong> {usuarioSeleccionado.motivoSuspension}</p>
+                  <p><strong>Duración de la suspensión:</strong> {formatDuracion(usuarioSeleccionado.diasSuspension)}</p>
+                </>
+              )}
+              <button onClick={cerrarModal} className="cerrar-btn">Cerrar</button>
+            </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 }
