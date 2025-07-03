@@ -4,8 +4,11 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../../../hooks/useAuth";
 import { toast } from "sonner";
 import usePost from "../../../hooks/usePost";
+import { useNavigate } from 'react-router-dom';
 // 📌 Esta es la función que necesitás para arreglar la fecha
 function formatearFecha(fechaISO) {
+  const navigate = useNavigate();
+
   const fecha = new Date(fechaISO);
   const dia = String(fecha.getDate()).padStart(2, '0');
   const mes = String(fecha.getMonth() + 1).padStart(2, '0');
@@ -52,8 +55,9 @@ const fechaVuelta = formatearFecha(vuelo.fecha_vuelta);
 
     
     } else {
+     
       toast.success("Vuelo añadido al carrito correctamente.");
-      
+       navigate('/carrito');
     }
 }
 
@@ -97,7 +101,7 @@ const fechaVuelta = formatearFecha(vuelo.fecha_vuelta);
           <strong>${vuelo.precio.toLocaleString("es-AR")}</strong>
         </div>
 
-        <Link to="/carrito" className={styles.boton} onClick={handleAñadirVuelo}>
+        <Link className={styles.boton} onClick={handleAñadirVuelo}>
           Añadir
         </Link>
       </footer>
