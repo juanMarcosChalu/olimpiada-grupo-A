@@ -59,7 +59,7 @@ function Header({ title, menuItems = [], backgroundColorProp }) {
 
           {/* Menú hamburguesa lateral */}
           <div className={`${styles.navbarLinks} ${menuOpen ? styles.active : ""}`}>
-            <a href="http://localhost:5173" onClick={() => setMenuOpen(false)}>Inicio</a>
+            <Link to="/" onClick={() => setMenuOpen(false)}>Inicio</Link>
 
             {/* Submenu Servicios móvil */}
             <div className={styles.mobileSubmenuContainer}>
@@ -73,16 +73,16 @@ function Header({ title, menuItems = [], backgroundColorProp }) {
               </button>
               {serviciosOpen && (
                 <ul id="submenu-servicios" className={styles.mobileSubmenu}>
-                  <li><a href="/vuelos" onClick={() => setMenuOpen(false)}>Vuelos</a></li>
-                  <li><a href="/alquileres" onClick={() => setMenuOpen(false)}>Alquiler de autos</a></li>
-                  <li><a href="/alojamiento" onClick={() => setMenuOpen(false)}>Alojamientos</a></li>
-                  <li><a href="/paquetes" onClick={() => setMenuOpen(false)}>Paquetes</a></li>
-                  <li><a href="/asistencia" onClick={() => setMenuOpen(false)}>Asistencia al viajero</a></li>
+                  <li><Link to="/vuelos" onClick={() => setMenuOpen(false)}>Vuelos</Link></li>
+                  <li><Link to="/alquileres" onClick={() => setMenuOpen(false)}>Alquiler de autos</Link></li>
+                  <li><Link to="/alojamiento" onClick={() => setMenuOpen(false)}>Alojamientos</Link></li>
+                  <li><Link to="/paquetes" onClick={() => setMenuOpen(false)}>Paquetes</Link></li>
+                  <li><Link to="/asistencia" onClick={() => setMenuOpen(false)}>Asistencia al viajero</Link></li>
                 </ul>
               )}
             </div>
 
-            <a href="/contacto" onClick={() => setMenuOpen(false)}>Contacto</a>
+            <Link to="/contacto" onClick={() => setMenuOpen(false)}>Contacto</Link>
           </div>
         </ul>
       </nav>
@@ -91,5 +91,3 @@ function Header({ title, menuItems = [], backgroundColorProp }) {
 }
 
 export default Header;
-
-

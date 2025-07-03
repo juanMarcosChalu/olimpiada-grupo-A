@@ -15,7 +15,7 @@ export default function Alojamientos() {
     salida: "",
   });
   const { usuario, cargando,isLogin } = useAuth();
-  const { data, loading, error } = useFetch(`http://localhost:3000/alojamientos`);
+  const { data, loading, error } = useFetch('https://4479f971-1d51-4b67-938a-a80b7de0af34-00-3inmgxot9m6r9.picard.replit.dev/alojamientos');
   const [alojamientos, setAlojamientos] = useState([]);
   const [mostrarResultados, setMostrarResultados] = useState(false);
   const [mostrarModal, setMostrarModal] = useState(false);
@@ -107,7 +107,7 @@ export default function Alojamientos() {
       return;
     }
     
-    const response = await post("http://localhost:3000/carrito/anadirProducto", {
+    const response = await post("https://4479f971-1d51-4b67-938a-a80b7de0af34-00-3inmgxot9m6r9.picard.replit.dev/carrito/anadirProducto", {
       userId:usuario.id,
       tipoProducto: "alojamiento",
       productoID: alojamientoSeleccionado.id,

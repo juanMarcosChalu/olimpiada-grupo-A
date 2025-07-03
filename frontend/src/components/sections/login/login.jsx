@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from "../../../styles/Registro.module.css";
 import { useNavigate, Link } from 'react-router-dom';
-import { useAuth } from "../../../context/AuthContext"; // Asegurate de importar bien
+import { useAuth } from "../../../context/authContext"; // Asegurate de importar bien
 import logo from "../../../assets/Logo.png";
 import usePost from '../../../hooks/usePost';
 import { toast } from "sonner";
@@ -15,7 +15,7 @@ const handleFormSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const data = await post("http://localhost:3000/usuario/login", {
+      const data = await post("https://4479f971-1d51-4b67-938a-a80b7de0af34-00-3inmgxot9m6r9.picard.replit.dev/usuario/login", {
         usuario: {
           email: correo,
           password: contrasena,

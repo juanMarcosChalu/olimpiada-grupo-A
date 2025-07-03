@@ -9,7 +9,7 @@ function UsuarioMenu() {
 
     const handleLogout = async () => {
         try {
-            const response = await fetch('http://localhost:3000/usuario/logout', {
+            const response = await fetch('https://4479f971-1d51-4b67-938a-a80b7de0af34-00-3inmgxot9m6r9.picard.replit.dev/usuario/logout', {
                 method: 'POST',
                 credentials: 'include'
             });

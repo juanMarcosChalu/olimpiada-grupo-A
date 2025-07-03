@@ -1,4 +1,4 @@
-import styles from "./CardVuelo.module.css";
+import styles from "./Cardvuelo.module.css";
 import { FaClock, FaSuitcaseRolling } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../../hooks/useAuth";
@@ -35,7 +35,7 @@ const fechaVuelta = formatearFecha(vuelo.fecha_vuelta);
       return;
     }
 
-    const response = await post("http://localhost:3000/carrito/anadirProducto", {
+    const response = await post("https://4479f971-1d51-4b67-938a-a80b7de0af34-00-3inmgxot9m6r9.picard.replit.dev/carrito/anadirProducto", {
       userId: usuario.id,
       tipoProducto: "vuelo",
       productoID: vuelo.id,

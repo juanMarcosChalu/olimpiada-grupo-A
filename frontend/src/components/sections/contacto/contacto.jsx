@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import styles from "./contacto.module.css";
 import calendar from "../../../assets/svgs/calendar.svg";
 import email from "../../../assets/svgs/email.svg";
@@ -15,46 +14,43 @@ function Contacto() {
     e.preventDefault();
     setEnviado(true);
     e.target.reset();
-    setTimeout(() => setEnviado(false), 5000); // Oculta el mensaje después de 5s
+    setTimeout(() => setEnviado(false), 5000);
   };
 
   return (
     <>
-
-    {enviado && (
-      <div
-      style={{
-        position: "fixed",
-        top: "20px",
-        left: "50%",
-        transform: "translateX(-50%)",
-        backgroundColor: "#c8e6c9",
-        color: "#2e7d32",
-        padding: "1rem 2rem",
-        borderRadius: "8px",
-        boxShadow: "0 0 15px rgba(0, 0, 0, 0.3)",
-        fontWeight: "bold",
-        zIndex: 9999,
-        fontSize: "1.1rem",
-        animation: "fadeInOut 4s forwards"
-      }}
-      >
-      ¡Gracias por tu mensaje! En breve nos pondremos en contacto.
-      </div>
-       )}
-       
+      {enviado && (
+        <div
+          style={{
+            position: "fixed",
+            top: "20px",
+            left: "50%",
+            transform: "translateX(-50%)",
+            backgroundColor: "#c8e6c9",
+            color: "#2e7d32",
+            padding: "1rem 2rem",
+            borderRadius: "8px",
+            boxShadow: "0 0 15px rgba(0, 0, 0, 0.3)",
+            fontWeight: "bold",
+            zIndex: 9999,
+            fontSize: "1.1rem",
+            animation: "fadeInOut 4s forwards",
+          }}
+        >
+          ¡Gracias por tu mensaje! En breve nos pondremos en contacto.
+        </div>
+      )}
 
       <main className={styles.main}>
         <section className={styles.contactoContainer}>
-          {/* seccion descripcion */}
           <article className={styles.textoContacto}>
             <p>
-              ¡Hola, nos encantaría saber de ti!<br />
+              ¡Hola, nos encantaría saber de ti!
+              <br />
               ¿Tienes una pregunta, una idea de viaje o simplemente quieres decirnos algo?
             </p>
           </article>
 
-          {/* primera fracción del grid */}
           <div className={styles.infoGrid}>
             <div className={styles.listaDatos}>
               <ul>
@@ -82,35 +78,33 @@ function Contacto() {
               </ul>
             </div>
 
-            {/* segunda fracción del grid */}
             <section className={styles.redesContainer}>
               <div className={styles.facebookContainer}>
-                <Link
-                  to="https://www.facebook.com/profile.php?id=61577300461429"
+                <a
+                  href="https://www.facebook.com/profile.php?id=61577300461429"
                   target="_blank"
                   rel="noopener noreferrer"
                   className={styles.socialLink}
                 >
                   <img src={facebook} alt="Facebook" />
                   <span>Facebook</span>
-                </Link>
+                </a>
               </div>
 
               <div className={styles.instagramContainer}>
-                <Link
-                  to="https://www.instagram.com/brujula.viajes?igsh=ZHd3NWo2Z3hpczZl"
+                <a
+                  href="https://www.instagram.com/brujula.viajes?igsh=ZHd3NWo2Z3hpczZl"
                   target="_blank"
                   rel="noopener noreferrer"
                   className={styles.socialLink}
                 >
                   <img src={instagram} alt="Instagram" />
                   <span>Instagram</span>
-                </Link>
+                </a>
               </div>
             </section>
           </div>
 
-          {/* seccion formulario */}
           <div className={styles.seccionForm}>
             <h1 className={styles.seccionFormTitle}>Envíanos tu mensaje</h1>
             <form onSubmit={manejarEnvio}>
