@@ -1,9 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap'); 
-
 .options-grid {
   display: grid;
-  grid-template-columns: repeat(2, 300px); /* columnas fijas */
-  gap: 0.1rem 5rem;
+  grid-template-columns: repeat(2, 300px);
+  column-gap: 3.5rem;
+  row-gap: 0.rem;  /* Espacio reducido entre filas */
   justify-content: center;
   margin: 3rem auto 6rem auto;
   max-width: 700px;
@@ -14,20 +13,22 @@
 
 .option-card {
   background-color: #ffffffcc;
-  padding: 1.8rem 1.2rem;
+  padding: 1.2rem 1rem; /* ⬅️ Menos padding */
   border-radius: 12px;
   text-align: center;
   box-shadow: 0 0 10px rgba(191, 182, 167, 0.4);
   transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+  min-height: 150px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   font-family: 'Open Sans', sans-serif;
   max-width: 340px;
-  height: fit-content;
   width: 100%;
-  margin: 0 auto;
+  margin: 0; /* ⬅️ Quitamos el margin vertical */
+  height: fit-content;
 }
+
 
 .option-card:hover {
   transform: translateY(-5px);

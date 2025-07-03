@@ -28,6 +28,8 @@ import PoliticaPrivacidad from "./components/sections/politicaprivacidad/Politic
 import TerminosCondiciones from "./components/sections/terminoscondiciones/TerminosCondiciones.jsx";
 import ResultadosVuelos from "./components/sections/resultadosvuelos/ResultadosVuelos.jsx";
 import Admin from './components/sections/adminpanel/admin.jsx';
+import ComprasDetalles from "./components/sections/adminpanel/comprasdetalles.jsx";
+
 import { Toaster } from "./components/UI/sonner.tsx";
 
 function App() {
@@ -354,6 +356,41 @@ function App() {
             </>
           }
         />
+
+        <Route
+          path="/admin"
+          element={
+            <>
+              <Header
+                title={<h1>Panel de Administrador</h1>}
+                menuItems={[
+                  <Link to="/" key="inicio">Inicio</Link>,
+                  <Link to="/admin" key="admin">Admin</Link>,
+                ]}
+              />
+              <Admin />
+              <Footer />
+            </>
+          }
+        />
+
+    <Route
+      path="/admin/compras"
+      element={
+    <>
+      <Header
+        title={<h1>Compras Administrador</h1>}
+        menuItems={[
+          <Link to="/" key="inicio">Inicio</Link>,
+          <Link to="/admin" key="admin">Admin</Link>,
+        ]}
+      />
+      <ComprasDetalles />
+      <Footer />
+    </>
+  }
+/>
+
 
       </Routes>
     </BrowserRouter>
