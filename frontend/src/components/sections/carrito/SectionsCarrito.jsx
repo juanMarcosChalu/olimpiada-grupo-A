@@ -211,6 +211,18 @@ function SectionsCarrito() {
     setModalAbierto(true);
   };
 
+
+useEffect(() => {
+  //verificar user
+  if (!usuario || !usuario.id) {
+    toast.error("Debes iniciar sesión para ver tu carrito");
+    window.location.href = "/";
+  } else {
+    // Cargar servicios al montar el componente
+    toast.success("Bienvenido al carrito");
+  }
+},[])
+
   const normalizarBase64 = (base64Str) => {
     const base64Limpio = base64Str.replace(/^base64:type\d+:/, "");
 
