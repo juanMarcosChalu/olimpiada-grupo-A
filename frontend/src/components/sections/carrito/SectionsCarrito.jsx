@@ -5,7 +5,7 @@ import image_of_paris from "../../../assets/paris.jpg";
 import image_of_captur from "../../../assets/captur.jpg";
 import { toast } from "sonner";
 
-const BASE_URL = "https://4479f971-1d51-4b67-938a-a80b7de0af34-00-3inmgxot9m6r9.picard.replit.dev";
+const BASE_URL = "https://524b1cba-194b-45f4-8cd4-b359a0dbd23c-00-18uuebkff7yon.kirk.replit.dev";
 
 function PagoMercadoPago({ productos }) {
   const [error, setError] = useState(null);

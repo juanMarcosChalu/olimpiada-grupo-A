@@ -20,7 +20,7 @@ export default function ResultadosVuelos() {
   //   { aerolinea: "LATAM Airlines", precioARS: 29000 },
   // ];
 
-  const { data, loading, error } = useFetch(`http://localhost:3000/vuelos`);
+  const { data, loading, error } = useFetch(`https://524b1cba-194b-45f4-8cd4-b359a0dbd23c-00-18uuebkff7yon.kirk.replit.dev/vuelos`);
 
   const abrirModal = () => setModalOpen(true);
   const cerrarModal = () => setModalOpen(false);
