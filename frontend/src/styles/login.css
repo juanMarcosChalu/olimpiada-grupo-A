@@ -29,7 +29,7 @@
   position: relative;
   text-align: center;
   width: 100%;
-  max-width: 520px;
+  max-width: 480px;
   padding: 2.5rem 2rem;
   box-sizing: border-box;
   background-color: rgba(255, 255, 255, 0.85);
@@ -41,19 +41,22 @@
 
 .registerTitle2 {
   color: #5c5044;
-  font-size: 2.8rem;
+  font-size: 3.2rem;
   font-weight: 600;
   font-family: "Libre Baskerville", serif;
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.5rem;
   letter-spacing: 1px;
 }
 
-.registerTitle3 {
-  color: #877c70;
-  font-size: 1.4rem;
+/* NUEVO subtítulo más chico */
+.subTitle {
+  color: #776b5d;
+  font-size: 1.2rem;
   font-weight: 400;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Libre Baskerville", serif;
+  margin-top: -0.5rem;
   margin-bottom: 2rem;
+  letter-spacing: 0.5px;
 }
 
 .formulario {
@@ -61,17 +64,6 @@
   flex-direction: column;
   align-items: center;
   gap: 1.5rem;
-  width: 100%;
-}
-
-.doubleInput {
-  display: flex;
-  flex-direction: row;
-  gap: 1rem;
-  width: 100%;
-}
-
-.doubleInput input {
   width: 100%;
 }
 
@@ -119,90 +111,22 @@
   transform: translateY(-2px);
 }
 
-.customcheckbox {
-  display: flex;
-  align-items: center;
-  gap: 0.8rem; /* un poco menos que 1rem para no exagerar */
-  cursor: pointer;
-  font-family: "Open Sans", sans-serif;
-  font-size: 1rem;
-  text-align: left;
-  user-select: none; /* evita que se seleccione el texto al clickear */
-}
-
-.customcheckbox input {
-  display: none;
-}
-
-.checkmark {
-  position: relative;
-  height: 20px;
-  width: 20px;
-  border: 2.5px solid #776b5d;
-  border-radius: 4px;
-  background-color: transparent;
-  box-sizing: border-box;
-  transition: background-color 0.3s ease, border-color 0.3s ease;
-  flex-shrink: 0;
-}
-
-/* Fondo y borde al estar checked */
-.customcheckbox input:checked + .checkmark {
-  background-color: #776b5d;
-  border-color: #776b5d;
-}
-
-/* El check, centrado y con animación */
-.checkmark::after {
-  content: "";
-  position: absolute;
-  display: block;
-  left: 6px;
-  top: 3px;
-  width: 6px;
-  height: 11px;
-  border: solid white;
-  border-width: 0 3px 3px 0;
-  transform: rotate(45deg);
-  opacity: 0;
-  transition: opacity 0.25s ease;
-}
-
-/* Mostrar el check cuando esté activo */
-.customcheckbox input:checked + .checkmark::after {
-  opacity: 1;
-}
-
-/* Cambiar color del texto al hacer hover */
-.customcheckbox:hover p {
-  color: #5e5546;
-  transition: color 0.3s ease;
-}
-
-.customcheckbox p {
-  margin: 0;
-  font-weight: 600;
-  color: #4d4439;
-  line-height: 1.3;
-}
-
-.linkLogin {
+.linkRegister {
   margin-top: 2rem;
   display: inline-block;
   color: #877c70;
   font-family: "Libre Baskerville", serif;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   transition: color 0.3s ease;
   border-bottom: 1px dashed #877c70;
   padding-bottom: 0.3rem;
-  text-align: center;
 }
 
-.linkLogin:hover {
+.linkRegister:hover {
   color: #47413a;
 }
 
-/* Animación de entrada */
+/* Animación */
 @keyframes fadeSlideIn {
   from {
     opacity: 0;
@@ -217,10 +141,10 @@
 /* === RESPONSIVE === */
 @media (max-width: 768px) {
   .registerTitle2 {
-    font-size: 2rem;
+    font-size: 2.2rem;
   }
 
-  .registerTitle3 {
+  .subTitle {
     font-size: 1.1rem;
   }
 
@@ -233,12 +157,8 @@
     font-size: 1.1rem;
   }
 
-  .linkLogin {
+  .linkRegister {
     font-size: 1rem;
-  }
-
-  .doubleInput {
-    flex-direction: column;
   }
 }
 
@@ -247,7 +167,7 @@
     font-size: 1.8rem;
   }
 
-  .registerTitle3 {
+  .subTitle {
     font-size: 1rem;
   }
 
@@ -260,7 +180,7 @@
     font-size: 1rem;
   }
 
-  .linkLogin {
+  .linkRegister {
     font-size: 0.95rem;
   }
 }
