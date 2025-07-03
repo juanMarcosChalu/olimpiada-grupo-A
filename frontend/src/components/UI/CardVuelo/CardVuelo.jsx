@@ -53,9 +53,7 @@ const fechaVuelta = formatearFecha(vuelo.fecha_vuelta);
     
     } else {
       toast.success("Vuelo añadido al carrito correctamente.");
-      setTimeout(() => {
-      window.location.href = "/carrito";
-    }, 1500);
+      
     }
 }
 
