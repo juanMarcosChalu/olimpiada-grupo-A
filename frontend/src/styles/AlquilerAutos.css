@@ -259,6 +259,9 @@
   width: 95%;
   user-select: none;
   font-size: 1rem;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .modalAlojamientos button:hover {

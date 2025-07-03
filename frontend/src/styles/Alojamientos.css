@@ -246,6 +246,9 @@
   cursor: pointer;
   font-family: 'Open Sans', sans-serif;
   transition: background-color 0.3s ease;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .modalAlojamientos button:hover {
