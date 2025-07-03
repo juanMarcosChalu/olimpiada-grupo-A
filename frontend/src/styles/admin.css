@@ -4,9 +4,9 @@
   display: grid;
   grid-template-columns: repeat(2, 300px);
   column-gap: 3.5rem;
-  row-gap: 0rem;
+  align-content: space-evenly;
   justify-content: center;
-  margin: 3rem auto 6rem auto;
+  margin: 0.1rem auto 6rem auto;
   max-width: 700px;
   width: 100%;
   padding: 0 1rem;
