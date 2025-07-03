@@ -100,16 +100,18 @@
 
     .main-paquetes {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        grid-template-rows: 1fr 1fr;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         place-items: center;
         position: relative;
-        gap: 4%;
+        gap: 2rem;
+        place-content: center;
         width: 70vw;
         left: 50%;
         transform: translateX(-50%);
+       column-gap: 5rem;
 
         .cards-paquetes {
+            place-content: center;
             position: relative;
             border-radius: 14px;
             background-color: white;
@@ -211,20 +213,26 @@
 
 
 
-@media (max-width: 908px) {
-  .section-paquetes {
-    padding-bottom: 8rem; /* No uses 30rem */
-    margin-bottom: 5rem;
-  }
-
+@media (max-width: 768px) {
   .main-paquetes {
+    position: relative;
     grid-template-columns: 1fr;
-    width: 90vw;
     gap: 2rem;
   }
 
+
   .cards-paquetes {
-    width: 100%;
+    min-width: 100%;
     height: auto;
+
+
+    .marco-cards {
+        width: 100%;
+        height: 60%;
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
   }
 }
