@@ -14,18 +14,6 @@ html, body {
   overflow-x: hidden !important;
   margin: 0;
   padding: 0;
-<<<<<<< Updated upstream
-=======
-}
-
-input:-webkit-autofill {
-  -webkit-text-fill-color: black !important;
-  transition: background-color 999s ease-in-out 0s !important;
-
-}
-body {
-  overflow-x: hidden;
->>>>>>> Stashed changes
   font-family: Arial, sans-serif;
   background-color: #ffffff;
 }

@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
-import styles from "../../../styles/Registro.module.css";
 import { useNavigate, Link } from 'react-router-dom';
-import { useAuth } from "../../../context/authContext"; // Asegurate de importar bien
-import logo from "../../../assets/Logo.png";
+import { toast } from 'sonner';
 import usePost from '../../../hooks/usePost';
-import { toast } from "sonner";
+import { useAuth } from "../../../context/authContext";
+import logo from "../../../assets/Logo.png";
+import '../../../styles/login.css'; // Asegurate que la ruta sea correcta
+
 function Login() {
-  const [correo, setCorreo] = useState("");
-  const { post, loading, error, response } = usePost();
-  const [contrasena, setContrasena] = useState("");
+  const [correo, setCorreo] = useState('');
+  const [contrasena, setContrasena] = useState('');
+  const { post } = usePost();
   const navigate = useNavigate();
 
-const handleFormSubmit = async (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
 
     try {
@@ -22,7 +23,6 @@ const handleFormSubmit = async (e) => {
         },
       });
 
-      console.log(data);
       toast.success("Inicio de sesión exitoso");
       navigate("/");
     } catch (err) {
@@ -30,39 +30,46 @@ const handleFormSubmit = async (e) => {
     }
   };
 
-
   return (
-    <section className={styles.Registro} style={{
-      backgroundImage: `url(${logo})`,
-      backgroundSize: 'contain',
-      backgroundPosition: 'center',
-      backgroundRepeat: 'no-repeat',
-    }}>
-      <div className={styles.overlay}></div>
+    <section
+      className="Registro"
+      style={{
+        backgroundImage: `url(${logo})`,
+        backgroundSize: 'contain',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+      }}
+    >
+      <div className="overlay"></div>
 
-      <div className={styles.registroContainer}>
-        <h1 className={styles.registerTitle2}>Inicia Sesión en Brújula</h1>
+      <div className="registroContainer">
+        <h1 className="registerTitle2">Iniciá sesión </h1>
+        <h2 className="subTitle">Brújula Viajes</h2>
 
-        <form className={styles.formulario} onSubmit={handleFormSubmit}>
+
+        <form className="formulario" onSubmit={handleFormSubmit}>
           <input
             type="email"
-            placeholder='Correo Electrónico'
+            placeholder="Correo Electrónico"
             value={correo}
-            name='email'
             onChange={(e) => setCorreo(e.target.value)}
+            required
           />
           <input
             type="password"
-            placeholder='Contraseña'
-            name='password'
+            placeholder="Contraseña"
             value={contrasena}
             onChange={(e) => setContrasena(e.target.value)}
+            required
           />
-          <button className={styles.boton} type="submit">Iniciar Sesión</button>
+          <button className="boton" type="submit">
+            Iniciar Sesión
+          </button>
         </form>
 
-
-        <Link className={styles.linkRegister} to="/registro">¿No tienes cuenta? Regístrate</Link>
+        <Link className="linkRegister" to="/registro">
+          ¿No tenés cuenta? Registrate
+        </Link>
       </div>
     </section>
   );
