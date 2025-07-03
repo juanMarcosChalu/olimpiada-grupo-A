@@ -383,44 +383,143 @@
 }
 
 
-/* Mostrar hamburguesa solo en pantallas pequeñas */
-@media (max-width: 768px) {
-  .hamburguesa {
-    display: flex;
-  }
+/* ========== HAMBURGUESA ========== */
+.hamburguesa {
+  display: none; /* oculto por defecto */
+  flex-direction: column;
+  justify-content: space-between;
+  width: 26px;
+  height: 20px;
+  cursor: pointer;
+  z-index: 110;
+  gap: 4px;
 
+  order: 1; /* Para que quede a la derecha */
+  margin-left: auto; /* Empuja a la derecha */
+}
+
+.hamburguesa span {
+  height: 3px;
+  background-color: #776b5d;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+
+
+/* ========== MENÚ LATERAL ========== */
+.navbarLinks {
+  position: fixed;
+  top: 0;
+  right: -100%; /* fuera de pantalla */
+  width: 75%;
+  height: 100vh;
+  background-color: #f3eeea;
+  box-shadow: -3px 0 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 4rem 2rem;
+  transition: right 0.4s ease;
+  z-index: 105;
+  overflow-y: auto;
+  /* oculto */
+  display: none;
+}
+
+/* visible cuando activo */
+.navbarLinks.active {
+  right: 0;
+  display: flex;
+}
+
+/* links menú */
+.navbarLinks a {
+  text-decoration: none;
+  font-size: 1.3rem;
+  color: #776b5d;
+  font-family: "Libre Baskerville", serif;
+  transition: color 0.3s;
+}
+
+.navbarLinks a:hover {
+  color: #000;
+  text-decoration: underline;
+}
+
+/* ========== BOTÓN CRUZ ========== */
+.closeButton {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.5rem;
+  font-size: 2.5rem;
+  color: #776b5d;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 110;
+  transition: color 0.3s;
+}
+
+.closeButton:hover {
+  color: #000;
+}
+
+/* ========== SUBMENÚ MÓVIL ========== */
+.mobileSubmenuContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.mobileSubmenuTitle {
+  font-family: "Libre Baskerville", serif;
+  font-size: 1.3rem;
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 0;
+  color: #776b5d;
+  cursor: pointer;
+}
+
+.mobileSubmenu {
+  list-style: none;
+  padding-left: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.mobileSubmenu li a {
+  font-size: 1.2rem;
+  text-decoration: none;
+  color: #776b5d;
+}
+
+.mobileSubmenu li a:hover {
+  color: #000;
+}
+
+/* ========== MEDIA QUERIES ========== */
+@media (max-width: 768px) {
+  /* Ocultar navbar desktop */
   .navbarPc {
     display: none !important;
   }
 
+  /* Mostrar hamburguesa */
+  .hamburguesa {
+    display: flex;
+  }
+
+  /* Ajustes nav */
   .navigation {
-    align-items: center;
+    width: 100%;
+    justify-content: flex-end;
   }
 
   .header {
-    height: 10vh;
-    justify-content: space-between;
-
-    padding: 0;
-
-    &::after {
-      position: absolute;
-     
-      content: "";
-      top: 100%;
-      width: 100%;
-      z-index: 2;
-    }
-  }
-
-  .navbuttons {
-    font-size: 1rem
-  }
-
-  .logocontainer {
-    img {
-      width: 50px;
-      height: auto;
-    }
+    padding: 1rem 1.5rem;
   }
 }

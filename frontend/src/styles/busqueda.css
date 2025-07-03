@@ -84,18 +84,18 @@
     position: absolute;
     top: 0;
     left: 0;
-
-    .overlay {
-
-        width: 100%;
-        height: 100%;
-        background-color: #cac6c6e3;
-        position: absolute;
-        top: 0;
-        left: 0;
-
-    }
 }
+
+.background .overlay {
+    width: 100%;
+    height: 100%;
+    background-color: rgb(212 212 212 / 85%);
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    left: 0;
+}
+
 
 .section-busqueda {
     height: 100vh;
