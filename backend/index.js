@@ -3,7 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 const session = require('express-session');
-const mercadopagoRoutes = require("./mercadopagoserver.js");
+const mercadopagoRoutes = require("./mercadopagoserver");
 const paquetesRoutes = require('./rutas/paquetes');
 const registrarRoutes = require('./rutas/usuario');
 const autosRoutes = require('./rutas/autos');
@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 app.use(cors({
-  origin: 'http://localhost:5173', // URL del front
+  origin: ['https://524b1cba-194b-45f4-8cd4-b359a0dbd23c-00-18uuebkff7yon.kirk.replit.dev'], // URL del front
   credentials: true // <- para permitir cookies
 }));
 
@@ -50,6 +50,16 @@ app.get('/dashboard', soloLogueados, (req, res) => {
     nombre: req.session.usuario.nombre,
   });
 });
+const path = require('path');
+
+// Servir archivos estáticos del frontend (build de Vite)
+app.use(express.static(path.join(__dirname, '../frontend/dist')));
+
+// Solo enviar index.html para rutas que NO empiecen con /api ni otros prefijos backend
+app.get(/^\/(?!paquetes|usuario|autos|vuelos|alojamientos|mercadopago|carrito).*/, (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/dist/index.html'));
+});
+
 
 
 

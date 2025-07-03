@@ -7,7 +7,7 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true); // para saber si está cargando
 
   useEffect(() => {
-    fetch("http://localhost:3000/usuario/usuario-actual", {
+    fetch("https://524b1cba-194b-45f4-8cd4-b359a0dbd23c-00-18uuebkff7yon.kirk.replit.dev/usuario/usuario-actual", {
       method: "GET",
       credentials: "include",
     })
@@ -34,7 +34,7 @@ export const AuthProvider = ({ children }) => {
   const login = (datosUsuario) => setUsuario(datosUsuario);
 
   const logout = () => {
-    fetch("http://localhost:3000/usuarios/logout", {
+    fetch("https://524b1cba-194b-45f4-8cd4-b359a0dbd23c-00-18uuebkff7yon.kirk.replit.dev/usuarios/logout", {
       method: "POST",
       credentials: "include",
     }).then(() => setUsuario(null));
