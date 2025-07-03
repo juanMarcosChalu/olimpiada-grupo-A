@@ -4,10 +4,10 @@ const db = require('../db');
 const session = require('express-session');
 
 router.get('/obtenerProductos/:idCliente', (req, res) => {
-  console.log(req.params);
+
   
     const { idCliente } = req.params;
-    console.log(idCliente+"alkfgadkgjsdj");
+    
     
     const query = ` 
   SELECT 
@@ -82,7 +82,9 @@ router.get('/obtenerProductos/:idCliente', (req, res) => {
                 'imagen_principal', IFNULL((
                     SELECT JSON_OBJECT(
                         'nombre', i.nombre,
+                        'imagen', i.imagen,
                         'tipo_mime', i.tipo_mime
+                        
                     )
                     FROM auto_imagen ai
                     JOIN imagenes i ON ai.imagen_id = i.id
@@ -109,8 +111,9 @@ WHERE  c.idCliente = ?;`;
 
     db.query(query,idCliente, (err, results) => {
         if (err) return res.status(500).json({ error: err.message });
+        
         const carritoProductos=results;
-        console.log("resutados"+results);
+
         res.json(carritoProductos);
     });
 });
@@ -118,9 +121,9 @@ WHERE  c.idCliente = ?;`;
 module.exports = router;
 //hace rla consulta para agreagar un producto, tambien para quitar despues, por cierto que tengamos hasta el 7 ahora es una sorpresa muy grande y buena en parte por que queria completar lo que me faltaba, aunque ahora tambien me da pereza por que voy a tener que pensar mas cosas que hacer :/ 
 router.post('/anadirProducto', (req, res) => {
-  const { userId, tipoProducto, productoID, nombreAsignado, telefonoAsignado, emailAsignado } = req.body;
+  const { userId, tipoProducto, productoID, nombreAsignado, telefonoAsignado, emailAsignado,fechaInicio,fechaFin,cantPersonas} = req.body;
   
-  console.log(req.body);
+
   
   // Validar que el tipo de producto sea uno de los permitidos
   const tiposPermitidos = ['paquete', 'vuelo', 'alojamiento', 'alquilerAuto'];
@@ -131,13 +134,13 @@ router.post('/anadirProducto', (req, res) => {
   // Consulta para insertar el producto en el carrito
   const insertQuery = `
     INSERT INTO carrito 
-    (idCliente, tipoProducto, productoID, nombreAsignado, telefonoAsignado, emailAsignado) 
-    VALUES (?, ?, ?, ?, ?, ?)
+    (idCliente, tipoProducto, productoID, nombreAsignado, telefonoAsignado, emailAsignado,fechaInicio, fechaFin, cantPersonas) 
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
   `;
   
   db.query(
     insertQuery, 
-    [userId, tipoProducto, productoID, nombreAsignado, telefonoAsignado, emailAsignado],
+    [userId, tipoProducto, productoID, nombreAsignado, telefonoAsignado, emailAsignado, fechaInicio, fechaFin,cantPersonas],
     (err, result) => {
       if (err) {
         console.error('Error al añadir producto al carrito:', err);
@@ -151,4 +154,63 @@ router.post('/anadirProducto', (req, res) => {
       });
     }
   );
+});
+//eliminar 
+router.delete('/eliminarProducto/:id/:userid', (req, res) => {
+  const { id,userid } = req.params;
+
+  // Consulta para eliminar el producto del carrito
+  const deleteQuery = 'DELETE FROM carrito WHERE id = ? AND idCliente = ?';
+
+  db.query(deleteQuery, [id,userid], (err, result) => {
+    if (err) {
+      console.error('Error al eliminar producto del carrito:', err);
+      return res.status(500).json({ error: 'Error al eliminar producto del carrito' });
+    }
+
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ error: 'Producto no encontrado en el carrito' });
+    }
+
+    res.json({ success: true, message: 'Producto eliminado del carrito correctamente' });
+  });
+});
+
+//editar fecgha de inicio y fin
+router.put('/editarFechas/:id/:userid', (req, res) => {
+    const { id, userid } = req.params;
+    const { fechaInicio, fechaFin } = req.body;
+    console.log(`ID: ${id}, UserID: ${userid}, Fecha Inicio: ${fechaInicio}, Fecha Fin: ${fechaFin}`);
+
+    // Validar que las fechas no sean nulas o vacías
+    if (!fechaInicio || !fechaFin) {
+        return res.status(400).json({ error: 'Fecha de inicio y fin son requeridas' });
+    }
+
+    // Validar formato ISO (YYYY-MM-DD)
+    const isoDateRegex = /^\d{4}-\d{2}-\d{2}$/;
+    if (!isoDateRegex.test(fechaInicio) || !isoDateRegex.test(fechaFin)) {
+        return res.status(400).json({ error: 'Formato de fecha inválido. Use YYYY-MM-DD' });
+    }
+
+    // Validar que fechaInicio <= fechaFin
+    if (fechaInicio > fechaFin) {
+        return res.status(400).json({ error: 'La fecha de inicio debe ser anterior a la fecha fin' });
+    }
+
+    // Ejecutar la consulta (envía los strings ISO directamente)
+    const updateQuery = 'UPDATE carrito SET fechaInicio = ?, fechaFin = ? WHERE id = ? AND idCliente = ?';
+    
+    db.query(updateQuery, [fechaInicio, fechaFin, id, userid], (err, result) => {
+        if (err) {
+            console.error('Error al editar fechas:', err);
+            return res.status(500).json({ error: 'Error interno al actualizar fechas' });
+        }
+
+        if (result.affectedRows === 0) {
+            return res.status(404).json({ error: 'Producto no encontrado en el carrito' });
+        }
+
+        res.json({ success: true, message: 'Fechas actualizadas correctamente' });
+    });
 });

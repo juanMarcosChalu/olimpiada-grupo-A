@@ -299,12 +299,12 @@ form.form-box button[type="submit"]:hover,
 .modalAlojamientos form {
   display: flex;
   flex-direction: column;
-  align-items: center;
+
 }
 
 .modalAlojamientos button.cerrarModalAlojamientos {
   margin-top: 1rem;
-  align-self: center;
+
 }
 
 .detalles-alojamiento {

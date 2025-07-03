@@ -2,8 +2,9 @@ import React, { useState, useEffect} from "react";
 import { FaHeart, FaRegHeart, FaCheckCircle } from "react-icons/fa";
 import "../../../styles/AlquilerAutos.css";
 import { useFetch } from "../../../hooks/useFetch";
-
-
+import { useAuth } from "../../../hooks/useAuth.js";
+import { toast } from "sonner";
+import usePost from "../../../hooks/usePost.js";
 import background_of_home_alquiler_de_autos from "../../../assets/alquilerautos.jpg";
 
 export default function AlquilerAutos2() {
@@ -14,7 +15,9 @@ export default function AlquilerAutos2() {
     pasajeros: "",
   });
   const { data, loading, error } = useFetch(`http://localhost:3000/autos`);
-    const [autos, setAutos] = useState([]);
+  const [autos, setAutos] = useState([]);
+  const { post, response } = usePost();
+  const { usuario, cargando,isLogin } = useAuth();
   const [mostrarResultados, setMostrarResultados] = useState(false);
   const [mostrarModal, setMostrarModal] = useState(false);
   const [autoSeleccionado, setAutoSeleccionado] = useState(null);
@@ -77,17 +80,57 @@ export default function AlquilerAutos2() {
     setReserva({ ...reserva, [e.target.name]: e.target.value });
   };
 
-  const confirmarReserva = (e) => {
-    e.preventDefault();
-    if (!reserva.nombre || !reserva.correo || !reserva.telefono) {
-      setMensajeReserva("Completá todos los campos.");
-      return;
-    }
-    setMensajeReserva("¡Reserva confirmada! Redirigiendo al carrito...");
-    setTimeout(() => {
-      window.location.href = "/carrito";
-    }, 1500);
-  };
+ 
+
+  const handleConfirmarReserva = async (e) => {
+      e.preventDefault();
+      console.log(reserva);
+      if (!reserva.nombre || !reserva.correo || !reserva.telefono) {
+        setMensaje("Completá todos los campos.");
+        setTimeout(() => {
+        setMensajeReserva("");
+      }, 1500);
+        return;
+      }
+      //fechaInicio y fechaFin deben ser validadas
+      if (!reserva.fecha || !reserva.fechaEntrega) {
+        setMensajeReserva("Completá las fechas de inicio y fin.");
+        setTimeout(() => {
+        setMensajeReserva("");
+      }, 1500);
+        return;
+      }
+      if (new Date(reserva.fecha) >= new Date(reserva.fechaEntrega)) {
+        setMensajeReserva("La fecha de inicio debe ser anterior a la fecha de fin.");
+        setTimeout(() => {
+        setMensajeReserva("");
+      }, 1500);
+        return;
+      }
+      
+      
+      const response = await post("http://localhost:3000/carrito/anadirProducto", {
+        userId:usuario.id,
+        tipoProducto: "alquilerAuto",
+        productoID: autoSeleccionado.id,
+        nombreAsignado: reserva.nombre,
+        telefonoAsignado: reserva.telefono,
+        emailAsignado: reserva.correo,
+        fechaInicio: reserva.fecha,
+        fechaFin: reserva.fechaEntrega,
+        cantPersonas:1,
+      });
+  
+      if (response.error) {
+        toast.error("Error al confirmar la reserva.");
+        return;
+      }
+  
+      toast.success("Reserva confirmada. Redirigiendo al carrito...");
+      setTimeout(() => {
+        window.location.href = "/carrito";
+      }, 1500);
+    };
 
   const mostrarMensaje = (texto) => {
     setMensajeFavorito(texto);
@@ -268,7 +311,7 @@ export default function AlquilerAutos2() {
             aria-labelledby="modal-title"
           >
             <h3 id="modal-title">Reservar {autoSeleccionado.nombre}</h3>
-            <form onSubmit={confirmarReserva}>
+            <form onSubmit={handleConfirmarReserva} className="formularioreservaAlojamientos">
               <input
                 type="text"
                 name="nombre"
@@ -290,20 +333,23 @@ export default function AlquilerAutos2() {
                 value={reserva.telefono}
                 onChange={handleReservaChange}
               />
+              <input type="date" name="fecha" onChange={handleReservaChange} value={reserva.fechaInicio} />
+              <input type="date" name="fechaEntrega" onChange={handleReservaChange} value={reserva.fechaFin} />
               <button type="submit">Confirmar reserva</button>
-            </form>
-            {mensajeReserva && (
-              <p style={{ color: "red", marginTop: "0.5rem" }}>
-                {mensajeReserva}
-              </p>
-            )}
-            <button
+              <button
               className="cerrarModalAlojamientos"
               onClick={cerrarModal}
               aria-label="Cerrar formulario de reserva"
             >
               Cancelar
             </button>
+            </form>
+            {mensajeReserva && (
+              <p style={{ color: "red", marginTop: "0.5rem" }}>
+                {mensajeReserva}
+              </p>
+            )}
+            
           </div>
         </div>
       )}

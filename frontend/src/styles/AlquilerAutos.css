@@ -17,7 +17,9 @@
   background-color: #F3EEEA;
   padding-top: 2rem;
 }
-
+.formularioreservaAlojamientos{
+  align-items: flex-start !important;
+}
 .form-box {
   background-color: rgba(236, 232, 228, 0.941);
   padding: 1rem 1.5rem;

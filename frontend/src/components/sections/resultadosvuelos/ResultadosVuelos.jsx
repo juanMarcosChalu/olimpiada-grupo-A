@@ -48,7 +48,7 @@ export default function ResultadosVuelos() {
 
       <div className="grid-vuelos" id="grid-vuelos">
         {vuelos.map((vuelo, index) => (
-            <CardVuelo key={index} vuelo={vuelo} />
+            <CardVuelo key={index} vuelo={vuelo}/>
         ))}
       </div>
 

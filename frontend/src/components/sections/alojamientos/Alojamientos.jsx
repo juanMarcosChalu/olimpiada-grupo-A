@@ -4,11 +4,9 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { FaHeart, FaRegHeart, FaWifi, FaUtensils, FaFire, FaPaw, FaWater } from "react-icons/fa";
 import "../../../styles/Alojamientos.css";
 import { useFetch } from "../../../hooks/useFetch";
-import image_of_departamento from "../../../assets/departamento.jpg";
-import image_of_cabañas_lago from "../../../assets/cabañaslago.jpg";
-import image_of_depto_catedral from "../../../assets/deptocatedral.jpg";
-import image_of_depto_patagonia from "../../../assets/deptopatagonia.jpg";
-
+import usePost from "../../../hooks/usePost.js";
+import { useAuth } from "../../../hooks/useAuth.js";
+import { toast } from "sonner";
 export default function Alojamientos() {
   const [busqueda, setBusqueda] = useState({
     lugar: "",
@@ -16,7 +14,8 @@ export default function Alojamientos() {
     entrada: "",
     salida: "",
   });
-    const { data, loading, error } = useFetch(`http://localhost:3000/alojamientos`);
+  const { usuario, cargando,isLogin } = useAuth();
+  const { data, loading, error } = useFetch(`http://localhost:3000/alojamientos`);
   const [alojamientos, setAlojamientos] = useState([]);
   const [mostrarResultados, setMostrarResultados] = useState(false);
   const [mostrarModal, setMostrarModal] = useState(false);
@@ -24,7 +23,7 @@ export default function Alojamientos() {
   const [favoritos, setFavoritos] = useState([]);
   const [mensaje, setMensaje] = useState("");
   const [descripcionesExpand, setDescripcionesExpand] = useState({});
-
+  const { post, response } = usePost();
   const [mensajeFavorito, setMensajeFavorito] = useState("");
   const [mostrarMensajeFavorito, setMostrarMensajeFavorito] = useState(false);
 
@@ -37,123 +36,32 @@ export default function Alojamientos() {
     if (!data || !Array.isArray(data)) return;
 
     const alojamientosProcesados = data.map(alojamiento => {
-        // Verificar que exista el array de imágenes
-        const imagenesValidas = Array.isArray(alojamiento.imagenes) 
-            ? alojamiento.imagenes
-            : [];
+      // Verificar que exista el array de imágenes
+      const imagenesValidas = Array.isArray(alojamiento.imagenes)
+        ? alojamiento.imagenes
+        : [];
 
-        // Crear array de src válidos
-        const imagenesSrc = imagenesValidas.reduce((acc, imagen) => {
-            if (imagen?.tipo && imagen?.data) {
-                acc.push(`data:${imagen.tipo};base64,${imagen.data}`);
-            }
-            return acc;
-        }, []);
+      // Crear array de src válidos
+      const imagenesSrc = imagenesValidas.reduce((acc, imagen) => {
+        if (imagen?.tipo && imagen?.data) {
+          acc.push(`data:${imagen.tipo};base64,${imagen.data}`);
+        }
+        return acc;
+      }, []);
 
-        return {
-            ...alojamiento,
-            imagenesSrc,
-            tieneImagenes: imagenesSrc.length > 0
-        };
+      return {
+        ...alojamiento,
+        imagenesSrc,
+        tieneImagenes: imagenesSrc.length > 0
+      };
     });
 
-    
+
     setAlojamientos(alojamientosProcesados);
     console.log(alojamientosProcesados);
-    
-}, [data]);
-  // const alojamientosData = [
-  //   {
-  //     id: 1,
-  //     nombre: "Cabañas Los Arrayanes",
-  //     descripcion:
-  //       "Vista al lago · Hasta 5 personas · Cocina completa.",
-  //     precio: "$312.000 ARS · 7 noches",
-  //     imagenes: [image_of_departamento, image_of_cabañas_lago, image_of_depto_catedral],
-  //     caracteristicas: {
-  //       wifi: true,
-  //       cocina: true,
-  //       parrilla: false,
-  //       mascotas: true,
-  //       piscina: false,
-  //     },
-  //   },
-  //   {
-  //     id: 2,
-  //     nombre: "Departamento Bariloche",
-  //     descripcion:
-  //       "Centro Cívico · Para 2 personas · Wi-Fi gratis.",
-  //     precio: "$278.000 ARS · 7 noches",
-  //     imagenes: [image_of_depto_catedral, image_of_depto_patagonia, image_of_departamento],
-  //     caracteristicas: {
-  //       wifi: true,
-  //       cocina: true,
-  //       parrilla: false,
-  //       mascotas: false,
-  //       piscina: false,
-  //     },
-  //   },
-  //   {
-  //     id: 3,
-  //     nombre: "Hostel Patagonia",
-  //     descripcion:
-  //       "Para 1-4 personas · Baño privado · Wi-Fi incluido.",
-  //     precio: "$180.000 ARS · 7 noches",
-  //     imagenes: [image_of_depto_patagonia, image_of_departamento, image_of_cabañas_lago],
-  //     caracteristicas: {
-  //       wifi: true,
-  //       cocina: false,
-  //       parrilla: false,
-  //       mascotas: true,
-  //       piscina: false,
-  //     },
-  //   },
-  //   {
-  //     id: 4,
-  //     nombre: "EcoLodge del Bosque",
-  //     descripcion:
-  //       "Rodeado de naturaleza · Piscina climatizada.",
-  //     precio: "$350.000 ARS · 7 noches",
-  //     imagenes: [image_of_cabañas_lago, image_of_depto_catedral, image_of_depto_patagonia],
-  //     caracteristicas: {
-  //       wifi: false,
-  //       cocina: true,
-  //       parrilla: true,
-  //       mascotas: false,
-  //       piscina: true,
-  //     },
-  //   },
-  //   {
-  //     id: 5,
-  //     nombre: "Suite Panorámica",
-  //     descripcion:
-  //       "Vista a la montaña · Jacuzzi privado · Balcón.",
-  //     precio: "$420.000 ARS · 7 noches",
-  //     imagenes: [image_of_departamento, image_of_cabañas_lago, image_of_depto_patagonia],
-  //     caracteristicas: {
-  //       wifi: true,
-  //       cocina: true,
-  //       parrilla: false,
-  //       mascotas: false,
-  //       piscina: false,
-  //     },
-  //   },
-  //   {
-  //     id: 6,
-  //     nombre: "Cabaña Familiar Andina",
-  //     descripcion:
-  //       "Ideal para grupos grandes · Parrilla · Amplio jardín.",
-  //     precio: "$299.000 ARS · 7 noches",
-  //     imagenes: [image_of_depto_catedral, image_of_departamento, image_of_cabañas_lago],
-  //     caracteristicas: {
-  //       wifi: false,
-  //       cocina: true,
-  //       parrilla: true,
-  //       mascotas: true,
-  //       piscina: false,
-  //     },
-  //   },
-  // ];
+
+  }, [data]);
+
 
   const handleBuscar = (e) => {
     e.preventDefault();
@@ -179,17 +87,50 @@ export default function Alojamientos() {
     setReserva({ ...reserva, [e.target.name]: e.target.value });
   };
 
-  const confirmarReserva = (e) => {
+  const handleConfirmarReserva = async (e) => {
     e.preventDefault();
-    if (!reserva.nombre || !reserva.correo || !reserva.telefono) {
-      setMensaje("Completá todos los campos.");
+     if (!usuario) {
+      toast.error("Debes iniciar sesión para añadir vuelos al carrito.");
       return;
     }
-    setMensaje("¡Reserva confirmada! Redirigiendo al carrito...");
+    if (!reserva.nombre || !reserva.correo || !reserva.telefono) {
+      toast.error("Completá todos los campos.");
+      return;
+    }
+   //comprobar fechas
+    if (!reserva.fechaInicio || !reserva.fechaFin) {
+      toast.error("Completá las fechas de inicio y fin.");
+      return;
+    }
+    if (new Date(reserva.fechaInicio) >= new Date(reserva.fechaFin)) {
+      toast.error("La fecha de inicio debe ser anterior a la fecha de fin.");
+      return;
+    }
+    
+    const response = await post("http://localhost:3000/carrito/anadirProducto", {
+      userId:usuario.id,
+      tipoProducto: "alojamiento",
+      productoID: alojamientoSeleccionado.id,
+      nombreAsignado: reserva.nombre,
+      telefonoAsignado: reserva.telefono,
+      emailAsignado: reserva.correo,
+      fechaInicio: reserva.fechaInicio,
+      fechaFin: reserva.fechaFin,
+      cantPersonas:1,
+    });
+
+    if (response.error) {
+      setMensaje("Error al confirmar la reserva.");
+      return;
+    }
+
+    toast.success("Reserva confirmada. Redirigiendo al carrito...");
     setTimeout(() => {
       window.location.href = "/carrito";
     }, 1500);
   };
+
+  
 
   const mostrarMensaje = (texto) => {
     setMensajeFavorito(texto);
@@ -220,9 +161,8 @@ export default function Alojamientos() {
 
   return (
     <div
-      className={`alojamiento-container ${
-        mostrarResultados ? "sin-fondo" : "con-fondo"
-      }`}
+      className={`alojamiento-container ${mostrarResultados ? "sin-fondo" : "con-fondo"
+        }`}
     >
       {!mostrarResultados ? (
         <form className="form-box" onSubmit={handleBuscar}>
@@ -367,32 +307,37 @@ export default function Alojamientos() {
             <p>
               <strong>{alojamientoSeleccionado.nombre}</strong>
             </p>
-            <form onSubmit={confirmarReserva}>
+            <form onSubmit={handleConfirmarReserva}>
               <input
                 type="text"
                 name="nombre"
                 placeholder="Nombre y apellido"
-                value={reserva.nombre}
+                value={reserva.nombreAsignado}
+                onChange={handleReservaChange}
+              />
+              
+              <input
+                type="tel"
+                name="telefono"
+                placeholder="Teléfono"
+                value={reserva.telefonoAsignado}
                 onChange={handleReservaChange}
               />
               <input
                 type="email"
                 name="correo"
                 placeholder="Correo electrónico"
-                value={reserva.correo}
+                value={reserva.emailAsignado}
                 onChange={handleReservaChange}
               />
-              <input
-                type="tel"
-                name="telefono"
-                placeholder="Teléfono"
-                value={reserva.telefono}
-                onChange={handleReservaChange}
-              />
+              <input type="date" name="fechaInicio" onChange={handleReservaChange} value={reserva.fechaInicio} />
+              <input type="date" name="fechaFin" onChange={handleReservaChange} value={reserva.fechaFin} />
               <button type="submit">Reservar</button>
+              <button onClick={cerrarModal} className="cerrarModalAlojamientos">Cerrar</button>
+
             </form>
             {mensaje && <p className="form-message">{mensaje}</p>}
-            <button onClick={cerrarModal} className="cerrarModalAlojamientos">Cerrar</button>
+
           </div>
         </div>
       )}

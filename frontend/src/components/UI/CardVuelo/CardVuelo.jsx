@@ -1,7 +1,9 @@
 import styles from "./CardVuelo.module.css";
 import { FaClock, FaSuitcaseRolling } from "react-icons/fa";
 import { Link } from "react-router-dom";
-
+import { useAuth } from "../../../hooks/useAuth";
+import { toast } from "sonner";
+import usePost from "../../../hooks/usePost";
 // 📌 Esta es la función que necesitás para arreglar la fecha
 function formatearFecha(fechaISO) {
   const fecha = new Date(fechaISO);
@@ -20,10 +22,48 @@ function formatearDuracion(duracion) {
   return `${parseInt(hh)}h ${parseInt(mm)}m`;
 }
 
-function CardVuelo({ vuelo }) {
+function CardVuelo({ vuelo,index }) {
+const { usuario } = useAuth();
+const {post,response} = usePost();
+//convertir la fecha de ida y vuelta a formato dd/mm/aa
+const fechaIda = formatearFecha(vuelo.fecha_ida);
+const fechaVuelta = formatearFecha(vuelo.fecha_vuelta);
+  const handleAñadirVuelo = async (e) => {
+  e.preventDefault();
+    if (!usuario) {
+      toast.error("Debes iniciar sesión para añadir vuelos al carrito.");
+      return;
+    }
+
+    const response = await post("http://localhost:3000/carrito/anadirProducto", {
+      userId: usuario.id,
+      tipoProducto: "vuelo",
+      productoID: vuelo.id,
+      nombreAsignado: usuario.nombre,
+      telefonoAsignado: usuario.telefono,
+      emailAsignado: usuario.email,
+      fechaInicio: fechaIda, // Asignar fecha de ida como fecha de inicio
+      fechaFin: fechaVuelta, // Asignar fecha de vuelta como fecha de fin
+      cantPersonas: 1, // Asignar cantidad de personas (puedes cambiarlo si es necesario)
+    });
+
+    if (response.error) {
+      toast.error("Error al añadir el vuelo al carrito.");
+
+    
+    } else {
+      toast.success("Vuelo añadido al carrito correctamente.");
+      setTimeout(() => {
+      window.location.href = "/carrito";
+    }, 1500);
+    }
+}
+
   return (
     <article className={styles.card}>
-      <header className={styles.title}>{vuelo.aerolinea}</header>
+    
+      
+      <header className={styles.title}>{vuelo.aerolinea} {vuelo.id}</header>
 
       <section className={styles.info}>
         <div className={styles.column}>
@@ -59,8 +99,8 @@ function CardVuelo({ vuelo }) {
           <strong>${vuelo.precio.toLocaleString("es-AR")}</strong>
         </div>
 
-        <Link to="/carrito" className={styles.boton}>
-          Siguiente
+        <Link to="/carrito" className={styles.boton} onClick={handleAñadirVuelo}>
+          Añadir
         </Link>
       </footer>
     </article>

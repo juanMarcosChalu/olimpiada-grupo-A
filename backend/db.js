@@ -2,10 +2,11 @@
 const mysql = require('mysql2');
 
 const connection = mysql.createConnection({
-  host: 'localhost',
+  host: 'ballast.proxy.rlwy.net',
   user: 'root',
-  password: 'juan', // ← reemplazá con la tuya
-  database: 'formulario'
+  password: 'BpEOlXsXFJEAFKzXuQVOCWPNiTdWxqiy', // ← reemplazá con la tuya
+  database: 'railway',
+  port: 35892 // ← puerto de la base de datos
 });
 
 connection.connect(err => {

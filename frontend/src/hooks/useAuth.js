@@ -14,7 +14,7 @@ export function useAuth() {
       });
       if (!res.ok) throw new Error("No logueado");
       const data = await res.json();
-      console.log(data.usuario);
+  
       
       setUsuario(data.usuario);
       setIsLogin(true);

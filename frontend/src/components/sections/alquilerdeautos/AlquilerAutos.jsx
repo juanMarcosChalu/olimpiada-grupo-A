@@ -149,6 +149,8 @@ export default function AlquilerAutos() {
 
   const handleReservaChange = (e) => {
     setReserva({ ...reserva, [e.target.name]: e.target.value });
+    console.log(reserva+"asda");
+    
   };
 
   const confirmarReserva = (e) => {
@@ -364,6 +366,8 @@ export default function AlquilerAutos() {
                 value={reserva.telefono}
                 onChange={handleReservaChange}
               />
+              <input type="date" name="fecha" onChange={handleReservaChange} value={reserva.fechaInicio} />
+              <input type="date" name="fechaEntrega" onChange={handleReservaChange} value={reserva.fechaFin} />
               <button type="submit">Confirmar reserva</button>
             </form>
             {mensajeReserva && (

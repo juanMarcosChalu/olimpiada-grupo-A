@@ -161,10 +161,7 @@
       font-size: 1.2rem;
       color: #807466;
     }
-  input[type="date"]::-webkit-calendar-picker-indicator {
-  filter: invert(1); /* invierte colores */
-  cursor: pointer;
-}
+  
 
   }
 }

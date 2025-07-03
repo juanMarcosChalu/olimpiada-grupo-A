@@ -58,7 +58,11 @@ function PaquetesTuristicos({ type }) {
 
     const handleSubmitModalForm = async (e) => {
         e.preventDefault();
-        
+         if (!usuario) {
+      toast.error("Debes iniciar sesión para añadir vuelos al carrito.");
+      return;
+    }
+
         setModalAbierta(false);
         try {
             const res = await post("http://localhost:3000/carrito/anadirProducto", {
@@ -68,8 +72,10 @@ function PaquetesTuristicos({ type }) {
                     productoID: paqueteSeleccionado.id,
                     nombreAsignado: "",
                     telefonoAsignado: "",
-                    emailAsignado: ""
-                
+                    emailAsignado: "",
+                    fechaInicio: e.target.entrada.value,
+                    fechaFin: e.target.salida.value,
+                    cantPersonas: e.target.cantidad.value
             });
         } catch (err) {
             console.log(err);
