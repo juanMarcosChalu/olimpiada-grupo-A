@@ -13,7 +13,7 @@ function Admin() {
       <div className="option-card">
         <h3>PAQUETES</h3>
         <p>Administrar los paquetes de los viajeros</p>
-        <Link className="detail-btn" to="/paquetes">Detalle</Link>
+        <Link className="detail-btn" to="/admin/paquetes">Detalle</Link>
       </div>
       <div className="option-card">
         <h3>USUARIOS</h3>

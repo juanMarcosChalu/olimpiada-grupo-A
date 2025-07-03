@@ -1,0 +1,231 @@
+.paquetes-admin-container {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  font-family: 'Open Sans', sans-serif;
+  color: #665c49;
+}
+
+.paquetes-admin-container h2 {
+  text-align: center;
+  color: #776b5d;
+  margin-bottom: 2rem;
+}
+
+.paquetes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.4rem;
+}
+
+.paquete-card {
+  background-color: #f8f5f0;
+  border: 1px solid #d2cdbf;
+  border-radius: 10px;
+  padding: 1rem 1.2rem;
+  box-shadow: 0 2px 6px rgba(119, 107, 93, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: box-shadow 0.3s ease;
+}
+
+.paquete-card:hover {
+  box-shadow: 0 4px 12px rgba(119, 107, 93, 0.4);
+}
+
+.paquete-card h4 {
+  color: #776b5d;
+  margin-bottom: 0.3rem;
+  font-weight: 700;
+  font-size: 1.15rem;
+}
+
+.paquete-card p {
+  margin: 0.2rem 0;
+  color: #5b5342;
+  font-size: 0.95rem;
+}
+
+.paquete-card .precio {
+  font-weight: 700;
+  color: #776b5d;
+  margin-top: 0.4rem;
+  margin-bottom: 0.8rem;
+}
+
+button {
+  border: none;
+  border-radius: 25px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.btn-personalizar {
+  background-color: #a0927e;
+  align-self: flex-start;
+}
+
+.btn-personalizar:hover {
+  background-color: #7c6f5e;
+}
+
+/* Modal */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(119, 107, 93, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  animation: fadeIn 0.3s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+.modal-content {
+  background: #f8f5f0;
+  padding: 2rem 2.5rem;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 0 20px rgba(119, 107, 93, 0.7);
+  color: #665c49;
+  font-family: 'Open Sans', sans-serif;
+  animation: slideDown 0.3s ease forwards;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modal-content h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: #776b5d;
+  font-weight: 700;
+  text-align: center;
+}
+
+.modal-content label {
+  display: block;
+  margin-bottom: 0.8rem;
+  font-weight: 600;
+  color: #5b5342;
+  font-size: 0.95rem;
+}
+
+.modal-content input {
+  width: 100%;
+  padding: 0.4rem 0.6rem;
+  border: 1.5px solid #c2bca6;
+  border-radius: 6px;
+  font-size: 1rem;
+  margin-top: 0.25rem;
+  font-family: 'Open Sans', sans-serif;
+  color: #5b5342;
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  justify-content: flex-end;
+}
+
+.btn-guardar,
+.btn-cancelar {
+  padding: 0.6rem 1.2rem;
+  border-radius: 25px;
+  border: none;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  color: white;
+  transition: background-color 0.3s ease;
+  min-width: 100px;
+}
+
+.btn-guardar {
+  background-color: #776b5d;
+}
+
+.btn-guardar:hover {
+  background-color: #5f5647;
+}
+
+.btn-cancelar {
+  background-color: #a0927e;
+}
+
+.btn-cancelar:hover {
+  background-color: #7c6f5e;
+}
+
+/* Mensajes */
+
+.mensaje-error {
+  color: #b93030;
+  font-weight: 600;
+  margin-top: 0.8rem;
+  text-align: center;
+}
+
+.mensaje-exito {
+  color: #3b7a3b;
+  font-weight: 600;
+  margin-top: 0.8rem;
+  text-align: center;
+}
+
+/* Responsive */
+
+@media (max-width: 500px) {
+  .modal-buttons {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .btn-guardar,
+  .btn-cancelar {
+    width: 100%;
+    min-width: unset;
+  }
+}
+.btn-agregar {
+  background-color: #5c8a8a;
+  color: white;
+  border-radius: 30px;
+  padding: 0.6rem 1.4rem;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 1.6rem;
+  transition: background-color 0.3s ease;
+  font-size: 1rem;
+}
+
+.btn-agregar:hover {
+  background-color: #497373;
+}
+
+

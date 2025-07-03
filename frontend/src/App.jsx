@@ -30,8 +30,10 @@ import Admin from "./components/sections/adminpanel/admin.jsx";
 import ComprasDetalles from "./components/sections/adminpanel/comprasdetalles.jsx";
 import UsuariosAdmin from "./components/sections/adminpanel/usuariosadmin.jsx";
 import AsistenciaAdmin from "./components/sections/adminpanel/detalleasistencia.jsx";
+import AdminPaquetes from "./components/sections/adminpanel/paquetesadmin.jsx";
 
 import { Toaster } from "./components/UI/sonner.tsx";
+import PaquetesAdmin from "./components/sections/adminpanel/paquetesadmin.jsx";
 
 function App() {
   return (
@@ -371,6 +373,20 @@ function App() {
                 menuItems={[<Link to="/" key="inicio">Inicio</Link>, <Link to="/admin" key="admin">Admin</Link>]}
               />
               <AsistenciaAdmin />
+              <Footer />
+            </>
+          }
+        />
+
+        <Route
+          path="/admin/paquetes"
+          element={
+            <>
+              <Header
+                title={<h1>Paquetes Administrador</h1>}
+                menuItems={[<Link to="/" key="inicio">Inicio</Link>, <Link to="/admin" key="admin">Admin</Link>]}
+              />
+              <PaquetesAdmin />
               <Footer />
             </>
           }
