@@ -19,16 +19,15 @@
   align-items: end;
   justify-content: space-around;
   padding-bottom: 50px;
-  font-family: 'Open Sans', sans-serif;
   padding: 0 20px;
   padding-bottom: 0.5rem;
 
   &::after {
     position: absolute;
     border-bottom: 3px solid #534a40;
-    box-shadow: #534a40 1px px;
+    box-shadow: #534a40 1px 1px;
     content: "";
-    top: 95%;
+    top: 98%;
     width: 85%;
 
     left: 50%;
@@ -406,7 +405,7 @@
 
     &::after {
       position: absolute;
-      border-bottom: 3px solid #534a40;
+     
       content: "";
       top: 100%;
       width: 100%;
