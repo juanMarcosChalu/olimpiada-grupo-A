@@ -190,6 +190,7 @@
     font-size: 2rem;
     line-height: 2rem;
     height: 14vh;
+    font-family: "Open Sans";
     justify-content: center;
     align-items: center;
 }
@@ -225,6 +226,7 @@
                 background-color: rgba(0, 0, 0, 0.3);
                 cursor: pointer;
                 opacity: 0;
+                font-family: "Open Sans";
                 pointer-events: none;
                 /* evita clics cuando no se ve */
                 transition: opacity 0.5s ease, transform 0.5s ease;

@@ -26,7 +26,7 @@
   &::after {
     position: absolute;
     border-bottom: 3px solid #534a40;
-    box-shadow: black 2px 2px;
+    box-shadow: #534a40 1px px;
     content: "";
     top: 98%;
     width: 85%;
