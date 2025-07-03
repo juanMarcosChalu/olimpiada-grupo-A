@@ -8,7 +8,7 @@ function Admin() {
       <div className="option-card">
         <h3>COMPRAS</h3>
         <p>Ver y gestionar las compras realizadas</p>
-        <Link className="detail-btn" to="/compras">Detalle</Link>
+        <Link className="detail-btn" to="/admin/compras">Detalle</Link>
       </div>
       <div className="option-card">
         <h3>PAQUETES</h3>
@@ -18,12 +18,12 @@ function Admin() {
       <div className="option-card">
         <h3>USUARIOS</h3>
         <p>Administrar la información de los usuarios</p>
-        <Link className="detail-btn" to="/usuarios">Detalle</Link>
+        <Link className="detail-btn" to="/admin/usuarios">Detalle</Link>
       </div>
       <div className="option-card">
         <h3>ASISTENCIA AL VIAJERO</h3>
         <p>Gestionar las solicitudes de asistencias</p>
-        <Link className="detail-btn" to="/asistencia">Detalle</Link>
+        <Link className="detail-btn" to="/admin/asistencia">Detalle</Link>
       </div>
     </main>
   );

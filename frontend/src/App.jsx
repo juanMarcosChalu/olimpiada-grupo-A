@@ -29,6 +29,7 @@ import ResultadosVuelos from "./components/sections/resultadosvuelos/ResultadosV
 import Admin from "./components/sections/adminpanel/admin.jsx";
 import ComprasDetalles from "./components/sections/adminpanel/comprasdetalles.jsx";
 import UsuariosAdmin from "./components/sections/adminpanel/usuariosadmin.jsx";
+import AsistenciaAdmin from "./components/sections/adminpanel/detalleasistencia.jsx";
 
 import { Toaster } from "./components/UI/sonner.tsx";
 
@@ -360,6 +361,23 @@ function App() {
             </>
           }
         />
+
+          <Route
+          path="/admin/asistencia"
+          element={
+            <>
+              <Header
+                title={<h1>Asistencia Administrador</h1>}
+                menuItems={[<Link to="/" key="inicio">Inicio</Link>, <Link to="/admin" key="admin">Admin</Link>]}
+              />
+              <AsistenciaAdmin />
+              <Footer />
+            </>
+          }
+        />
+
+
+
       </Routes>
     </BrowserRouter>
   );
