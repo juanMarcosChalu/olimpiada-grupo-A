@@ -23,7 +23,7 @@ const Footer = () => {
         <div className="titulo-footer">Explora Brújula</div>
         <div className="lista-footer-explore">
           <ol>
-            <li><Link to="/carrito">Carrito</Link></li>
+            <li><Link to="/carritoPage">Carrito</Link></li>
             <li><Link to="/perfil">Mi perfil</Link></li>
             <li><Link to="/contacto">Contacto</Link></li>
           </ol>
