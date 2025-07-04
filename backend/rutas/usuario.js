@@ -108,43 +108,55 @@ router.patch('/update/:id', upload.single('imagen'), (req, res) => {
 
 
 router.post('/login', (req, res) => {
+  
   const { email, password } = req.body.usuario;
+  console.log("Datos recibidos:", email.toLowerCase(), password);
 
   if (!email || !password) {
-
-    return res.status(400).json({ message: 'Email y contraseña son requeridos' });
+    return res.status(400).json({ error: 'Email y contraseña son requeridos' });
   }
 
   const sql = `SELECT 
-    u.id,
-    u.nombre,
-    u.correo,
-    u.contrasena,
-    u.promociones,
-    u.rol,
-     u.apellido,
-      u.genero,
-      u.birthday,
-    i.imagen,
-    i.tipo_mime
-    FROM usuarios u
-    JOIN usuario_imagen ui ON u.id = ui.usuario_id
-    JOIN imagenes i ON ui.imagen_id = i.id
-    WHERE u.correo = ? `
-    ;
+  u.id,
+  u.nombre,
+  u.correo,
+  u.contrasena,
+  u.promociones,
+  u.rol,
+  u.apellido,
+  u.genero,
+  u.birthday,
+  i.imagen,
+  i.tipo_mime
+FROM usuarios u
+LEFT JOIN usuario_imagen ui ON u.id = ui.usuario_id
+LEFT JOIN imagenes i ON ui.imagen_id = i.id
+WHERE u.correo = ?;
+`;
 
-  conexion.query(sql, [email], (err, rows) => {
-    if (err) return res.status(500).json({ error: `Error interno` });
-    if (rows.length === 0) return res.status(401).json({ error: `Correo o Contraseña incorrectos` });
+  conexion.query(sql, [email.toLowerCase()], (err, rows) => {
+    if (err) {
+      console.error("Error en DB:", err);
+      return res.status(500).json({ error: "Error interno" });
+    }
+    console.log("Resultado de la consulta:", rows);
+    if (rows.length === 0) {
+      console.warn("Usuario no encontrado");
+      return res.status(401).json({ error: "Correo o Contraseña incorrectos" });
+    }
 
     const usuario = rows[0];
-    
+    const dbHash = usuario.contrasena?.toString(); // por si es Buffer
 
-    const ok = bcrypt.compareSync(password, usuario.contrasena);
+    const ok = bcrypt.compareSync(password, dbHash);
+    console.log("¿Password correcta?", ok);
 
-    if (!ok) return res.status(401).json({ error: "Correo o Contraseña incorrectos" });
+    if (!ok) {
+      return res.status(401).json({ error: "Correo o Contraseña incorrectos" });
+    }
 
     // Guardar datos mínimos en la sesión
+    if(usuario.imagen){
     req.session.usuario = {
       id: usuario.id,
       nombre: usuario.nombre,
@@ -155,13 +167,27 @@ router.post('/login', (req, res) => {
       birthday: usuario.birthday,
       promociones: usuario.promociones,
       imagen: usuario.imagen.toString('base64'),
-      tipodeimagen: usuario.tipo_mime,
-    };
-
-    // Confirmar login
+      tipodeimagen: usuario.tipo_mime ,
+    }}
+     if(!usuario.imagen){
+        req.session.usuario ={
+          id: usuario.id,
+          nombre: usuario.nombre,
+          email: usuario.correo,
+          rol: usuario.rol,
+          apellido: usuario.apellido,
+          genero: usuario.genero,
+          birthday: usuario.birthday,
+          promociones: usuario.promociones,
+        }
+     }
+        
+    
+    
     res.json({ mensaje: "Inicio de sesión exitoso", usuario: req.session.usuario });
   });
 });
+
 // Por ejemplo: /usuario/sesion
 router.get('/sesion', (req, res) => {
   if (req.session.usuario) {
