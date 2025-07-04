@@ -30,14 +30,45 @@
   text-align: center;
   width: 100%;
   max-width: 520px;
-  padding: 2.5rem 2rem;
+  padding: 2rem 1.5rem;
   box-sizing: border-box;
   background-color: rgba(255, 255, 255, 0.85);
   border-radius: 16px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
   backdrop-filter: blur(8px);
   animation: fadeSlideIn 0.8s ease forwards;
 }
+
+.registerTitle3 {
+  color: #877c70;
+  font-size: 1.4rem;
+  font-weight: 400;
+  font-family: "Open Sans", sans-serif;
+  margin-bottom: 1.2rem;
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+.formulario input {
+  height: 2.5rem;
+  width: 100%;
+  background-color: #b0a695;
+  border: 2px solid #a3987b;
+  color: #3a3a3a;
+  text-align: center;
+  border-radius: 8px;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.2rem;
+  padding: 0.6rem 1rem;
+  transition: border-color 0.3s ease;
+}
+
 
 .registerTitle2 {
   color: #5c5044;
@@ -48,21 +79,6 @@
   letter-spacing: 1px;
 }
 
-.registerTitle3 {
-  color: #877c70;
-  font-size: 1.4rem;
-  font-weight: 400;
-  font-family: "Open Sans", sans-serif;
-  margin-bottom: 2rem;
-}
-
-.formulario {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.5rem;
-  width: 100%;
-}
 
 .doubleInput {
   display: flex;
@@ -75,19 +91,7 @@
   width: 100%;
 }
 
-.formulario input {
-  height: 3rem;
-  width: 100%;
-  background-color: #b0a695;
-  border: 2px solid #a3987b;
-  color: #3a3a3a;
-  text-align: center;
-  border-radius: 8px;
-  font-family: "Open Sans", sans-serif;
-  font-size: 1.2rem;
-  padding: 0.6rem 1rem;
-  transition: border-color 0.3s ease;
-}
+
 
 .formulario input::placeholder {
   color: #d9d4cb;
@@ -201,6 +205,35 @@
 .linkLogin:hover {
   color: #47413a;
 }
+
+.boton-volver {
+  margin-top: 1.2rem;
+  display: inline;
+  background-color: transparent;
+  color: #776b5d;
+  border: 1px solid #776b5d;
+  border-radius: 6px;
+  width: fit-content;
+  font-size: 0.9rem;
+  font-family: "Open Sans", sans-serif;
+  cursor: pointer;
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+.boton-volver:hover {
+  background-color: #776b5d;
+  color: white;
+  border-color: #5c5044;
+}
+
+.linkWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+
 
 /* Animación de entrada */
 @keyframes fadeSlideIn {

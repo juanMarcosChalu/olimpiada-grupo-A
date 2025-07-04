@@ -107,9 +107,17 @@ function Registro() {
           <button className={styles.boton} type="submit">Registrarme</button>
         </form>
 
-        <Link className={styles.linkLogin} to="/login">
-          ¿Ya tenés cuenta? Iniciá sesión
-        </Link>
+       <div className={styles.linkWrapper}>
+  <Link className={styles.linkLogin} to="/login">
+    ¿Ya tenés cuenta? Iniciá sesión
+  </Link>
+
+  <Link to="/">
+    <button className={styles["boton-volver"]}>
+      Volver al Inicio
+    </button>
+  </Link>
+</div>
       </div>
     </section>
   );

@@ -70,6 +70,15 @@ function Login() {
         <Link className="linkRegister" to="/registro">
           ¿No tenés cuenta? Registrate
         </Link>
+
+         {/* Botón para volver al inicio */}
+        <Link to="/">
+        <button className="boton boton-volver">
+          Volver al Inicio
+          </button>
+
+        </Link>
+
       </div>
     </section>
   );

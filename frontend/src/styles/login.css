@@ -126,6 +126,28 @@
   color: #47413a;
 }
 
+
+.boton-volver {
+  margin-top: 1.2rem;
+  background-color: transparent;
+  color: #776b5d;
+  border: 1px solid #776b5d;
+  border-radius: 6px;
+  width: fit-content;
+  font-size: 0.9rem;
+  font-family: "Open Sans", sans-serif;
+  cursor: pointer;
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+
+.boton-volver:hover {
+  background-color: #776b5d;
+  color: white;
+  border-color: #5c5044;
+}
+
+
 /* Animación */
 @keyframes fadeSlideIn {
   from {
