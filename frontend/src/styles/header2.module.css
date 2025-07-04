@@ -511,6 +511,9 @@
   /* Mostrar hamburguesa */
   .hamburguesa {
     display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
   }
 
   /* Ajustes nav */
@@ -521,5 +524,17 @@
 
   .header {
     padding: 1rem 1.5rem;
+    .logocontainer{
+      height: 100%;
+    }
+    h1{
+      height: 100%;
+      font-size: 1.8rem;
+      line-height: 2rem;
+    }
+    &::after {
+      width: 100%;
+      top: 100%;
+    }
   }
 }
