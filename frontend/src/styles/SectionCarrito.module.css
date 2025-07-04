@@ -65,7 +65,7 @@
   margin: 0 auto 1.5rem auto;
   box-sizing: border-box;
   color: #776b5d;
-  width: 650px;
+  width: 100%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 0.6rem 1rem;

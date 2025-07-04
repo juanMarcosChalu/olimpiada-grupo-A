@@ -200,9 +200,9 @@ router.get('/sesion', (req, res) => {
 // Registro
 router.post('/registrar', (req, res) => {
   const { nombre, password, correo, recibirPromos } = req.body.usuario;
-  
+  const correoLower = correo.toLowerCase()
 
-  if (nombre === null || password == null || correo == null || recibirPromos == null || nombre === "" || password === "" || correo === "" || recibirPromos === ""
+  if (nombre === null || password == null || correo == null || recibirPromos == null || nombre === "" || password === "" || correoLower === "" || recibirPromos === ""
   ) {
     return res.status(400).json({
       error: "Debes de completar todos los campos"
@@ -217,7 +217,7 @@ router.post('/registrar', (req, res) => {
 
   // Validar si el correo ya está en uso
   const checkEmailQuery = 'SELECT * FROM usuarios WHERE correo = ?';
-  conexion.query(checkEmailQuery, [correo], (err, rows) => {
+  conexion.query(checkEmailQuery, [correoLower], (err, rows) => {
     if (err) {
       return res.status(500).json({ error: 'Error interno al verificar correo' });
     }
@@ -244,13 +244,13 @@ router.post('/registrar', (req, res) => {
 
 
 
-      conexion.query(insertQuery, [nombre, hash, rol, correo, recibirPromos], (error) => {
+      conexion.query(insertQuery, [nombre, hash, rol, correoLower, recibirPromos], (error) => {
         if (error) {
           return res.status(500).json({ error: 'Error al registrar el usuario' });
         }
 
         const sql = "SELECT * FROM usuarios WHERE correo = ?";
-        conexion.query(sql, [correo], (err, rows) => {
+        conexion.query(sql, [correoLower], (err, rows) => {
           const usuario = rows[0];
 
           req.session.usuario = {

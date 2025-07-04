@@ -83,9 +83,9 @@ function SectionsCarrito() {
         data.map(async (producto) => {
           let imagenSrc = null;
 
+          // Procesamiento de imágenes para diferentes tipos de productos
           if (producto.tipoProducto === "paquete") {
             const primeraImagen = producto.producto_info.imagenes[0];
-
             if (primeraImagen?.imagen) {
               if (typeof primeraImagen.imagen === "string") {
                 imagenSrc = normalizarBase64(primeraImagen.imagen);
@@ -93,8 +93,7 @@ function SectionsCarrito() {
                 imagenSrc = await blobToBase64(primeraImagen.imagen);
               }
             }
-          }
-          if (producto.tipoProducto === "alquilerAuto") {
+          } else if (producto.tipoProducto === "alquilerAuto") {
             const primeraImagen = producto.producto_info.imagen_principal;
             if (primeraImagen?.imagen) {
               if (typeof primeraImagen.imagen === "string") {
@@ -103,69 +102,59 @@ function SectionsCarrito() {
                 imagenSrc = await blobToBase64(primeraImagen.imagen);
               }
             }
+          } else if (producto.tipoProducto === "alojamiento") {
+            // Procesar imagen para alojamiento si existe
+            if (producto.producto_info.imagenes?.[0]?.imagen) {
+              const imagen = producto.producto_info.imagenes[0].imagen;
+              if (typeof imagen === "string") {
+                imagenSrc = normalizarBase64(imagen);
+              } else if (imagen instanceof Blob) {
+                imagenSrc = await blobToBase64(imagen);
+              }
+            }
           }
 
-          const fechaInicioFormateada = new Date(producto.fechaInicio).toLocaleDateString("es-AR");
-          const fechaFinFormateada = new Date(producto.fechaFin).toLocaleDateString("es-AR");
+          // Formateo de fechas
+          const fechaInicio = producto.fechaInicio ? new Date(producto.fechaInicio) : new Date();
+          const fechaFin = producto.fechaFin ? new Date(producto.fechaFin) : new Date();
 
-          if (isNaN(new Date(producto.fechaFin))) {
-            producto.fechaFin = producto.fechaInicio;
-          }
-          if (isNaN(new Date(producto.fechaInicio))) {
-            producto.fechaInicio = new Date().toISOString().split("T")[0];
-          }
-
-          producto.fechaInicio = new Date(producto.fechaInicio).toISOString().split("T")[0];
-          producto.fechaFin = new Date(producto.fechaFin).toISOString().split("T")[0];
+          const fechaInicioFormateada = fechaInicio.toLocaleDateString("es-AR");
+          const fechaFinFormateada = fechaFin.toLocaleDateString("es-AR");
 
           const servicioBase = {
             id: producto.id,
             idProducto: producto.productoID,
-            nombre: producto.nombreAsignado,
-            ubicacion: producto.ubicacion,
-            fechaInicio: producto.fechaInicio,
-            fechaFin: fechaInicioFormateada,
-            precioPorDia: fechaFinFormateada,
-            dias: calcularDias(producto.fechaInicio, producto.fechaFin),
+            nombre: producto.nombreAsignado || producto.producto_info?.nombre || "Sin nombre",
+            ubicacion: producto.ubicacion || producto.producto_info?.ubicacion || "Sin ubicación",
+            fechaInicio: fechaInicio.toISOString().split("T")[0],
+            fechaFin: fechaFin.toISOString().split("T")[0],
+            fechaInicioFormateada,
+            fechaFinFormateada,
+            dias: calcularDias(fechaInicio, fechaFin),
+            personas: producto.cantPersonas || 1,
           };
 
           switch (producto.tipoProducto) {
             case "paquete":
-              if (typeof producto.producto_info.precio === "string") {
-                producto.producto_info.precio = parseFloat(
-                  producto.producto_info.precio.replace(/[^0-9-]+/g, "")
-                );
-              }
               return {
                 ...servicioBase,
                 categoria: "Paquete turístico",
-                personas: producto.cantPersonas || 1,
                 imagenSrc: imagenSrc || image_of_paris,
-                precioPorDia: producto.producto_info.precio,
+                precioPorDia: parseFloat(String(producto.producto_info.precio).replace(/[^0-9-]+/g, "")) || 0,
               };
 
             case "vuelo":
-              if (typeof producto.producto_info.duracion === "string") {
-                const partes = producto.producto_info.duracion.split(":");
-                if (partes.length === 3) {
-                  producto.producto_info.duracion = `${partes[0]}:${partes[1]}`;
-                } else {
-                  producto.producto_info.duracion = "00:00";
-                }
-              }
-
               return {
                 ...servicioBase,
                 categoria: "Vuelo",
                 dias: 1,
                 numeroVuelo: producto.numeroVuelo,
-                horaSalida: producto.producto_info.duracion,
-                horaLlegada: producto.horaLlegada,
-                aeropuertoOrigen: producto.producto_info.aerolinea,
-                aeropuertoDestino: producto.producto_info.aerolinea,
+                horaSalida: producto.producto_info.duracion || "00:00",
+                horaLlegada: producto.horaLlegada || "00:00",
+                aeropuertoOrigen: producto.producto_info.aerolinea || "Desconocido",
+                aeropuertoDestino: producto.producto_info.aerolinea || "Desconocido",
                 clase: producto.clase || "Económica",
-                precioPorDia: producto.producto_info.precio,
-                personas: producto.cantPersonas || 1,
+                precioPorDia: producto.producto_info.precio || 0,
                 escalas: producto.escalas || 0,
               };
 
@@ -174,7 +163,7 @@ function SectionsCarrito() {
                 ...servicioBase,
                 categoria: "Alquiler de auto",
                 imagenSrc: imagenSrc || image_of_captur,
-                precioPorDia: producto.producto_info.precio,
+                precioPorDia: producto.producto_info.precio || 0,
               };
 
             case "asistenciaViajero":
@@ -182,6 +171,17 @@ function SectionsCarrito() {
                 ...servicioBase,
                 categoria: "Asistencia al viajero",
                 beneficios: producto.beneficios || [],
+                precioPorDia: producto.producto_info.precio || 0,
+              };
+
+            case "alojamiento":
+              return {
+                ...servicioBase,
+                categoria: "Alojamiento",
+                imagenSrc: imagenSrc || "",
+                precioPorDia: (producto.producto_info.precio_total / servicioBase.dias) || 0,
+                producto_info: producto.producto_info, // Mantenemos la info original
+                dias: producto.producto_info.noches || servicioBase.dias,
               };
 
             default:
@@ -197,7 +197,6 @@ function SectionsCarrito() {
       setLoading(false);
     }
   };
-
   useEffect(() => {
     if (usuario?.id) {
       actualizarServicios();
@@ -343,120 +342,126 @@ function SectionsCarrito() {
 
   return (
     <>
-      <section className={styles.carritoSection}>
-        <div className={styles.serviciosContainer}>
-          {servicios.length === 0 ? (
-            <p className={styles.sinServicios}>No hay servicios agregados.</p>
-          ) : (
-            servicios.map((servicio) => (
-              <article
-                key={servicio.id}
-                className={`${
-                  styles.servicioCard
-                } ${
-                  servicio.categoria === "Vuelo" ||
-                  servicio.categoria === "Asistencia al viajero"
-                    ? styles.vueloCard
-                    : ""
-                }`}
-              >
-                <div className={styles.imagenContainer}>
-                  {servicio.imagenSrc ? (
-                    <img
-                      src={servicio.imagenSrc}
-                      alt={servicio.nombre}
-                      className={styles.imagenServicio}
-                    />
-                  ) : servicio.categoria === "Vuelo" ? (
-                    <div>✈️</div>
-                  ) : (
-                    <div>🚑</div>
-                  )}
-                </div>
+        <section className={styles.carritoSection}>
+          <div className={styles.serviciosContainer}>
+            {servicios.length === 0 ? (
+              <p className={styles.sinServicios}>No hay servicios agregados.</p>
+            ) : (
+              servicios.map((servicio) => {
+                // Determinar si es un servicio de alojamiento
+                const esAlojamiento = servicio.tipoProducto === 'alojamiento';
+                const categoria = esAlojamiento ? 'Alojamiento' : servicio.categoria;
+                const nombre = esAlojamiento ? servicio.producto_info.nombre : servicio.nombre;
+                const dias = esAlojamiento ? servicio.producto_info.noches : servicio.dias;
+                const personas = esAlojamiento ? servicio.cantPersonas : servicio.personas;
+                const precioPorDia = esAlojamiento ? servicio.producto_info.precio_total / dias : servicio.precioPorDia;
 
-                <div className={styles.infoServicio}>
-                  <h3 className={styles.nombre} style={{ fontWeight: "700" }}>
-                    {servicio.categoria}
-                  </h3>
-                  <p className={styles.categoria}>{servicio.nombre}</p>
-                  <p className={styles.ubicacion}>📍 {servicio.ubicacion}</p>
-                  <p className={styles.fechas}>
-                    📅 {servicio.fechaInicio} - {servicio.fechaFin}
-                    {!["Vuelo", "Asistencia al viajero"].includes(
-                      servicio.categoria
-                    ) && (
-                      <>
-                        {" "}
-                        ({servicio.dias} {servicio.dias > 1 ? "días" : "día"})
-                      </>
-                    )}
-                  </p>
+                return (
+                  <article
+                    key={servicio.id}
+                    className={`${styles.servicioCard} ${
+                      categoria === "Vuelo" || categoria === "Asistencia al viajero"
+                        ? styles.vueloCard
+                        : ""
+                    }`}
+                  >
+                    <div className={styles.imagenContainer}>
+                      {servicio.imagenSrc ? (
+                        <img
+                          src={servicio.imagenSrc}
+                          alt={nombre}
+                          className={styles.imagenServicio}
+                        />
+                      ) : categoria === "Vuelo" ? (
+                        <div>✈️</div>
+                      ) : categoria === "Alojamiento" ? (
+                        <div>🏨</div>
+                      ) : (
+                        <div>🚑</div>
+                      )}
+                    </div>
 
-                  {servicio.personas !== undefined && (
-                    <p className={styles.personas}>
-                      👥 {servicio.personas} persona
-                      {servicio.personas > 1 ? "s" : ""}
-                    </p>
-                  )}
-
-                  {servicio.categoria === "Vuelo" && (
-                    <>
-                      <p className={styles.horarios}>
-                        🕗 {servicio.horaSalida} - {servicio.horaLlegada}
+                    <div className={styles.infoServicio}>
+                      <h3 className={styles.nombre} style={{ fontWeight: "700" }}>
+                        {categoria}
+                      </h3>
+                      <p className={styles.categoria}>{nombre}</p>
+                      {!esAlojamiento && servicio.ubicacion && (
+                        <p className={styles.ubicacion}>📍 {servicio.ubicacion}</p>
+                      )}
+                      <p className={styles.fechas}>
+                        📅 {new Date(servicio.fechaInicio).toLocaleDateString()} -{' '}
+                        {new Date(servicio.fechaFin).toLocaleDateString()}
+                        {!["Vuelo", "Asistencia al viajero"].includes(categoria) && (
+                          <> ({dias} {categoria === "Alojamiento" ? 'noches' : dias > 1 ? 'días' : 'día'})</>
+                        )}
                       </p>
-                      <p className={styles.aeropuertos}>
-                        🛫 {servicio.aeropuertoOrigen} → 🛬{" "}
-                        {servicio.aeropuertoDestino}
-                      </p>
-                      <p className={styles.clase}>Clase: {servicio.clase}</p>
-                      <p className={styles.escalas}>Escalas: {servicio.escalas}</p>
-                    </>
-                  )}
 
-                  {servicio.categoria === "Asistencia al viajero" && (
-                    <ul className={styles.listaBeneficios}>
-                      {servicio.beneficios?.map((b, index) => (
-                        <li key={index}>✅ {b}</li>
-                      ))}
-                    </ul>
-                  )}
+                      {personas !== undefined && (
+                        <p className={styles.personas}>
+                          👥 {personas} persona{personas > 1 ? 's' : ''}
+                        </p>
+                      )}
 
-                  {servicio.categoria !== "Vuelo" && (
-                    <>
-                      <p className={styles.precio}>
-                        Precio x día: ${servicio.precioPorDia}
-                      </p>
-                      <p className={styles.totalServicio}>
-                        Total: $
-                        {(servicio.precioPorDia *
-                          servicio.dias *
-                          (servicio.personas || 1)
-                        ).toLocaleString()}
-                      </p>
-                    </>
-                  )}
+                      {categoria === "Vuelo" && (
+                        <>
+                          <p className={styles.horarios}>
+                            🕗 {servicio.horaSalida} - {servicio.horaLlegada}
+                          </p>
+                          <p className={styles.aeropuertos}>
+                            🛫 {servicio.aeropuertoOrigen} → 🛬 {servicio.aeropuertoDestino}
+                          </p>
+                          <p className={styles.clase}>Clase: {servicio.clase}</p>
+                          <p className={styles.escalas}>Escalas: {servicio.escalas}</p>
+                        </>
+                      )}
 
-                  <div className={styles.botonesServicio}>
-                    <button
-                      className={styles.btnQuitar}
-                      onClick={() => quitarServicio(servicio.id)}
-                    >
-                      Quitar
-                    </button>
-                    {servicio.categoria !== "Vuelo" && (
-                      <button
-                        className={styles.btnEditar}
-                        onClick={() => abrirModal(servicio)}
-                      >
-                        Editar
-                      </button>
-                    )}
-                  </div>
-                </div>
-              </article>
-            ))
-          )}
-        </div>
+                      {categoria === "Asistencia al viajero" && (
+                        <ul className={styles.listaBeneficios}>
+                          {servicio.beneficios?.map((b, index) => (
+                            <li key={index}>✅ {b}</li>
+                          ))}
+                        </ul>
+                      )}
+
+                      {categoria !== "Vuelo" && categoria !== "Asistencia al viajero" && (
+                        <>
+                          <p className={styles.precio}>
+                            {esAlojamiento ? 'Precio total:' : 'Precio x día:'} $
+                            {esAlojamiento 
+                              ? servicio.producto_info.precio_total.toLocaleString() 
+                              : precioPorDia.toLocaleString()}
+                          </p>
+                          {!esAlojamiento && (
+                            <p className={styles.totalServicio}>
+                              Total: ${(precioPorDia * dias * (personas || 1)).toLocaleString()}
+                            </p>
+                          )}
+                        </>
+                      )}
+
+                      <div className={styles.botonesServicio}>
+                        <button
+                          className={styles.btnQuitar}
+                          onClick={() => quitarServicio(servicio.id)}
+                        >
+                          Quitar
+                        </button>
+                        {categoria !== "Vuelo" && categoria !== "Asistencia al viajero" && (
+                          <button
+                            className={styles.btnEditar}
+                            onClick={() => abrirModal(servicio)}
+                          >
+                            Editar
+                          </button>
+                        )}
+                      </div>
+                    </div>
+                  </article>
+                );
+              })
+            )}
+          </div>
 
         <aside className={styles.resumenContainer}>
           <h2>Resumen</h2>

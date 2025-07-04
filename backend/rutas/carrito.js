@@ -67,7 +67,30 @@ router.get('/obtenerProductos/:idCliente', (req, res) => {
                     'calefaccion', a.calefaccion,
                     'mascotas', a.mascotas,
                     'piscina', a.piscina
-                )
+                ),
+                'imagenes', IFNULL((
+                    SELECT JSON_ARRAYAGG(
+                        JSON_OBJECT(
+                            'nombre', i.nombre,
+                            'imagen', i.imagen,
+                            'tipo_mime', i.tipo_mime
+                        )
+                    )
+                    FROM alojamiento_imagen ai
+                    JOIN imagenes i ON ai.imagen_id = i.id
+                    WHERE ai.alojamiento_id = a.id
+                ), JSON_ARRAY()),
+                'imagen_principal', IFNULL((
+                    SELECT JSON_OBJECT(
+                        'nombre', i.nombre,
+                        'imagen', i.imagen,
+                        'tipo_mime', i.tipo_mime
+                    )
+                    FROM alojamiento_imagen ai
+                    JOIN imagenes i ON ai.imagen_id = i.id
+                    WHERE ai.alojamiento_id = a.id
+                    LIMIT 1
+                ), JSON_OBJECT())
             )
             FROM alojamientos a
             WHERE a.id = c.productoID
@@ -111,7 +134,7 @@ WHERE  c.idCliente = ?;`;
 
     db.query(query,idCliente, (err, results) => {
         if (err) return res.status(500).json({ error: err.message });
-        
+        console.log(results);
         const carritoProductos=results;
 
         res.json(carritoProductos);

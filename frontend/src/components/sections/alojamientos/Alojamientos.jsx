@@ -120,7 +120,7 @@ export default function Alojamientos() {
     });
 
     if (response.error) {
-      setMensaje("Error al confirmar la reserva.");
+      console.log("Error al confirmar la reserva."+error);
       return;
     }
 
