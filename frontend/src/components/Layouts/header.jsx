@@ -24,7 +24,7 @@ function Header({ title, menuItems = [], backgroundColorProp }) {
     <header className={styles.header} style={{ backgroundColor: backgroundColorProp }}>
       <div className={styles.logocontainer}>{title}</div>
 
-      {/* Botón hamburguesa que se transforma en cruz */}
+      {/* Botón hamburguesa */}
       <div
         className={`${styles.hamburguesa} ${menuOpen ? styles.open : ""}`}
         onClick={toggleMenu}
@@ -89,7 +89,23 @@ function Header({ title, menuItems = [], backgroundColorProp }) {
           )}
         </div>
 
+        {/* Carrito justo debajo de servicios */}
+        <Link to="/carritoPage" onClick={closeMenu} className={styles.hamburguesaItem}>
+          <span>Carrito</span>
+        </Link>
+
         <Link to="/contacto" onClick={closeMenu}>Contacto</Link>
+
+        {/* Iniciar sesión y registro al final */}
+        <div className={styles.menuBottom}>
+          <Link to="/login" onClick={closeMenu} className={styles.hamburguesaItem}>
+            <span>Iniciar sesión</span>
+          </Link>
+
+          <Link to="/registro" onClick={closeMenu} className={styles.hamburguesaItem}>
+            <span>Registrarse</span>
+          </Link>
+        </div>
       </div>
     </header>
   );
