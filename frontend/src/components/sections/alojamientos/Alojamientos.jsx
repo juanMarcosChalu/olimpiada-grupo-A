@@ -126,8 +126,8 @@ export default function Alojamientos() {
 
     toast.success("Reserva confirmada. Redirigiendo al carrito...");
     setTimeout(() => {
-      window.location.href = "/carrito";
-    }, 1500);
+      window.location.href = "/carritoPage";
+    }, 700);
   };
 
   

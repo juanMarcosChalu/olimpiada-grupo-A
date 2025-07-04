@@ -112,8 +112,8 @@ export default function AlquilerAutos2() {
 
     toast.success("Reserva confirmada. Redirigiendo al carrito...");
     setTimeout(() => {
-      window.location.href = "/carrito";
-    }, 1500);
+      window.location.href = "/carritoPage";
+    }, 700);
   };
 
   const mostrarMensaje = (texto) => {
