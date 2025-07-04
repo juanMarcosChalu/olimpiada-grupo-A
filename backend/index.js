@@ -53,13 +53,13 @@ app.get('/dashboard', soloLogueados, (req, res) => {
 const path = require('path');
 
 // Servir archivos estáticos del frontend (build de Vite)
-app.use(express.static(path.join(__dirname, '../frontend/dist')));
+// index.js (backend)
+app.use(express.static(path.join(__dirname, '../frontend/dist'), {
+  index: false // Importante para evitar conflicto con index.html
+}));
 
-// Solo enviar index.html para rutas que NO empiecen con /api ni otros prefijos backend
-app.get(/^\/(?!paquetes|usuario|autos|vuelos|alojamientos|mercadopago|carrito).*/, (req, res) => {
+// Maneja TODAS las rutas no API
+app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../frontend/dist/index.html'));
 });
-
-
-
 
