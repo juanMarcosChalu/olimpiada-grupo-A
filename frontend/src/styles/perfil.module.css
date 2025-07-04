@@ -229,3 +229,125 @@
 .saveBtn:active {
   transform: scale(0.96);
 }
+
+/* Media Queries para hacer el componente responsive */
+
+@media (max-width: 1024px) {
+  .headerBox {
+    width: 90%;
+    margin-left: 5%;
+  }
+  
+  .userInfo {
+    flex-wrap: wrap;
+    height: auto;
+    padding: 1rem 0;
+  }
+  
+  .headerImgContainer {
+    width: 25%;
+    min-width: 80px;
+  }
+  
+  .headertext {
+    width: 60%;
+  }
+  
+  .headerButtonContainer {
+    width: 100%;
+    justify-content: center;
+    padding: 1rem 0;
+  }
+  
+  .infoItem {
+    flex: 1 1 45%;
+  }
+}
+
+@media (max-width: 768px) {
+  .perfilContainer {
+    height: auto;
+    padding: 1rem 0;
+  }
+  
+  .headerBox {
+    position: static;
+    transform: none;
+    width: 95%;
+    margin-left: 2.5%;
+  }
+  
+  .row {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .row div {
+    width: 90%;
+    margin: 0 auto;
+  }
+  
+  .fecha, .genero {
+    width: 90%;
+    margin: 0 auto;
+  }
+  
+  .infoBox {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .infoItem {
+    flex: 1 1 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .headerImgContainer {
+    width: 30%;
+  }
+  
+  .headertext {
+    width: 65%;
+  }
+  
+  .avatar {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .overlay {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .formulario h3 {
+    margin-left: 1rem;
+    font-size: 18px;
+  }
+  
+  .fecha {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .fecha input {
+    width: 100%;
+  }
+  
+  .genero {
+    flex-direction: column;
+    height: auto;
+    padding: 0.5rem 0;
+  }
+  
+  .genero label {
+    width: 100%;
+    border-radius: 999px !important;
+    margin-bottom: 0.5rem;
+  }
+  
+  .rightLabel {
+    border-left: 3px solid #776b5d !important;
+  }
+}
