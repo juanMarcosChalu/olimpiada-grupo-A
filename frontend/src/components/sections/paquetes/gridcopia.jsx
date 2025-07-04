@@ -16,7 +16,7 @@ const coloresPorTipo = {
 function PaquetesTuristicos({ type }) {
     const { usuario, cargando, isLogin } = useAuth();
     const [idproducto, setIdproducto] = useState(0);
-    const { data, loading, error } = useFetch(`https://524b1cba-194b-45f4-8cd4-b359a0dbd23c-00-18uuebkff7yon.kirk.replit.dev/paquetes/${type}`);
+    const { data, loading, error } = useFetch(`/paquetes/${type}`);
     const [paquetes, setPaquetes] = useState([]);
     const { post, response } = usePost();
     const [modalAbierta, setModalAbierta] = useState(false);
@@ -54,7 +54,7 @@ function PaquetesTuristicos({ type }) {
 
         setModalAbierta(false);
         try {
-            const res = await post("https://4479f971-1d51-4b67-938a-a80b7de0af34-00-3inmgxot9m6r9.picard.replit.dev/carrito/anadirProducto", {
+            const res = await post("/carrito/anadirProducto", {
                 userId: usuario.id,
                 tipoProducto: "paquete",
                 productoID: paqueteSeleccionado.id,

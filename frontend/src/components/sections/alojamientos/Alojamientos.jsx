@@ -15,7 +15,7 @@ export default function Alojamientos() {
     salida: "",
   });
   const { usuario, cargando,isLogin } = useAuth();
-  const { data, loading, error } = useFetch('https://524b1cba-194b-45f4-8cd4-b359a0dbd23c-00-18uuebkff7yon.kirk.replit.dev/alojamientos');
+  const { data, loading, error } = useFetch('/alojamientos');
   const [alojamientos, setAlojamientos] = useState([]);
   const [mostrarResultados, setMostrarResultados] = useState(false);
   const [mostrarModal, setMostrarModal] = useState(false);
@@ -107,7 +107,7 @@ export default function Alojamientos() {
       return;
     }
     
-    const response = await post("https://524b1cba-194b-45f4-8cd4-b359a0dbd23c-00-18uuebkff7yon.kirk.replit.dev/carrito/anadirProducto", {
+    const response = await post("/carrito/anadirProducto", {
       userId:usuario.id,
       tipoProducto: "alojamiento",
       productoID: alojamientoSeleccionado.id,

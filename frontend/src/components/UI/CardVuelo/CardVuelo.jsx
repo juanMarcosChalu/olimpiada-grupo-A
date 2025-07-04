@@ -38,7 +38,7 @@ const fechaVuelta = formatearFecha(vuelo.fecha_vuelta);
       return;
     }
 
-    const response = await post("https://524b1cba-194b-45f4-8cd4-b359a0dbd23c-00-18uuebkff7yon.kirk.replit.dev/carrito/anadirProducto", {
+    const response = await post("/carrito/anadirProducto", {
       userId: usuario.id,
       tipoProducto: "vuelo",
       productoID: vuelo.id,

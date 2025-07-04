@@ -9,7 +9,7 @@ function UsuarioMenu() {
 
     const handleLogout = async () => {
         try {
-            const response = await fetch('https://524b1cba-194b-45f4-8cd4-b359a0dbd23c-00-18uuebkff7yon.kirk.replit.dev/usuario/logout', {
+            const response = await fetch('/usuario/logout', {
                 method: 'POST',
                 credentials: 'include'
             });

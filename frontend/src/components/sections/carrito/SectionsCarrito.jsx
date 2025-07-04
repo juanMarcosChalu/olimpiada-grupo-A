@@ -5,8 +5,6 @@ import image_of_paris from "../../../assets/paris.jpg";
 import image_of_captur from "../../../assets/captur.jpg";
 import { toast } from "sonner";
 
-const BASE_URL = "https://524b1cba-194b-45f4-8cd4-b359a0dbd23c-00-18uuebkff7yon.kirk.replit.dev";
-
 function PagoMercadoPago({ productos }) {
   const [error, setError] = useState(null);
 
@@ -314,7 +312,7 @@ useEffect(() => {
 
   const quitarServicio = (id) => {
     setServicios((prev) => prev.filter((s) => s.id !== id));
-    fetch(`${BASE_URL}/carrito/eliminarProducto/${id}/${usuario.id}`, {
+    fetch(`/carrito/eliminarProducto/${id}/${usuario.id}`, {
       method: "DELETE",
       credentials: "include",
     })
