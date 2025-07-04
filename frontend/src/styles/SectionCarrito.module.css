@@ -18,7 +18,16 @@
   max-width: 100%;
   box-sizing: border-box;
 }
-
+.cargando{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 2rem;
+  color: #776B5D;
+  font-weight: 600;
+  font-family: 'Open Sans', sans-serif;
+}
 .sinServicios {
   font-size: 1.2rem;
   color: #776b5d;

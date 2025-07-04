@@ -344,8 +344,13 @@ useEffect(() => {
   const total = subtotal + iva + ingresosBrutos;
 
   if (loading) {
-    return <div className={styles.cargando}>Cargando productos...</div>;
+    return (
+      <div className={styles.cargando}>
+        {!usuario ? 'Debes de iniciar sesión para usar el carrito' : 'Cargando productos...'}
+      </div>
+    );
   }
+
 
   return (
     <>
