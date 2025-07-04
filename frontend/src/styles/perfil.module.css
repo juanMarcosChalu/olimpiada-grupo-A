@@ -204,17 +204,28 @@
 .overlay:hover {
   background-color: rgba(0, 0, 0, 0.8);
 }
-.saveBtn{
-  border: 1px black solid;
-
-  height: 4vh;
-  color: #5e4b41;
-  cursor: pointer;
-  background-color: #ededed;
+.saveBtn {
+  display: block;
+  margin: 1.2rem auto 0 auto; /* más separación del contenido superior */
+  padding: 0.6rem 2rem; /* equilibrado horizontalmente */
+  color: white;
+  background-color: #5e4b41;
   font-size: 1rem;
   font-weight: 600;
-  font-family: "Open Sans";
-  &:hover{
-    background-color: #d3d2d2;
-  }
+  font-family: 'Open Sans', sans-serif;
+  border: none;
+  border-radius: 8px; /* un toque más moderno */
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  width: auto; /* fit-content está bien, pero a veces da problemas en Safari */
+  min-width: 140px;
+  text-align: center;
+}
+.saveBtn:hover {
+  background-color: #4a3a31;
+  transform: scale(1.02);
+}
+.saveBtn:active {
+  transform: scale(0.96);
 }
