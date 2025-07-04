@@ -12,7 +12,7 @@ function PagoMercadoPago({ productos }) {
 
   const iniciarPago = async () => {
     try {
-      const response = await fetch(`${BASE_URL}/mercadopago/create_preference`, {
+      const response = await fetch(`/mercadopago/create_preference`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
