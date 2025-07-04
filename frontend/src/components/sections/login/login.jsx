@@ -16,7 +16,7 @@ function Login() {
     e.preventDefault();
 
     try {
-      const data = await post("https://524b1cba-194b-45f4-8cd4-b359a0dbd23c-00-18uuebkff7yon.kirk.replit.dev/usuario/login", {
+      const data = await post("/usuario/login", {
         usuario: {
           email: correo,
           password: contrasena,
