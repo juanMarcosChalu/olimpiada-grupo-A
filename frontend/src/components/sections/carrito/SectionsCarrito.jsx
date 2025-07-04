@@ -72,7 +72,7 @@ function SectionsCarrito() {
   const actualizarServicios = async () => {
     try {
       setLoading(true);
-      const response = await fetch(`${BASE_URL}/carrito/obtenerProductos/${usuario.id}`);
+      const response = await fetch(`/carrito/obtenerProductos/${usuario.id}`);
 
       if (!response.ok) {
         throw new Error("Error al obtener los productos del carrito");
@@ -272,7 +272,7 @@ useEffect(() => {
       }
 
       const response = await fetch(
-        `${BASE_URL}/carrito/editarFechas/${servicioEditando.id}/${usuario.id}`,
+        `/carrito/editarFechas/${servicioEditando.id}/${usuario.id}`,
         {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
