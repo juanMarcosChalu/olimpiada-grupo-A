@@ -9,7 +9,7 @@ export function useAuth() {
   const fetchSession = async () => {
     setCargando(true);
     try {
-        const res = await fetch('https://524b1cba-194b-45f4-8cd4-b359a0dbd23c-00-18uuebkff7yon.kirk.replit.dev/usuario/sesion', {
+        const res = await fetch('/usuario/sesion', {
         credentials: 'include'
       });
       if (!res.ok) throw new Error("No logueado");
