@@ -53,19 +53,25 @@ app.get('/dashboard', soloLogueados, (req, res) => {
 
 app.use(express.static(path.join(__dirname, '../frontend/dist'), {
   index: false 
-});
+}));
 
+const frontendRoutes = [
+  '/',
+  '/carritoPage',
+  '/resultadosvuelos',
+  '/login',
+  '/registro',
+  '/vuelos',
+  '/alojamientos',
+  '/contacto',
+  '/perfil'
+  
+];
 
-app.get('/carritoPage', (req, res) => {
-  res.sendFile(path.join(__dirname, '../frontend/dist/index.html'));
-});
-
-app.get('/resultadosvuelos', (req, res) => {
-  res.sendFile(path.join(__dirname, '../frontend/dist/index.html'));
-});
-
-app.get('/login', (req, res) => {
-  res.sendFile(path.join(__dirname, '../frontend/dist/index.html'));
+frontendRoutes.forEach(route => {
+  app.get(route, (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend/dist/index.html'));
+  });
 });
 
 // ... Agrega todas las demás rutas de tu frontend aquí ...
