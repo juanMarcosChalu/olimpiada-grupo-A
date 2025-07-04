@@ -45,7 +45,7 @@ function Asistencia() {
 
     const handleSeleccionar = (planNombre) => {
         // Redirige al carrito
-        navigate("/carrito");
+        navigate("/carritopage");
     };
 
     return (
