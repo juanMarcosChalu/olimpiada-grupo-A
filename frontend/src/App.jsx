@@ -308,7 +308,7 @@ function App() {
 
         {/* CARRITO */}
         <Route
-          path="/carrito"
+          path="/carritoPage"
           element={
             <>
               <Header

@@ -55,7 +55,7 @@ function Header({ title, menuItems = [], backgroundColorProp }) {
           )}
 
           <li className={styles.navbarPc}>
-            <Link to="/carrito">
+            <Link to="/carritoPage">
               <SvgCarrito />
             </Link>
           </li>

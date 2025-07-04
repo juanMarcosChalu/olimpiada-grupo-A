@@ -57,7 +57,7 @@ const fechaVuelta = formatearFecha(vuelo.fecha_vuelta);
     } else {
      
       toast.success("Vuelo añadido al carrito correctamente.");
-       navigate('/carrito');
+    
     }
 }
 
@@ -101,7 +101,7 @@ const fechaVuelta = formatearFecha(vuelo.fecha_vuelta);
           <strong>${vuelo.precio.toLocaleString("es-AR")}</strong>
         </div>
 
-        <Link className={styles.boton} onClick={handleAñadirVuelo}>
+        <Link to="/carritoPage" className={styles.boton} onClick={handleAñadirVuelo}>
           Añadir
         </Link>
       </footer>
