@@ -103,7 +103,7 @@ const Carousel = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedDestino, setSelectedDestino] = useState(null);
   const [isHovered, setIsHovered] = useState(false);
-  const [slideDirection, setSlideDirection] = useState("right"); // nuevo estado
+  const [slideDirection, setSlideDirection] = useState("right");
 
   useEffect(() => {
     const handleResize = () => {
@@ -125,7 +125,7 @@ const Carousel = () => {
       const autoSlide = setInterval(() => {
         setSlideDirection("right");
         setStartIndex((prev) => (prev + 1) % destinosData.length);
-      }, 4000);
+      }, 4500);
       return () => clearInterval(autoSlide);
     }
   }, [isHovered]);
@@ -164,21 +164,26 @@ const Carousel = () => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div className="title-carousel">
+      <div className="title-carousel" tabIndex={-1}>
         <h1>Elegí tu próximo destino</h1>
         <h2>Deslizá y descubrí lugares únicos para tu próxima aventura</h2>
       </div>
 
       <div className="carousel" role="region" aria-label="Carrusel de destinos turísticos">
-        <button onClick={prevSlide} aria-label="Destino anterior" className="carousel-button">
+        <button
+          onClick={prevSlide}
+          aria-label="Destino anterior"
+          className="carousel-button"
+          type="button"
+        >
           <span className="material-symbols-outlined left">navigation</span>
         </button>
 
         <div className="carousel-container">
           {visibleDestinos.map((destino, idx) => (
             <div
+              key={`${startIndex}-${idx}`}
               className={`carousel-slide slide-${slideDirection}`}
-              key={`${startIndex}-${idx}`} // fuerza rerender para reiniciar animación
               role="button"
               tabIndex={0}
               aria-label={`Ver detalles del destino ${destino.texto}`}
@@ -188,12 +193,17 @@ const Carousel = () => {
               }}
             >
               <img src={destino.img} alt={`Imagen del destino ${destino.texto}`} />
-              <span>{destino.texto}</span>
+              <span className="slide-text">{destino.texto}</span>
             </div>
           ))}
         </div>
 
-        <button onClick={nextSlide} aria-label="Destino siguiente" className="carousel-button">
+        <button
+          onClick={nextSlide}
+          aria-label="Destino siguiente"
+          className="carousel-button"
+          type="button"
+        >
           <span className="material-symbols-outlined">navigation</span>
         </button>
       </div>
@@ -222,7 +232,7 @@ const Carousel = () => {
               </ul>
             </div>
 
-            <button onClick={closeModal}>Cerrar</button>
+            <button onClick={closeModal} type="button">Cerrar</button>
           </div>
         </div>
       )}

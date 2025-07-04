@@ -22,7 +22,7 @@ import SectionsCarrito from "./components/sections/carrito/SectionsCarrito.jsx";
 import Contacto from "./components/sections/contacto/contacto.jsx";
 import Login from "./components/sections/login/login.jsx";
 import Alojamientos from "./components/sections/alojamientos/Alojamientos.jsx";
-import Asistencia from "./components/sections/asistenciaViajero/Asistencia.jsx";
+import Proteccion from "./components/sections/proteccionviajera/Proteccionviajera.jsx";
 import PoliticaPrivacidad from "./components/sections/politicaprivacidad/PoliticaPrivacidad.jsx";
 import TerminosCondiciones from "./components/sections/terminoscondiciones/TerminosCondiciones.jsx";
 import ResultadosVuelos from "./components/sections/resultadosvuelos/ResultadosVuelos.jsx";
@@ -291,16 +291,16 @@ function App() {
           }
         />
 
-        {/* ASISTENCIA */}
+        {/* Protección viajera */}
         <Route
-          path="/asistencia"
+          path="/proteccion"
           element={
             <>
               <Header
-                title={<h1>Asistencia al Viajero</h1>}
+                title={<h1>Protección viajera</h1>}
                 menuItems={[<Link to="/" key="inicio">Inicio</Link>, <ServiciosMenu key="servicios" />, <Link to="/contacto" key="contacto">Contacto</Link>]}
               />
-              <Asistencia />
+              <Proteccion />
               <Footer />
             </>
           }

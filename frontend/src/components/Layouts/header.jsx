@@ -84,7 +84,7 @@ function Header({ title, menuItems = [], backgroundColorProp }) {
               <li><Link to="/alquileres" onClick={closeMenu}>Alquiler de autos</Link></li>
               <li><Link to="/alojamiento" onClick={closeMenu}>Alojamientos</Link></li>
               <li><Link to="/paquetes" onClick={closeMenu}>Paquetes</Link></li>
-              <li><Link to="/asistencia" onClick={closeMenu}>Asistencia al viajero</Link></li>
+              <li><Link to="/proteccion" onClick={closeMenu}>Protección viajera</Link></li>
             </ul>
           )}
         </div>

@@ -1,12 +1,21 @@
 .testimonial-card {
-  width: 300px;
-  background-color: #726454; /* marrón */
-  border-radius: 10px;
-  padding: 30px 20px 20px !important;
+  width: 100%;
+  max-width: 320px;
+  background-color: #fffdfa; /* blanco roto, muy claro */
+  border-radius: 14px;
+  padding: 2.5rem 2rem 2rem;
   position: relative;
-  text-align: center;
-  font-family: sans-serif;
-  
+  text-align: left;
+  font-family: "Open Sans", sans-serif;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  border-left: 5px solid #776b5d; /* barra lateral marrón */
+  transition: transform 0.3s ease;
+  color: #4a463f; /* texto marrón oscuro */
+}
+
+.testimonial-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.15);
 }
 
 .avatar {
@@ -15,7 +24,7 @@
   left: 50%;
   transform: translateX(-50%);
   background-color: #dcd4c8;
-  border: 5px solid #726454;
+  border: 5px solid #776b5d;
   width: 60px;
   height: 60px;
   border-radius: 50%;
@@ -25,36 +34,27 @@
 }
 
 .avatar-icon {
-  font-size: 30px;
-  color: white;
-}
-
-.card-content {
-  background-color: #e7e0d5;
-  border-radius: 10px;
-  padding: 20px !important;
-  text-align: left;
-  strong{
-    color: #333;
-  }
+  font-size: 28px;
+  color: #776b5d;
 }
 
 .user-info {
-  font-weight: bold;
-  margin-bottom: 10px;
-  color: #333;
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+  color: #776b5d;
+  font-size: 1.1rem;
 }
 
 .stars {
-  color: gold;
-  text-shadow: #333 0px 1px;
-  margin-left: 5px;
-  font-size: 1.7rem;
-  
+  color: #ffcc00;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  font-size: 1.3rem;
+  margin-bottom: 0.8rem;
 }
 
 .review-text {
-  margin-top: 10px;
   font-size: 1rem;
-  color: #333;
+  line-height: 1.6;
+  color: #4a463f;
 }
+

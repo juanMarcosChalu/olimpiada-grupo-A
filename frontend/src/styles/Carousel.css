@@ -11,8 +11,35 @@
   overflow-x: hidden;
 }
 
+
+.title-carousel {
+  font-family: "Libre Baskerville", serif;
+  text-align: center;
+  color: #776b5d;
+  max-width: 900px;
+  margin: 0 auto 3rem auto;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.title-carousel h2 {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  font-size: 1.4rem;
+  margin-top: 0.6rem;
+  color: #a6987e;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.4;
+  text-shadow: none;
+  letter-spacing: normal;
+}
+
 /* Título */
-.carousel-wrapper .title-carousel {
+.carousel-wrapper {
   font-family: "Libre Baskerville", serif;
   position: relative;
   text-align: center;

@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./asistencia.module.css";
+import styles from "./proteccion.module.css";
 
 function PlanCard({ nombre, precio, beneficios, onSeleccionar, destacado }) {
     return (

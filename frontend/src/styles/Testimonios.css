@@ -1,55 +1,56 @@
-.testimonios-cards-container {
-
-    height: auto;
-    display: grid;
-    width: 100%;
-    place-items: center;
-    height: 85%;
-     grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
-     gap: 3rem;
-    position: relative;
-    border-radius: 5px;
-  
-    
-    justify-content: center;
-    .testimonios-cards {
-        color: #545651;
-        border: 1px black solid;
-        .text-container {
-            border: 1px black solid;
-        }
-    }
-}
-
 .testimonios-background {
-    width: 100vw;
-    height: min-content;
-    
-    min-height: 125vh;
-    display: flex;
-
-    justify-content: center;
-    flex-direction: column;
-    .descripcion-container {
-        font-family: "Libre Baskerville", serif;
-        font-size: 3rem;
-        font-weight: 700;
-        width: 100vw;
-        height: 15%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 3rem;
-        color: #776b5d;
-    }
+  width: 100%;
+  min-height: 100vh;
+  padding: 4rem 2rem;
+  background: linear-gradient(to bottom, #f8f6f2, #e8e3dd);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
 }
 
-@media (max-width:768px) {
-    .testimonios-background{
-    .descripcion-container{
-        font-size: 1.6rem;
-        text-align: center;
-        margin-top: 2rem;
-        
-    }}
+.descripcion-container {
+  font-family: "Libre Baskerville", serif;
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #776b5d;
+  text-align: center;
+  margin-bottom: 5rem;
+  max-width: 900px;
+  padding: 0 1rem;
+}
+
+.testimonios-cards-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columnas fijas en desktop */
+  grid-auto-rows: auto;
+  gap: 4rem;
+  width: 100%;
+  max-width: 1100px; /* ancho máximo para que no estire mucho */
+  padding: 0 1rem;
+  place-items: center;
+  box-sizing: border-box;
+}
+
+@media (max-width: 1024px) {
+  .testimonios-cards-container {
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas tablet */
+    max-width: 700px;
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .testimonios-cards-container {
+    grid-template-columns: 1fr; /* 1 columna mobile */
+    max-width: 350px;
+    gap: 1.8rem;
+    padding: 0 0.5rem;
+  }
+
+  .descripcion-container {
+    font-size: 1.6rem;
+    margin-bottom: 2rem;
+    max-width: 100%;
+  }
 }
