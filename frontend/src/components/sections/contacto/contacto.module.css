@@ -285,6 +285,11 @@ textarea.infoForm {
 }
 
 @media (max-width: 768px) {
+  .redesContainer{
+    width: 97%;
+    margin: 0 auto;
+    
+  }
   .infoGrid {
     flex-direction: column;
     align-items: center;
