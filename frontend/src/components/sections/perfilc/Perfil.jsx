@@ -21,9 +21,6 @@ function Perfil() {
       setMes(usuario.mesNacimiento || "");
       setAno(usuario.anoNacimiento || "");
       setGenero(usuario.genero || "");
-    }else{
-      toast.success("Debes iniciar sesion");
-      window.location.href = "/login";
     }
   }, [usuario,useAuth]);
 
@@ -73,7 +70,7 @@ function Perfil() {
   }
 
   try {
-      const respuesta = await fetch(`https://524b1cba-194b-45f4-8cd4-b359a0dbd23c-00-18uuebkff7yon.kirk.replit.dev/usuario/update/${usuario.id}`, {
+      const respuesta = await fetch(`/usuario/update/${usuario.id}`, {
       method: "PATCH",
       body: formData,
       credentials: `include`
