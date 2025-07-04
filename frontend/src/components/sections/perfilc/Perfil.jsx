@@ -21,6 +21,9 @@ function Perfil() {
       setMes(usuario.mesNacimiento || "");
       setAno(usuario.anoNacimiento || "");
       setGenero(usuario.genero || "");
+    }else{
+      toast.success("Debes iniciar sesion");
+      window.location.href = "/login";
     }
   }, [usuario,useAuth]);
 
