@@ -37,7 +37,7 @@ import PaquetesAdmin from "./components/sections/adminpanel/paquetesadmin.jsx";
 
 function App() {
   return (
-    <BrowserRouter basename="/">
+    <BrowserRouter>
       <Toaster theme="dark" />
       <Routes>
         {/* INICIO */}
