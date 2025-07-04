@@ -34,7 +34,7 @@ export const AuthProvider = ({ children }) => {
   const login = (datosUsuario) => setUsuario(datosUsuario);
 
   const logout = () => {
-    fetch("/usuarios/logout", {
+    fetch("/usuario/logout", {
       method: "POST",
       credentials: "include",
     }).then(() => setUsuario(null));

@@ -121,7 +121,7 @@ function PaquetesTuristicos({ type }) {
                                 <p className='precioModal'>{paqueteSeleccionado.precio} ARS por persona</p>
                             </div>
                         </div>
-                        <form onSubmit={handleSubmitModalForm}>
+                        <form className="formModalPaquete" onSubmit={handleSubmitModalForm}>
                             <div className='ModalFormInputs'>
                                 <div>
                                     <label htmlFor="cantidad">Cantidad de personas:</label>

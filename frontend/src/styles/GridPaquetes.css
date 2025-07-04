@@ -203,3 +203,81 @@ form {
     }
   }
 }
+
+@media (max-width: 768px) {
+  
+
+  .modal-content-paquete {
+    width: 95%;
+    padding: 1rem;
+    flex-direction: column;
+    max-height: 100vh;
+    padding-top: 0.5rem;
+  }
+  .modal-content-info {
+    flex-direction: column;
+    max-height: none; 
+    
+  }
+  .close{
+    display: none;
+  }
+  .ModalImgContainer{
+    max-height: 30vh;
+  }
+  .ModalTextContainer{
+    max-height: 26vh; 
+   
+    h3{
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+    ul{
+      li{
+        font-size: 1rem;
+      }
+      
+    }
+    p{
+      font-size: 1rem;
+      
+     
+    }
+    padding-top: 0.2rem;
+     padding-bottom: 0;
+  }
+  h1{
+    display: none;
+  }
+  h2{
+    display: none;
+  }
+  .modal{
+    align-items: flex-start;
+  }
+  .modal-content-paquete{
+    overflow: scroll;
+    height: 75vh;
+  }
+  .formModalPaquete{
+    width: 100%;
+    gap: 0.1rem;
+    div{
+      width: 100%;
+      display: flex;
+      align-items: center;
+     
+      input{
+        width: 50%;
+        height: 2rem;
+      }
+    }
+    button {
+      width: 40%;
+      font-size: 1.3rem;
+    }
+  }
+
+  
+  
+}

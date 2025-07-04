@@ -34,6 +34,7 @@ import AdminPaquetes from "./components/sections/adminpanel/paquetesadmin.jsx";
 
 import { Toaster } from "./components/UI/sonner.tsx";
 import PaquetesAdmin from "./components/sections/adminpanel/paquetesadmin.jsx";
+import GridPaquetes from "./components/sections/paquetes/gridPaquetes.jsx";
 
 function App() {
   return (
@@ -52,6 +53,7 @@ function App() {
               <SectionHome />
               <Carousel />
               <Testimonios />
+              <GridPaquetes></GridPaquetes>
               <Footer />
             </>
           }

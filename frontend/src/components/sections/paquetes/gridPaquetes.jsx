@@ -210,7 +210,7 @@ function GridPaquetes(tipoPaquete) {
                 <p className='precioModal'>{paqueteSeleccionado.precio} ARS por persona</p>
               </div>
             </div>
-            <form>
+            <form className='formModalPaquete'>
               <div className='ModalFormInputs'>
                 <div>
                   <label htmlFor="cantidad">Cantidad de personas:</label>
