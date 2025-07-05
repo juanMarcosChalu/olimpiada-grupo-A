@@ -53,7 +53,7 @@ function App() {
               <SectionHome />
               <Carousel />
               <Testimonios />
-              <GridPaquetes></GridPaquetes>
+            
               <Footer />
             </>
           }
