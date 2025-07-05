@@ -12,7 +12,7 @@ const vuelosRoutes = require("./rutas/vuelos");
 const alojamientosRoutes = require("./rutas/alojamientos");
 const carritoRoutes = require("./rutas/carrito");
 const { soloLogueados } = require('./middlewar/authmiddlewar.js');
-
+require("dotenv").config();
 // Middlewares básicos
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -24,7 +24,7 @@ app.use(cors({
 
 // Configuración de sesión
 app.use(session({
-  secret: 'claveSuperMegaSecreta',
+  secret: process.env.SECRET,
   resave: false,
   saveUninitialized: false,
   cookie: {
