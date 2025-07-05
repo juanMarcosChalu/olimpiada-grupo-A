@@ -21,6 +21,7 @@ app.use(cors({
   origin: ['https://524b1cba-194b-45f4-8cd4-b359a0dbd23c-00-18uuebkff7yon.kirk.replit.dev'],
   credentials: true
 }));
+// Agrega esto temporalmente en tu index.js
 
 // Configuración de sesión
 app.use(session({
@@ -81,7 +82,7 @@ app.get(/^\/(?!paquetes|usuario|autos|vuelos|alojamientos|mercadopago|carrito).*
   res.sendFile(path.join(__dirname, '../frontend/dist/index.html'));
 });
 
-const PORT = 3000;
+const PORT =   3000;
 app.listen(PORT, () => {
   console.log(`🚀 Servidor corriendo en http://localhost:${PORT}`);
 });
