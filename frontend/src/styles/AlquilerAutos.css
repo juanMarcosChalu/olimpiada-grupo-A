@@ -320,9 +320,16 @@
 }
 
 /* Oculta texto por defecto como mm/dd/yyyy */
-.inputGroup input[type="date"]::-webkit-datetime-edit {
+/* ✅ Permitimos ver la fecha real cuando está cargada */
+.inputGroup input[type="date"] {
+  color: #3a2e25; /* Color normal del texto */
+}
+
+/* Oculta el texto del input solo si no está lleno */
+.inputGroup input[type="date"]:not(.filled)::-webkit-datetime-edit {
   color: transparent;
 }
+
 .inputGroup input[type="date"]::placeholder {
   color: transparent;
 }

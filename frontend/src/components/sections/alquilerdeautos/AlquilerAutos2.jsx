@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { FaHeart, FaRegHeart, FaCheckCircle } from "react-icons/fa";
 import "../../../styles/AlquilerAutos.css";
 import { useFetch } from "../../../hooks/useFetch";
@@ -15,10 +15,10 @@ export default function AlquilerAutos2() {
     pasajeros: "",
   });
 
-  const { data, loading, error } = useFetch(`/autos`);
+  const { data } = useFetch(`/autos`);
   const [autos, setAutos] = useState([]);
-  const { post, response } = usePost();
-  const { usuario, cargando,isLogin } = useAuth();
+  const { post } = usePost();
+  const { usuario } = useAuth();
   const [mostrarResultados, setMostrarResultados] = useState(false);
   const [mostrarModal, setMostrarModal] = useState(false);
   const [autoSeleccionado, setAutoSeleccionado] = useState(null);
@@ -30,8 +30,18 @@ export default function AlquilerAutos2() {
     nombre: "",
     correo: "",
     telefono: "",
+    fecha: "",
+    fechaEntrega: "",
   });
   const [mensajeReserva, setMensajeReserva] = useState("");
+
+  const getFechaHoy = () => {
+    const hoy = new Date();
+    const year = hoy.getFullYear();
+    const month = String(hoy.getMonth() + 1).padStart(2, "0");
+    const day = String(hoy.getDate()).padStart(2, "0");
+    return `${year}-${month}-${day}`;
+  };
 
   useEffect(() => {
     if (window.location.pathname === "/alquiler-autos") {
@@ -41,7 +51,7 @@ export default function AlquilerAutos2() {
 
   useEffect(() => {
     if (data) {
-      const autosConImagen = data.map(auto => {
+      const autosConImagen = data.map((auto) => {
         const imagenSrc = auto.imagen
           ? `data:${auto.imagen.tipo};base64,${auto.imagen.data}`
           : " ";
@@ -51,7 +61,6 @@ export default function AlquilerAutos2() {
     }
   }, [data]);
 
-  // --- Aquí el cambio importante en handleChange ---
   const handleChange = (e) => {
     let value = e.target.value;
     if (e.target.name === "pasajeros") {
@@ -66,13 +75,13 @@ export default function AlquilerAutos2() {
   };
 
   const abrirModal = (auto) => {
-    if (!usuario){
+    if (!usuario) {
       toast.error("Debes iniciar sesión para usar el carrito.");
       return;
     }
     setAutoSeleccionado(auto);
     setMostrarModal(true);
-    setReserva({ nombre: "", correo: "", telefono: "" });
+    setReserva({ nombre: "", correo: "", telefono: "", fecha: "", fechaEntrega: "" });
     setMensajeReserva("");
   };
 
@@ -174,27 +183,27 @@ export default function AlquilerAutos2() {
 
           <div className="inputGroup">
             <input
-            type="date"
-            name="fecha"
-            onChange={handleReservaChange}
-            value={reserva.fecha || ""}
-            className={reserva.fecha ? "filled" : ""}
-            placeholder=" "
+              type="date"
+              name="fecha"
+              onChange={handleReservaChange}
+              value={reserva.fecha || ""}
+              className={reserva.fecha ? "filled" : ""}
+              min={getFechaHoy()}
             />
             {!reserva.fecha && <span className="fakePlaceholder">Fecha de retiro</span>}
-            </div>
-            
-            <div className="inputGroup">
-              <input
+          </div>
+
+          <div className="inputGroup">
+            <input
               type="date"
               name="fechaEntrega"
               onChange={handleReservaChange}
               value={reserva.fechaEntrega || ""}
               className={reserva.fechaEntrega ? "filled" : ""}
-              placeholder=" "
-              />
-              {!reserva.fechaEntrega && <span className="fakePlaceholder">Fecha de entrega</span>}
-              </div>
+              min={reserva.fecha || getFechaHoy()}
+            />
+            {!reserva.fechaEntrega && <span className="fakePlaceholder">Fecha de entrega</span>}
+          </div>
 
           <select
             name="pasajeros"
@@ -311,12 +320,14 @@ export default function AlquilerAutos2() {
                 name="fecha"
                 onChange={handleReservaChange}
                 value={reserva.fecha || ""}
+                min={getFechaHoy()}
               />
               <input
                 type="date"
                 name="fechaEntrega"
                 onChange={handleReservaChange}
                 value={reserva.fechaEntrega || ""}
+                min={reserva.fecha || getFechaHoy()}
               />
               <button type="submit">Confirmar reserva</button>
               <button
