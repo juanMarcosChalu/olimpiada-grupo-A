@@ -9,10 +9,10 @@ import background_of_home_alquiler_de_autos from "../../../assets/alquilerautos.
 
 export default function AlquilerAutos2() {
   const [busqueda, setBusqueda] = useState({
-    lugarRetiro: "",
-    fechaRetiro: "",
-    fechaEntrega: "",
-    personas: "",
+    lugar: "",
+    entrada: "",
+    salida: "",
+    personas: ""
   });
 
   const { data } = useFetch(`/autos`);
@@ -46,14 +46,10 @@ export default function AlquilerAutos2() {
     }
   }, [data]);
 
-  const handleChange = (e) => {
-    setBusqueda({ ...busqueda, [e.target.name]: e.target.value });
-  };
-
   const handleBuscar = (e) => {
     e.preventDefault();
-    const { lugarRetiro, fechaRetiro, fechaEntrega, pasajeros } = busqueda;
-    if (!lugarRetiro || !fechaRetiro || !fechaEntrega || !pasajeros) {
+    const { lugar, entrada, salida, personas } = busqueda;
+    if (!lugar || !entrada || !salida || !personas) {
       toast.error("Completá todos los campos de búsqueda.");
       return;
     }
@@ -100,7 +96,7 @@ export default function AlquilerAutos2() {
       emailAsignado: correo,
       fechaInicio: fecha,
       fechaFin: fechaEntrega,
-      cantPersonas: 1,
+      cantPersonas: busqueda.personas
     });
 
     if (response.error) {
@@ -146,7 +142,7 @@ export default function AlquilerAutos2() {
       }}
     >
       {!mostrarResultados && (
-                <form className="form-box" onSubmit={handleBuscar}>
+        <form className="form-box" onSubmit={handleBuscar}>
           <h3>Elegí tu mejor hospedaje</h3>
 
           <input
@@ -156,25 +152,27 @@ export default function AlquilerAutos2() {
             value={busqueda.lugar}
             onChange={(e) => setBusqueda({ ...busqueda, lugar: e.target.value })}
           />
-<select
-  name="personas"
-  value={busqueda.personas}
-  onChange={(e) => setBusqueda({ ...busqueda, personas: e.target.value })}
->
-  <option value="" disabled>
-    Cantidad de personas
-  </option>
-  <option value="1">1</option>
-  <option value="2">2</option>
-  <option value="3">3</option>
-  <option value="4+">4 o más</option>
-</select>
+
+          <select
+            name="personas"
+            value={busqueda.personas}
+            onChange={(e) => setBusqueda({ ...busqueda, personas: e.target.value })}
+            required
+          >
+            <option value="" disabled hidden>
+              Cantidad de personas
+            </option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4+">4 o más</option>
+          </select>
 
           <input
             type="text"
             name="entrada"
-            placeholder="Seleccioná la fecha de retiro del vehiculo"
-            onFocus={(e) => e.target.type = "date"}
+            placeholder="Seleccioná la fecha de retiro del vehículo"
+            onFocus={(e) => (e.target.type = "date")}
             onBlur={(e) => { if (!e.target.value) e.target.type = "text"; }}
             value={busqueda.entrada}
             onChange={(e) => setBusqueda({ ...busqueda, entrada: e.target.value })}
@@ -183,8 +181,8 @@ export default function AlquilerAutos2() {
           <input
             type="text"
             name="salida"
-            placeholder="Seleccioná la fecha de entrega del vehiculo"
-            onFocus={(e) => e.target.type = "date"}
+            placeholder="Seleccioná la fecha de entrega del vehículo"
+            onFocus={(e) => (e.target.type = "date")}
             onBlur={(e) => { if (!e.target.value) e.target.type = "text"; }}
             value={busqueda.salida}
             onChange={(e) => setBusqueda({ ...busqueda, salida: e.target.value })}
@@ -194,7 +192,7 @@ export default function AlquilerAutos2() {
         </form>
       )}
 
-      {/* ... resto del código sin cambios ... */}
+      {mostrarMensajeFavorito && <div className="mensaje-favorito-flotante">{mensajeFavorito}</div>}
 
       {mostrarModal && (
         <div className="modal-overlay" onClick={cerrarModal}>
@@ -212,8 +210,6 @@ export default function AlquilerAutos2() {
           </div>
         </div>
       )}
-
-      {mostrarMensajeFavorito && <div className="mensaje-favorito-flotante">{mensajeFavorito}</div>}
     </div>
   );
 }
