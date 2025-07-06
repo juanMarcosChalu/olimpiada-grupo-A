@@ -1,25 +1,66 @@
-import styles from "../../../styles/SectionNotificaciones.module.css"
-import React from "react";
-import CardVuelo from "../../UI/CardVuelo/CardVuelo";
-import { FaUser, FaMapMarkerAlt, FaCalendarAlt, FaTrash, FaShoppingCart } from "react-icons/fa";
+import styles from "../../../styles/SectionNotificaciones.module.css";
+import React, { useState } from "react";
+import { FaTrash } from "react-icons/fa";
+
 function SectionNotificaciones() {
-    return(
-        <section className={styles.sectionNotificaciones}>
-            <div className={styles.notificacionesContainerFlex}>
-               <article className={styles.notificaciones}>
-                    <header className={styles.notificacionesHeader}><h1>Tu pedido fue confirmado con exito</h1> <p className={styles.date}> 15 jun 2025, 14:30</p></header>
-                    <p className={styles.notificacionesInfo}>Gracias por comprar el paquete santorini <br/> Paquete para 2 personas · 7 noches · vuelo + hotel incluido · Precio: $2.200.200 ARS</p>
-                    <footer className={styles.notificacionesButtons}>
-                        <button className={styles.notificacionesButtons}>
-                            Marcar como leido
-                        </button>
-                        <button className={styles.notificacionesButtons}>Eliminar <FaTrash></FaTrash></button>  
-                    </footer>
-               </article>
-               <h1 className={styles.noNotificacionesmessage}>No Tienes Mas Notificaciones</h1>
-            </div>
-        </section>
-    ) 
+  const [notificaciones, setNotificaciones] = useState([
+    {
+      id: 1,
+      titulo: "Tu pedido fue confirmado con éxito",
+      fecha: "15 jun 2025, 14:30",
+      mensaje:
+        "Gracias por comprar el paquete Santorini. Paquete para 2 personas · 7 noches · vuelo + hotel incluido · Precio: $2.200.200 ARS",
+      leida: false,
+    },
+  ]);
+
+  const marcarComoLeido = (id) => {
+    setNotificaciones((prev) =>
+      prev.map((n) =>
+        n.id === id ? { ...n, leida: true } : n
+      )
+    );
+  };
+
+  const eliminarNotificacion = (id) => {
+    setNotificaciones((prev) => prev.filter((n) => n.id !== id));
+  };
+
+  return (
+    <section className={styles.sectionNotificaciones}>
+      <div className={styles.notificacionesContainerFlex}>
+        {notificaciones.length === 0 ? (
+          <h1 className={styles.noNotificacionesmessage}>
+            No tienes más notificaciones
+          </h1>
+        ) : (
+          notificaciones.map((n) => (
+            <article
+              key={n.id}
+              className={styles.notificaciones}
+              style={{ opacity: n.leida ? 0.6 : 1 }}
+            >
+              <header className={styles.notificacionesHeader}>
+                <h1>{n.titulo}</h1>
+                <p className={styles.date}>{n.fecha}</p>
+              </header>
+              <p className={styles.notificacionesInfo}>{n.mensaje}</p>
+              <footer className={styles.notificacionesButtons}>
+                {!n.leida && (
+                  <button onClick={() => marcarComoLeido(n.id)}>
+                    Marcar como leído
+                  </button>
+                )}
+                <button onClick={() => eliminarNotificacion(n.id)}>
+                  Eliminar <FaTrash />
+                </button>
+              </footer>
+            </article>
+          ))
+        )}
+      </div>
+    </section>
+  );
 }
 
 export default SectionNotificaciones;
