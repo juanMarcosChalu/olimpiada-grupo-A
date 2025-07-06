@@ -317,27 +317,21 @@ function SectionsCarrito() {
       });
   };
 
-const productosParaPago = servicios.map((s) => {
-  const esPaquete = s.categoria === "Paquete turístico";
-  return {
-    title: s.categoria,
-    quantity: s.personas || 1,
-    unit_price: esPaquete
-      ? s.precioPorDia
-      : s.precioPorDia * s.dias,
-  };
-});
+  const productosParaPago = servicios.map((servicio) => (
+    
+    {
+    title: servicio.categoria,
+    quantity: servicio.personas || 1,
+    unit_price: servicio.precioPorDia * servicio.dias,
+  }));
 
-
-
-const subtotal = servicios.reduce((acc, s) => {
-  const esPaquete = s.categoria === "Paquete turístico";
-  const precio = esPaquete
-    ? s.precioPorDia * (s.personas || 1)
-    : s.precioPorDia * s.dias * (s.personas || 1);
-  return acc + precio;
-}, 0);
-
+  const subtotal = servicios.reduce(
+    (acc, s) => acc + s.precioPorDia * s.dias * (s.personas || 1),
+    0
+  );
+  const iva = subtotal * 0.21;
+  const ingresosBrutos = subtotal * 0.023;
+  const total = subtotal + iva + ingresosBrutos;
 
   if (loading) {
     return (
@@ -442,11 +436,8 @@ const subtotal = servicios.reduce((acc, s) => {
                           </p>
                           {!esAlojamiento && (
                             <p className={styles.totalServicio}>
-                            Total: ${(categoria === "Paquete turístico"
-                            ? precioPorDia * (personas || 1)
-                            : precioPorDia * dias * (personas || 1)).toLocaleString()}
+                              Total: ${(precioPorDia * dias * (personas || 1)).toLocaleString()}
                             </p>
-
                           )}
                         </>
                       )}
