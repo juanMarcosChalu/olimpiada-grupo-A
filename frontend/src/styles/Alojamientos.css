@@ -321,3 +321,55 @@ form.form-box button[type="submit"]:hover,
   margin-left: 6px;
 }
 
+.inputGroup {
+  position: relative;
+  width: 100%;
+  margin: 0.4rem 0;
+}
+
+.inputGroup input[type="date"] {
+  width: 100%;
+  padding: 0.6rem;
+  font-size: 0.9rem;
+  font-family: 'Open Sans', sans-serif;
+  color: #3a2e25;
+  background-color: white;
+  border: 1px solid #776B5D;
+  border-radius: 8px;
+  outline: none;
+  box-sizing: border-box;
+}
+
+/* Oculta "mm/dd/yyyy" del navegador */
+/* ✅ Permitimos ver la fecha real cuando está cargada */
+.inputGroup input[type="date"] {
+  color: #3a2e25; /* Color normal del texto */
+}
+
+/* Oculta el texto del input solo si no está lleno */
+.inputGroup input[type="date"]:not(.filled)::-webkit-datetime-edit {
+  color: transparent;
+}
+
+.inputGroup input[type="date"]::placeholder {
+  color: transparent;
+}
+.inputGroup input[type="date"]::-moz-placeholder {
+  color: transparent;
+}
+
+.fakePlaceholder {
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  transform: translateY(-50%);
+  font-size: 0.9rem;
+  font-family: 'Open Sans', sans-serif;
+  color: #776B5D;
+  pointer-events: none;
+  transition: 0.2s ease;
+}
+
+.filled + .fakePlaceholder {
+  display: none;
+}

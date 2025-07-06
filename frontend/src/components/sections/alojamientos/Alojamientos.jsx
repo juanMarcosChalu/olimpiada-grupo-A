@@ -7,7 +7,11 @@ import { useFetch } from "../../../hooks/useFetch";
 import usePost from "../../../hooks/usePost.js";
 import { useAuth } from "../../../hooks/useAuth.js";
 import { toast } from "sonner";
+
 export default function Alojamientos() {
+  // Fecha mínima para inputs date: hoy
+  const hoy = new Date().toISOString().split("T")[0];
+
   const [busqueda, setBusqueda] = useState({
     lugar: "",
     personas: "",
@@ -31,17 +35,18 @@ export default function Alojamientos() {
     nombre: "",
     correo: "",
     telefono: "",
+    fechaInicio: "",
+    fechaFin: "",
   });
+
   useEffect(() => {
     if (!data || !Array.isArray(data)) return;
 
     const alojamientosProcesados = data.map(alojamiento => {
-      // Verificar que exista el array de imágenes
       const imagenesValidas = Array.isArray(alojamiento.imagenes)
         ? alojamiento.imagenes
         : [];
 
-      // Crear array de src válidos
       const imagenesSrc = imagenesValidas.reduce((acc, imagen) => {
         if (imagen?.tipo && imagen?.data) {
           acc.push(`data:${imagen.tipo};base64,${imagen.data}`);
@@ -56,17 +61,23 @@ export default function Alojamientos() {
       };
     });
 
-
     setAlojamientos(alojamientosProcesados);
     console.log(alojamientosProcesados);
-
   }, [data]);
-
 
   const handleBuscar = (e) => {
     e.preventDefault();
     if (!busqueda.lugar || !busqueda.personas || !busqueda.entrada || !busqueda.salida) {
       toast.error("Por favor, completá todos los campos.");
+      return;
+    }
+    // Validación adicional para que entrada no sea pasada y salida >= entrada
+    if (busqueda.entrada < hoy) {
+      toast.error("La fecha de entrada no puede ser anterior a hoy.");
+      return;
+    }
+    if (busqueda.salida < busqueda.entrada) {
+      toast.error("La fecha de salida debe ser igual o posterior a la fecha de entrada.");
       return;
     }
     setMostrarResultados(true);
@@ -79,7 +90,7 @@ export default function Alojamientos() {
 
   const cerrarModal = () => {
     setMostrarModal(false);
-    setReserva({ nombre: "", correo: "", telefono: "" });
+    setReserva({ nombre: "", correo: "", telefono: "", fechaInicio: "", fechaFin: "" });
     setMensaje("");
   };
 
@@ -89,7 +100,7 @@ export default function Alojamientos() {
 
   const handleConfirmarReserva = async (e) => {
     e.preventDefault();
-     if (!usuario) {
+    if (!usuario) {
       toast.error("Debes iniciar sesión para añadir alojamientos al carrito.");
       return;
     }
@@ -97,9 +108,12 @@ export default function Alojamientos() {
       toast.error("Completá todos los campos.");
       return;
     }
-   //comprobar fechas
     if (!reserva.fechaInicio || !reserva.fechaFin) {
       toast.error("Completá las fechas de inicio y fin.");
+      return;
+    }
+    if (reserva.fechaInicio < hoy) {
+      toast.error("La fecha de inicio no puede ser anterior a hoy.");
       return;
     }
     if (new Date(reserva.fechaInicio) >= new Date(reserva.fechaFin)) {
@@ -108,7 +122,7 @@ export default function Alojamientos() {
     }
 
     const response = await post("/carrito/anadirProducto", {
-      userId:usuario.id,
+      userId: usuario.id,
       tipoProducto: "alojamiento",
       productoID: alojamientoSeleccionado.id,
       nombreAsignado: reserva.nombre,
@@ -116,11 +130,11 @@ export default function Alojamientos() {
       emailAsignado: reserva.correo,
       fechaInicio: reserva.fechaInicio,
       fechaFin: reserva.fechaFin,
-      cantPersonas:1,
+      cantPersonas: 1,
     });
 
     if (response.error) {
-      console.log("Error al confirmar la reserva."+error);
+      console.log("Error al confirmar la reserva." + response.error);
       return;
     }
 
@@ -129,8 +143,6 @@ export default function Alojamientos() {
       window.location.href = "/carritoPage";
     }, 700);
   };
-
-
 
   const mostrarMensaje = (texto) => {
     setMensajeFavorito(texto);
@@ -161,12 +173,12 @@ export default function Alojamientos() {
 
   return (
     <div
-      className={`alojamiento-container ${mostrarResultados ? "sin-fondo" : "con-fondo"
-        }`}
+      className={`alojamiento-container ${mostrarResultados ? "sin-fondo" : "con-fondo"}`}
     >
       {!mostrarResultados ? (
         <form className="form-box" onSubmit={handleBuscar}>
           <h3>Elegí tu mejor hospedaje</h3>
+
           <input
             type="text"
             name="lugar"
@@ -174,6 +186,7 @@ export default function Alojamientos() {
             value={busqueda.lugar}
             onChange={(e) => setBusqueda({ ...busqueda, lugar: e.target.value })}
           />
+
           <select
             name="personas"
             value={busqueda.personas}
@@ -187,18 +200,31 @@ export default function Alojamientos() {
             <option value="3">3</option>
             <option value="4+">4 o más</option>
           </select>
-          <input
-            type="date"
-            name="entrada"
-            value={busqueda.entrada}
-            onChange={(e) => setBusqueda({ ...busqueda, entrada: e.target.value })}
-          />
-          <input
-            type="date"
-            name="salida"
-            value={busqueda.salida}
-            onChange={(e) => setBusqueda({ ...busqueda, salida: e.target.value })}
-          />
+
+          <div className="inputGroup">
+            <input
+              type="date"
+              name="entrada"
+              min={hoy}
+              value={busqueda.entrada}
+              onChange={(e) => setBusqueda({ ...busqueda, entrada: e.target.value })}
+              className={busqueda.entrada ? "filled" : ""}
+            />
+            <span className="fakePlaceholder">Fecha de entrada</span>
+          </div>
+
+          <div className="inputGroup">
+            <input
+              type="date"
+              name="salida"
+              min={busqueda.entrada || hoy}
+              value={busqueda.salida}
+              onChange={(e) => setBusqueda({ ...busqueda, salida: e.target.value })}
+              className={busqueda.salida ? "filled" : ""}
+            />
+            <span className="fakePlaceholder">Fecha de salida</span>
+          </div>
+
           <button type="submit">Buscar</button>
         </form>
       ) : (
@@ -312,7 +338,7 @@ export default function Alojamientos() {
                 type="text"
                 name="nombre"
                 placeholder="Nombre y apellido"
-                value={reserva.nombreAsignado}
+                value={reserva.nombre}
                 onChange={handleReservaChange}
               />
 
@@ -320,24 +346,34 @@ export default function Alojamientos() {
                 type="tel"
                 name="telefono"
                 placeholder="Teléfono"
-                value={reserva.telefonoAsignado}
+                value={reserva.telefono}
                 onChange={handleReservaChange}
               />
               <input
                 type="email"
                 name="correo"
                 placeholder="Correo electrónico"
-                value={reserva.emailAsignado}
+                value={reserva.correo}
                 onChange={handleReservaChange}
               />
-              <input type="date" name="fechaInicio" onChange={handleReservaChange} value={reserva.fechaInicio} />
-              <input type="date" name="fechaFin" onChange={handleReservaChange} value={reserva.fechaFin} />
+              <input
+                type="date"
+                name="fechaInicio"
+                min={hoy}
+                value={reserva.fechaInicio}
+                onChange={handleReservaChange}
+              />
+              <input
+                type="date"
+                name="fechaFin"
+                min={reserva.fechaInicio || hoy}
+                value={reserva.fechaFin}
+                onChange={handleReservaChange}
+              />
               <button type="submit">Reservar</button>
-              <button onClick={cerrarModal} className="cerrarModalAlojamientos">Cerrar</button>
-
+              <button onClick={cerrarModal} className="cerrarModalAlojamientos" type="button">Cerrar</button>
             </form>
             {mensaje && <p className="form-message">{mensaje}</p>}
-
           </div>
         </div>
       )}
