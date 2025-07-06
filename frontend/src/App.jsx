@@ -70,7 +70,7 @@ function App() {
             <>
               <Header
                 title={<h1>Paquetes</h1>}
-                menuItems={[<Link to="/" key="inicio">Inicio</Link>, <ServiciosMenu key="servicios" />]}
+                menuItems={[<Link to="/" key="inicio">Inicio</Link>, <ServiciosMenu key="servicios"></ServiciosMenu>, <Link to="/contacto" key="contacto">Contacto</Link>]}
               />
               <Paquetes />
               <Footer />
