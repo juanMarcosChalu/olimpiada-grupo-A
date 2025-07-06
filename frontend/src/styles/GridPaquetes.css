@@ -213,6 +213,12 @@ form {
     flex-direction: column;
     max-height: 100vh;
     padding-top: 0.5rem;
+    h1{
+      display: none;
+    }
+    h2{
+      display: none;
+    }
   }
   .modal-content-info {
     flex-direction: column;
@@ -246,12 +252,7 @@ form {
     padding-top: 0.2rem;
      padding-bottom: 0;
   }
-  h1{
-    display: none;
-  }
-  h2{
-    display: none;
-  }
+  
   .modal{
     align-items: flex-start;
   }
