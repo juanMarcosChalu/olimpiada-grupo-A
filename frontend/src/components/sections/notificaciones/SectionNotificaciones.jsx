@@ -12,6 +12,14 @@ function SectionNotificaciones() {
         "Gracias por comprar el paquete Santorini. Paquete para 2 personas · 7 noches · vuelo + hotel incluido · Precio: $2.200.200 ARS",
       leida: false,
     },
+    {
+      id: 2,
+      titulo: "Recordatorio: Actualiza tus datos personales",
+      fecha: "14 jun 2025, 10:00",
+      mensaje:
+        "Por favor, revisa y actualiza tus datos personales para continuar con el proceso de reserva sin inconvenientes.",
+      leida: false,
+    },
   ]);
 
   const marcarComoLeido = (id) => {
