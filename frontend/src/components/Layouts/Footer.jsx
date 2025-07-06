@@ -37,7 +37,7 @@ const Footer = () => {
         <div className="titulo-footer">Explora Brújula</div>
         <div className="lista-footer-explore">
           <ol>
-            <li><Link to="/carritoPage">Carrito</Link></li>
+            <li><Link to="/Nosotros">Nosotros</Link></li>
             <li><Link  onClick={handleClickPerfil}>Mi perfil</Link></li>
             <li><Link to="/contacto" onClick={handleClickContacto}>Contacto</Link></li>
           </ol>

@@ -31,6 +31,7 @@ import ComprasDetalles from "./components/sections/adminpanel/comprasdetalles.js
 import UsuariosAdmin from "./components/sections/adminpanel/usuariosadmin.jsx";
 import AsistenciaAdmin from "./components/sections/adminpanel/detalleasistencia.jsx";
 import AdminPaquetes from "./components/sections/adminpanel/paquetesadmin.jsx";
+import Nosotros from "./components/sections/nosotros/Nosotros.jsx";
 
 import { Toaster } from "./components/UI/sonner.tsx";
 import PaquetesAdmin from "./components/sections/adminpanel/paquetesadmin.jsx";
@@ -402,6 +403,21 @@ function App() {
                 menuItems={[<Link to="/" key="inicio">Inicio</Link>, <Link to="/admin" key="admin">Admin</Link>]}
               />
               <PaquetesAdmin />
+              <Footer />
+            </>
+          }
+        />
+
+        
+        <Route
+          path="/nosotros"
+          element={
+            <>
+              <Header
+                title={<h1>Sobre Nosotros</h1>}
+                menuItems={[<Link to="/" key="inicio">Inicio</Link>, <Link to="/admin" key="admin">Admin</Link>]}
+              />
+              <Nosotros/>
               <Footer />
             </>
           }
