@@ -59,7 +59,7 @@ function PaquetesTuristicos({ type }) {
                 userId: usuario.id,
                 tipoProducto: "paquete",
                 productoID: paqueteSeleccionado.id,
-                nombreAsignado: "",
+                nombreAsignado: paqueteSeleccionado.titulo,
                 telefonoAsignado: "",
                 emailAsignado: "",
                 fechaInicio: e.target.entrada.value,

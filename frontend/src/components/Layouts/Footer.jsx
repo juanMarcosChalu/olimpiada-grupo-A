@@ -13,6 +13,12 @@ const Footer = () => {
     }
     window.location.href = "/perfil";
   }
+  const handleClickContacto = () =>{
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth" // desplazamiento suave
+    });
+  }
   return (
     <footer className="footer">
 
@@ -33,7 +39,7 @@ const Footer = () => {
           <ol>
             <li><Link to="/carritoPage">Carrito</Link></li>
             <li><Link  onClick={handleClickPerfil}>Mi perfil</Link></li>
-            <li><Link to="/contacto">Contacto</Link></li>
+            <li><Link to="/contacto" onClick={handleClickContacto}>Contacto</Link></li>
           </ol>
         </div>
       </section>

@@ -142,6 +142,19 @@ function App() {
             </>
           }
         />
+        <Route
+          path="/cultural"
+          element={
+            <>
+              <Header
+                title={<h1>Paquetes Culturales</h1>}
+                menuItems={[<Link to="/" key="inicio">Inicio</Link>, <ServiciosMenu key="servicios" />]}
+              />
+              <GridPaquetes2 type="cultural" />
+              <Footer />
+            </>
+          }
+        />
 
         {/* NOTIFICACIONES */}
         <Route
@@ -157,7 +170,7 @@ function App() {
             </>
           }
         />
-
+  
         {/* CONTACTO */}
         <Route
           path="/contacto"
