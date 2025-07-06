@@ -300,6 +300,53 @@
   transition: opacity 0.3s ease;
 }
 
+.inputGroup {
+  position: relative;
+  width: 100%;
+  margin: 0.3rem 0;
+}
+
+.inputGroup input[type="date"] {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 0.9rem;
+  font-family: "Open Sans", sans-serif;
+  color: #3a2e25;
+  background-color: white;
+  border: 1px solid #776B5D;
+  border-radius: 8px;
+  outline: none;
+  box-sizing: border-box;
+}
+
+/* Oculta texto por defecto como mm/dd/yyyy */
+.inputGroup input[type="date"]::-webkit-datetime-edit {
+  color: transparent;
+}
+.inputGroup input[type="date"]::placeholder {
+  color: transparent;
+}
+.inputGroup input[type="date"]::-moz-placeholder {
+  color: transparent;
+}
+
+.fakePlaceholder {
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  transform: translateY(-50%);
+  font-size: 0.9rem;
+  font-family: "Open Sans", sans-serif;
+  color: #776B5D;
+  pointer-events: none;
+  transition: 0.2s ease;
+}
+
+.filled + .fakePlaceholder {
+  display: none;
+}
+
+
 @media (max-width: 768px) {
   .carousel-container img {
     height: 130px;

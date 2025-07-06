@@ -51,8 +51,13 @@ export default function AlquilerAutos2() {
     }
   }, [data]);
 
+  // --- Aquí el cambio importante en handleChange ---
   const handleChange = (e) => {
-    setBusqueda({ ...busqueda, [e.target.name]: e.target.value });
+    let value = e.target.value;
+    if (e.target.name === "pasajeros") {
+      value = String(value);
+    }
+    setBusqueda({ ...busqueda, [e.target.name]: value });
   };
 
   const handleBuscar = (e) => {
@@ -157,6 +162,7 @@ export default function AlquilerAutos2() {
       {!mostrarResultados && (
         <form className="form-box" onSubmit={handleBuscar}>
           <h3>Busca tu auto ideal</h3>
+
           <input
             type="text"
             name="lugarRetiro"
@@ -165,20 +171,31 @@ export default function AlquilerAutos2() {
             value={busqueda.lugarRetiro}
             onChange={handleChange}
           />
-          <input
+
+          <div className="inputGroup">
+            <input
             type="date"
-            required
-            name="fechaRetiro"
-            value={busqueda.fechaRetiro}
-            onChange={handleChange}
-          />
-          <input
-            type="date"
-            required
-            name="fechaEntrega"
-            value={busqueda.fechaEntrega}
-            onChange={handleChange}
-          />
+            name="fecha"
+            onChange={handleReservaChange}
+            value={reserva.fecha || ""}
+            className={reserva.fecha ? "filled" : ""}
+            placeholder=" "
+            />
+            {!reserva.fecha && <span className="fakePlaceholder">Fecha de retiro</span>}
+            </div>
+            
+            <div className="inputGroup">
+              <input
+              type="date"
+              name="fechaEntrega"
+              onChange={handleReservaChange}
+              value={reserva.fechaEntrega || ""}
+              className={reserva.fechaEntrega ? "filled" : ""}
+              placeholder=" "
+              />
+              {!reserva.fechaEntrega && <span className="fakePlaceholder">Fecha de entrega</span>}
+              </div>
+
           <select
             name="pasajeros"
             required
@@ -191,6 +208,7 @@ export default function AlquilerAutos2() {
             <option value="3">3</option>
             <option value="4+">4 o más</option>
           </select>
+
           <button type="submit">Buscar</button>
         </form>
       )}
