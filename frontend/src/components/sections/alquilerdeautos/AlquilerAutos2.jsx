@@ -10,6 +10,7 @@ import background_of_home_alquiler_de_autos from "../../../assets/alquilerautos.
 export default function AlquilerAutos2() {
   const [busqueda, setBusqueda] = useState({
 <<<<<<< HEAD
+<<<<<<< HEAD
     lugar: "",
     entrada: "",
     salida: "",
@@ -20,6 +21,12 @@ export default function AlquilerAutos2() {
     fechaEntrega: "",
     pasajeros: "",
 >>>>>>> parent of 5d0d6b40 (2.7.5)
+=======
+    lugarRetiro: "",
+    fechaRetiro: "",
+    fechaEntrega: "",
+    personas: "",
+>>>>>>> parent of 05330720 (2.7.6)
   });
 
   const { data, loading, error } = useFetch(`/autos`);
@@ -58,11 +65,20 @@ export default function AlquilerAutos2() {
     }
   }, [data]);
 
+  const handleChange = (e) => {
+    setBusqueda({ ...busqueda, [e.target.name]: e.target.value });
+  };
+
   const handleBuscar = (e) => {
     e.preventDefault();
 <<<<<<< HEAD
+<<<<<<< HEAD
     const { lugar, entrada, salida, personas } = busqueda;
     if (!lugar || !entrada || !salida || !personas) {
+=======
+    const { lugarRetiro, fechaRetiro, fechaEntrega, pasajeros } = busqueda;
+    if (!lugarRetiro || !fechaRetiro || !fechaEntrega || !pasajeros) {
+>>>>>>> parent of 05330720 (2.7.6)
       toast.error("Completá todos los campos de búsqueda.");
       return;
     }
@@ -114,6 +130,7 @@ export default function AlquilerAutos2() {
       emailAsignado: correo,
       fechaInicio: fecha,
       fechaFin: fechaEntrega,
+<<<<<<< HEAD
       cantPersonas: busqueda.personas
 =======
       nombreAsignado: reserva.nombre,
@@ -123,6 +140,9 @@ export default function AlquilerAutos2() {
       fechaFin: reserva.fechaEntrega,
       cantPersonas: 1,
 >>>>>>> parent of 5d0d6b40 (2.7.5)
+=======
+      cantPersonas: 1,
+>>>>>>> parent of 05330720 (2.7.6)
     });
 
     if (response.error) {
@@ -171,8 +191,12 @@ export default function AlquilerAutos2() {
       }}
     >
       {!mostrarResultados && (
+<<<<<<< HEAD
         <form className="form-box" onSubmit={handleBuscar}>
 <<<<<<< HEAD
+=======
+                <form className="form-box" onSubmit={handleBuscar}>
+>>>>>>> parent of 05330720 (2.7.6)
           <h3>Elegí tu mejor hospedaje</h3>
 
 =======
@@ -185,6 +209,7 @@ export default function AlquilerAutos2() {
             value={busqueda.lugarRetiro}
             onChange={handleChange}
           />
+<<<<<<< HEAD
 <<<<<<< HEAD
 
           <select
@@ -201,12 +226,27 @@ export default function AlquilerAutos2() {
             <option value="3">3</option>
             <option value="4+">4 o más</option>
           </select>
+=======
+<select
+  name="personas"
+  value={busqueda.personas}
+  onChange={(e) => setBusqueda({ ...busqueda, personas: e.target.value })}
+>
+  <option value="" disabled>
+    Cantidad de personas
+  </option>
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4+">4 o más</option>
+</select>
+>>>>>>> parent of 05330720 (2.7.6)
 
           <input
             type="text"
             name="entrada"
-            placeholder="Seleccioná la fecha de retiro del vehículo"
-            onFocus={(e) => (e.target.type = "date")}
+            placeholder="Seleccioná la fecha de retiro del vehiculo"
+            onFocus={(e) => e.target.type = "date"}
             onBlur={(e) => { if (!e.target.value) e.target.type = "text"; }}
             value={busqueda.entrada}
             onChange={(e) => setBusqueda({ ...busqueda, entrada: e.target.value })}
@@ -222,8 +262,8 @@ export default function AlquilerAutos2() {
 <<<<<<< HEAD
             type="text"
             name="salida"
-            placeholder="Seleccioná la fecha de entrega del vehículo"
-            onFocus={(e) => (e.target.type = "date")}
+            placeholder="Seleccioná la fecha de entrega del vehiculo"
+            onFocus={(e) => e.target.type = "date"}
             onBlur={(e) => { if (!e.target.value) e.target.type = "text"; }}
             value={busqueda.salida}
             onChange={(e) => setBusqueda({ ...busqueda, salida: e.target.value })}
@@ -249,6 +289,7 @@ export default function AlquilerAutos2() {
         </form>
       )}
 
+<<<<<<< HEAD
 <<<<<<< HEAD
       {mostrarMensajeFavorito && <div className="mensaje-favorito-flotante">{mensajeFavorito}</div>}
 =======
@@ -313,6 +354,9 @@ export default function AlquilerAutos2() {
         </div>
       )}
 >>>>>>> parent of 5d0d6b40 (2.7.5)
+=======
+      {/* ... resto del código sin cambios ... */}
+>>>>>>> parent of 05330720 (2.7.6)
 
       {mostrarModal && (
         <div className="modal-overlay" onClick={cerrarModal}>
@@ -376,12 +420,17 @@ export default function AlquilerAutos2() {
         </div>
       )}
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
       {mostrarMensajeFavorito && (
         <div className="mensaje-favorito-flotante">{mensajeFavorito}</div>
       )}
 >>>>>>> parent of 5d0d6b40 (2.7.5)
+=======
+
+      {mostrarMensajeFavorito && <div className="mensaje-favorito-flotante">{mensajeFavorito}</div>}
+>>>>>>> parent of 05330720 (2.7.6)
     </div>
   );
 }
