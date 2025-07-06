@@ -233,6 +233,64 @@
 }
 
 
+.inputGroup {
+  position: relative;
+  width: 100%;
+  margin: 0rem 0; /* menos espacio vertical */
+}
+
+
+.inputGroup input[type="date"] {
+  width: 100%;
+  padding: 0.8rem rem;
+  font-size: 1.2rem; /* Tamaño igual a otros inputs */
+  font-family: "Open Sans", sans-serif;
+  color: #3a3a3a;
+  background-color: #b0a695;
+  border: 2px solid #a3987b;
+  border-radius: 8px;
+  text-align: center;
+  outline: none;
+  appearance: none;
+  position: relative;
+  z-index: 2;
+  transition: border-color 0.3s ease;
+}
+
+
+/* Oculta la fecha del input cuando está vacío */
+.inputGroup input[type="date"]:not(.filled)::-webkit-datetime-edit {
+  color: #b0a695; /* mismo color que el fondo → lo oculta */
+}
+
+/* Ícono del calendario */
+.inputGroup input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  cursor: pointer;
+}
+
+/* Placeholder falso centrado */
+.fakePlaceholder {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1rem;
+  color: #d9d4cb;
+  font-family: "Open Sans", sans-serif;
+  pointer-events: none;
+  z-index: 3;
+  text-align: center;
+  transition: opacity 0.2s ease;
+}
+
+/* Oculta cuando hay valor */
+.oculto {
+  opacity: 0;
+  visibility: hidden;
+}
+
+
 
 
 /* Animación de entrada */

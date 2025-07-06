@@ -87,12 +87,23 @@ function Registro() {
             required
           />
 
-          <input
-            type="date"
-            value={birthday}
-            onChange={(e) => setBirthday(e.target.value)}
-            required
-          />
+ <div className={styles.inputGroup}>
+  <input
+    type="date"
+    value={birthday}
+    onChange={(e) => setBirthday(e.target.value)}
+    required
+    className={birthday ? styles.filled : ""}
+  />
+  <span
+    className={`${styles.fakePlaceholder} ${birthday ? styles.oculto : ""}`}
+  >
+    Fecha de nacimiento
+  </span>
+</div>
+
+
+
 
           <label className={styles.customcheckbox}>
             <input
