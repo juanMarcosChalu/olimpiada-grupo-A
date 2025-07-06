@@ -4,6 +4,7 @@ import CardPaquetes from "../../UI/CardPaquetes.jsx";
 import usePost from "../../../hooks/usePost.js";
 import '../../../styles/GridPaquetes.css';
 import { useAuth } from "../../../hooks/useAuth.js";
+import { toast } from "sonner";
 const coloresPorTipo = {
     romantico: "#c88c8c",
     familiar: "#d9a273",
@@ -48,7 +49,7 @@ function PaquetesTuristicos({ type }) {
     const handleSubmitModalForm = async (e) => {
         e.preventDefault();
         if (!usuario) {
-            toast.error("Debes iniciar sesión para añadir vuelos al carrito.");
+            toast.error("Debes iniciar sesión para añadir un Paquete al carrito.");
             return;
         }
 
@@ -64,6 +65,14 @@ function PaquetesTuristicos({ type }) {
                 fechaInicio: e.target.entrada.value,
                 fechaFin: e.target.salida.value,
                 cantPersonas: e.target.cantidad.value
+            });
+            if (res.error) {
+                toast.error("Error al añadir el paquete al carrito.");
+                return;
+            }
+            toast.success("Paquete añadido al carrito. Redirigiendo al carrito...");
+            setTimeout(() =>{
+                window.location.href = "/carritoPage";
             });
         } catch (err) {
             console.log(err);
@@ -125,15 +134,15 @@ function PaquetesTuristicos({ type }) {
                             <div className='ModalFormInputs'>
                                 <div>
                                     <label htmlFor="cantidad">Cantidad de personas:</label>
-                                    <input type="number" id="cantidad" name="cantidad" placeholder='0' />
+                                    <input type="number" required id="cantidad" name="cantidad" placeholder='0' />
                                 </div>
                                 <div>
                                     <label htmlFor="entrada">Fecha de ida:</label>
-                                    <input type="date" id="entrada" name="entrada" />
+                                    <input type="date" required id="entrada" name="entrada" />
                                 </div>
                                 <div>
                                     <label htmlFor="salida">Fecha de vuelta:</label>
-                                    <input type="date" id="salida" name="salida" />
+                                    <input type="date" required id="salida" name="salida" />
                                 </div>
                             </div>
                             <p>Precio base por persona. Total con impuestos en el carrito</p>

@@ -116,14 +116,14 @@
   content: "";
   position: absolute;
   top: -14px;
-  /* arriba del menú */
-  right: 0%;
+ 
+  right: 15px;
   transform: translateX(-12.4px);
-  /* alineado al botón */
+  
   border-left: 18px solid transparent;
   border-right: 18px solid transparent;
   border-bottom: 20px solid #f3e9dc;
-  /* color del menú */
+
 }
 
 .loginRegisterBtn {

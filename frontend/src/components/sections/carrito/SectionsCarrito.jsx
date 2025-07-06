@@ -317,8 +317,10 @@ function SectionsCarrito() {
       });
   };
 
-  const productosParaPago = servicios.map((servicio) => ({
-    title: servicio.nombre,
+  const productosParaPago = servicios.map((servicio) => (
+    
+    {
+    title: servicio.categoria,
     quantity: servicio.personas || 1,
     unit_price: servicio.precioPorDia * servicio.dias,
   }));

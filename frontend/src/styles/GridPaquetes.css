@@ -254,7 +254,7 @@ form {
   }
   
   .modal{
-    align-items: flex-start;
+    align-items: center;
   }
   .modal-content-paquete{
     overflow: scroll;

@@ -66,7 +66,7 @@ export default function Alojamientos() {
   const handleBuscar = (e) => {
     e.preventDefault();
     if (!busqueda.lugar || !busqueda.personas || !busqueda.entrada || !busqueda.salida) {
-      alert("Por favor, completá todos los campos.");
+      toast.error("Por favor, completá todos los campos.");
       return;
     }
     setMostrarResultados(true);
@@ -90,7 +90,7 @@ export default function Alojamientos() {
   const handleConfirmarReserva = async (e) => {
     e.preventDefault();
      if (!usuario) {
-      toast.error("Debes iniciar sesión para añadir vuelos al carrito.");
+      toast.error("Debes iniciar sesión para añadir alojamientos al carrito.");
       return;
     }
     if (!reserva.nombre || !reserva.correo || !reserva.telefono) {

@@ -61,6 +61,10 @@ export default function AlquilerAutos2() {
   };
 
   const abrirModal = (auto) => {
+    if (!usuario){
+      toast.error("Debes iniciar sesión para usar el carrito.");
+      return;
+    }
     setAutoSeleccionado(auto);
     setMostrarModal(true);
     setReserva({ nombre: "", correo: "", telefono: "" });
@@ -156,24 +160,28 @@ export default function AlquilerAutos2() {
           <input
             type="text"
             name="lugarRetiro"
+            required
             placeholder="Lugar de retiro"
             value={busqueda.lugarRetiro}
             onChange={handleChange}
           />
           <input
             type="date"
+            required
             name="fechaRetiro"
             value={busqueda.fechaRetiro}
             onChange={handleChange}
           />
           <input
             type="date"
+            required
             name="fechaEntrega"
             value={busqueda.fechaEntrega}
             onChange={handleChange}
           />
           <select
             name="pasajeros"
+            required
             value={busqueda.pasajeros}
             onChange={handleChange}
           >

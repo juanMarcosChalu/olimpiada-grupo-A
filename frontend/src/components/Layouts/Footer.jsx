@@ -3,8 +3,16 @@ import "../../styles/Footer.css";
 import { Link } from "react-router-dom";
 import facebook from "../../assets/svgs/facebook.svg";
 import instagram from "../../assets/svgs/instagram.svg";
-
+import { useAuth } from "../../hooks/useAuth.js";
 const Footer = () => {
+  const { usuario, cargando,isLogin } = useAuth();
+  const handleClickPerfil = () => {
+    if (!usuario) {
+      window.location.href = "/login";
+      return;
+    }
+    window.location.href = "/perfil";
+  }
   return (
     <footer className="footer">
 
@@ -24,7 +32,7 @@ const Footer = () => {
         <div className="lista-footer-explore">
           <ol>
             <li><Link to="/carritoPage">Carrito</Link></li>
-            <li><Link to="/perfil">Mi perfil</Link></li>
+            <li><Link  onClick={handleClickPerfil}>Mi perfil</Link></li>
             <li><Link to="/contacto">Contacto</Link></li>
           </ol>
         </div>
