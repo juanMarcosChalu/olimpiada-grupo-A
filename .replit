@@ -6,7 +6,8 @@ run = "npm install && npm run build && npm start"
 channel = "stable-24_05"
 
 [deployment]
-run = ["sh", "-c", "npm run dev"]
+run = ["sh", "-c", "npm start"]
+build = ["sh", "-c", "npm run reset"]
 
 [[ports]]
 localPort = 3000
