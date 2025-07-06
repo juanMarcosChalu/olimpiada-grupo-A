@@ -106,7 +106,7 @@ export default function Alojamientos() {
       toast.error("La fecha de inicio debe ser anterior a la fecha de fin.");
       return;
     }
-    
+
     const response = await post("/carrito/anadirProducto", {
       userId:usuario.id,
       tipoProducto: "alojamiento",
@@ -130,7 +130,7 @@ export default function Alojamientos() {
     }, 700);
   };
 
-  
+
 
   const mostrarMensaje = (texto) => {
     setMensajeFavorito(texto);
@@ -315,7 +315,7 @@ export default function Alojamientos() {
                 value={reserva.nombreAsignado}
                 onChange={handleReservaChange}
               />
-              
+
               <input
                 type="tel"
                 name="telefono"
