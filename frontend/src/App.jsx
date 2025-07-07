@@ -49,7 +49,7 @@ function App() {
             <>
               <Header
                 title={<img src={logo} alt="Logo" />}
-                menuItems={[<ServiciosMenu key="servicios" />, <Link to="/contacto" key="contacto">Contacto</Link>]}
+                menuItems={[<Link to="/" key="inicio">Inicio</Link>, , <ServiciosMenu key="servicios" />, <Link to="/contacto" key="contacto">Contacto</Link>]}
               />
               <SectionHome />
               <Carousel />
@@ -71,7 +71,7 @@ function App() {
             <>
               <Header
                 title={<h1>Paquetes</h1>}
-                menuItems={[<Link to="/" key="inicio">Inicio</Link>, <ServiciosMenu key="servicios"></ServiciosMenu>, <Link to="/contacto" key="contacto">Contacto</Link>]}
+                menuItems={[<Link to="/" key="inicio">Inicio</Link>, , <ServiciosMenu key="servicios" />, <Link to="/contacto" key="contacto">Contacto</Link>]}
               />
               <Paquetes />
               <Footer />
@@ -84,7 +84,7 @@ function App() {
             <>
               <Header
                 title={<h1>Paquetes de Aventuras</h1>}
-                menuItems={[<Link to="/" key="inicio">Inicio</Link>, <ServiciosMenu key="servicios" />]}
+                menuItems={[<Link to="/" key="inicio">Inicio</Link>, , <ServiciosMenu key="servicios" />, <Link to="/contacto" key="contacto">Contacto</Link>]}
               />
               <GridPaquetes2 type="aventura" />
               <Footer />
@@ -110,7 +110,7 @@ function App() {
             <>
               <Header
                 title={<h1>Paquetes Familiares</h1>}
-                menuItems={[<Link to="/" key="inicio">Inicio</Link>, <ServiciosMenu key="servicios" />]}
+                menuItems={[<Link to="/" key="inicio">Inicio</Link>, , <ServiciosMenu key="servicios" />, <Link to="/contacto" key="contacto">Contacto</Link>]}
               />
               <GridPaquetes2 type="familiar" />
               <Footer />
@@ -123,7 +123,7 @@ function App() {
             <>
               <Header
                 title={<h1>Paquetes Relax</h1>}
-                menuItems={[<Link to="/" key="inicio">Inicio</Link>, <ServiciosMenu key="servicios" />]}
+                menuItems={[<Link to="/" key="inicio">Inicio</Link>, , <ServiciosMenu key="servicios" />, <Link to="/contacto" key="contacto">Contacto</Link>]}
               />
               <GridPaquetes2 type="relax" />
               <Footer />
@@ -136,7 +136,7 @@ function App() {
             <>
               <Header
                 title={<h1>Paquetes Naturaleza</h1>}
-                menuItems={[<Link to="/" key="inicio">Inicio</Link>, <ServiciosMenu key="servicios" />]}
+                menuItems={[<Link to="/" key="inicio">Inicio</Link>, , <ServiciosMenu key="servicios" />, <Link to="/contacto" key="contacto">Contacto</Link>]}
               />
               <GridPaquetes2 type="naturaleza" />
               <Footer />
@@ -149,7 +149,7 @@ function App() {
             <>
               <Header
                 title={<h1>Paquetes Culturales</h1>}
-                menuItems={[<Link to="/" key="inicio">Inicio</Link>, <ServiciosMenu key="servicios" />]}
+                menuItems={[<Link to="/" key="inicio">Inicio</Link>, , <ServiciosMenu key="servicios" />, <Link to="/contacto" key="contacto">Contacto</Link>]}
               />
               <GridPaquetes2 type="cultural" />
               <Footer />
@@ -329,7 +329,7 @@ function App() {
             <>
               <Header
                 title={<h1>Tu carrito de compras</h1>}
-                menuItems={[<Link to="/" key="inicio">Inicio</Link>, <ServiciosMenu key="servicios" />, <Link to="/contacto" key="contacto">Contacto</Link>]}
+                menuItems={[<Link to="/" key="inicio">Inicio</Link>, , <ServiciosMenu key="servicios" />, <Link to="/contacto" key="contacto">Contacto</Link>]}
               />
               <SectionsCarrito />
               <Footer />
@@ -344,7 +344,7 @@ function App() {
             <>
               <Header
                 title={<h1>Panel de Administrador</h1>}
-                menuItems={[<Link to="/" key="inicio">Inicio</Link>, <Link to="/admin" key="admin">Admin</Link>]}
+                menuItems={[<Link to="/" key="inicio">Inicio</Link>, , <ServiciosMenu key="servicios" />, <Link to="/contacto" key="contacto">Contacto</Link>]}
               />
               <Admin />
               <Footer />
@@ -358,7 +358,7 @@ function App() {
             <>
               <Header
                 title={<h1>Compras Administrador</h1>}
-                menuItems={[<Link to="/" key="inicio">Inicio</Link>, <Link to="/admin" key="admin">Admin</Link>]}
+                menuItems={[<Link to="/" key="inicio">Inicio</Link>, , <ServiciosMenu key="servicios" />, <Link to="/contacto" key="contacto">Contacto</Link>]}
               />
               <ComprasDetalles />
               <Footer />
@@ -372,7 +372,7 @@ function App() {
             <>
               <Header
                 title={<h1>Usuarios Administrador</h1>}
-                menuItems={[<Link to="/" key="inicio">Inicio</Link>, <Link to="/admin" key="admin">Admin</Link>]}
+                menuItems={[<Link to="/" key="inicio">Inicio</Link>, , <ServiciosMenu key="servicios" />, <Link to="/contacto" key="contacto">Contacto</Link>]}
               />
               <UsuariosAdmin />
               <Footer />
@@ -386,7 +386,7 @@ function App() {
             <>
               <Header
                 title={<h1>Asistencia Administrador</h1>}
-                menuItems={[<Link to="/" key="inicio">Inicio</Link>, <Link to="/admin" key="admin">Admin</Link>]}
+                menuItems={[<Link to="/" key="inicio">Inicio</Link>, , <ServiciosMenu key="servicios" />, <Link to="/contacto" key="contacto">Contacto</Link>]}
               />
               <AsistenciaAdmin />
               <Footer />
@@ -415,7 +415,7 @@ function App() {
             <>
               <Header
                 title={<h1>Sobre Nosotros</h1>}
-                menuItems={[<Link to="/" key="inicio">Inicio</Link>, <Link to="/admin" key="admin">Admin</Link>]}
+                menuItems={[<Link to="/" key="inicio">Inicio</Link>, , <ServiciosMenu key="servicios" />, <Link to="/contacto" key="contacto">Contacto</Link>]}
               />
               <Nosotros/>
               <Footer />

@@ -3,19 +3,21 @@ import "../../../styles/nosotros.css";
 import logoEscuela from "../../../assets/logoescuela.jpg";
 
 import image_of_martina from "../../../assets/Martina.jpg"
+import image_of_jeremias from "../../../assets/Jeremias.jpg"
+import image_of_gianluca from "../../../assets/Gianluca.jpg"
 
 const integrantes = [
   {
     nombre: "Jeremías Cepeda",
     rol: "Líder del grupo",
     descripcion: "Coordina al equipo con compromiso y claridad. Encargado de la organización general del proyecto.",
-    imagen: "https://api.dicebear.com/7.x/adventurer/svg?seed=Jeremias",
+    imagen: image_of_jeremias,
   },
   {
     nombre: "Gianluca Rivero",
     rol: "Analista funcional",
     descripcion: "Interpreta las necesidades del usuario y traduce ideas en funciones claras para el desarrollo.",
-    imagen: "https://api.dicebear.com/7.x/adventurer/svg?seed=Gianluca",
+    imagen: image_of_gianluca,
   },
   {
     nombre: "Martina Gutiérrez",
