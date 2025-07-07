@@ -75,9 +75,7 @@ frontendRoutes.forEach(route => {
   });
 });
 
-// ... Agrega todas las demás rutas de tu frontend aquí ...
 
-// Catch-all para otras rutas (excluyendo rutas API)
 app.get(/^\/(?!paquetes|usuario|autos|vuelos|alojamientos|mercadopago|carrito).*/, (req, res) => {
   res.sendFile(path.join(__dirname, '../frontend/dist/index.html'));
 });
