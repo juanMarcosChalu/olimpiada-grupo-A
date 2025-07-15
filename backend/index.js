@@ -65,8 +65,27 @@ const frontendRoutes = [
   '/vuelos',
   '/alojamientos',
   '/contacto',
-  '/perfil'
-  
+  '/perfil',
+  '/paquetes',
+  '/aventura',
+  '/romantico',
+  '/familiar',
+  '/relax',
+  '/naturaleza',
+  '/cultural',
+  '/notificaciones',
+  '/favoritos',
+  '/alquileres',
+  '/alojamiento',
+  '/politica-privacidad',
+  '/terminos-condiciones',
+  'proteccion',
+  '/admin',
+  '/admin/compras',
+  '/admin/usuarios',
+  '/admin/asistencia',
+  '/admin/paquetes',
+  '/nosotros'
 ];
 
 frontendRoutes.forEach(route => {
