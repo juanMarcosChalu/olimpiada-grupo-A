@@ -1,0 +1,10 @@
+# Database / DB credentials
+USER="DB_USER_PLACEHOLDER"          # Usuario de la base de datos
+PASSWORD="DB_PASSWORD_PLACEHOLDER"  # Contraseña segura
+DATABASE="railway"                  # Nombre de la base de datos (ej: railway)
+
+# Puertos
+PORTBASE=35892                      # Puerto base / puerto del servicio (ej: 35892)
+
+# App secrets
+SECRET="YOUR_SECRET_KEY_HERE"       # Clave secreta para sesiones/JWT/firmas
