@@ -65,7 +65,7 @@ function Contacto() {
                 </li>
                 <li>
                   <img src={phone} alt="Teléfono" />
-                  <p>Teléfono: 2281 311055</p>
+                  <p>Teléfono: 2281 954323</p>
                 </li>
                 <li>
                   <img src={home} alt="Sucursal" />

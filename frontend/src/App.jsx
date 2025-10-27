@@ -84,7 +84,7 @@ function App() {
             <>
               <Header
                 title={<h1>Paquetes de Aventuras</h1>}
-                menuItems={[<Link to="/" key="inicio">Inicio</Link>, , <ServiciosMenu key="servicios" />, <Link to="/contacto" key="contacto">Contacto</Link>]}
+                menuItems={[<Link to="/" key="inicio">Inicio</Link>, <ServiciosMenu key="servicios" />, <Link to="/contacto" key="contacto">Contacto</Link>]}
               />
               <GridPaquetes2 type="aventura" />
               <Footer />

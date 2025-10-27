@@ -18,7 +18,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 app.use(cors({
-  origin: ['https://524b1cba-194b-45f4-8cd4-b359a0dbd23c-00-18uuebkff7yon.kirk.replit.dev'],
+  origin: ['http://localhost:5173/'],
   credentials: true
 }));
 // Agrega esto temporalmente en tu index.js
@@ -71,6 +71,7 @@ const frontendRoutes = [
   '/romantico',
   '/familiar',
   '/relax',
+ '/vuelos/',
   '/naturaleza',
   '/cultural',
   '/notificaciones',
